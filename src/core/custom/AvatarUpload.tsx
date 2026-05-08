@@ -18,7 +18,7 @@ export function AvatarUpload({
   showCancel?: boolean
   initialFile?: FileMetadata
   onUpload: (file: FileWithPreview, signal: AbortSignal) => Promise<void>
-  onRemove?: () => void
+  onRemove?: (url: string) => Promise<void>
 } & React.ComponentProps<"input">) {
   const [busy, setBusy] = React.useState(false)
   const signalRef = React.useRef<AbortController>(null)
@@ -95,7 +95,7 @@ export function AvatarUpload({
             onClick={() => {
               removeFile(files[0]?.id)
               signalRef.current?.abort()
-              onRemove?.()
+              onRemove?.(previewUrl)
             }}
           >
             <IconX className="size-3.5" />

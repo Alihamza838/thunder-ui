@@ -124,16 +124,11 @@ export const renderField = ({
                 def.field.onChange(res.url);
               }
             }}
-            onRemove={() => {
-              const currentUrl = def.field.value;
-              def.field.onChange(null);
-              if (
-                currentUrl && typeof currentUrl === "string" &&
-                currentUrl.startsWith("http")
-              ) {
-                handleDelete(currentUrl).catch(console.error);
-              }
-            }}
+            onRemove={async (url) => {
+                await handleDelete(url);
+                def.field.onChange(null);
+        
+              }}
           />
         )}
       />

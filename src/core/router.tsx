@@ -6,7 +6,10 @@ import type { RouteObject } from "react-router"
 import { icons } from "@/overrides/icons"
 import { ListPage } from "@/core/crud/ListPage"
 import { FormPage } from "@/core/crud/FormPage"
+import { ViewPage } from "@/core/crud/ViewPage"
+
 import Overview from "@/pages/overview"
+import { lists } from "@/overrides/crud/lists"
 
 export type TRouteObject = {
   name?: string
@@ -23,15 +26,23 @@ const rawRoutes = ThunderSDK.getModuleNames()
     }
 
     const module = ThunderSDK.getModule(name)
+    const group = ThunderSDK.getGroup(name)
 
     const hasCreate = "create" in module
     const hasUpdate = "update" in module
+
+    const List = lists[name as keyof typeof lists]
 
     const children: TRouteObject[] = [
       {
         index: true,
         display: false,
-        Component: () => <ListPage name={name} />,
+        Component: () =>
+          List ? (
+            <List group={group} name={name} />
+          ) : (
+            <ListPage group={group} name={name} />
+          ),
       },
     ]
 
@@ -40,17 +51,20 @@ const rawRoutes = ThunderSDK.getModuleNames()
         {
           path: `form`,
           display: false,
-          Component: () => <FormPage name={name} />,
+          Component: () => <FormPage group={group} name={name} />,
         },
         {
           path: `form/:id`,
           display: false,
-          Component: () => <FormPage name={name} />,
+          Component: () => <FormPage group={group} name={name} />,
+        },
+        {
+          path: `:id`,
+          display: false,
+          Component: () => <ViewPage group={group} name={name} />,
         }
       )
     }
-
-    const group = ThunderSDK.getGroup(name)
 
     return {
       name: name,

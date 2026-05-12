@@ -11,7 +11,7 @@ import {
 } from "@tanstack/react-table"
 import { Button } from "@/components/ui/button"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
-import { useNavigate } from "react-router"
+import { Link, useNavigate } from "react-router"
 import { use } from "../hooks/use"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import {
@@ -43,14 +43,20 @@ import { DataFilter } from "../data-filter/DataFilter"
 import { fieldsFromModuleMetadata } from "./FormPage"
 import { JSONSchemaToFields, type TField } from "../lib/jsonSchemaToFields"
 import { Checkbox } from "@/components/ui/checkbox"
+import { getLocalUrl } from "../lib/utils"
 
 const columnFromModuleMetadata = async (metadata: any) => {
-  const fields = await fieldsFromModuleMetadata(metadata, "output")
+  const fields = await fieldsFromModuleMetadata(metadata, {
+    type: "output",
+  })
 
   return JSONSchemaToFields.flatten(fields, { excludeArray: true })
 }
 
-const prepareColumns = (fields: TField[]): ColumnDef<unknown, any>[] =>
+const prepareColumns = (
+  fields: TField[],
+  group?: string
+): ColumnDef<unknown, any>[] =>
   fields
     .filter((field) => field.type !== "hidden")
     .map((field) => ({
@@ -58,13 +64,39 @@ const prepareColumns = (fields: TField[]): ColumnDef<unknown, any>[] =>
       accessorKey: field.name!,
       size: 220,
       minSize: 120,
+      cell: ({ getValue }) =>
+        field.ref ? (
+          <Button
+            variant={"link"}
+            size="sm"
+            className="p-0"
+            render={
+              <Link
+                to={getLocalUrl(
+                  [
+                    group?.toLowerCase().replace(" ", "-"),
+                    field.ref,
+                    getValue(),
+                  ]
+                    .filter(Boolean)
+                    .join("/")
+                ).toString()}
+              >
+                {getValue()}
+              </Link>
+            }
+          ></Button>
+        ) : (
+          getValue()
+        ),
     }))
 
 export interface IListPageProps {
+  group?: string
   name: string
 }
 
-export function ListPage({ name }: IListPageProps) {
+export function ListPage({ group, name }: IListPageProps) {
   const navigate = useNavigate()
 
   const _get = React.useCallback(
@@ -94,52 +126,52 @@ export function ListPage({ name }: IListPageProps) {
   const metadata = React.useMemo(() => ThunderSDK.getMetadata(name), [name])
   const [fields, setFields] = React.useState<TField[]>([])
 
-  const table = useReactTable({
-    data: data?.results ?? [],
-    columns: [
-      {
-        id: "select",
-        header: ({ table }) => (
-          <Checkbox
-            checked={
-              table.getIsAllRowsSelected()
-                ? true
-                : table.getIsSomeRowsSelected()
-                  ? true
-                  : false
-            }
-            onCheckedChange={(value) => {
-              table.toggleAllRowsSelected(!!value)
-            }}
-            aria-label="Select all"
-          />
-        ),
-        cell: ({ row }) => (
-          <Checkbox
-            checked={row.getIsSelected()}
-            disabled={!row.getCanSelect()}
-            onCheckedChange={(value) => {
-              row.toggleSelected(!!value)
-            }}
-            onClick={(event) => event.stopPropagation()}
-            aria-label="Select row"
-          />
-        ),
-        size: 30,
-        enableSorting: false,
-        enableHiding: false,
-        enableResizing: false,
-        enablePinning: false,
-      },
-      ...prepareColumns(fields),
-    ],
-    columnResizeMode: "onChange",
-    getCoreRowModel: getCoreRowModel(),
-    enableRowSelection: true,
-  })
+  const table = useReactTable(
+    React.useMemo(
+      () => ({
+        data: data?.results ?? [],
+        columns: [
+          {
+            id: "select",
+            header: ({ table }) => (
+              <Checkbox
+                checked={
+                  table.getIsAllRowsSelected() || table.getIsSomeRowsSelected()
+                }
+                onCheckedChange={(value) => {
+                  table.toggleAllRowsSelected(!!value)
+                }}
+                aria-label="Select all"
+              />
+            ),
+            cell: ({ row }) => (
+              <Checkbox
+                checked={row.getIsSelected()}
+                disabled={!row.getCanSelect()}
+                onCheckedChange={(value) => {
+                  row.toggleSelected(!!value)
+                }}
+                onClick={(event) => event.stopPropagation()}
+                aria-label="Select row"
+              />
+            ),
+            size: 30,
+            enableSorting: false,
+            enableHiding: false,
+            enableResizing: false,
+            enablePinning: false,
+          },
+          ...prepareColumns(fields, group),
+        ],
+        columnResizeMode: "onChange",
+        getCoreRowModel: getCoreRowModel(),
+        enableRowSelection: true,
+      }),
+      [data, fields, group]
+    )
+  )
 
   const selectedRows = table.getFilteredSelectedRowModel().rows
-  const selectedCount = selectedRows.length
 
   React.useEffect(() => {
     ;(async () => {
@@ -237,15 +269,16 @@ export function ListPage({ name }: IListPageProps) {
 
         <ActionBar
           containerClassName="absolute bottom-10 left-3 right-3 max-w-md mx-auto z-20 shadow-sm"
-          data-open={!!selectedCount}
+          data-open={!!selectedRows.length}
         >
           <div className="flex w-full items-center justify-between gap-2 rounded-full border bg-background p-3 dark:bg-black">
             <p className="text-sm md:ltr:ml-3 md:rtl:mr-3">
-              {selectedCount} <span className="font-medium">selected</span>
+              {selectedRows.length}{" "}
+              <span className="font-medium">selected</span>
             </p>
 
             <div className="flex items-center gap-2">
-              {selectedCount === 1 && (
+              {selectedRows.length === 1 && (
                 <Button
                   size="icon-sm"
                   variant="outline"

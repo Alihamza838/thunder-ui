@@ -324,6 +324,8 @@ export type TField = {
   multi?: boolean;
   minLength?: number;
   maxLength?: number;
+  minItems?: number;
+  maxItems?: number;
   minimum?: number;
   maximum?: number;
   required?: boolean;
@@ -334,6 +336,7 @@ export type TField = {
   refLabel?: string | string[];
   refValue?: string;
   fieldHint?: string;
+  const?: unknown;
 };
 
 export class JSONSchemaToFields {
@@ -364,6 +367,8 @@ export class JSONSchemaToFields {
       type: z.string().default("string"),
       default: z.unknown().optional(),
       label: z.string().optional(),
+      minItems: z.number().optional(),
+      maxItems: z.number().optional(),
       minLength: z.number().optional(),
       maxLength: z.number().optional(),
       minimum: z.number().optional(),
@@ -377,6 +382,7 @@ export class JSONSchemaToFields {
       refLabel: z.union([z.string(), z.string().array()]).optional(),
       refValue: z.string().optional(),
       fieldHint: z.string().optional(),
+      const: z.any(),
     })
     .loose();
 
@@ -417,34 +423,46 @@ export class JSONSchemaToFields {
       ];
     }
 
-    if (
-      type === "array" &&
-      "items" in schema &&
-      typeof schema.items === "object" &&
-      schema.items !== null
-    ) {
+    if (type === "array") {
       if (
-        "type" in schema.items &&
-        ["object", "array"].includes(schema.items.type as string)
+        "items" in schema && typeof schema.items === "object" &&
+        schema.items !== null
       ) {
-        return [
-          {
-            ...hints,
-            ...schema,
-            name,
-            type: "array",
-            fields: this._toFields(undefined, schema.items, {
-              parentName: name,
-            }),
-          },
-        ];
+        if (
+          "type" in schema.items &&
+          ["object", "array"].includes(schema.items.type as string)
+        ) {
+          return [
+            {
+              ...hints,
+              ...schema,
+              name,
+              type: "array",
+              fields: this._toFields(undefined, schema.items, {
+                parentName: name,
+              }),
+            },
+          ];
+        }
+
+        return this._toFields(name, schema.items, {
+          ...hints,
+          ...schema,
+          multi: true,
+        });
       }
 
-      return this._toFields(name, schema.items, {
-        ...hints,
-        ...schema,
-        multi: true,
-      });
+      if (
+        "prefixItems" in schema && typeof schema.prefixItems === "object" &&
+        schema.prefixItems !== null &&
+        schema.prefixItems instanceof Array
+      ) {
+        return schema.prefixItems.flatMap((items, index) =>
+          this._toFields(`${name}.${index}`, items, {
+            parentName: name,
+          })
+        );
+      }
     }
 
     const field = {

@@ -207,8 +207,9 @@ export function ListPage({ group, name }: IListPageProps) {
     })()
   }, [metadata])
 
-  const [view, setView] = React.useState<string>("table")
-  const Card = cards[name as keyof typeof cards]
+  const Cards = cards[name as keyof typeof cards]
+
+  const [view, setView] = React.useState(Cards ? "cards" : "table")
 
   return (
     <div className="relative flex h-full min-h-0 flex-1 flex-col gap-5">
@@ -278,16 +279,16 @@ export function ListPage({ group, name }: IListPageProps) {
               {allowCreate && (
                 <Button onClick={() => navigate("form")}>Create</Button>
               )}
-              {!!Card && (
+              {!!Cards && (
                 <ToggleGroup
                   value={view}
                   onValueChange={(v) => v && setView(v)}
                 >
+                  <ToggleGroupItem value="cards" aria-label="Cards view">
+                    <IconLayoutGrid className="size-4" />
+                  </ToggleGroupItem>
                   <ToggleGroupItem value="table" aria-label="Table view">
                     <IconTable className="size-4" />
-                  </ToggleGroupItem>
-                  <ToggleGroupItem value="card" aria-label="Card view">
-                    <IconLayoutGrid className="size-4" />
                   </ToggleGroupItem>
                 </ToggleGroup>
               )}
@@ -331,13 +332,14 @@ export function ListPage({ group, name }: IListPageProps) {
                   </Button>
                 }
                 onConfirm={async (dismiss) => {
-                  const ids = selectedRows.map((row: any) => row._id)
+                  const ids = selectedRows.map((row: any) => row.original._id)
                   for (const id of ids) {
                     await ThunderSDK.getModule(name).del({
                       params: { id },
                     })
                   }
-
+                  table.resetRowSelection()
+                  get.invalidate()
                   dismiss()
                 }}
               />
@@ -354,7 +356,9 @@ export function ListPage({ group, name }: IListPageProps) {
           </div>
         </ActionBar>
 
-        {isLoading ? (
+        {view === "cards" && Cards ? (
+          <Cards isLoading={isLoading} data={data?.results ?? []} />
+        ) : isLoading ? (
           <TableSkeleton />
         ) : data?.results.length === 0 && !isLoading ? (
           <Empty>

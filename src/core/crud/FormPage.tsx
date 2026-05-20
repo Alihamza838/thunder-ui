@@ -93,14 +93,14 @@ JSONSchemaToFields.resolveRef = async (ref, field) => {
   };
 
   return results.map((item: any) => {
-    const value = resolveValue(item);
+    const value = resolveValue(item)
 
     return {
       label: resolveLabel(item) || value,
       value,
-    };
-  });
-};
+    }
+  })
+}
 
 export interface IFormPageProps {
   group?: string;

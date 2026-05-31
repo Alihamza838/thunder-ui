@@ -30,7 +30,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 import { NavMenu } from "./nav-menu"
-import { appName } from "@/core/lib/utils"
+import { allowDisplayRoute, appName } from "@/core/lib/utils"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -53,11 +53,6 @@ export type TNav = {
   icon?: TablerIcon
   path?: string
   parent?: string
-}
-
-function allowDisplay(display?: boolean | (() => boolean)) {
-  if (typeof display === "function") return display()
-  return display ?? true
 }
 
 function SidebarTrigger() {
@@ -95,10 +90,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
     const subRoutes: TNav[] = []
 
     for (const route of router.routes as TRouteObject[]) {
-      if (!allowDisplay(route.display)) continue
+      if (!allowDisplayRoute(route.display)) continue
 
       for (const child of route.children ?? []) {
-        if (!allowDisplay(child.display)) continue
+        if (!allowDisplayRoute(child.display)) continue
 
         const parentPath = child.path ?? "/"
 
@@ -109,7 +104,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         })
 
         for (const subChild of child.children ?? []) {
-          if (!allowDisplay(subChild.display)) continue
+          if (!allowDisplayRoute(subChild.display)) continue
 
           subRoutes.push({
             title: subChild.name || "Unnamed Route",

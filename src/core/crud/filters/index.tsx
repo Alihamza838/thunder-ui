@@ -52,8 +52,6 @@ export function useFilters() {
 }
 
 export function Filters({ filters, fields, onChange }: TFilter) {
-  console.log(fields)
-
   return (
     <FiltersContext.Provider value={{ filters, fields, onChange }}>
       <div className="flex min-w-0 grow items-center justify-between gap-2">

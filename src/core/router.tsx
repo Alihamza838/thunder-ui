@@ -10,6 +10,7 @@ import { ViewPage } from "@/core/crud/ViewPage"
 
 import Overview from "@/pages/overview"
 import { lists } from "@/overrides/crud/lists"
+import { allowDisplayRoute } from "./lib/utils"
 
 export type TRouteObject = {
   name?: string
@@ -85,9 +86,13 @@ export const coreRoutes = Object.entries(
 ).map(([group, routes]) => {
   routes = routes ?? []
 
+  const indexRoute = routes.filter((route) =>
+    allowDisplayRoute(route.display)
+  )[0]
+
   routes.push({
     path: "",
-    Component: () => <Navigate to={routes[0].path ?? "notFound"} />,
+    Component: () => <Navigate to={indexRoute?.path ?? "notFound"} />,
     display: false,
   })
 
@@ -102,12 +107,7 @@ export const coreRoutes = Object.entries(
     icon: icons[group],
     Component: () => <Outlet />,
     children,
-    display: () =>
-      children.some(
-        (child) =>
-          child.display === true ||
-          (typeof child.display === "function" && child.display())
-      ),
+    display: () => children.some((child) => allowDisplayRoute(child.display)),
   } as TRouteObject
 })
 

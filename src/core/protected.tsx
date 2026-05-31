@@ -8,7 +8,7 @@ import { IconBug, IconLoader, IconLogin } from "@tabler/icons-react"
 import { useNavigate, useParams } from "react-router"
 import { refreshThunder } from "./lib/thunder"
 import { getAuthUrl } from "./lib/utils"
-import { AxiosError } from "axios"
+import { isAxiosError } from "axios"
 
 function ProtectedWithOAuth({ children }: { children: React.ReactNode }) {
   const [ready, setReady] = React.useState(false)
@@ -144,11 +144,9 @@ function ProtectedWithSession({ children }: { children: React.ReactNode }) {
           .then(() => {
             setReady(true)
           })
-          .catch((error) => {
-            console.error("Failed to register permissions", error, error instanceof AxiosError, error.response)
-
-            if (error instanceof AxiosError && error.response?.status === 403) {
-              navigate("/select-tenant/#list")
+          .catch(async (error) => {
+            if (isAxiosError(error) && error.response?.status === 403) {
+              await navigate("/select-tenant/#list")
 
               return
             }

@@ -24,12 +24,20 @@ import { getAuthUrl, getInitials, transformImage } from "@/core/lib/utils"
 import { Skeleton } from "@/components/ui/skeleton"
 import { SkeletonRepeater } from "@/core/custom/SkeletonRepeater"
 import TenantForm from "./form"
-import { IconAlertCircle, IconUser } from "@tabler/icons-react"
+import {
+  IconAlertCircle,
+  IconPlus,
+  IconTrash,
+  IconUser,
+} from "@tabler/icons-react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Navigate, useLocation, useNavigate } from "react-router"
 import { ThunderSDK } from "thunder-sdk"
+import { useLoading } from "@/core/context/LoaderProvider"
 
 export function SelectTenant() {
+  const { setLoading } = useLoading()
+  const [AddTenant, setAddTenant] = React.useState(false)
   const navigate = useNavigate()
   const { hash } = useLocation()
 
@@ -44,7 +52,7 @@ export function SelectTenant() {
     []
   )
 
-  const { data, error, isLoading } = use(tenants)
+  const { data, error, isLoading, refetch } = use(tenants)
 
   if (data?.results.length === 1 && hash !== "#list")
     return <Navigate to={`/${data?.results[0].tenant._id}`} />
@@ -60,23 +68,36 @@ export function SelectTenant() {
       ) : null}
       {isLoading ? (
         <CardSkeleton />
-      ) : data?.results.length ? (
+      ) : data?.results.length && !AddTenant ? (
         <Card className="w-full max-w-md shadow-none">
-          <CardHeader className="flex flex-col items-center justify-center text-center">
-            <div className="flex shrink-0 items-center gap-3">
-              <img src={Logo} alt="Logo" className="h-5 w-auto shrink-0" />
+          <CardHeader className="flex items-center justify-between gap-3">
+            <div className="flex w-full grow flex-col">
+              <div className="flex shrink-0 items-center gap-3">
+                <img src={Logo} alt="Logo" className="h-5 w-auto shrink-0" />
+              </div>
+              <CardTitle>Select Tenant</CardTitle>
+              <CardDescription>Choose a tenant to proceed</CardDescription>
             </div>
-            <CardTitle>Select Tenant</CardTitle>
-            <CardDescription>Choose a tenant to proceed</CardDescription>
+
+            <div className="flex w-full items-center justify-end">
+              <Button
+                variant="secondary"
+                size="icon-sm"
+                onClick={() => setAddTenant(!AddTenant)}
+              >
+                <IconPlus />
+              </Button>
+            </div>
           </CardHeader>
-          <CardContent>
-            <ScrollArea className="h-50 w-full">
+          <CardContent className="p-0">
+            <div className="h-50 w-full overflow-y-auto px-5 scroll-mask-y-from-90%">
               {data?.results.map(({ tenant }) => (
                 <Item
                   variant="muted"
                   size="xs"
                   key={tenant._id as string}
-                  className="mb-1 first:rounded-b-lg last:rounded-t-lg"
+                  className="mb-1 first:rounded-b-lg last:rounded-t-lg cursor-pointer"
+                  onClick={() => navigate(`/${tenant._id}`)}
                 >
                   <ItemMedia variant="default">
                     <Avatar size="lg">
@@ -90,12 +111,15 @@ export function SelectTenant() {
                     </Avatar>
                   </ItemMedia>
                   <ItemContent>
-                    <ItemTitle>{tenant.name}</ItemTitle>
+                    <ItemTitle className="line-clamp-1" title={tenant.name}>
+                      {tenant.name}
+                    </ItemTitle>
                   </ItemContent>
                   <ItemActions>
                     <Button
                       variant={"link"}
-                      onClick={() => {
+                      onClick={(e) => {
+                        e.stopPropagation()
                         const authUrl = getAuthUrl()
 
                         authUrl.searchParams.set("tab", "members")
@@ -106,13 +130,25 @@ export function SelectTenant() {
                     >
                       Members
                     </Button>
-                    <Button onClick={() => navigate(`/${tenant._id}`)}>
-                      Select
+                    <Button
+                      variant="destructive"
+                      size="icon-sm"
+                      onClick={async (e) => {
+                        e.stopPropagation()
+                        setLoading(true)
+                        await ThunderSDK.tenants.del({
+                          params: { id: tenant._id },
+                        })
+                        setLoading(false)
+                        refetch()
+                      }}
+                    >
+                      <IconTrash />
                     </Button>
                   </ItemActions>
                 </Item>
               ))}
-            </ScrollArea>
+            </div>
           </CardContent>
           <CardFooter className="text-center">
             <small className="text-muted-foreground">
@@ -134,7 +170,23 @@ export function SelectTenant() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <TenantForm />
+            <TenantForm
+              afterSubmitSuccess={() => {
+                refetch()
+                setAddTenant(false)
+              }}
+              footerContent={() =>
+                data?.results?.length ? (
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    onClick={() => setAddTenant(false)}
+                  >
+                    Dismiss
+                  </Button>
+                ) : null
+              }
+            />
           </CardContent>
         </Card>
       )}

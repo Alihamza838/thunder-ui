@@ -19,7 +19,7 @@ const DefaultForm = {
   name: "",
 }
 
-export default function TenantForm() {
+export default function TenantForm({ footerContent, afterSubmitSuccess }: { afterSubmitSuccess?: () => void, footerContent?: () => React.ReactNode }) {
   const { setLoading } = useLoading()
 
   const _me = React.useCallback(
@@ -43,6 +43,8 @@ export default function TenantForm() {
     await ThunderSDK.tenants
       .create({ body: form })
       .finally(() => setLoading(false))
+
+    afterSubmitSuccess?.()
   }
 
   return (
@@ -58,12 +60,12 @@ export default function TenantForm() {
                 initialFile={
                   field.value
                     ? {
-                        id: field.value,
-                        type: "logo",
-                        name: field.value,
-                        url: field.value,
-                        size: 0,
-                      }
+                      id: field.value,
+                      type: "logo",
+                      name: field.value,
+                      url: field.value,
+                      size: 0,
+                    }
                     : undefined
                 }
                 onUpload={async ({ file }, signal) => {
@@ -99,6 +101,8 @@ export default function TenantForm() {
           <Button type="submit" disabled={formState.isSubmitting}>
             Create tenant
           </Button>
+
+          {footerContent?.()}
         </Field>
       </FieldGroup>
     </form>

@@ -188,6 +188,7 @@ export function ListPage({ group, name }: IListPageProps) {
 
   const [view, setView] = React.useState(Cards ? "cards" : "table")
   const [projection, setProjection] = React.useState<Record<string, 1>>({})
+  const [sorting, setSorting] = React.useState<Record<string, 1 | -1>>({})
 
   const get = React.useMemo(
     () =>
@@ -202,23 +203,20 @@ export function ListPage({ group, name }: IListPageProps) {
             })
           : undefined,
         project: Object.keys(projection).length ? projection : undefined,
+        sort: Object.keys(sorting).length ? sorting : undefined,
       }),
-    [_get, filters, projection, fields]
+    [_get, filters, projection, sorting, fields]
   )
   const { data, error, isLoading, refetch } = use(get, {
     manualTrigger: !!Cards, // if Cards component exists, we want to manually trigger the fetch after columns are set, to avoid fetching data twice
   })
 
   const fetcher = React.useCallback(
-    (_?: Record<string, 1>) => {
-      if (!_ || Object.keys(_).length === 0) {
-        refetch()
-        return
-      }
+    (project?: Record<string, 1>, sort?: Record<string, 1 | -1>) => {
+      if (project && Object.keys(project).length) setProjection(project)
+      if (sort && Object.keys(sort).length) setSorting(sort)
 
-      setProjection(_)
-
-      if (Object.keys(projection).length) refetch()
+      refetch()
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [refetch]

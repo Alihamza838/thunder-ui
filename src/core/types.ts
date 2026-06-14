@@ -4,7 +4,10 @@ import type { TRouteObject } from "./router";
 export type TCardProps = {
   isLoading: boolean;
   data: unknown[];
-  fetcher: (projection?: Record<string, 1>) => void;
+  fetcher: (
+    projection?: Record<string, 1>,
+    sorting?: Record<string, 1 | -1>,
+  ) => void;
   selectedIds: string[];
   toggleSelect: (id?: string) => void;
 };

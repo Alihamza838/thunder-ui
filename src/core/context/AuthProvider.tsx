@@ -127,6 +127,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         setError(null)
       })
       .catch(() => {
+        setLoading(false)
+
         if (Capacitor.isNativePlatform()) {
           App.addListener("appUrlOpen", async ({ url }) => {
             if (!url.startsWith(callbackUri)) return

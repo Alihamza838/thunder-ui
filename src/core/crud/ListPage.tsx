@@ -173,7 +173,7 @@ const DEFAULT_LIMIT = import.meta.env.VITE_DEFAULT_PAGINATION_LIMIT ?? 100;
 
 export function ListPage({ group, name }: IListPageProps) {
   const navigate = useNavigate();
-  
+
   const [filters, setFilters] = React.useState<TFilterValue>();
   const [fields, setFields] = React.useState<TField[]>([]);
   const [page, setPage] = React.useState(0);
@@ -211,8 +211,8 @@ export function ListPage({ group, name }: IListPageProps) {
     );
   }, [name]);
 
-  const [projection, setProjection] = React.useState<Record<string, 1>>({});
-  const [sorting, setSorting] = React.useState<Record<string, 1 | -1>>({});
+  const projection = React.useRef<Record<string, 1>>({});
+  const sorting = React.useRef<Record<string, 1 | -1>>({});
 
   const get = React.useMemo(
     () =>
@@ -232,10 +232,10 @@ export function ListPage({ group, name }: IListPageProps) {
             limit: DEFAULT_LIMIT,
           }
           : {}),
-        project: Object.keys(projection).length ? projection : undefined,
-        sort: Object.keys(sorting).length ? sorting : undefined,
+        project: Object.keys(projection.current).length ? projection.current : undefined,
+        sort: Object.keys(sorting.current).length ? sorting.current : undefined,
       }),
-    [_get, filters, projection, sorting, fields, page],
+    [_get, filters, fields, page],
   );
 
   const count = React.useMemo(() => _count(), [_count]);
@@ -268,8 +268,8 @@ export function ListPage({ group, name }: IListPageProps) {
 
   const fetcher = React.useCallback(
     (project?: Record<string, 1>, sort?: Record<string, 1 | -1>) => {
-      if (project && Object.keys(project).length) setProjection(project);
-      if (sort && Object.keys(sort).length) setSorting(sort);
+      if (project && Object.keys(project).length) projection.current = project;
+      if (sort && Object.keys(sort).length) sorting.current = sort;
 
       refetch();
     },

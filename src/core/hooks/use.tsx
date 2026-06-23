@@ -16,6 +16,21 @@ type TUseOpts = {
   manualTrigger?: boolean
 }
 
+function useControlledCallback<TArgs extends unknown[], TResult>(
+  callback: (...args: TArgs) => TResult,
+  deps: React.DependencyList
+) {
+  const callbackRef = React.useRef(callback)
+
+  React.useEffect(() => {
+    callbackRef.current = callback
+  }, [callback])
+
+  return React.useCallback((...args: TArgs) => {
+    return callbackRef.current(...args)
+  }, deps)
+}
+
 export function use<T>(
   request?: TRequestCallback<T> | TRequester<T>,
   options?: TUseOpts
@@ -138,7 +153,7 @@ export function use<T>(
     }
   }, [count, SendRequest, options?.manualTrigger])
 
-  const refetch = React.useCallback(() => {
+  const refetchFn = React.useCallback(() => {
     const controller = new AbortController()
 
     SendRequest({ signal: controller.signal })
@@ -146,7 +161,9 @@ export function use<T>(
     return {
       controller,
     }
-  }, [SendRequest])
+  }, [SendRequest]);
+
+  const refetch = useControlledCallback(refetchFn, []);
 
   return {
     isLoading,

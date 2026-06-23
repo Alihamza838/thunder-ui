@@ -57,6 +57,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { Container } from "@/components/container";
 import { Pagination } from "@/components/pagination";
+import { toast } from "sonner";
 
 const columnFromModuleMetadata = async (metadata: any, resolveRef = false) => {
   const fields = await fieldsFromModuleMetadata(metadata, {
@@ -469,8 +470,9 @@ export function ListPage({ group, name }: IListPageProps) {
                     params: { id },
                   });
                 }
+                toast.success(`Deleted successfully.`);
                 table.resetRowSelection();
-                get.invalidate();
+                await get.invalidate();
                 dismiss();
               }}
             />

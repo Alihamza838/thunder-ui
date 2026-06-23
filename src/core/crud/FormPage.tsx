@@ -18,6 +18,7 @@ import { JSONSchemaToFields, type TField } from "../lib/jsonSchemaToFields";
 import { forms } from "@/overrides/crud/forms";
 import { RenderFieldGroup } from "./form/RenderFieldGroup";
 import { Container } from "@/components/container";
+import { toast } from "sonner";
 
 export const fieldsFromModuleMetadata = async (
   metadata: any,
@@ -174,15 +175,23 @@ export function FormPage({ name }: IFormPageProps) {
 
   const isFormLoading = isFieldsLoading || (isEditMode && isRecordLoading);
   const onSubmit: SubmitHandler<any> = async (body) => {
-    if (isEditMode) {
-      await ThunderSDK.getModule(name).update({
-        params: { id },
-        body,
-      });
-    } else {
-      await ThunderSDK.getModule(name).create({
-        body,
-      });
+    try {
+      if (isEditMode) {
+        await ThunderSDK.getModule(name).update({
+          params: { id },
+          body,
+        });
+        toast.success(`${name} updated successfully.`);
+      } else {
+        await ThunderSDK.getModule(name).create({
+          body,
+        });
+        toast.success(`${name} created successfully.`);
+      }
+
+      navigate(-1);
+    } catch (error) {
+      toast.error(`Failed to ${isEditMode ? "update" : "create"} ${name}.`);
     }
   };
 

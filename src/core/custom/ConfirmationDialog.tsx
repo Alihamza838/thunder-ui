@@ -1,6 +1,6 @@
-import React, { type HTMLProps } from "react"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
+import React, { type HTMLProps } from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
@@ -9,43 +9,53 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet"
+} from "@/components/ui/sheet";
 import {
   Field,
   FieldError,
   FieldGroup,
   FieldLabel,
-} from "@/components/ui/field"
+} from "@/components/ui/field";
 import type {
   ComponentRenderFn,
   DialogRootActions,
   DialogTriggerState,
-} from "@base-ui/react"
+} from "@base-ui/react";
 
 type ConfirmationDialogProps =
   | { type?: "normal"; hint?: never; onConfirm: (dismiss: () => void) => void }
-  | { type: "strict"; hint: string; onConfirm: (dismiss: () => void) => void }
+  | { type: "strict"; hint: string; onConfirm: (dismiss: () => void) => void };
 
 export const ConfirmationDialog = (
   props: ConfirmationDialogProps & {
     trigger:
       | React.ReactElement<
-          unknown,
-          string | React.JSXElementConstructor<unknown>
-        >
+        unknown,
+        string | React.JSXElementConstructor<unknown>
+      >
       | ComponentRenderFn<HTMLProps<unknown>, DialogTriggerState>
-      | undefined
-  }
+      | undefined;
+  },
 ) => {
-  const sheetRef = React.useRef<DialogRootActions>(null)
-  const [value, setValue] = React.useState("")
-  const type = props.type ?? "normal"
+  const sheetRef = React.useRef<DialogRootActions>(null);
+  const [value, setValue] = React.useState("");
+  const [isConfirming, setIsConfirming] = React.useState(false);
+  const type = props.type ?? "normal";
+
+  const handleConfirm = async () => {
+    try {
+      setIsConfirming(true);
+      await props.onConfirm(() => sheetRef.current!.close());
+    } finally {
+      setIsConfirming(false);
+    }
+  };
 
   return (
     <Sheet
       actionsRef={sheetRef}
       onOpenChange={(value) => {
-        if (!value) setValue("")
+        if (!value) setValue("");
       }}
     >
       <SheetTrigger render={props.trigger}></SheetTrigger>
@@ -57,29 +67,31 @@ export const ConfirmationDialog = (
           </SheetDescription>
         </SheetHeader>
 
-        {type === "strict" ? (
-          <FieldGroup className="px-5">
-            <Field>
-              <FieldLabel>
-                Type <span className="bg-primary/10">{props.hint}</span> to
-                confirm the action.
-              </FieldLabel>
-              <Input
-                placeholder={"Hint here..."}
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-              />
-              {value && value !== props.hint && (
-                <FieldError>please type a correct hint!</FieldError>
-              )}
-            </Field>
-          </FieldGroup>
-        ) : null}
+        {type === "strict"
+          ? (
+            <FieldGroup className="px-5">
+              <Field>
+                <FieldLabel>
+                  Type <span className="bg-primary/10">{props.hint}</span>{" "}
+                  to confirm the action.
+                </FieldLabel>
+                <Input
+                  placeholder={"Hint here..."}
+                  value={value}
+                  onChange={(e) => setValue(e.target.value)}
+                />
+                {value && value !== props.hint && (
+                  <FieldError>please type a correct hint!</FieldError>
+                )}
+              </Field>
+            </FieldGroup>
+          )
+          : null}
         <SheetFooter>
           <Button
             className="w-full"
-            disabled={type === "strict" && value !== props.hint}
-            onClick={() => props.onConfirm(sheetRef.current!.close)}
+            disabled={type === "strict" && value !== props.hint || isConfirming}
+            onClick={handleConfirm}
           >
             Confirm
           </Button>
@@ -89,5 +101,5 @@ export const ConfirmationDialog = (
         </SheetFooter>
       </SheetContent>
     </Sheet>
-  )
-}
+  );
+};

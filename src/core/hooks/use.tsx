@@ -16,21 +16,6 @@ type TUseOpts = {
   manualTrigger?: boolean
 }
 
-function useControlledCallback<TArgs extends unknown[], TResult>(
-  callback: (...args: TArgs) => TResult,
-  deps: React.DependencyList
-) {
-  const callbackRef = React.useRef(callback)
-
-  React.useEffect(() => {
-    callbackRef.current = callback
-  }, [callback])
-
-  return React.useCallback((...args: TArgs) => {
-    return callbackRef.current(...args)
-  }, deps)
-}
-
 export function use<T>(
   request?: TRequestCallback<T> | TRequester<T>,
   options?: TUseOpts
@@ -153,7 +138,7 @@ export function use<T>(
     }
   }, [count, SendRequest, options?.manualTrigger])
 
-  const refetchFn = React.useCallback(() => {
+  const refetch = React.useCallback(() => {
     const controller = new AbortController()
 
     SendRequest({ signal: controller.signal })
@@ -161,32 +146,41 @@ export function use<T>(
     return {
       controller,
     }
-  }, [SendRequest]);
+  }, [SendRequest])
 
-  const refetch = useControlledCallback(refetchFn, []);
+  const results = React.useMemo(
+    () =>
+      ({
+        isLoading,
+        data,
+        error,
+        refetch,
+      }) as
+        | {
+            isLoading: true
+            data: null
+            error: null
+            refetch: () => { controller: AbortController }
+          }
+        | {
+            isLoading: false
+            data: T
+            error: null
+            refetch: () => { controller: AbortController }
+          }
+        | {
+            isLoading: false
+            data: null
+            error: Error
+            refetch: () => { controller: AbortController }
+          },
+    []
+  )
 
-  return {
-    isLoading,
-    data,
-    error,
-    refetch,
-  } as
-    | {
-        isLoading: true
-        data: null
-        error: null
-        refetch: () => { controller: AbortController }
-      }
-    | {
-        isLoading: false
-        data: T
-        error: null
-        refetch: () => { controller: AbortController }
-      }
-    | {
-        isLoading: false
-        data: null
-        error: Error
-        refetch: () => { controller: AbortController }
-      }
+  results.isLoading = isLoading
+  results.data = data
+  results.error = error
+  results.refetch = refetch
+
+  return results
 }

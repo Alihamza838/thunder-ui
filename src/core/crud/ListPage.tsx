@@ -169,12 +169,16 @@ export interface IListPageProps {
   name: string;
 }
 
-const DEFAULT_LIMIT = import.meta.env.VITE_DEFAULT_PAGINATION_LIMIT ?? 100;
+const DEFAULT_LIMIT = import.meta.env.VITE_DEFAULT_PAGINATION_LIMIT ?? 5;
 
 export function ListPage({ group, name }: IListPageProps) {
   const navigate = useNavigate();
 
+  const [fetchCount, setFetchCount] = React.useState(0);
   const [filters, setFilters] = React.useState<TFilterValue>();
+  const [project, setProject] = React.useState<Record<string, 1 | -1>>({});
+  const [sort, setSort] = React.useState<Record<string, 1 | -1>>({});
+
   const [fields, setFields] = React.useState<TField[]>([]);
   const [page, setPage] = React.useState(0);
 
@@ -183,77 +187,62 @@ export function ListPage({ group, name }: IListPageProps) {
 
   const isCard = view === "cards" && !!Cards;
 
-  const _get = React.useCallback(
-    (query: Record<string, unknown> = {}) => {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      return ThunderSDK.useCaching(
-        [name, view, query && hash(query)],
-        async ({ signal }) =>
-          (await ThunderSDK.getModule(name).get({
-            signal,
-            query,
-          })) as { results: unknown[] },
-        { cacheTTL: parseInt(import.meta.env.VITE_DEFAULT_CACHE_TTL ?? "1") },
-      );
-    },
-    [name, view],
+  const count = ThunderSDK.useCaching(
+    [name, "count"],
+    async ({ signal }) =>
+      (await ThunderSDK.getModule(name).count({
+        signal,
+      })) as { count: number },
+    { cacheTTL: parseInt(import.meta.env.VITE_DEFAULT_CACHE_TTL ?? "1") },
   );
-
-  const _count = React.useCallback(() => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    return ThunderSDK.useCaching(
-      [name, "count"],
-      async ({ signal }) =>
-        (await ThunderSDK.getModule(name).count({
-          signal,
-        })) as { count: number },
-      { cacheTTL: parseInt(import.meta.env.VITE_DEFAULT_CACHE_TTL ?? "1") },
-    );
-  }, [name]);
-
-  const projection = React.useRef<Record<string, 1>>({});
-  const sorting = React.useRef<Record<string, 1 | -1>>({});
-
-  const get = React.useMemo(
-    () =>
-      _get({
-        filters: filters
-          ? filterToMongo(filters, {
-            typeResolver: (key) => {
-              const field = fields.find((v) => v.name === key);
-
-              return field?.ref ? "objectId" : undefined;
-            },
-          })
-          : undefined,
-        ...(isCard
-          ? {
-            offset: page * DEFAULT_LIMIT,
-            limit: DEFAULT_LIMIT,
-          }
-          : {}),
-        project: Object.keys(projection.current).length ? projection.current : undefined,
-        sort: Object.keys(sorting.current).length ? sorting.current : undefined,
-      }),
-    [_get, filters, fields, page],
-  );
-
-  const count = React.useMemo(() => _count(), [_count]);
 
   const {
     data: countData,
     error: countError,
     isLoading: countLoading,
-    refetch: countRefetch,
+    refetch: refetchCount,
   } = use(count, {
     manualTrigger: isCard,
   });
+
+  const query = React.useMemo(
+    () => ({
+      filters: filters
+        ? filterToMongo(filters, {
+          typeResolver: (key) => {
+            const field = fields.find((v) => v.name === key);
+
+            return field?.ref ? "objectId" : undefined;
+          },
+        })
+        : undefined,
+      ...(isCard
+        ? {
+          offset: page * DEFAULT_LIMIT,
+          limit: DEFAULT_LIMIT,
+        }
+        : {}),
+      project: Object.keys(project).length ? project : undefined,
+      sort: Object.keys(sort).length ? sort : undefined,
+    }),
+    [filters, isCard, project, sort, page],
+  );
+
+  const get = ThunderSDK.useCaching(
+    [name, view, query && hash(query)],
+    async ({ signal }) =>
+      (await ThunderSDK.getModule(name).get({
+        signal,
+        query,
+      })) as { results: unknown[] },
+    { cacheTTL: parseInt(import.meta.env.VITE_DEFAULT_CACHE_TTL ?? "1") },
+  );
 
   const {
     data: getData,
     error: getError,
     isLoading: getLoading,
-    refetch: getRefetch,
+    refetch: refetchGet,
   } = use(get, {
     manualTrigger: isCard, // if Cards component exists, we want to manually trigger the fetch after columns are set, to avoid fetching data twice
   });
@@ -261,21 +250,22 @@ export function ListPage({ group, name }: IListPageProps) {
   const error = countError || getError;
   const isLoading = getLoading;
 
-  const refetch = React.useCallback(() => {
-    countRefetch();
-    return getRefetch();
-  }, [countRefetch, getRefetch]);
-
   const fetcher = React.useCallback(
     (project?: Record<string, 1>, sort?: Record<string, 1 | -1>) => {
-      if (project && Object.keys(project).length) projection.current = project;
-      if (sort && Object.keys(sort).length) sorting.current = sort;
+      if (project && Object.keys(project).length) setProject(project);
+      if (sort && Object.keys(sort).length) setSort(sort);
 
-      refetch();
+      setFetchCount((i) => i + 1);
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [refetch],
+    [],
   );
+
+  React.useEffect(() => {
+    if (fetchCount) {
+      refetchCount();
+      refetchGet();
+    }
+  }, [fetchCount, query]);
 
   const allowCreate = React.useMemo(
     () => ThunderSDK.isPermitted(ThunderSDK.getModule(name).create),
@@ -416,7 +406,15 @@ export function ListPage({ group, name }: IListPageProps) {
                 {!!Cards && (
                   <ToggleGroup
                     value={view}
-                    onValueChange={(v) => v && setView(v)}
+                    onValueChange={(view) => {
+                      setView(view);
+
+                      if (view === "table") {
+                        setFetchCount(0);
+                        setProject({});
+                        setSort({});
+                      }
+                    }}
                   >
                     <ToggleGroupItem value="cards" aria-label="Cards view">
                       <IconLayoutGrid className="size-4" />

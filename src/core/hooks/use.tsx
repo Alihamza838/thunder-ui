@@ -138,15 +138,18 @@ export function use<T>(
     }
   }, [count, SendRequest, options?.manualTrigger])
 
-  const refetch = React.useCallback(() => {
-    const controller = new AbortController()
+  const refetch = React.useCallback(
+    (opts?: { controller: AbortController }) => {
+      const controller = opts?.controller ?? new AbortController()
 
-    SendRequest({ signal: controller.signal })
+      SendRequest({ signal: controller.signal })
 
-    return {
-      controller,
-    }
-  }, [SendRequest])
+      return {
+        controller,
+      }
+    },
+    [SendRequest]
+  )
 
   const results = React.useMemo(
     () =>
@@ -160,19 +163,25 @@ export function use<T>(
             isLoading: true
             data: null
             error: null
-            refetch: () => { controller: AbortController }
+            refetch: (opts?: { controller: AbortController }) => {
+              controller: AbortController
+            }
           }
         | {
             isLoading: false
             data: T
             error: null
-            refetch: () => { controller: AbortController }
+            refetch: (opts?: { controller: AbortController }) => {
+              controller: AbortController
+            }
           }
         | {
             isLoading: false
             data: null
             error: Error
-            refetch: () => { controller: AbortController }
+            refetch: (opts?: { controller: AbortController }) => {
+              controller: AbortController
+            }
           },
     []
   )

@@ -172,6 +172,8 @@ export function ListPage({ group, name }: IListPageProps) {
   const navigate = useNavigate()
 
   const [fetchCount, setFetchCount] = React.useState(0)
+  const [fetchController, setFetchController] =
+    React.useState<AbortController | null>(null)
   const [filters, setFilters] = React.useState<TFilterValue>()
   const [project, setProject] = React.useState<Record<string, 1 | -1>>({})
   const [sort, setSort] = React.useState<Record<string, 1 | -1>>({})
@@ -255,15 +257,20 @@ export function ListPage({ group, name }: IListPageProps) {
       if (project && Object.keys(project).length) setProject(project)
       if (sort && Object.keys(sort).length) setSort(sort)
 
+      const controller = new AbortController()
+
       setFetchCount((i) => i + 1)
+      setFetchController(controller)
+
+      return controller
     },
     []
   )
 
   React.useEffect(() => {
-    if (fetchCount) {
-      refetchCount()
-      refetchGet()
+    if (fetchCount && fetchController) {
+      refetchCount({ controller: fetchController })
+      refetchGet({ controller: fetchController })
     }
   }, [fetchCount, query])
 
@@ -409,6 +416,7 @@ export function ListPage({ group, name }: IListPageProps) {
 
                     if (view === "table") {
                       setFetchCount(0)
+                      setFetchController(null)
                       setProject({})
                       setSort({})
                     }

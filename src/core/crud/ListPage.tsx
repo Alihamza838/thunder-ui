@@ -476,7 +476,9 @@ export function ListPage({ group, name }: IListPageProps) {
               />
             ) : null}
 
-            {isMobileLayout() && <div className="h-20"></div>}
+            {isMobileLayout() && !!countData?.count && (
+              <div className="h-20"></div>
+            )}
           </>
         ) : null}
 

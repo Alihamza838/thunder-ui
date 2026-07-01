@@ -44,7 +44,7 @@ export function DataTable({ table, endReached }: DataTableProps) {
   const rows = table.getRowModel().rows
 
   return (
-    <div className="flex h-full min-h-0 w-full flex-1 flex-col rounded-xl border overflow-hidden">
+    <div className="flex h-full min-h-0 w-full flex-1 flex-col overflow-hidden rounded-xl border">
       <TableVirtuoso
         totalCount={rows.length}
         fixedItemHeight={40}
@@ -300,23 +300,27 @@ export function DataTable({ table, endReached }: DataTableProps) {
         }}
       />
 
-      {table.getFooterGroups().map((footerGroup) => (
-        <TableRow
-          key={footerGroup.id}
-          className="sticky bottom-0 border-0 bg-muted/30 backdrop-blur-sm"
-        >
-          {footerGroup.headers.map((header) => (
-            <TableCell key={header.id}>
-              {header.isPlaceholder
-                ? null
-                : flexRender(
-                    header.column.columnDef.footer,
-                    header.getContext()
-                  )}
-            </TableCell>
+      <table>
+        <tbody>
+          {table.getFooterGroups().map((footerGroup) => (
+            <TableRow
+              key={footerGroup.id}
+              className="sticky bottom-0 border-0 bg-muted/30 backdrop-blur-sm"
+            >
+              {footerGroup.headers.map((header) => (
+                <TableCell key={header.id}>
+                  {header.isPlaceholder
+                    ? null
+                    : flexRender(
+                        header.column.columnDef.footer,
+                        header.getContext()
+                      )}
+                </TableCell>
+              ))}
+            </TableRow>
           ))}
-        </TableRow>
-      ))}
+        </tbody>
+      </table>
     </div>
   )
 }

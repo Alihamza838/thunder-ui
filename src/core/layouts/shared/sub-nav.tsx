@@ -68,13 +68,13 @@ export function SubNav({ navMenu }: { navMenu: TNav[] }) {
       }}
       className="no-scrollbar overflow-x-auto scroll-mask-x-from-90%"
     >
-      <TabsList variant="line">
+      <TabsList variant="line" className="gap-x-3">
         {navMenu.map((nav) => (
           <TabsTrigger
             key={nav.title}
             value={nav.path}
             data-value={nav.path}
-            className="group-data-[variant=line]/tabs-list:data-active:after:rounded-xl"
+            className="group-data-[variant=line]/tabs-list:data-active:after:rounded-xl px-0"
           >
             {nav.icon ? <nav.icon /> : <IconAlertCircle />}
             {nav.title}

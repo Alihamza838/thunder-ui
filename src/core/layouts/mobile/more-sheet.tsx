@@ -3,7 +3,6 @@ import { useNavigate } from "react-router"
 import {
   IconAlertCircle,
   IconArrowsExchange,
-  IconCheck,
   IconDotsCircleHorizontal,
   IconLanguage,
   IconLogout,
@@ -11,7 +10,6 @@ import {
   IconNotification,
   IconSun,
   IconUserCircle,
-  IconWorld,
 } from "@tabler/icons-react"
 import { ThunderSDK } from "thunder-sdk"
 
@@ -32,6 +30,7 @@ import { getAuthUrl, getInitials, transformImage } from "@/core/lib/utils"
 import { cn } from "@/lib/utils"
 import type { TNav } from "./bottom-tabs"
 import { useTranslation } from "react-i18next"
+import i18next from "i18next"
 
 export function MoreSheet({
   overflowItems,
@@ -169,9 +168,7 @@ export function MoreSheet({
           {/* change language */}
           <Button
             variant="ghost"
-            onClick={() =>
-              i18n.changeLanguage(i18n.language === "en" ? "ar" : "en")
-            }
+            onClick={() => i18n.changeLanguage(i18next.language === "en" ? "ar" : "en")}
             className="justify-between"
           >
             <div className="flex items-center gap-3">
@@ -188,7 +185,7 @@ export function MoreSheet({
           <Button
             variant="ghost"
             onClick={toggleTheme}
-             className="justify-start"
+            className="justify-start"
           >
             {resolvedTheme === "dark" ? (
               <IconSun className="size-5 shrink-0" />

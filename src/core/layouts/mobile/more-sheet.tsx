@@ -102,7 +102,7 @@ export function MoreSheet({
                 {getInitials(me?.name)}
               </AvatarFallback>
             </Avatar>
-            <div className="grid flex-1 text-left leading-tight">
+            <div className="grid flex-1 leading-tight">
               <span className="truncate text-sm font-medium">
                 {me?.name ?? t("Unnamed")}
               </span>

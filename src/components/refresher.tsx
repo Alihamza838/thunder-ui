@@ -1,6 +1,7 @@
 import { Capacitor } from "@capacitor/core"
 import React from "react"
 import PullToRefresh from "react-simple-pull-to-refresh"
+import { Spinner } from "./ui/spinner"
 
 interface RefresherProps {
   onRefresh?: () => Promise<any>
@@ -17,6 +18,11 @@ export const Refresher: React.FC<RefresherProps> = ({
     <PullToRefresh
       isPullable={
         Capacitor.getPlatform() !== "web" && typeof onRefresh === "function"
+      }
+      refreshingContent={
+        <div className="flex w-full items-center justify-center">
+          <Spinner />
+        </div>
       }
       pullingContent={<></>}
       pullDownThreshold={pullDownThreshold}

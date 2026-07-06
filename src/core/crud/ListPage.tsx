@@ -268,7 +268,7 @@ export function ListPage({ group, name }: IListPageProps) {
 
   const error = countError || getError
   const isLoading = !!!getData?.results.length && getLoading
-  // const isRefetching = getLoading
+  const isRefetching = getLoading
 
   const fetcher = React.useCallback(
     (project?: Record<string, 1>, sort?: Record<string, 1 | -1>) => {
@@ -467,6 +467,7 @@ export function ListPage({ group, name }: IListPageProps) {
             <>
               <Cards
                 isLoading={isLoading}
+                isRefetching={isRefetching}
                 data={getData?.results ?? []}
                 setFilters={setFilters}
                 setProject={setProject}

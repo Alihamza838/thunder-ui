@@ -4,6 +4,7 @@ import type { TFilters } from "thunder-sdk/types";
 
 export type TCardProps = {
   isLoading: boolean;
+  isRefetching: boolean;
   data: unknown[];
   fetcher: (
     projection?: Record<string, 1>,

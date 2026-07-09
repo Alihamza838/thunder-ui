@@ -1,62 +1,71 @@
-import { Navigate, Outlet } from "react-router";
-import { ThunderSDK } from "thunder-sdk";
-import { IconLayoutGrid, IconWallet, type TablerIcon } from "@tabler/icons-react";
-import type { RouteObject } from "react-router";
+import { Navigate, Outlet } from "react-router"
+import { ThunderSDK } from "thunder-sdk"
+import {
+  IconLayoutGrid,
+  IconWallet,
+  type TablerIcon,
+} from "@tabler/icons-react"
+import type { RouteObject } from "react-router"
 
-import { icons } from "@/overrides/icons";
-import { ListPage } from "@/core/crud/ListPage";
-import { FormPage } from "@/core/crud/FormPage";
-import { ViewPage } from "@/core/crud/ViewPage";
+import { icons } from "@/overrides/icons"
+import { ListPage } from "@/core/crud/ListPage"
+import { FormPage } from "@/core/crud/FormPage"
+import { ViewPage } from "@/core/crud/ViewPage"
 
-import Overview from "@/pages/overview";
-import { WalletCard } from "@/pages/wallet";
-import { lists } from "@/overrides/crud/lists";
-import { allowDisplayRoute } from "./lib/utils";
-import { routes } from "@/overrides/routes";
+import Overview from "@/pages/overview"
+import { WalletCard } from "@/pages/wallet"
+import { lists } from "@/overrides/crud/lists"
+import { allowDisplayRoute } from "./lib/utils"
+import { routes as overrideRoutes } from "@/overrides/routes"
 
 export type TRouteObject = {
-  name?: string;
-  priority?: number | (() => number);
-  group?: string;
-  icon?: TablerIcon;
-  display?: boolean | (() => boolean);
-  children?: TRouteObject[];
-} & RouteObject;
+  name?: string
+  priority?: number | (() => number)
+  group?: string
+  icon?: TablerIcon
+  display?: boolean | (() => boolean)
+  children?: TRouteObject[]
+} & RouteObject
 
 const moduleNames = Array.from(
-  new Set([...ThunderSDK.getModuleNames(), ...Object.keys(routes)]),
-);
+  new Set([
+    ...ThunderSDK.getModuleNames(),
+    ...Object.keys(overrideRoutes).filter((name) => !ThunderSDK.hasGroup(name)),
+  ])
+)
 
 const rawRoutes = moduleNames
   .map((name) => {
-    const overrideRoute = routes[name as keyof typeof routes];
+    const overrideRoute = overrideRoutes[name as keyof typeof overrideRoutes]
 
     if (overrideRoute && !overrideRoute.merge) {
-      return overrideRoute;
+      return overrideRoute
     }
 
     if (!ThunderSDK.getMetadata(name)) {
-      return;
+      return
     }
 
-    const module = ThunderSDK.getModule(name);
-    const group = ThunderSDK.getGroup(name);
+    const module = ThunderSDK.getModule(name)
+    const group = ThunderSDK.getGroup(name)
 
-    const hasCreate = "create" in module;
-    const hasUpdate = "update" in module;
+    const hasCreate = "create" in module
+    const hasUpdate = "update" in module
 
-    const List = lists[name as keyof typeof lists];
+    const List = lists[name as keyof typeof lists]
 
     const children: TRouteObject[] = [
       {
         index: true,
         display: false,
         Component: () =>
-          List
-            ? <List group={group} name={name} />
-            : <ListPage group={group} name={name} />,
+          List ? (
+            <List group={group} name={name} />
+          ) : (
+            <ListPage group={group} name={name} />
+          ),
       },
-    ];
+    ]
 
     if (hasCreate || hasUpdate) {
       children.push(
@@ -69,57 +78,62 @@ const rawRoutes = moduleNames
           path: `form/:id`,
           display: false,
           Component: () => <FormPage group={group} name={name} />,
-        },
-      );
+        }
+      )
     }
 
     children.push({
       path: `:id`,
       display: false,
       Component: () => <ViewPage group={group} name={name} />,
-    });
+    })
 
     return {
       name: name,
       path: name,
       icon: icons[name],
       group,
-      display: () =>
-        ThunderSDK.isPermitted(name, "get") ||
-        ThunderSDK.isPermitted(name, "create"),
       Component: () => <Outlet />,
       children,
       ...overrideRoute,
-    };
+      display: () => {
+        const permitted =
+          ThunderSDK.isPermitted(name, "get") ||
+          ThunderSDK.isPermitted(name, "create")
+
+        return permitted && allowDisplayRoute(overrideRoute?.display)
+      },
+    }
   })
-  .filter(Boolean) as TRouteObject[];
+  .filter(Boolean) as TRouteObject[]
 
 export const coreRoutes = Object.entries(
-  Object.groupBy(rawRoutes, (item) => item.group ?? "Other"),
+  Object.groupBy(rawRoutes, (item) => item.group ?? "Other")
 ).map(([group, routes]) => {
-  routes = routes ?? [];
+  const overrideRoute = overrideRoutes[group as keyof typeof overrideRoutes]
+
+  if (overrideRoute && !overrideRoute.merge) {
+    return overrideRoute
+  }
+
+  routes = routes ?? []
 
   routes.push({
     path: "",
     Component: () => {
-      const displayable = routes.filter((route) =>
+      const indexRoute = routes.filter((route) =>
         allowDisplayRoute(route.display)
-      );
-      // Prefer the primary route over secondary "subscription/trigger" ones so
-      // e.g. the Orders group lands on the orders list, not subscriptions.
-      const indexRoute = displayable.find(
-        (route) => !/subscription|trigger/i.test(String(route.path)),
-      ) ?? displayable[0];
+      )[0]
 
-      return <Navigate to={indexRoute?.path ?? "notFound"} />;
+      return <Navigate to={indexRoute?.path ?? "notFound"} />
     },
     display: false,
-  });
+  })
 
   const children = routes.map((route) => ({
     ...route,
     path: route.path,
-  }));
+  }))
 
   return {
     path: group.toLowerCase().replace(" ", "-"),
@@ -127,9 +141,16 @@ export const coreRoutes = Object.entries(
     icon: icons[group],
     Component: () => <Outlet />,
     children,
-    display: () => children.some((child) => allowDisplayRoute(child.display)),
-  } as TRouteObject;
-});
+    ...overrideRoute,
+    display: () => {
+      const hasVisibleChild = children.some((child) =>
+        allowDisplayRoute(child.display)
+      )
+
+      return hasVisibleChild && allowDisplayRoute(overrideRoute?.display)
+    },
+  } as TRouteObject
+})
 
 coreRoutes.unshift(
   {
@@ -149,5 +170,5 @@ coreRoutes.unshift(
     path: "wallet",
     icon: IconWallet,
     Component: () => <WalletCard balance={5} />,
-  },
-);
+  }
+)

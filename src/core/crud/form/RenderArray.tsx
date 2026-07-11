@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/field"
 import { Button } from "@/components/ui/button"
 import { RenderFieldGroup } from "./RenderFieldGroup"
+import { IconBasket } from "@tabler/icons-react"
 
 export type TRenderArrayProp = {
   name: string
@@ -67,31 +68,27 @@ export default function RenderArray({ name, field }: TRenderArrayProp) {
         {fields.map(({ id }, index) => {
           return (
             <FieldGroup key={id}>
-              <RenderFieldGroup
-                fields={field.fields ?? []}
-                fieldName={(subField) =>
-                  [name, index, subField.name]
-                    .filter((i) => i !== undefined)
-                    .join(".")
-                }
-              />
-              {/* {(field.fields ?? []).map((subField, subIndex) => {
-                const fieldName = [name, index, subField.name]
-                  .filter((i) => i !== undefined)
-                  .join(".")
-
-                return (
-                  <RenderInput
-                    key={`${fieldName}_${subIndex}`}
-                    name={fieldName}
-                    field={subField}
+              <div className="grid grid-flow-col grid-cols-5">
+                <div className="col-span-4">
+                  <RenderFieldGroup
+                    fields={field.fields ?? []}
+                    fieldName={(subField) =>
+                      [name, index, subField.name]
+                        .filter((i) => i !== undefined)
+                        .join(".")
+                    }
                   />
-                )
-              })} */}
-
-              <Button variant={"destructive"} onClick={() => remove(index)}>
-                Remove
-              </Button>
+                </div>
+                <div>
+                  <Button
+                    size={"icon"}
+                    variant={"destructive"}
+                    onClick={() => remove(index)}
+                  >
+                    <IconBasket />
+                  </Button>
+                </div>
+              </div>
             </FieldGroup>
           )
         })}

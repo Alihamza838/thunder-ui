@@ -22,6 +22,8 @@ export type TRenderObjectProp = {
 export default function RenderObject({ name, field }: TRenderObjectProp) {
   if (field.type !== "object") return <RenderInput name={name} field={field} />
 
+  if (!field.fields?.length) return
+
   const {
     formState: { errors },
   } = useFormContext()

@@ -62,7 +62,7 @@ export function WalletCard() {
           <button
             type="button"
             onClick={() => setBalanceHidden((h: unknown) => !h)}
-            aria-label={balanceHidden ? t("Show balance") : t("Hide balance")}
+            aria-label={balanceHidden ? "Show balance" : "Hide balance"}
             aria-pressed={balanceHidden}
             className="text-muted-foreground outline-none transition-colors hover:text-foreground"
           >

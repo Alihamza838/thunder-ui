@@ -46,13 +46,8 @@ export function WalletCard() {
   const maskedBalance = "*".repeat(5);
 
 
-  // 1. Ek mounting state add karein jo shuru me true ho
-// const [isMounting, setIsMounting] = useState(true);
-// const [balanceHidden, setBalanceHidden] = useState(false);
-
-// 2. Mount hone ke thodi der baad transition trigger karne ke liye isse set karein
 React.useEffect(() => {
-  const timer = setTimeout(() => setIsMounting(false), 50); // tiny delay for visual effect
+  const timer = setTimeout(() => setIsMounting(false), 50); 
   return () => clearTimeout(timer);
 }, []);
 
@@ -69,22 +64,22 @@ React.useEffect(() => {
       </div>
 
       <div className="mt-8 flex flex-col items-center text-center">
-  <div className="flex items-center gap-1.5">
-    <p className="text-xs text-muted-foreground">{t("Balance")}</p>
-    <button
-      type="button"
-      onClick={() => setBalanceHidden((h) => !h)}
-      aria-label={balanceHidden ? "Show balance" : "Hide balance"}
-      aria-pressed={balanceHidden}
-      className="text-muted-foreground outline-none transition-colors hover:text-foreground"
-    >
-      {balanceHidden ? (
-        <IconEyeOff className="h-3.5 w-3.5" />
-      ) : (
-        <IconEye className="h-3.5 w-3.5" />
-      )}
-    </button>
-  </div>
+       <div className="flex items-center gap-1.5">
+         <p className="text-xs text-muted-foreground">{t("Balance")}</p>
+           <button
+             type="button"
+             onClick={() => setBalanceHidden((h) => !h)}
+             aria-label={balanceHidden ? "Show balance" : "Hide balance"}
+             aria-pressed={balanceHidden}
+             className="text-muted-foreground outline-none transition-colors hover:text-foreground"
+             >
+             {balanceHidden ? (
+              <IconEyeOff className="h-3.5 w-3.5" />
+               ) : (
+              <IconEye className="h-3.5 w-3.5" />
+             )}
+           </button>
+      </div>
 
   {isLoading ? (
     <Skeleton className="mt-1 h-9 w-40" />

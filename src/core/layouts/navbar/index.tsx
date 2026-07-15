@@ -71,7 +71,7 @@ function NavBalance({ visible, onToggle }: { visible: boolean; onToggle: () => v
     | undefined
 
   const balance = wallet?.balance ?? 0
-  const currency = wallet?.currency?.toUpperCase() ?? "$"
+  const currency = wallet?.currency?.toUpperCase() ?? "lyd"
   const formatted = `${currency} ${balance.toLocaleString(undefined, {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,

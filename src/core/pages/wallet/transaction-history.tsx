@@ -1,11 +1,11 @@
 "use client";
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import type { ComponentType } from "react";
 import { ThunderSDK } from "thunder-sdk";
 import type { ThunderSDK as TSDKType } from "thunder-sdk";
 import {
-  IconArrowNarrowUp,
   IconArrowDownDashed,
+  IconArrowNarrowUp,
   IconCalendar,
 } from "@tabler/icons-react";
 import { use } from "@/core/hooks/use";
@@ -18,9 +18,13 @@ import { fieldsFromModuleMetadata } from "@/core/crud/FormPage";
 import { JSONSchemaToFields, type TField } from "@/core/lib/jsonSchemaToFields";
 import { CopyButton } from "@/components/ui/copy-button";
 
-type TWalletLedger = typeof TSDKType.walletLedgers.type.get$return.results[number];
+type TWalletLedger =
+  typeof TSDKType.walletLedgers.type.get$return.results[number];
 
-const TYPE_ICONS: Record<TWalletLedger["type"], ComponentType<{ className?: string }>> = {
+const TYPE_ICONS: Record<
+  TWalletLedger["type"],
+  ComponentType<{ className?: string }>
+> = {
   credit: IconArrowDownDashed,
   debit: IconArrowNarrowUp,
 };
@@ -67,7 +71,7 @@ function formatAmount(amount: number, currency: string, lang: string) {
   return `${LRI}${numberStr} ${label}${PDI}`;
 }
 
-// 🟢 Custom Parser Logic (Amount Cents + Integer Range + Reference/Description Fallback)
+// Custom parser to bridge UI filter objects into expected backend typed queries
 function parseFilterToBackendQuery(filters?: TFilterValue) {
   if (!filters || !Object.keys(filters).length) return undefined;
   const parsed: Record<string, unknown> = {};
@@ -75,21 +79,25 @@ function parseFilterToBackendQuery(filters?: TFilterValue) {
   Object.entries(filters).forEach(([key, filter]) => {
     if (!filter) return;
 
-    // Extract raw value safely
-    const rawValue = (typeof filter === "object" && filter !== null && "value" in filter)
-      ? (filter as any).value
-      : filter;
+    const rawValue =
+      typeof filter === "object" && filter !== null && "value" in filter
+        ? (filter as any).value
+        : filter;
 
     if (rawValue === undefined || rawValue === null || rawValue === "") return;
 
-    // 1. Type Filter
+    // 1. Transaction Type
     if (key === "type") {
       const arr = Array.isArray(rawValue) ? rawValue : [rawValue];
-      if (arr.length) parsed[key] = { $in: arr.map((v) => ({ type: "string", value: String(v) })) };
+      if (arr.length) {
+        parsed[key] = {
+          $in: arr.map((v) => ({ type: "string", value: String(v) })),
+        };
+      }
       return;
     }
 
-    // 2. Amount Filter (Integer/Decimal Unit -> Cents Conversion + Debit/Credit Range Match)
+    // 2. Amount Conversion (Unit to Cents + Range & Signed Logic)
     if (key === "amount") {
       const nums = (Array.isArray(rawValue) ? rawValue : [rawValue])
         .map(Number)
@@ -137,7 +145,7 @@ function parseFilterToBackendQuery(filters?: TFilterValue) {
       return;
     }
 
-    // 3. Reference & Description Dual Match (e.g. ORD287)
+    // 3. Reference Search Fallback (Matches reference, description, purpose)
     if (key === "reference") {
       const refVal = String(rawValue).trim();
       if (refVal) {
@@ -155,10 +163,23 @@ function parseFilterToBackendQuery(filters?: TFilterValue) {
     }
 
     // 4. Date Filters (createdAt / updatedAt)
-    if ((key === "createdAt" || key === "updatedAt") && Array.isArray(rawValue) && rawValue.length) {
+    if (
+      (key === "createdAt" || key === "updatedAt") &&
+      Array.isArray(rawValue) &&
+      rawValue.length
+    ) {
       const dateQ: Record<string, unknown> = {};
-      if (rawValue[0]) dateQ.$gte = { type: "date", value: new Date(rawValue[0]).toISOString() };
-      const toDate = rawValue[1] ? new Date(rawValue[1]) : rawValue[0] ? new Date(rawValue[0]) : null;
+      if (rawValue[0]) {
+        dateQ.$gte = {
+          type: "date",
+          value: new Date(rawValue[0]).toISOString(),
+        };
+      }
+      const toDate = rawValue[1]
+        ? new Date(rawValue[1])
+        : rawValue[0]
+        ? new Date(rawValue[0])
+        : null;
       if (toDate) {
         toDate.setHours(23, 59, 59, 999);
         dateQ.$lte = { type: "date", value: toDate.toISOString() };
@@ -167,7 +188,7 @@ function parseFilterToBackendQuery(filters?: TFilterValue) {
       return;
     }
 
-    // Default Fallback
+    // Standard Fallback Assignment
     parsed[key] = {
       $eq: {
         type: typeof rawValue === "number" ? "number" : "string",
@@ -179,18 +200,22 @@ function parseFilterToBackendQuery(filters?: TFilterValue) {
   return Object.keys(parsed).length ? parsed : undefined;
 }
 
-export function TransactionHistory({ fields: propFields }: { fields?: TField[] }) {
+export function TransactionHistory(
+  { fields: propFields }: { fields?: TField[] },
+) {
   const { t, i18n } = useTranslation();
-  const [activeFilters, setActiveFilters] = useState<TFilterValue | undefined>();
+  const [activeFilters, setActiveFilters] = useState<
+    TFilterValue | undefined
+  >();
   const [internalFields, setInternalFields] = useState<TField[]>([]);
 
-  // Metadata for walletLedgers / wallet module
+  // Metadata for walletLedgers
   const metadata = useMemo(
     () => ThunderSDK.getMetadata("walletLedgers"),
-    []
+    [],
   );
 
-  // Load fields dynamically from module metadata if propFields is not provided
+  // Dynamic Metadata Loading Fallback if propFields is omitted by parent page
   useEffect(() => {
     if (propFields && propFields.length > 0) return;
 
@@ -202,7 +227,9 @@ export function TransactionHistory({ fields: propFields }: { fields?: TField[] }
           resolveRef: false,
         });
         if (!isMounted) return;
-        setInternalFields(JSONSchemaToFields.flatten(results, { excludeArray: true }));
+        setInternalFields(
+          JSONSchemaToFields.flatten(results, { excludeArray: true }),
+        );
       } catch (err) {
         console.error("Failed to load metadata fields for walletLedgers:", err);
       }
@@ -213,7 +240,9 @@ export function TransactionHistory({ fields: propFields }: { fields?: TField[] }
     };
   }, [metadata, propFields]);
 
-  const activeFields = propFields && propFields.length > 0 ? propFields : internalFields;
+  const activeFields = propFields && propFields.length > 0
+    ? propFields
+    : internalFields;
 
   const query = useMemo(() => {
     const filters = parseFilterToBackendQuery(activeFilters);
@@ -227,9 +256,13 @@ export function TransactionHistory({ fields: propFields }: { fields?: TField[] }
 
   return (
     <div className="flex flex-col gap-2.5">
-      {/* Dynamic Filters from Backend Schema / Metadata */}
+      {/* Dynamic Filters Bar */}
       <div className="flex items-center gap-2">
-        <Filters fields={activeFields} filters={activeFilters} onChange={setActiveFilters} />
+        <Filters
+          fields={activeFields}
+          filters={activeFilters}
+          onChange={setActiveFilters}
+        />
       </div>
 
       <div className="flex items-center justify-between mt-1">
@@ -257,14 +290,18 @@ export function TransactionHistory({ fields: propFields }: { fields?: TField[] }
       {!isLoading && transactions.length > 0 && (
         <div className="flex flex-col divide-y divide-border rounded-2xl border border-border bg-card transform-gpu will-change-transform animate-in fade-in slide-in-from-bottom-4 duration-300 ease-out fill-mode-both">
           {transactions.map((tx) => {
-            const txType: TWalletLedger["type"] = tx.type === "credit" ? "credit" : "debit";
+            const txType: TWalletLedger["type"] = tx.type === "credit"
+              ? "credit"
+              : "debit";
             const Icon = TYPE_ICONS[txType];
             let description = typeof tx.description === "string"
               ? tx.description
               : tx.purpose ?? tx.reference;
 
             if (tx.purpose === "wallet_transfer" && txType === "debit") {
-              const target = (tx as any).oppositeTenant?.name || (tx as any).oppositeWallet || t("Wallet");
+              const target = (tx as any).oppositeTenant?.name ||
+                (tx as any).oppositeWallet ||
+                t("Wallet");
               description = t("Transfer to {{target}}", { target });
             }
 
@@ -273,7 +310,11 @@ export function TransactionHistory({ fields: propFields }: { fields?: TField[] }
                 key={tx._id}
                 className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-muted/40"
               >
-                <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${TYPE_ICON_BG_CLASS[txType]} ${TYPE_COLOR_CLASS[txType]}`}>
+                <span
+                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${
+                    TYPE_ICON_BG_CLASS[txType]
+                  } ${TYPE_COLOR_CLASS[txType]}`}
+                >
                   <Icon className="h-4 w-4" />
                 </span>
 
@@ -295,13 +336,19 @@ export function TransactionHistory({ fields: propFields }: { fields?: TField[] }
                 </div>
 
                 <div className="flex shrink-0 flex-col items-end">
-                  <span className={`text-sm font-medium ${TYPE_COLOR_CLASS[txType]}`}>
+                  <span
+                    className={`text-sm font-medium ${
+                      TYPE_COLOR_CLASS[txType]
+                    }`}
+                  >
                     {formatAmount(tx.amount, tx.currency, i18n.language)}
                   </span>
                   <div className="flex items-center gap-1.5">
                     <IconCalendar className="size-3.5" />
                     <span className="text-xs text-muted-foreground">
-                      {formatDateForInput(tx.createdAt as TWalletLedger["createdAt"])}
+                      {formatDateForInput(
+                        tx.createdAt as TWalletLedger["createdAt"],
+                      )}
                     </span>
                   </div>
                 </div>

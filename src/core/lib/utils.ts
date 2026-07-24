@@ -98,11 +98,18 @@ export function getLocalUrl(path?: string) {
   );
 }
 
-export function getAuthUrl() {
-  return new URL(
-    "/auth?returnUri=" + window.location.href,
-    import.meta.env.VITE_API_BASE_URL || window.location.origin,
+export function getAuthUrl(search: string = "") {
+  const url = new URL(
+    "/auth" + search,
+    import.meta.env.VITE_API_BASE_URL || window.location.origin
   );
+
+  url.searchParams.set(
+    "returnUri",
+    `${window.location.href}`
+  );
+
+  return url;
 }
 
 export function formatDateForInput(

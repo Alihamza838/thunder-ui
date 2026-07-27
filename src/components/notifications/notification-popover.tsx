@@ -1,14 +1,5 @@
 import React from "react"
 import { useNavigate, useParams } from "react-router"
-import {
-  IconBell,
-  IconPackage,
-  IconCash,
-  IconTruckDelivery,
-  IconAlertCircle,
-  IconInfoCircle,
-  IconCheck,
-} from "@tabler/icons-react"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
@@ -16,9 +7,10 @@ import { Separator } from "@/components/ui/separator"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 import { useTranslation } from "react-i18next"
+import { IconAlertCircle, IconBell, IconCash, IconInfoCircle, IconPackage, IconTruckDelivery } from "@tabler/icons-react"
+import axios from "axios"
 
-// ── Types ────────────────────────────────────────────────────────────────────
-
+// Types
 export type NotificationType = "order" | "payment" | "delivery" | "alert" | "info"
 
 export type TNotification = {
@@ -30,60 +22,22 @@ export type TNotification = {
   read: boolean
 }
 
-// ── Static data ──────────────────────────────────────────────────────────────
+type NotificationDoc = {
+  _id: string
+  receiver: string
+  tenant: string
+  data: {
+    type?: NotificationType
+    title: string
+    message: string
+  }
+  seen?: boolean
+  read?: boolean
+  createdAt: string
+  updatedAt: string
+}
 
-const NOTIFICATIONS: TNotification[] = [
-  {
-    id: "1",
-    type: "order",
-    title: "New order received",
-    message: "Order #1042 has been placed by Ahmed.",
-    time: "2 min ago",
-    read: false,
-  },
-  {
-    id: "2",
-    type: "payment",
-    title: "Payment confirmed",
-    message: "Payment of 250 LYD received for order #1039.",
-    time: "15 min ago",
-    read: false,
-  },
-  {
-    id: "3",
-    type: "delivery",
-    title: "Order delivered",
-    message: "Order #1035 was delivered successfully.",
-    time: "1 hr ago",
-    read: false,
-  },
-  {
-    id: "4",
-    type: "alert",
-    title: "Low stock warning",
-    message: "Product \"Wireless Mouse\" is running low (3 left).",
-    time: "3 hr ago",
-    read: true,
-  },
-  {
-    id: "5",
-    type: "info",
-    title: "System update",
-    message: "A new version is available. Refresh to update.",
-    time: "5 hr ago",
-    read: true,
-  },
-  {
-    id: "6",
-    type: "order",
-    title: "Order cancelled",
-    message: "Order #1030 was cancelled by the customer.",
-    time: "1 day ago",
-    read: true,
-  },
-]
-
-// ── Config ───────────────────────────────────────────────────────────────────
+// Config
 
 const TYPE_CONFIG: Record<
   NotificationType,
@@ -96,24 +50,64 @@ const TYPE_CONFIG: Record<
   info: { icon: IconInfoCircle, bg: "bg-muted", color: "text-muted-foreground" },
 }
 
-// ── Component ────────────────────────────────────────────────────────────────
+function timeAgo(dateStr: string) {
+  const diffMs = Date.now() - new Date(dateStr).getTime()
+  const mins = Math.floor(diffMs / 60000)
+  if (mins < 1) return "just now"
+  if (mins < 60) return `${mins} min ago`
+  const hrs = Math.floor(mins / 60)
+  if (hrs < 24) return `${hrs} hr ago`
+  const days = Math.floor(hrs / 24)
+  return `${days} day${days > 1 ? "s" : ""} ago`
+}
 
-export function NotificationPopover() {
+export function NotificationPopover({ userId }: { userId?: string }) {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const { tenant } = useParams()
-  const [notifications, setNotifications] = React.useState(NOTIFICATIONS)
+
+  const [notifications, setNotifications] = React.useState<TNotification[]>([])
+  const [loading, setLoading] = React.useState(false)
+  const [error, setError] = React.useState<string | null>(null)
   const [open, setOpen] = React.useState(false)
 
   const unreadCount = notifications.filter((n) => !n.read).length
 
-  const markAllRead = () =>
-    setNotifications((prev) => prev.map((n) => ({ ...n, read: true })))
+  React.useEffect(() => {
+    if (!open || !tenant || !userId) return
 
-  const markRead = (id: string) =>
-    setNotifications((prev) =>
-      prev.map((n) => (n.id === id ? { ...n, read: true } : n))
-    )
+    let cancelled = false
+    setLoading(true)
+    setError(null)
+
+    axios
+      .get<{ results: NotificationDoc[] }>(`/notifications/api/me/${import.meta.env.VITE_TENANT_ID}/${userId}`, {
+        params: { page: 1, limit: 10 },
+      })
+      .then(({ data }) => {
+        if (cancelled) return
+        setNotifications(
+          data.results.map((doc) => ({
+            id: doc._id,
+            type: doc.data?.type ?? "info",
+            title: doc.data?.title ?? "",
+            message: doc.data?.message ?? "",
+            time: timeAgo(doc.createdAt),
+            read: doc.read ?? false,
+          }))
+        )
+      })
+      .catch(() => {
+        if (!cancelled) setError(t("Failed to load notifications"))
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false)
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [open, tenant, userId, t])
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -127,7 +121,7 @@ export function NotificationPopover() {
           >
             <IconBell className="size-4" />
             {unreadCount > 0 && (
-              <span className="absolute -end-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-destructive px-1 text-[9px] font-semibold text-destructive-foreground">
+              <span className="absolute -inset-e-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-destructive px-1 text-[9px] font-semibold text-destructive-foreground">
                 {unreadCount > 99 ? "99+" : unreadCount}
               </span>
             )}
@@ -138,7 +132,7 @@ export function NotificationPopover() {
       <PopoverContent
         align="end"
         sideOffset={8}
-        className="w-[360px] p-0 sm:w-[400px]"
+        className="w-90 p-0 sm:w-100"
       >
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-3">
@@ -155,17 +149,6 @@ export function NotificationPopover() {
               </Badge>
             )}
           </div>
-          {unreadCount > 0 && (
-            <Button
-              variant="ghost"
-              size="sm"
-              className="h-auto px-2 py-1 text-xs text-muted-foreground hover:text-foreground"
-              onClick={markAllRead}
-            >
-              <IconCheck className="me-1 size-3" />
-              {t("Mark all read")}
-            </Button>
-          )}
         </div>
 
         <Separator />
@@ -173,7 +156,15 @@ export function NotificationPopover() {
         {/* List */}
         <ScrollArea className="max-h-80">
           <div className="flex flex-col">
-            {notifications.length === 0 ? (
+            {loading ? (
+              <div className="flex flex-col items-center justify-center py-10 text-center">
+                <p className="text-sm text-muted-foreground">{t("Loading...")}</p>
+              </div>
+            ) : error ? (
+              <div className="flex flex-col items-center justify-center py-10 text-center">
+                <p className="text-sm text-destructive">{error}</p>
+              </div>
+            ) : notifications.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-10 text-center">
                 <IconBell className="mb-2 size-8 text-muted-foreground/30" />
                 <p className="text-sm text-muted-foreground">
@@ -185,13 +176,11 @@ export function NotificationPopover() {
                 const cfg = TYPE_CONFIG[n.type]
                 const Icon = cfg.icon
                 return (
-                  <button
+                  <div
                     key={n.id}
-                    type="button"
-                    onClick={() => markRead(n.id)}
                     className={cn(
-                      "flex w-full items-start gap-3 px-4 py-3 text-start transition-colors hover:bg-muted/50",
-                      !n.read && "bg-primary/[0.03]"
+                      "flex w-full items-start gap-3 px-4 py-3",
+                      !n.read && "bg-primary/3"
                     )}
                   >
                     <span
@@ -226,7 +215,7 @@ export function NotificationPopover() {
                         {n.time}
                       </p>
                     </div>
-                  </button>
+                  </div>
                 )
               })
             )}

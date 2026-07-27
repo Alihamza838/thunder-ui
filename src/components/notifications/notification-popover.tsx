@@ -17,6 +17,7 @@ import {
   IconTruckDelivery,
 } from "@tabler/icons-react"
 import axios from "axios"
+import { formatDistanceToNow } from "date-fns"
 
 // Types
 export type NotificationType = "order" | "payment" | "delivery" | "alert" | "info"
@@ -58,21 +59,12 @@ const TYPE_CONFIG: Record<
   info: { icon: IconInfoCircle, bg: "bg-muted", color: "text-muted-foreground" },
 }
 
-function timeAgo(dateStr: string) {
-  const diffMs = Date.now() - new Date(dateStr).getTime()
-  const mins = Math.floor(diffMs / 60000)
-  if (mins < 1) return "just now"
-  if (mins < 60) return `${mins} min ago`
-  const hrs = Math.floor(mins / 60)
-  if (hrs < 24) return `${hrs} hr ago`
-  const days = Math.floor(hrs / 24)
-  return `${days} day${days > 1 ? "s" : ""} ago`
-}
+const timeAgo = (dateStr: string) => formatDistanceToNow(new Date(dateStr), { addSuffix: true })
 
 export function NotificationPopover({ userId }: { userId?: string }) {
   const { t } = useTranslation()
   const navigate = useNavigate()
-  const { tenant } = useParams()
+  const tenant = import.meta.env.VITE_TENANT_ID
 
   const [notifications, setNotifications] = React.useState<TNotification[]>([])
   const [loading, setLoading] = React.useState(false)
@@ -81,7 +73,6 @@ export function NotificationPopover({ userId }: { userId?: string }) {
 
   const unreadCount = notifications.filter((n) => !n.read).length
 
-  // Local-only, not synced to backend yet — no mark-read endpoint exists
   const markAllRead = () =>
     setNotifications((prev) => prev.map((n) => ({ ...n, read: true })))
 
@@ -98,7 +89,7 @@ export function NotificationPopover({ userId }: { userId?: string }) {
     setError(null)
 
     axios
-      .get<{ results: NotificationDoc[] }>(`/notifications/api/me/${import.meta.env.VITE_TENANT_ID}/${userId}`, {
+      .get<{ results: NotificationDoc[] }>(`/notifications/api/me/${tenant}/${userId}`, {
         params: { page: 1, limit: 10 },
       })
       .then(({ data }) => {

@@ -7,28 +7,29 @@ import {
   IconTruckDelivery,
   IconAlertCircle,
   IconInfoCircle,
-  IconCheck,
   IconChecks,
-  IconDots,
   IconTrash,
-  // IconFilter,
+  IconExternalLink,
+  IconX,
 } from "@tabler/icons-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 import { cn } from "@/lib/utils"
 import { useTranslation } from "react-i18next"
 import { Container } from "@/core/custom/Container"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 type NotificationType = "order" | "payment" | "delivery" | "alert" | "info"
+
+type TNotificationAction = {
+  type: "button" | "redirect"
+  label?: string
+  url?: string
+  onAction?: () => void
+}
 
 type TNotification = {
   id: string
@@ -38,8 +39,12 @@ type TNotification = {
   time: string
   date: string
   read: boolean
+  userFullName?: string
+  avatarUrl?: string
+  actions?: TNotificationAction[]
 }
 
+const PAGE_SIZE = 5
 
 const INITIAL_NOTIFICATIONS: TNotification[] = [
   {
@@ -50,6 +55,8 @@ const INITIAL_NOTIFICATIONS: TNotification[] = [
     time: "2 min ago",
     date: "Today",
     read: false,
+    userFullName: "Ahmed Al-Sharif",
+    actions: [{ type: "button", label: "Mark as ready" }],
   },
   {
     id: "2",
@@ -68,6 +75,7 @@ const INITIAL_NOTIFICATIONS: TNotification[] = [
     time: "1 hr ago",
     date: "Today",
     read: false,
+    actions: [{ type: "redirect", label: "Confirm receipt", url: "#" }],
   },
   {
     id: "4",
@@ -86,26 +94,25 @@ const INITIAL_NOTIFICATIONS: TNotification[] = [
     time: "5 hr ago",
     date: "Today",
     read: true,
-  }
+  },
 ]
-
 
 const TYPE_CONFIG: Record<
   NotificationType,
-  { icon: typeof IconBell; bg: string; color: string; label: string }
+  { icon: typeof IconBell; bg: string; color: string; border: string; label: string }
 > = {
-  order: { icon: IconPackage, bg: "bg-primary/10", color: "text-primary", label: "Orders" },
-  payment: { icon: IconCash, bg: "bg-success/10", color: "text-success", label: "Payments" },
-  delivery: { icon: IconTruckDelivery, bg: "bg-blue-500/10", color: "text-blue-500", label: "Deliveries" },
-  alert: { icon: IconAlertCircle, bg: "bg-destructive/10", color: "text-destructive", label: "Alerts" },
-  info: { icon: IconInfoCircle, bg: "bg-muted", color: "text-muted-foreground", label: "Info" },
+  order: { icon: IconPackage, bg: "bg-primary/10", color: "text-primary", border: "border-l-primary", label: "Orders" },
+  payment: { icon: IconCash, bg: "bg-success/10", color: "text-success", border: "border-l-success", label: "Payments" },
+  delivery: { icon: IconTruckDelivery, bg: "bg-blue-500/10", color: "text-blue-500", border: "border-l-blue-500", label: "Deliveries" },
+  alert: { icon: IconAlertCircle, bg: "bg-destructive/10", color: "text-destructive", border: "border-l-destructive", label: "Alerts" },
+  info: { icon: IconInfoCircle, bg: "bg-muted", color: "text-muted-foreground", border: "border-l-muted-foreground/40", label: "Info" },
 }
-
 
 export default function Notifications() {
   const { t } = useTranslation()
   const [notifications, setNotifications] = React.useState(INITIAL_NOTIFICATIONS)
   const [activeTab, setActiveTab] = React.useState("all")
+  const [page, setPage] = React.useState(1)
 
   const unreadCount = notifications.filter((n) => !n.read).length
 
@@ -115,13 +122,24 @@ export default function Notifications() {
     return notifications.filter((n) => n.type === activeTab)
   }, [notifications, activeTab])
 
+  React.useEffect(() => {
+    setPage(1)
+  }, [activeTab])
+
+  const totalCount = filtered.length
+  const pageItemsCount = PAGE_SIZE * page
+  const paginated = React.useMemo(
+    () => filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE),
+    [filtered, page]
+  )
+
   const grouped = React.useMemo(() => {
     const groups: Record<string, TNotification[]> = {}
-    for (const n of filtered) {
-      ;(groups[n.date] ??= []).push(n)
+    for (const n of paginated) {
+      ; (groups[n.date] ??= []).push(n)
     }
     return Object.entries(groups)
-  }, [filtered])
+  }, [paginated])
 
   const markAllRead = () =>
     setNotifications((prev) => prev.map((n) => ({ ...n, read: true })))
@@ -131,14 +149,14 @@ export default function Notifications() {
       prev.map((n) => (n.id === id ? { ...n, read: true } : n))
     )
 
-  const deleteNotification = (id: string) =>
+  const dismissNotification = (id: string) =>
     setNotifications((prev) => prev.filter((n) => n.id !== id))
 
   const clearAll = () => setNotifications([])
 
   return (
     <div className="flex h-full min-h-0 flex-1 flex-col overflow-y-auto mask-y-from-98%">
-      <Container className="relative flex w-full flex-col gap-4">
+      <Container className="relative flex flex-col gap-4 max-w-3xl">
         {/* Header */}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
@@ -185,21 +203,21 @@ export default function Notifications() {
 
         {/* Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="h-auto w-full justify-start gap-1 overflow-x-auto bg-transparent p-0">
+          <TabsList className="h-auto w-full justify-start gap-1 bg-transparent p-0">
             {[
               { value: "all", label: t("All") },
-              { value: "unread", label: t("Unread"), count: unreadCount }
+              { value: "unread", label: t("Unread"), count: unreadCount },
             ].map((tab) => (
               <TabsTrigger
                 key={tab.value}
                 value={tab.value}
-                className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-transparent bg-transparent px-3 py-1.5 text-xs font-medium text-muted-foreground transition-all data-[state=active]:border-border data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm"
+                className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-transparent! px-3 py-1.5 text-xs font-medium text-muted-foreground transition-all data-active:border-border data-active:bg-foreground data-active:text-background data-active:hover:text-white data-active:shadow-sm"
               >
                 {tab.label}
                 {"count" in tab && tab.count! > 0 && (
                   <Badge
                     variant="default"
-                    className="h-4 rounded-full px-1 text-[10px]"
+                    className="size-3 rounded-full text-xs p-2.5"
                   >
                     {tab.count}
                   </Badge>
@@ -238,96 +256,122 @@ export default function Notifications() {
               <Separator className="flex-1" />
             </div>
 
-            <div className="flex flex-col gap-1.5">
+            <div className="flex flex-col gap-2">
               {items.map((n) => {
                 const cfg = TYPE_CONFIG[n.type]
                 const Icon = cfg.icon
+
                 return (
                   <Card
                     key={n.id}
                     className={cn(
-                      "group cursor-pointer transition-all duration-150 hover:shadow-sm p-1",
-                      !n.read && "border-primary/20 bg-primary/2"
+                      "overflow-hidden border-l-[3px] py-0 shadow-none transition-all duration-150 hover:shadow-sm",
+                      cfg.border,
+                      !n.read && "bg-primary/3"
                     )}
-                    onClick={() => markRead(n.id)}
                   >
-                    <CardContent className="flex items-start gap-3 p-1">
-                      <span
-                        className={cn(
-                          "mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full sm:size-10",
-                          cfg.bg,
-                          cfg.color
-                        )}
-                      >
-                        <Icon className="size-4 sm:size-5" />
-                      </span>
-
-                      <div className="min-w-0 flex-1">
-                        <div className="flex items-start justify-between gap-2">
-                          <div className="min-w-0 flex-1">
-                            <div className="flex items-center gap-2">
-                              <p
-                                className={cn(
-                                  "truncate text-xs",
-                                  !n.read
-                                    ? "font-semibold text-foreground"
-                                    : "font-medium text-foreground/80"
-                                )}
-                              >
-                                {t(n.title)}
-                              </p>
-                              {!n.read && (
-                                <span className="size-2 shrink-0 rounded-full bg-primary" />
+                    <Accordion
+                      onValueChange={(value) => value && !n.read && markRead(n.id)}
+                    >
+                      <AccordionItem value={n.id} className="border-none">
+                        <AccordionTrigger className="group w-full px-3 py-3 hover:no-underline">
+                          <CardContent className="flex w-full items-center gap-3 p-0">
+                            <span
+                              className={cn(
+                                "flex size-9 shrink-0 items-center justify-center rounded-full sm:size-10",
+                                cfg.bg,
+                                cfg.color
                               )}
+                            >
+                              <Icon className="size-4 sm:size-5" />
+                            </span>
+
+                            <div className="min-w-0 flex-1 text-left">
+                              <div className="flex items-center gap-2">
+                                <p
+                                  className={cn(
+                                    "truncate text-xs sm:text-sm",
+                                    !n.read
+                                      ? "font-semibold text-foreground"
+                                      : "font-medium text-foreground/80"
+                                  )}
+                                >
+                                  {t(n.title)}
+                                </p>
+                                {!n.read && (
+                                  <span className="size-1.5 shrink-0 rounded-full bg-primary" />
+                                )}
+                              </div>
+                              <p className="mt-0.5 truncate text-xs max-w-48 sm:max-w-72 lg:max-w-full text-muted-foreground">
+                                {n.userFullName
+                                  ? t("from {{name}}", { name: n.userFullName })
+                                  : n.message}
+                              </p>
                             </div>
-                            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+
+                            <small className="flex shrink-0 items-center self-stretch pr-2 text-muted-foreground h-full">
+                              {n.time}
+                            </small>
+                          </CardContent>
+                        </AccordionTrigger>
+
+                        <AccordionContent className="px-3 pb-3">
+                          <div className="ml-12 rounded-lg border border-border/60 bg-muted/40 p-3 sm:ml-13">
+                            <p className="text-xs leading-relaxed text-foreground/80">
                               {n.message}
                             </p>
-                            <p className="mt-1.5 text-xs text-muted-foreground/60">
-                              {n.time}
-                            </p>
-                          </div>
 
-                          <DropdownMenu>
-                            <DropdownMenuTrigger
-                              render={
+                            <div className="mt-3 flex flex-wrap items-center gap-2">
+                              {n.actions?.map((action, i) => (
                                 <Button
-                                  variant="ghost"
-                                  size="icon"
-                                  className="size-7 shrink-0 opacity-0 transition-opacity group-hover:opacity-100"
-                                  onClick={(e) => e.stopPropagation()}
-                                >
-                                  <IconDots className="size-4" />
-                                </Button>
-                              }
-                            />
-                            <DropdownMenuContent align="end" className="w-40">
-                              {!n.read && (
-                                <DropdownMenuItem
+                                  key={i}
+                                  size="sm"
+                                  variant={action.type === "button" ? "default" : "outline"}
+                                  className="text-xs"
                                   onClick={(e) => {
                                     e.stopPropagation()
-                                    markRead(n.id)
+                                    if (action.type === "redirect" && action.url) {
+                                      window.open(action.url, "_blank")
+                                    } else {
+                                      action.onAction?.()
+                                    }
                                   }}
                                 >
-                                  <IconCheck className="size-4" />
-                                  {t("Mark as read")}
-                                </DropdownMenuItem>
-                              )}
-                              <DropdownMenuItem
+                                  {action.type === "redirect" && (
+                                    <IconExternalLink className="size-3.5" />
+                                  )}
+                                  {t(action.label ?? (action.type === "button" ? "View details" : "Open link"))}
+                                </Button>
+                              ))}
+
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                className="text-xs"
                                 onClick={(e) => {
                                   e.stopPropagation()
-                                  deleteNotification(n.id)
                                 }}
-                                className="text-destructive focus:text-destructive"
                               >
-                                <IconTrash className="size-4" />
-                                {t("Delete")}
-                              </DropdownMenuItem>
-                            </DropdownMenuContent>
-                          </DropdownMenu>
-                        </div>
-                      </div>
-                    </CardContent>
+                                {t("View details")}
+                              </Button>
+
+                              <Button
+                                size="sm"
+                                variant="ghost"
+                                className="ml-auto text-xs text-muted-foreground hover:text-destructive"
+                                onClick={(e) => {
+                                  e.stopPropagation()
+                                  dismissNotification(n.id)
+                                }}
+                              >
+                                <IconX className="size-3.5" />
+                                {t("Dismiss")}
+                              </Button>
+                            </div>
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
                   </Card>
                 )
               })}
@@ -335,6 +379,33 @@ export default function Notifications() {
           </div>
         ))}
 
+        {/* Pagination */}
+        {totalCount > PAGE_SIZE && (
+          <div className="flex flex-wrap-reverse items-center justify-center gap-3 md:justify-between">
+            <Badge variant="outline">
+              {t("Current Page")} ({page}){" "}
+              {Math.min(pageItemsCount, totalCount)} -{" "}
+              <span className="text-muted-foreground">{totalCount}</span>
+            </Badge>
+            <div className="flex gap-3">
+              <Button
+                variant="outline"
+                size="sm"
+                disabled={page <= 1}
+                onClick={() => setPage((p) => p - 1)}
+              >
+                {t("Previous")}
+              </Button>
+              <Button
+                size="sm"
+                disabled={pageItemsCount >= totalCount}
+                onClick={() => setPage((p) => p + 1)}
+              >
+                {t("Next")}
+              </Button>
+            </div>
+          </div>
+        )}
       </Container>
     </div>
   )

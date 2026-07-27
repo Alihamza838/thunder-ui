@@ -7,7 +7,15 @@ import { Separator } from "@/components/ui/separator"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 import { useTranslation } from "react-i18next"
-import { IconAlertCircle, IconBell, IconCash, IconInfoCircle, IconPackage, IconTruckDelivery } from "@tabler/icons-react"
+import {
+  IconAlertCircle,
+  IconBell,
+  IconCash,
+  IconCheck,
+  IconInfoCircle,
+  IconPackage,
+  IconTruckDelivery,
+} from "@tabler/icons-react"
 import axios from "axios"
 
 // Types
@@ -72,6 +80,15 @@ export function NotificationPopover({ userId }: { userId?: string }) {
   const [open, setOpen] = React.useState(false)
 
   const unreadCount = notifications.filter((n) => !n.read).length
+
+  // Local-only, not synced to backend yet — no mark-read endpoint exists
+  const markAllRead = () =>
+    setNotifications((prev) => prev.map((n) => ({ ...n, read: true })))
+
+  const markRead = (id: string) =>
+    setNotifications((prev) =>
+      prev.map((n) => (n.id === id ? { ...n, read: true } : n))
+    )
 
   React.useEffect(() => {
     if (!open || !tenant || !userId) return
@@ -149,6 +166,17 @@ export function NotificationPopover({ userId }: { userId?: string }) {
               </Badge>
             )}
           </div>
+          {unreadCount > 0 && (
+            <Button
+              variant="ghost"
+              size="sm"
+              className="h-auto px-2 py-1 text-xs text-muted-foreground hover:text-foreground"
+              onClick={markAllRead}
+            >
+              <IconCheck className="me-1 size-3" />
+              {t("Mark all read")}
+            </Button>
+          )}
         </div>
 
         <Separator />
@@ -176,10 +204,12 @@ export function NotificationPopover({ userId }: { userId?: string }) {
                 const cfg = TYPE_CONFIG[n.type]
                 const Icon = cfg.icon
                 return (
-                  <div
+                  <button
                     key={n.id}
+                    type="button"
+                    onClick={() => markRead(n.id)}
                     className={cn(
-                      "flex w-full items-start gap-3 px-4 py-3",
+                      "flex w-full items-start gap-3 px-4 py-3 text-start transition-colors hover:bg-muted/50",
                       !n.read && "bg-primary/3"
                     )}
                   >
@@ -215,7 +245,7 @@ export function NotificationPopover({ userId }: { userId?: string }) {
                         {n.time}
                       </p>
                     </div>
-                  </div>
+                  </button>
                 )
               })
             )}

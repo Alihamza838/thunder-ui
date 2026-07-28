@@ -333,7 +333,8 @@ export type TField = {
   maxItems?: number;
   minimum?: number;
   maximum?: number;
-  required?: boolean;
+  required?: string[];
+  optional?: boolean;
   enum?: string[] | Array<{ label: string; value: unknown }>;
   pattern?: string;
   example?: string;
@@ -429,7 +430,7 @@ export class JSONSchemaToFields {
             this._toFields(prop, def, {
               parentName: name,
               ...("required" in schema && schema.required instanceof Array
-                ? { required: schema.required.includes(prop) }
+                ? { optional: !schema.required.includes(prop) }
                 : {}),
             })
           ),

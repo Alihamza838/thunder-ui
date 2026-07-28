@@ -359,6 +359,10 @@ export class JSONSchemaToFields {
         return "date";
       }
 
+      case "email": {
+        return "email";
+      }
+
       case "e164": {
         return "phone";
       }

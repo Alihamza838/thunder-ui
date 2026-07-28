@@ -52070,13 +52070,13 @@ const __vitePreload = function preload(baseModule, deps, importerUrl) {
   });
 };
 const App$1 = registerPlugin("App", {
-  web: () => __vitePreload(() => import("./web-kJ8n_UBx.js"), true ? [] : void 0).then((m2) => new m2.AppWeb())
+  web: () => __vitePreload(() => import("./web-yzBXQXjG.js"), true ? [] : void 0).then((m2) => new m2.AppWeb())
 });
 const Browser$1 = registerPlugin("Browser", {
-  web: () => __vitePreload(() => import("./web-CHzkws5P.js"), true ? [] : void 0).then((m2) => new m2.BrowserWeb())
+  web: () => __vitePreload(() => import("./web-CUMfRiAc.js"), true ? [] : void 0).then((m2) => new m2.BrowserWeb())
 });
 const Preferences = registerPlugin("Preferences", {
-  web: () => __vitePreload(() => import("./web-yV4IIb8O.js"), true ? [] : void 0).then((m2) => new m2.PreferencesWeb())
+  web: () => __vitePreload(() => import("./web-CS6eOpxt.js"), true ? [] : void 0).then((m2) => new m2.PreferencesWeb())
 });
 class InvalidTokenError extends Error {
 }
@@ -68999,7 +68999,6 @@ const timeAgo$1 = (dateStr) => formatDistanceToNow(new Date(dateStr), { addSuffi
 function NotificationPopover({ userId, unreadCount: unreadCountProp = 0 }) {
   const { t: t3 } = useTranslation$1();
   const navigate = useNavigate();
-  const { tenant } = useParams();
   const [notifications, setNotifications] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   const [error2, setError] = React.useState(null);
@@ -69027,7 +69026,7 @@ function NotificationPopover({ userId, unreadCount: unreadCountProp = 0 }) {
     );
   };
   React.useEffect(() => {
-    if (!open || !tenant || !userId) return;
+    if (!open || !triggersTenantId || !userId) return;
     let cancelled = false;
     setLoading(true);
     setError(null);
@@ -69054,7 +69053,7 @@ function NotificationPopover({ userId, unreadCount: unreadCountProp = 0 }) {
     return () => {
       cancelled = true;
     };
-  }, [open, tenant, userId, t3]);
+  }, [open, triggersTenantId, userId, t3]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(Popover$1, { open, onOpenChange: setOpen, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(
       PopoverTrigger$1,
@@ -69168,7 +69167,7 @@ function NotificationPopover({ userId, unreadCount: unreadCountProp = 0 }) {
               className: "w-full text-xs text-muted-foreground hover:text-foreground",
               onClick: () => {
                 setOpen(false);
-                navigate(`/${tenant}/notifications`);
+                navigate(`./notifications`);
               },
               children: t3("View all notifications")
             }
@@ -93794,7 +93793,7 @@ class JSONSchemaToFields {
           fields: Object.entries(schema.properties).flatMap(
             ([prop, def]) => this._toFields(prop, def, {
               parentName: name2,
-              ..."required" in schema && schema.required instanceof Array ? { required: schema.required.includes(prop) } : {}
+              ..."required" in schema && schema.required instanceof Array ? { optional: !schema.required.includes(prop) } : {}
             })
           )
         }
@@ -171568,7 +171567,7 @@ function RenderArray({ name: name2, field }) {
     control,
     name: name2,
     rules: {
-      required: field.required && t3("You need to add one!")
+      required: !field.optional && t3("You need to add one!")
     }
   });
   const getError = React.useCallback(
@@ -171684,11 +171683,11 @@ function RenderInput({ name: name2, field }) {
     const value = watch(field.requirementKey);
     if (value !== name2) return;
   }
-  if (field.type === "hidden" && (!field.required || !!field.const)) return null;
+  if (field.type === "hidden" && (field.optional || !!field.const)) return null;
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(Field, { className: field.className, style: field.style, children: [
     field.type === "hidden" ? null : /* @__PURE__ */ jsxRuntimeExports.jsxs(FieldLabel, { htmlFor: id2, children: [
       field.label ?? t3(name2),
-      field.required ? "" : ` (${t3("optional")})`
+      field.optional ? ` (${t3("optional")})` : ""
     ] }),
     renderField({
       id: id2,
@@ -171714,7 +171713,7 @@ const renderField = ({
       {
         name: name2,
         control,
-        rules: { required: field.required && t3("This field is required!") },
+        rules: { required: !field.optional && t3("This field is required!") },
         render: (def) => /* @__PURE__ */ jsxRuntimeExports.jsx(
           MarkdownEditorField,
           {
@@ -171731,7 +171730,7 @@ const renderField = ({
       {
         name: name2,
         control,
-        rules: { required: field.required && t3("This field is required!") },
+        rules: { required: !field.optional && t3("This field is required!") },
         render: (def) => /* @__PURE__ */ jsxRuntimeExports.jsx(
           AvatarUpload,
           {
@@ -171763,7 +171762,7 @@ const renderField = ({
       {
         name: name2,
         control,
-        rules: { required: field.required && t3("This field is required!") },
+        rules: { required: !field.optional && t3("This field is required!") },
         render: (def) => {
           const currentValue = def.field.value;
           const initialFile = !field.multi && typeof currentValue === "string" && currentValue ? {
@@ -171820,7 +171819,7 @@ const renderField = ({
       {
         name: name2,
         control,
-        rules: { required: field.required && t3("This field is required!") },
+        rules: { required: !field.optional && t3("This field is required!") },
         render: (def) => /* @__PURE__ */ jsxRuntimeExports.jsx(
           Switch,
           {
@@ -171831,13 +171830,13 @@ const renderField = ({
         )
       }
     );
-  if (field.enum) {
+  if (field.enum && field.enum.length) {
     return field.multi ? /* @__PURE__ */ jsxRuntimeExports.jsx(
       Controller,
       {
         name: name2,
         control,
-        rules: { required: field.required && t3("This field is required!") },
+        rules: { required: !field.optional && t3("This field is required!") },
         render: (def) => /* @__PURE__ */ jsxRuntimeExports.jsx(
           Multiselect,
           {
@@ -171855,7 +171854,7 @@ const renderField = ({
       {
         name: name2,
         control,
-        rules: { required: field.required && t3("This field is required!") },
+        rules: { required: !field.optional && t3("This field is required!") },
         render: (def) => /* @__PURE__ */ jsxRuntimeExports.jsx(
           Dropdown$1,
           {
@@ -171877,7 +171876,7 @@ const renderField = ({
         {
           name: name2,
           control,
-          rules: { required: field.required && t3("This field is required!") },
+          rules: { required: !field.optional && t3("This field is required!") },
           render: (def) => /* @__PURE__ */ jsxRuntimeExports.jsx(
             Tag$1,
             {
@@ -171897,7 +171896,7 @@ const renderField = ({
         {
           name: name2,
           control,
-          rules: { required: field.required && t3("This field is required!") },
+          rules: { required: !field.optional && t3("This field is required!") },
           render: (def) => /* @__PURE__ */ jsxRuntimeExports.jsx(
             Textarea,
             {
@@ -171920,7 +171919,7 @@ const renderField = ({
         {
           name: name2,
           control,
-          rules: { required: field.required && t3("This field is required!") },
+          rules: { required: !field.optional && t3("This field is required!") },
           render: (def) => /* @__PURE__ */ jsxRuntimeExports.jsx(
             Input$1,
             {
@@ -171939,7 +171938,7 @@ const renderField = ({
       {
         name: name2,
         control,
-        rules: { required: field.required && t3("This field is required!") },
+        rules: { required: !field.optional && t3("This field is required!") },
         render: (def) => /* @__PURE__ */ jsxRuntimeExports.jsx(
           Input$1,
           {
@@ -171959,7 +171958,7 @@ const renderField = ({
       {
         name: name2,
         control,
-        rules: { required: field.required && t3("This field is required!") },
+        rules: { required: !field.optional && t3("This field is required!") },
         render: (def) => /* @__PURE__ */ jsxRuntimeExports.jsx(
           Input,
           {
@@ -171981,7 +171980,7 @@ const renderField = ({
     {
       name: name2,
       control,
-      rules: { required: field.required && t3("This field is required!") },
+      rules: { required: !field.optional && t3("This field is required!") },
       render: (def) => /* @__PURE__ */ jsxRuntimeExports.jsx(
         Input$1,
         {
@@ -172053,36 +172052,41 @@ JSONSchemaToFields.resolveRef = async (ref, field) => {
     const fields = field.refLabel instanceof Array ? field.refLabel : [field.refLabel, "label", "name", "title"].filter(Boolean);
     return Object.fromEntries(fields.map((field2) => [field2, 1]));
   };
-  const { results } = await ThunderSDK.useCache(
-    async () => await ThunderSDK.getModule(ref).get({
-      query: {
-        project: createProjection()
+  try {
+    const { results } = await ThunderSDK.useCache(
+      async () => await ThunderSDK.getModule(ref).get({
+        query: {
+          project: createProjection()
+        }
+      }),
+      {
+        cacheKey: [ref, "get"],
+        cacheTTL: parseInt("1")
       }
-    }),
-    {
-      cacheKey: [ref, "get"],
-      cacheTTL: parseInt("1")
-    }
-  );
-  const resolveLabel2 = (item) => {
-    if (field.refLabel instanceof Array) {
-      return field.refLabel.map((prop) => item[prop]).filter(Boolean).join(" ");
-    }
-    return field.refLabel && item[field.refLabel] || item.label || item.name || item.title;
-  };
-  const resolveValue2 = (item) => {
-    if (field.refValue) {
-      return item[field.refValue];
-    }
-    return item._id;
-  };
-  return results.map((item) => {
-    const value = resolveValue2(item);
-    return {
-      label: resolveLabel2(item) || value,
-      value
+    );
+    const resolveLabel2 = (item) => {
+      if (field.refLabel instanceof Array) {
+        return field.refLabel.map((prop) => item[prop]).filter(Boolean).join(" ");
+      }
+      return field.refLabel && item[field.refLabel] || item.label || item.name || item.title;
     };
-  });
+    const resolveValue2 = (item) => {
+      if (field.refValue) {
+        return item[field.refValue];
+      }
+      return item._id;
+    };
+    return results.map((item) => {
+      const value = resolveValue2(item);
+      return {
+        label: resolveLabel2(item) || value,
+        value
+      };
+    });
+  } catch (error2) {
+    console.error(error2);
+    return [];
+  }
 };
 function FormPage({ name: name2 }) {
   const CustomForm = forms[name2];
@@ -183965,7 +183969,7 @@ const Clipboard = registerPlugin("Clipboard", {
   web: () => new ClipboardWeb()
 });
 const Share = registerPlugin("Share", {
-  web: () => __vitePreload(() => import("./web-CC0-LnSM.js"), true ? [] : void 0).then((m2) => new m2.ShareWeb())
+  web: () => __vitePreload(() => import("./web-C2Avt48Z.js"), true ? [] : void 0).then((m2) => new m2.ShareWeb())
 });
 var __defProp = Object.defineProperty;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;

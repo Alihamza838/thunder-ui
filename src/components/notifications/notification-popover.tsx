@@ -1,5 +1,5 @@
 import React from "react"
-import { useNavigate, useParams } from "react-router"
+import { useNavigate } from "react-router"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
@@ -71,7 +71,6 @@ type NotificationPopoverProps = {
 export function NotificationPopover({ userId, unreadCount: unreadCountProp = 0 }: NotificationPopoverProps) {
   const { t } = useTranslation()
   const navigate = useNavigate()
-  const { tenant } = useParams()
 
   const [notifications, setNotifications] = React.useState<TNotification[]>([])
   const [loading, setLoading] = React.useState(false)
@@ -105,7 +104,7 @@ export function NotificationPopover({ userId, unreadCount: unreadCountProp = 0 }
   }
 
   React.useEffect(() => {
-    if (!open || !tenant || !userId) return
+    if (!open || !triggersTenantId || !userId) return
 
     let cancelled = false
     setLoading(true)
@@ -141,7 +140,7 @@ export function NotificationPopover({ userId, unreadCount: unreadCountProp = 0 }
     return () => {
       cancelled = true
     }
-  }, [open, tenant, userId, t])
+  }, [open, triggersTenantId, userId, t])
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -294,7 +293,7 @@ export function NotificationPopover({ userId, unreadCount: unreadCountProp = 0 }
             className="w-full text-xs text-muted-foreground hover:text-foreground"
             onClick={() => {
               setOpen(false)
-              navigate(`/${tenant}/notifications`)
+              navigate(`./notifications`)
             }}
           >
             {t("View all notifications")}

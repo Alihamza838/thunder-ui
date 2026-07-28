@@ -21,6 +21,10 @@ import { cn } from "@/lib/utils"
 import { useTranslation } from "react-i18next"
 import { Container } from "@/core/custom/Container"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import axios from "axios"
+import { formatDistanceToNow, isSameDay, subDays, format } from "date-fns"
+import { ThunderSDK } from "thunder-sdk"
+import { use } from "@/core/hooks/use"
 
 type NotificationType = "order" | "payment" | "delivery" | "alert" | "info"
 
@@ -44,58 +48,22 @@ type TNotification = {
   actions?: TNotificationAction[]
 }
 
-const PAGE_SIZE = 5
+type NotificationDoc = {
+  _id: string
+  receiver: string
+  tenant: string
+  data: {
+    type?: NotificationType
+    title: string
+    message: string
+  }
+  seen?: boolean
+  read?: boolean
+  createdAt: string
+  updatedAt: string
+}
 
-const INITIAL_NOTIFICATIONS: TNotification[] = [
-  {
-    id: "1",
-    type: "order",
-    title: "New order received",
-    message: "Order #1042 has been placed by Ahmed. Contains 3 items with a total of 450 LYD.",
-    time: "2 min ago",
-    date: "Today",
-    read: false,
-    userFullName: "Ahmed Al-Sharif",
-    actions: [{ type: "button", label: "Mark as ready" }],
-  },
-  {
-    id: "2",
-    type: "payment",
-    title: "Payment confirmed",
-    message: "Payment of 250 LYD received for order #1039. Transaction verified successfully.",
-    time: "15 min ago",
-    date: "Today",
-    read: false,
-  },
-  {
-    id: "3",
-    type: "delivery",
-    title: "Order delivered",
-    message: "Order #1035 was delivered successfully to the customer at Tripoli.",
-    time: "1 hr ago",
-    date: "Today",
-    read: false,
-    actions: [{ type: "redirect", label: "Confirm receipt", url: "#" }],
-  },
-  {
-    id: "4",
-    type: "alert",
-    title: "Low stock warning",
-    message: 'Product "Wireless Mouse" is running low on inventory. Only 3 units remaining.',
-    time: "3 hr ago",
-    date: "Today",
-    read: true,
-  },
-  {
-    id: "5",
-    type: "info",
-    title: "System update available",
-    message: "A new version of the platform is available. Refresh your browser to apply the latest updates.",
-    time: "5 hr ago",
-    date: "Today",
-    read: true,
-  },
-]
+const PAGE_SIZE = 5
 
 const TYPE_CONFIG: Record<
   NotificationType,
@@ -108,13 +76,76 @@ const TYPE_CONFIG: Record<
   info: { icon: IconInfoCircle, bg: "bg-muted", color: "text-muted-foreground", border: "border-l-muted-foreground/40", label: "Info" },
 }
 
+const timeAgo = (dateStr: string) => formatDistanceToNow(new Date(dateStr), { addSuffix: true })
+
+const getDateGroup = (dateStr: string) => {
+  const date = new Date(dateStr)
+  const now = new Date()
+  if (isSameDay(date, now)) return "Today"
+  if (isSameDay(date, subDays(now, 1))) return "Yesterday"
+  return format(date, "MMM d, yyyy")
+}
+
 export default function Notifications() {
   const { t } = useTranslation()
-  const [notifications, setNotifications] = React.useState(INITIAL_NOTIFICATIONS)
+  const [notifications, setNotifications] = React.useState<TNotification[]>([])
+  const [loading, setLoading] = React.useState(false)
+  const [error, setError] = React.useState<string | null>(null)
   const [activeTab, setActiveTab] = React.useState("all")
   const [page, setPage] = React.useState(1)
 
-  const unreadCount = notifications.filter((n) => !n.read).length
+  const _me = React.useCallback(
+    async ({ signal }: { signal?: AbortSignal }) => {
+      return await ThunderSDK.me.get({ signal })
+    },
+    []
+  )
+
+  const { data: me } = use(_me)
+
+  const userId = me?._id
+  const tenant = import.meta.env.VITE_TRIGGERS_TENANT_ID
+  const triggersBaseUrl = import.meta.env.VITE_TRIGGERS_BASE_URL
+
+
+  const unreadCount = notifications.filter((n: any) => !n.read).length
+
+  React.useEffect(() => {
+    if (!tenant || !userId) return
+
+    let cancelled = false
+    setLoading(true)
+    setError(null)
+
+    axios
+      .get<{ results: NotificationDoc[] }>(`${triggersBaseUrl}/notifications/api/me/${tenant}/${userId}`, {
+        params: { page: 1, limit: 50 },
+      })
+      .then(({ data }) => {
+        if (cancelled) return
+        setNotifications(
+          data.results.map((doc) => ({
+            id: doc._id,
+            type: doc.data?.type ?? "info",
+            title: doc.data?.title ?? "",
+            message: doc.data?.message ?? "",
+            time: timeAgo(doc.createdAt),
+            date: getDateGroup(doc.createdAt),
+            read: doc.read ?? false,
+          }))
+        )
+      })
+      .catch(() => {
+        if (!cancelled) setError(t("Failed to load notifications"))
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false)
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [tenant, userId, triggersBaseUrl, t])
 
   const filtered = React.useMemo(() => {
     if (activeTab === "all") return notifications
@@ -227,8 +258,24 @@ export default function Notifications() {
           </TabsList>
         </Tabs>
 
+        {loading && (
+          <Card>
+            <CardContent className="flex flex-col items-center justify-center py-16 text-center">
+              <p className="text-sm text-muted-foreground">{t("Loading...")}</p>
+            </CardContent>
+          </Card>
+        )}
+
+        {!loading && error && (
+          <Card>
+            <CardContent className="flex flex-col items-center justify-center py-16 text-center">
+              <p className="text-sm text-destructive">{error}</p>
+            </CardContent>
+          </Card>
+        )}
+
         {/* Empty state */}
-        {filtered.length === 0 && (
+        {!loading && !error && filtered.length === 0 && (
           <Card>
             <CardContent className="flex flex-col items-center justify-center py-16 text-center">
               <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-muted">
@@ -247,7 +294,7 @@ export default function Notifications() {
         )}
 
         {/* Grouped notifications */}
-        {grouped.map(([date, items]) => (
+        {!loading && !error && grouped.map(([date, items]) => (
           <div key={date} className="flex flex-col gap-2">
             <div className="flex items-center gap-3">
               <h2 className="shrink-0 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
@@ -380,7 +427,7 @@ export default function Notifications() {
         ))}
 
         {/* Pagination */}
-        {totalCount > PAGE_SIZE && (
+        {!loading && !error && totalCount > PAGE_SIZE && (
           <div className="flex flex-wrap-reverse items-center justify-center gap-3 md:justify-between">
             <Badge variant="outline">
               {t("Current Page")} ({page}){" "}

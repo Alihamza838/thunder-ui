@@ -19,6 +19,7 @@ import {
 import axios from "axios"
 import { formatDistanceToNow } from "date-fns"
 import { Card, CardContent } from "../ui/card"
+import { triggersBaseUrl, triggersTenantId } from "@/lib/constants"
 
 // Types
 export type NotificationType = "order" | "payment" | "delivery" | "alert" | "info"
@@ -27,7 +28,7 @@ export type TNotification = {
   id: string
   type: NotificationType
   title: string
-  message: string
+  body: string
   time: string
   read: boolean
 }
@@ -39,7 +40,7 @@ type NotificationDoc = {
   data: {
     type?: NotificationType
     title: string
-    message: string
+    body: string
   }
   seen?: boolean
   read?: boolean
@@ -62,27 +63,46 @@ const TYPE_CONFIG: Record<
 
 const timeAgo = (dateStr: string) => formatDistanceToNow(new Date(dateStr), { addSuffix: true })
 
-export function NotificationPopover({ userId }: { userId?: string }) {
+type NotificationPopoverProps = {
+  userId?: string
+  unreadCount?: number
+}
+
+export function NotificationPopover({ userId, unreadCount: unreadCountProp = 0 }: NotificationPopoverProps) {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const { tenant } = useParams()
-  const triggersTenant = import.meta.env.VITE_TRIGGERS_TENANT_ID
-  const triggersBaseUrl = import.meta.env.VITE_TRIGGERS_BASE_URL
 
   const [notifications, setNotifications] = React.useState<TNotification[]>([])
   const [loading, setLoading] = React.useState(false)
   const [error, setError] = React.useState<string | null>(null)
   const [open, setOpen] = React.useState(false)
 
-  const unreadCount = notifications.filter((n) => !n.read).length
+  const [unreadCount, setUnreadCount] = React.useState(unreadCountProp)
+  const [hasFetchedOnce, setHasFetchedOnce] = React.useState(false)
 
-  const markAllRead = () =>
+  React.useEffect(() => {
+    if (!hasFetchedOnce) {
+      setUnreadCount(unreadCountProp)
+    }
+  }, [unreadCountProp, hasFetchedOnce])
+
+  const markAllRead = () => {
     setNotifications((prev) => prev.map((n) => ({ ...n, read: true })))
+    setUnreadCount(0)
+  }
 
-  const markRead = (id: string) =>
+  const markRead = (id: string) => {
     setNotifications((prev) =>
-      prev.map((n) => (n.id === id ? { ...n, read: true } : n))
+      prev.map((n) => {
+        if (n.id === id && !n.read) {
+          setUnreadCount((count) => Math.max(0, count - 1))
+          return { ...n, read: true }
+        }
+        return n
+      })
     )
+  }
 
   React.useEffect(() => {
     if (!open || !tenant || !userId) return
@@ -92,21 +112,24 @@ export function NotificationPopover({ userId }: { userId?: string }) {
     setError(null)
 
     axios
-      .get<{ results: NotificationDoc[] }>(`${triggersBaseUrl}/notifications/api/me/${triggersTenant}/${userId}`, {
+      .get<{ results: NotificationDoc[] }>(`${triggersBaseUrl}/notifications/api/me/${triggersTenantId}/${userId}`, {
         params: { page: 1, limit: 10 },
       })
       .then(({ data }) => {
         if (cancelled) return
-        setNotifications(
-          data.results.map((doc) => ({
-            id: doc._id,
-            type: doc.data?.type ?? "info",
-            title: doc.data?.title ?? "",
-            message: doc.data?.message ?? "",
-            time: timeAgo(doc.createdAt),
-            read: doc.read ?? false,
-          }))
-        )
+
+        const mapped = data.results.map((doc) => ({
+          id: doc._id,
+          type: doc.data?.type ?? "info",
+          title: doc.data?.title ?? "",
+          body: doc.data?.body ?? "",
+          time: timeAgo(doc.createdAt),
+          read: doc.read ?? false,
+        }))
+
+        setNotifications(mapped)
+        setUnreadCount(mapped.filter((n) => !n.read).length)
+        setHasFetchedOnce(true)
       })
       .catch(() => {
         if (!cancelled) setError(t("Failed to load notifications"))
@@ -160,7 +183,7 @@ export function NotificationPopover({ userId }: { userId?: string }) {
               </Badge>
             )}
           </div>
-          {unreadCount > 0 && (
+          {/* {unreadCount > 0 && (
             <Button
               variant="ghost"
               size="sm"
@@ -170,7 +193,7 @@ export function NotificationPopover({ userId }: { userId?: string }) {
               <IconCheck className="me-1 size-3" />
               {t("Mark all read")}
             </Button>
-          )}
+          )} */}
         </div>
 
         <Separator />
@@ -194,7 +217,7 @@ export function NotificationPopover({ userId }: { userId?: string }) {
                 </p>
               </div>
             ) : (
-              notifications.slice(0, 3).map((n) => {
+              notifications.slice(0, 5).map((n) => {
                 const cfg = TYPE_CONFIG[n.type]
                 const Icon = cfg.icon
                 return (
@@ -218,29 +241,40 @@ export function NotificationPopover({ userId }: { userId?: string }) {
                         <Icon className="size-4" />
                       </span>
                       <div className="w-full flex justify-between items-center">
-                        <div className="min-w-0 flex-1">
-                          <div className="flex items-center justify-between gap-2">
-                            <p
+                        <div className="min-w-0 flex-1 flex flex-col gap-1">
+                          <div className="flex items-center gap-2">
+                            <h6
                               className={cn(
-                                "truncate text-sm",
+                                "line-clamp-1 truncate max-w-36 sm:max-w-48",
                                 !n.read
-                                  ? "font-semibold text-foreground"
-                                  : "font-medium text-foreground/80"
+                                  ? "font-medium text-foreground"
+                                  : "text-foreground/80"
                               )}
                             >
                               {t(n.title)}
-                            </p>
+                            </h6>
+                            {!n.read && (
+                              <span className="size-2 shrink-0 rounded-full bg-primary" />
+                            )}
                           </div>
-                          <p className="line-clamp-2 text-xs text-muted-foreground">
-                            {n.message}
-                          </p>
-                          <p className="text-[11px] text-muted-foreground/60">
+                          <small className="line-clamp-1 truncate text-xs text-muted-foreground w-full max-w-36 sm:max-w-48">
+                            {n.body}
+                          </small>
+                        </div>
+                        <div className="flex flex-col">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="h-auto p-1 text-xs text-muted-foreground hover:text-foreground"
+                            onClick={markAllRead}
+                          >
+                            <IconCheck className="me-1 size-3" />
+                            {t("Mark as read")}
+                          </Button>
+                          <p className="text-[11px] text-muted-foreground/60 text-end p-1">
                             {n.time}
                           </p>
                         </div>
-                        {!n.read && (
-                          <span className="mt-1.5 size-2 shrink-0 rounded-full bg-primary" />
-                        )}
                       </div>
                     </CardContent>
                   </Card>

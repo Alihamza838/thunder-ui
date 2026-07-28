@@ -52070,13 +52070,13 @@ const __vitePreload = function preload(baseModule, deps, importerUrl) {
   });
 };
 const App$1 = registerPlugin("App", {
-  web: () => __vitePreload(() => import("./web-CwRCnvgs.js"), true ? [] : void 0).then((m2) => new m2.AppWeb())
+  web: () => __vitePreload(() => import("./web-kJ8n_UBx.js"), true ? [] : void 0).then((m2) => new m2.AppWeb())
 });
 const Browser$1 = registerPlugin("Browser", {
-  web: () => __vitePreload(() => import("./web-w-k6YuyE.js"), true ? [] : void 0).then((m2) => new m2.BrowserWeb())
+  web: () => __vitePreload(() => import("./web-CHzkws5P.js"), true ? [] : void 0).then((m2) => new m2.BrowserWeb())
 });
 const Preferences = registerPlugin("Preferences", {
-  web: () => __vitePreload(() => import("./web-CYivKT3y.js"), true ? [] : void 0).then((m2) => new m2.PreferencesWeb())
+  web: () => __vitePreload(() => import("./web-yV4IIb8O.js"), true ? [] : void 0).then((m2) => new m2.PreferencesWeb())
 });
 class InvalidTokenError extends Error {
 }
@@ -68892,6 +68892,9 @@ function isSameYear(laterDate, earlierDate, options2) {
   );
   return laterDate_.getFullYear() === earlierDate_.getFullYear();
 }
+function subDays(date2, amount, options2) {
+  return addDays(date2, -1, options2);
+}
 function setMonth(date2, month, options2) {
   const _date2 = toDate(date2, options2?.in);
   const year = _date2.getFullYear();
@@ -68983,6 +68986,8 @@ function CardFooter({ className, ...props }) {
     }
   );
 }
+const triggersTenantId = "6a0f0dc1216c36e813000c98";
+const triggersBaseUrl = void 0;
 const TYPE_CONFIG$1 = {
   order: { icon: IconPackage, bg: "bg-primary/10", color: "text-primary", border: "border-l-primary", label: "Orders" },
   payment: { icon: IconCash, bg: "bg-success/10", color: "text-success", border: "border-l-success", label: "Payments" },
@@ -68990,41 +68995,57 @@ const TYPE_CONFIG$1 = {
   alert: { icon: IconAlertCircle, bg: "bg-destructive/10", color: "text-destructive", border: "border-l-destructive", label: "Alerts" },
   info: { icon: IconInfoCircle, bg: "bg-muted", color: "text-muted-foreground", border: "border-l-muted-foreground/40", label: "Info" }
 };
-const timeAgo = (dateStr) => formatDistanceToNow(new Date(dateStr), { addSuffix: true });
-function NotificationPopover({ userId }) {
+const timeAgo$1 = (dateStr) => formatDistanceToNow(new Date(dateStr), { addSuffix: true });
+function NotificationPopover({ userId, unreadCount: unreadCountProp = 0 }) {
   const { t: t3 } = useTranslation$1();
   const navigate = useNavigate();
   const { tenant } = useParams();
-  const triggersTenant = void 0;
-  const triggersBaseUrl = void 0;
   const [notifications, setNotifications] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   const [error2, setError] = React.useState(null);
   const [open, setOpen] = React.useState(false);
-  const unreadCount = notifications.filter((n2) => !n2.read).length;
-  const markAllRead = () => setNotifications((prev) => prev.map((n2) => ({ ...n2, read: true })));
-  const markRead = (id2) => setNotifications(
-    (prev) => prev.map((n2) => n2.id === id2 ? { ...n2, read: true } : n2)
-  );
+  const [unreadCount, setUnreadCount] = React.useState(unreadCountProp);
+  const [hasFetchedOnce, setHasFetchedOnce] = React.useState(false);
+  React.useEffect(() => {
+    if (!hasFetchedOnce) {
+      setUnreadCount(unreadCountProp);
+    }
+  }, [unreadCountProp, hasFetchedOnce]);
+  const markAllRead = () => {
+    setNotifications((prev) => prev.map((n2) => ({ ...n2, read: true })));
+    setUnreadCount(0);
+  };
+  const markRead = (id2) => {
+    setNotifications(
+      (prev) => prev.map((n2) => {
+        if (n2.id === id2 && !n2.read) {
+          setUnreadCount((count2) => Math.max(0, count2 - 1));
+          return { ...n2, read: true };
+        }
+        return n2;
+      })
+    );
+  };
   React.useEffect(() => {
     if (!open || !tenant || !userId) return;
     let cancelled = false;
     setLoading(true);
     setError(null);
-    axios.get(`${triggersBaseUrl}/notifications/api/me/${triggersTenant}/${userId}`, {
+    axios.get(`${triggersBaseUrl}/notifications/api/me/${triggersTenantId}/${userId}`, {
       params: { page: 1, limit: 10 }
     }).then(({ data: data2 }) => {
       if (cancelled) return;
-      setNotifications(
-        data2.results.map((doc2) => ({
-          id: doc2._id,
-          type: doc2.data?.type ?? "info",
-          title: doc2.data?.title ?? "",
-          message: doc2.data?.message ?? "",
-          time: timeAgo(doc2.createdAt),
-          read: doc2.read ?? false
-        }))
-      );
+      const mapped = data2.results.map((doc2) => ({
+        id: doc2._id,
+        type: doc2.data?.type ?? "info",
+        title: doc2.data?.title ?? "",
+        body: doc2.data?.body ?? "",
+        time: timeAgo$1(doc2.createdAt),
+        read: doc2.read ?? false
+      }));
+      setNotifications(mapped);
+      setUnreadCount(mapped.filter((n2) => !n2.read).length);
+      setHasFetchedOnce(true);
     }).catch(() => {
       if (!cancelled) setError(t3("Failed to load notifications"));
     }).finally(() => {
@@ -69060,37 +69081,22 @@ function NotificationPopover({ userId }) {
         sideOffset: 8,
         className: "w-90 p-0 sm:w-100 gap-0",
         children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between px-4 py-3", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-sm font-semibold text-foreground", children: t3("Notifications") }),
-              unreadCount > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Badge,
-                {
-                  variant: "default",
-                  className: "h-5 rounded-full px-1.5 text-[10px] font-bold",
-                  children: unreadCount
-                }
-              )
-            ] }),
-            unreadCount > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              Button$2,
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-between px-4 py-3", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-sm font-semibold text-foreground", children: t3("Notifications") }),
+            unreadCount > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Badge,
               {
-                variant: "ghost",
-                size: "sm",
-                className: "h-auto px-2 py-1 text-xs text-muted-foreground hover:text-foreground",
-                onClick: markAllRead,
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(IconCheck, { className: "me-1 size-3" }),
-                  t3("Mark all read")
-                ]
+                variant: "default",
+                className: "h-5 rounded-full px-1.5 text-[10px] font-bold",
+                children: unreadCount
               }
             )
-          ] }),
+          ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(Separator$3, {}),
           /* @__PURE__ */ jsxRuntimeExports.jsx(ScrollArea, { className: "h-auto", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-col gap-2 p-2", children: loading ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-col items-center justify-center py-10 text-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground", children: t3("Loading...") }) }) : error2 ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-col items-center justify-center py-10 text-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-destructive", children: error2 }) }) : notifications.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center justify-center py-10 text-center", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(IconBell, { className: "mb-2 size-8 text-muted-foreground/30" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground", children: t3("No notifications") })
-          ] }) : notifications.slice(0, 3).map((n2) => {
+          ] }) : notifications.slice(0, 5).map((n2) => {
             const cfg = TYPE_CONFIG$1[n2.type];
             const Icon2 = cfg.icon;
             return /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -69115,21 +69121,38 @@ function NotificationPopover({ userId }) {
                     }
                   ),
                   /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "w-full flex justify-between items-center", children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0 flex-1", children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-between gap-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        "p",
-                        {
-                          className: cn$1(
-                            "truncate text-sm",
-                            !n2.read ? "font-semibold text-foreground" : "font-medium text-foreground/80"
-                          ),
-                          children: t3(n2.title)
-                        }
-                      ) }),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "line-clamp-2 text-xs text-muted-foreground", children: n2.message }),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-muted-foreground/60", children: n2.time })
+                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0 flex-1 flex flex-col gap-1", children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
+                        /* @__PURE__ */ jsxRuntimeExports.jsx(
+                          "h6",
+                          {
+                            className: cn$1(
+                              "line-clamp-1 truncate max-w-36 sm:max-w-48",
+                              !n2.read ? "font-medium text-foreground" : "text-foreground/80"
+                            ),
+                            children: t3(n2.title)
+                          }
+                        ),
+                        !n2.read && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "size-2 shrink-0 rounded-full bg-primary" })
+                      ] }),
+                      /* @__PURE__ */ jsxRuntimeExports.jsx("small", { className: "line-clamp-1 truncate text-xs text-muted-foreground w-full max-w-36 sm:max-w-48", children: n2.body })
                     ] }),
-                    !n2.read && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "mt-1.5 size-2 shrink-0 rounded-full bg-primary" })
+                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col", children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                        Button$2,
+                        {
+                          variant: "ghost",
+                          size: "sm",
+                          className: "h-auto p-1 text-xs text-muted-foreground hover:text-foreground",
+                          onClick: markAllRead,
+                          children: [
+                            /* @__PURE__ */ jsxRuntimeExports.jsx(IconCheck, { className: "me-1 size-3" }),
+                            t3("Mark as read")
+                          ]
+                        }
+                      ),
+                      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-muted-foreground/60 text-end p-1", children: n2.time })
+                    ] })
                   ] })
                 ] })
               },
@@ -69218,6 +69241,20 @@ function Layout$2({ children }) {
     []
   );
   const { data: me3 } = use$1(_me);
+  const [unreadCount, setUnreadCount] = React.useState(0);
+  const triggersTenant = "6a0f0dc1216c36e813000c98";
+  const triggersBaseUrl2 = void 0;
+  React.useEffect(() => {
+    if (!me3?._id) return;
+    const controller = new AbortController();
+    axios.get(
+      `${triggersBaseUrl2}/notifications/api/unread/count/${triggersTenant}/${me3._id}`,
+      { signal: controller.signal }
+    ).then(({ data: data2 }) => setUnreadCount(data2.count ?? 0)).catch((err) => {
+      console.log(err);
+    });
+    return () => controller.abort();
+  }, [me3?._id, triggersTenant, triggersBaseUrl2]);
   const { routes: routes2, subRoutes } = React.useMemo(
     () => getNavRoutes(router2.routes),
     [router2.routes]
@@ -69381,7 +69418,7 @@ function Layout$2({ children }) {
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto flex items-center gap-3 py-2", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex shrink-0 items-center gap-3", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-base font-semibold capitalize", children: appName() }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "ms-auto flex items-center gap-3", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(NotificationPopover, { userId: me3?._id }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(NotificationPopover, { userId: me3?._id, unreadCount }),
             ThunderSDK.isPermitted(ThunderSDK.wallets.get) && /* @__PURE__ */ jsxRuntimeExports.jsx(
               NavBalance,
               {
@@ -183928,7 +183965,7 @@ const Clipboard = registerPlugin("Clipboard", {
   web: () => new ClipboardWeb()
 });
 const Share = registerPlugin("Share", {
-  web: () => __vitePreload(() => import("./web-BshBZu1K.js"), true ? [] : void 0).then((m2) => new m2.ShareWeb())
+  web: () => __vitePreload(() => import("./web-CC0-LnSM.js"), true ? [] : void 0).then((m2) => new m2.ShareWeb())
 });
 var __defProp = Object.defineProperty;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
@@ -185487,6 +185524,14 @@ const TYPE_CONFIG = {
   alert: { icon: IconAlertCircle, bg: "bg-destructive/10", color: "text-destructive", border: "border-l-destructive", label: "Alerts" },
   info: { icon: IconInfoCircle, bg: "bg-muted", color: "text-muted-foreground", border: "border-l-muted-foreground/40", label: "Info" }
 };
+const timeAgo = (dateStr) => formatDistanceToNow(new Date(dateStr), { addSuffix: true });
+const getDateGroup = (dateStr) => {
+  const date2 = new Date(dateStr);
+  const now2 = /* @__PURE__ */ new Date();
+  if (isSameDay(date2, now2)) return "Today";
+  if (isSameDay(date2, subDays(now2))) return "Yesterday";
+  return format(date2, "MMM d, yyyy");
+};
 function Notifications$2() {
   const { t: t3 } = useTranslation$1();
   const [notifications, setNotifications] = React.useState([]);
@@ -185502,12 +185547,36 @@ function Notifications$2() {
   );
   const { data: me3 } = use$1(_me);
   const userId = me3?._id;
-  const tenant = void 0;
-  const triggersBaseUrl = void 0;
   const unreadCount = notifications.filter((n2) => !n2.read).length;
   React.useEffect(() => {
-    return;
-  }, [tenant, userId, triggersBaseUrl, t3]);
+    if (!userId) return;
+    let cancelled = false;
+    setLoading(true);
+    setError(null);
+    axios.get(`${triggersBaseUrl}/notifications/api/me/${triggersTenantId}/${userId}`, {
+      params: { page: 1, limit: 50 }
+    }).then(({ data: data2 }) => {
+      if (cancelled) return;
+      setNotifications(
+        data2.results.map((doc2) => ({
+          id: doc2._id,
+          type: doc2.data?.type ?? "info",
+          title: doc2.data?.title ?? "",
+          message: doc2.data?.message ?? "",
+          time: timeAgo(doc2.createdAt),
+          date: getDateGroup(doc2.createdAt),
+          read: doc2.read ?? false
+        }))
+      );
+    }).catch(() => {
+      if (!cancelled) setError(t3("Failed to load notifications"));
+    }).finally(() => {
+      if (!cancelled) setLoading(false);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [triggersTenantId, userId, triggersBaseUrl]);
   const filtered = React.useMemo(() => {
     if (activeTab === "all") return notifications;
     if (activeTab === "unread") return notifications.filter((n2) => !n2.read);

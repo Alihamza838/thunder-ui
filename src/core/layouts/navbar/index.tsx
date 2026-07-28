@@ -61,6 +61,7 @@ import { getWallets } from "@/core/endpoints/wallet.ts"
 import { Skeleton } from "@/components/ui/skeleton"
 import { ActionSwapText } from "@/core/pages/wallet/action-swap"
 import { NotificationPopover } from "@/components/notifications/notification-popover"
+import axios from "axios"
 
 
 function NavBalance({ visible, onToggle }: { visible: boolean; onToggle: () => void }) {
@@ -146,6 +147,29 @@ export function Layout({ children }: { children: React.ReactNode }) {
   )
 
   const { data: me } = use(_me)
+
+  const [unreadCount, setUnreadCount] = React.useState(0)
+
+  const triggersTenant = import.meta.env.VITE_TRIGGERS_TENANT_ID
+  const triggersBaseUrl = import.meta.env.VITE_TRIGGERS_BASE_URL
+
+  React.useEffect(() => {
+    if (!me?._id) return
+
+    const controller = new AbortController()
+
+    axios
+      .get<{ count: number }>(
+        `${triggersBaseUrl}/notifications/api/unread/count/${triggersTenant}/${me._id}`,
+        { signal: controller.signal }
+      )
+      .then(({ data }) => setUnreadCount(data.count ?? 0))
+      .catch((err) => {
+        console.log(err)
+      })
+
+    return () => controller.abort()
+  }, [me?._id, triggersTenant, triggersBaseUrl])
 
   const { routes, subRoutes } = React.useMemo(
     () => getNavRoutes(router.routes),
@@ -338,7 +362,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               {/* Right Actions */}
               <div className="ms-auto flex items-center gap-3">
                 {/* Notifications */}
-                <NotificationPopover userId={me?._id} />
+                <NotificationPopover userId={me?._id} unreadCount={unreadCount} />
 
                 {/* Balance Toggle */}
                 {ThunderSDK.isPermitted(ThunderSDK.wallets.get) && (

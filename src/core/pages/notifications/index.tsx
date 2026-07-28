@@ -25,6 +25,7 @@ import axios from "axios"
 import { formatDistanceToNow, isSameDay, subDays, format } from "date-fns"
 import { ThunderSDK } from "thunder-sdk"
 import { use } from "@/core/hooks/use"
+import { triggersBaseUrl, triggersTenantId } from "@/lib/constants"
 
 type NotificationType = "order" | "payment" | "delivery" | "alert" | "info"
 
@@ -100,25 +101,22 @@ export default function Notifications() {
     },
     []
   )
-
   const { data: me } = use(_me)
-
+  
   const userId = me?._id
-  const tenant = import.meta.env.VITE_TRIGGERS_TENANT_ID
-  const triggersBaseUrl = import.meta.env.VITE_TRIGGERS_BASE_URL
 
 
   const unreadCount = notifications.filter((n: any) => !n.read).length
 
   React.useEffect(() => {
-    if (!tenant || !userId) return
+    if (!triggersTenantId || !userId) return
 
     let cancelled = false
     setLoading(true)
     setError(null)
 
     axios
-      .get<{ results: NotificationDoc[] }>(`${triggersBaseUrl}/notifications/api/me/${tenant}/${userId}`, {
+      .get<{ results: NotificationDoc[] }>(`${triggersBaseUrl}/notifications/api/me/${triggersTenantId}/${userId}`, {
         params: { page: 1, limit: 50 },
       })
       .then(({ data }) => {
@@ -145,7 +143,7 @@ export default function Notifications() {
     return () => {
       cancelled = true
     }
-  }, [tenant, userId, triggersBaseUrl, t])
+  }, [triggersTenantId, userId, triggersBaseUrl])
 
   const filtered = React.useMemo(() => {
     if (activeTab === "all") return notifications

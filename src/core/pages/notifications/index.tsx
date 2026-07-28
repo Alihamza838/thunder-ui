@@ -25,7 +25,9 @@ import axios from "axios"
 import { formatDistanceToNow, isSameDay, subDays, format } from "date-fns"
 import { ThunderSDK } from "thunder-sdk"
 import { use } from "@/core/hooks/use"
-import { triggersBaseUrl, triggersTenantId } from "@/lib/constants"
+
+const triggersTenantId = import.meta.env.VITE_TRIGGERS_TENANT_ID
+const triggersBaseUrl = import.meta.env.VITE_TRIGGERS_BASE_URL
 
 type NotificationType = "order" | "payment" | "delivery" | "alert" | "info"
 
@@ -102,7 +104,7 @@ export default function Notifications() {
     []
   )
   const { data: me } = use(_me)
-  
+
   const userId = me?._id
 
 

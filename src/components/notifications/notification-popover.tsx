@@ -19,7 +19,9 @@ import {
 import axios from "axios"
 import { formatDistanceToNow } from "date-fns"
 import { Card, CardContent } from "../ui/card"
-import { triggersBaseUrl, triggersTenantId } from "@/lib/constants"
+
+const triggersTenantId = import.meta.env.VITE_TRIGGERS_TENANT_ID
+const triggersBaseUrl = import.meta.env.VITE_TRIGGERS_BASE_URL
 
 // Types
 export type NotificationType = "order" | "payment" | "delivery" | "alert" | "info"

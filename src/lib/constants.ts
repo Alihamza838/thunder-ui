@@ -20,6 +20,3 @@ export const ITEM: Variants = {
 // Shared padding for the account trigger + panel header so the avatar/name stay
 // put as the box morphs — the panel reads as the trigger itself growing open.
 export const HEAD = "flex items-center gap-2 px-2 py-1.5 text-left";
-
-export const triggersTenantId = import.meta.env.VITE_TRIGGERS_TENANT_ID;
-export const triggersBaseUrl = import.meta.env.VITE_TRIGGERS_BASE_URL

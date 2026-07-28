@@ -52070,13 +52070,13 @@ const __vitePreload = function preload(baseModule, deps, importerUrl) {
   });
 };
 const App$1 = registerPlugin("App", {
-  web: () => __vitePreload(() => import("./web-yzBXQXjG.js"), true ? [] : void 0).then((m2) => new m2.AppWeb())
+  web: () => __vitePreload(() => import("./web-01pnaLfC.js"), true ? [] : void 0).then((m2) => new m2.AppWeb())
 });
 const Browser$1 = registerPlugin("Browser", {
-  web: () => __vitePreload(() => import("./web-CUMfRiAc.js"), true ? [] : void 0).then((m2) => new m2.BrowserWeb())
+  web: () => __vitePreload(() => import("./web-DUs5CBFg.js"), true ? [] : void 0).then((m2) => new m2.BrowserWeb())
 });
 const Preferences = registerPlugin("Preferences", {
-  web: () => __vitePreload(() => import("./web-CS6eOpxt.js"), true ? [] : void 0).then((m2) => new m2.PreferencesWeb())
+  web: () => __vitePreload(() => import("./web-DghLuV6Q.js"), true ? [] : void 0).then((m2) => new m2.PreferencesWeb())
 });
 class InvalidTokenError extends Error {
 }
@@ -68986,8 +68986,8 @@ function CardFooter({ className, ...props }) {
     }
   );
 }
-const triggersTenantId = "6a0f0dc1216c36e813000c98";
-const triggersBaseUrl = void 0;
+const triggersTenantId$1 = "6a0f0dc1216c36e813000c98";
+const triggersBaseUrl$1 = "https://triggers.huruftech.com";
 const TYPE_CONFIG$1 = {
   order: { icon: IconPackage, bg: "bg-primary/10", color: "text-primary", border: "border-l-primary", label: "Orders" },
   payment: { icon: IconCash, bg: "bg-success/10", color: "text-success", border: "border-l-success", label: "Payments" },
@@ -69026,11 +69026,11 @@ function NotificationPopover({ userId, unreadCount: unreadCountProp = 0 }) {
     );
   };
   React.useEffect(() => {
-    if (!open || !triggersTenantId || !userId) return;
+    if (!open || !triggersTenantId$1 || !userId) return;
     let cancelled = false;
     setLoading(true);
     setError(null);
-    axios.get(`${triggersBaseUrl}/notifications/api/me/${triggersTenantId}/${userId}`, {
+    axios.get(`${triggersBaseUrl$1}/notifications/api/me/${triggersTenantId$1}/${userId}`, {
       params: { page: 1, limit: 10 }
     }).then(({ data: data2 }) => {
       if (cancelled) return;
@@ -69053,7 +69053,7 @@ function NotificationPopover({ userId, unreadCount: unreadCountProp = 0 }) {
     return () => {
       cancelled = true;
     };
-  }, [open, triggersTenantId, userId, t3]);
+  }, [open, triggersTenantId$1, userId, t3]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(Popover$1, { open, onOpenChange: setOpen, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(
       PopoverTrigger$1,
@@ -69242,7 +69242,7 @@ function Layout$2({ children }) {
   const { data: me3 } = use$1(_me);
   const [unreadCount, setUnreadCount] = React.useState(0);
   const triggersTenant = "6a0f0dc1216c36e813000c98";
-  const triggersBaseUrl2 = void 0;
+  const triggersBaseUrl2 = "https://triggers.huruftech.com";
   React.useEffect(() => {
     if (!me3?._id) return;
     const controller = new AbortController();
@@ -183969,7 +183969,7 @@ const Clipboard = registerPlugin("Clipboard", {
   web: () => new ClipboardWeb()
 });
 const Share = registerPlugin("Share", {
-  web: () => __vitePreload(() => import("./web-C2Avt48Z.js"), true ? [] : void 0).then((m2) => new m2.ShareWeb())
+  web: () => __vitePreload(() => import("./web-DFEZBVbG.js"), true ? [] : void 0).then((m2) => new m2.ShareWeb())
 });
 var __defProp = Object.defineProperty;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
@@ -185520,6 +185520,8 @@ function AccordionContent({
     }
   );
 }
+const triggersTenantId = "6a0f0dc1216c36e813000c98";
+const triggersBaseUrl = "https://triggers.huruftech.com";
 const PAGE_SIZE = 5;
 const TYPE_CONFIG = {
   order: { icon: IconPackage, bg: "bg-primary/10", color: "text-primary", border: "border-l-primary", label: "Orders" },

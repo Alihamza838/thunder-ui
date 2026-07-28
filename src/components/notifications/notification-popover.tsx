@@ -18,6 +18,7 @@ import {
 } from "@tabler/icons-react"
 import axios from "axios"
 import { formatDistanceToNow } from "date-fns"
+import { Card, CardContent } from "../ui/card"
 
 // Types
 export type NotificationType = "order" | "payment" | "delivery" | "alert" | "info"
@@ -50,13 +51,13 @@ type NotificationDoc = {
 
 const TYPE_CONFIG: Record<
   NotificationType,
-  { icon: typeof IconBell; bg: string; color: string }
+  { icon: typeof IconBell; bg: string; color: string; border: string; label: string }
 > = {
-  order: { icon: IconPackage, bg: "bg-primary/10", color: "text-primary" },
-  payment: { icon: IconCash, bg: "bg-success/10", color: "text-success" },
-  delivery: { icon: IconTruckDelivery, bg: "bg-blue-500/10", color: "text-blue-500" },
-  alert: { icon: IconAlertCircle, bg: "bg-destructive/10", color: "text-destructive" },
-  info: { icon: IconInfoCircle, bg: "bg-muted", color: "text-muted-foreground" },
+  order: { icon: IconPackage, bg: "bg-primary/10", color: "text-primary", border: "border-l-primary", label: "Orders" },
+  payment: { icon: IconCash, bg: "bg-success/10", color: "text-success", border: "border-l-success", label: "Payments" },
+  delivery: { icon: IconTruckDelivery, bg: "bg-blue-500/10", color: "text-blue-500", border: "border-l-blue-500", label: "Deliveries" },
+  alert: { icon: IconAlertCircle, bg: "bg-destructive/10", color: "text-destructive", border: "border-l-destructive", label: "Alerts" },
+  info: { icon: IconInfoCircle, bg: "bg-muted", color: "text-muted-foreground", border: "border-l-muted-foreground/40", label: "Info" },
 }
 
 const timeAgo = (dateStr: string) => formatDistanceToNow(new Date(dateStr), { addSuffix: true })
@@ -64,7 +65,9 @@ const timeAgo = (dateStr: string) => formatDistanceToNow(new Date(dateStr), { ad
 export function NotificationPopover({ userId }: { userId?: string }) {
   const { t } = useTranslation()
   const navigate = useNavigate()
-  const tenant = import.meta.env.VITE_TENANT_ID
+  const { tenant } = useParams()
+  const triggersTenant = import.meta.env.VITE_TRIGGERS_TENANT_ID
+  const triggersBaseUrl = import.meta.env.VITE_TRIGGERS_BASE_URL
 
   const [notifications, setNotifications] = React.useState<TNotification[]>([])
   const [loading, setLoading] = React.useState(false)
@@ -89,7 +92,7 @@ export function NotificationPopover({ userId }: { userId?: string }) {
     setError(null)
 
     axios
-      .get<{ results: NotificationDoc[] }>(`/notifications/api/me/${tenant}/${userId}`, {
+      .get<{ results: NotificationDoc[] }>(`${triggersBaseUrl}/notifications/api/me/${triggersTenant}/${userId}`, {
         params: { page: 1, limit: 10 },
       })
       .then(({ data }) => {
@@ -140,7 +143,7 @@ export function NotificationPopover({ userId }: { userId?: string }) {
       <PopoverContent
         align="end"
         sideOffset={8}
-        className="w-90 p-0 sm:w-100"
+        className="w-90 p-0 sm:w-100 gap-0"
       >
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-3">
@@ -173,8 +176,8 @@ export function NotificationPopover({ userId }: { userId?: string }) {
         <Separator />
 
         {/* List */}
-        <ScrollArea className="max-h-80">
-          <div className="flex flex-col">
+        <ScrollArea className="h-auto">
+          <div className="flex flex-col gap-2 p-2">
             {loading ? (
               <div className="flex flex-col items-center justify-center py-10 text-center">
                 <p className="text-sm text-muted-foreground">{t("Loading...")}</p>
@@ -195,48 +198,52 @@ export function NotificationPopover({ userId }: { userId?: string }) {
                 const cfg = TYPE_CONFIG[n.type]
                 const Icon = cfg.icon
                 return (
-                  <button
+                  <Card
                     key={n.id}
-                    type="button"
-                    onClick={() => markRead(n.id)}
                     className={cn(
-                      "flex w-full items-start gap-3 px-4 py-3 text-start transition-colors hover:bg-muted/50",
+                      "border-l-[3px] p-2 shadow-none transition-all duration-150 hover:shadow-sm cursor-pointer",
+                      cfg.border,
                       !n.read && "bg-primary/3"
                     )}
+                    onClick={() => markRead(n.id)}
                   >
-                    <span
-                      className={cn(
-                        "mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full",
-                        cfg.bg,
-                        cfg.color
-                      )}
-                    >
-                      <Icon className="size-4" />
-                    </span>
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-start justify-between gap-2">
-                        <p
-                          className={cn(
-                            "truncate text-sm",
-                            !n.read
-                              ? "font-semibold text-foreground"
-                              : "font-medium text-foreground/80"
-                          )}
-                        >
-                          {t(n.title)}
-                        </p>
+                    <CardContent className="flex w-full items-center gap-2 p-0">
+                      <span
+                        className={cn(
+                          "mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full",
+                          cfg.bg,
+                          cfg.color
+                        )}
+                      >
+                        <Icon className="size-4" />
+                      </span>
+                      <div className="w-full flex justify-between items-center">
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-center justify-between gap-2">
+                            <p
+                              className={cn(
+                                "truncate text-sm",
+                                !n.read
+                                  ? "font-semibold text-foreground"
+                                  : "font-medium text-foreground/80"
+                              )}
+                            >
+                              {t(n.title)}
+                            </p>
+                          </div>
+                          <p className="line-clamp-2 text-xs text-muted-foreground">
+                            {n.message}
+                          </p>
+                          <p className="text-[11px] text-muted-foreground/60">
+                            {n.time}
+                          </p>
+                        </div>
                         {!n.read && (
                           <span className="mt-1.5 size-2 shrink-0 rounded-full bg-primary" />
                         )}
                       </div>
-                      <p className="mt-0.5 line-clamp-2 text-xs text-muted-foreground">
-                        {n.message}
-                      </p>
-                      <p className="mt-1 text-[11px] text-muted-foreground/60">
-                        {n.time}
-                      </p>
-                    </div>
-                  </button>
+                    </CardContent>
+                  </Card>
                 )
               })
             )}

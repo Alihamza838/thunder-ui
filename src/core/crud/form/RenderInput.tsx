@@ -288,18 +288,20 @@ export const renderField = ({
           required: !field.optional && t("This field is required!"),
           pattern,
         }}
-        render={(def) => (
-          <Autocomplete
-            id={id}
-            items={(field.enum ?? []).map((value) =>
-              typeof value === "object" && value
-                ? value
-                : { value, label: value }
-            )}
-            value={def.field.value ?? ""}
-            onValueChange={def.field.onChange}
-          />
-        )}
+        render={(def) => {
+          return (
+            <Autocomplete
+              id={id}
+              items={(field.enum ?? []).map((value) =>
+                typeof value === "object" && value
+                  ? value
+                  : { value, label: value }
+              )}
+              value={def.field.value ?? ""}
+              onValueChange={def.field.onChange}
+            />
+          )
+        }}
       />
     ) : (
       <Controller

@@ -19,6 +19,7 @@ import { PhoneInput } from "@/components/reui/phone-input"
 
 import type { TField } from "@/core/lib/jsonSchemaToFields"
 import { MarkdownEditorField } from "@/core/custom/MarkdownEditor"
+import { Autocomplete } from "@/core/custom/Autocomplete"
 
 import { Dropdown } from "../../custom/Dropdown"
 import { Multiselect } from "../../custom/Multiselect"
@@ -259,7 +260,7 @@ export const renderField = ({
       />
     )
 
-  if (field.enum && field.enum.length) {
+  if (field.enum) {
     return field.multi ? (
       <Controller
         name={name}
@@ -275,6 +276,27 @@ export const renderField = ({
             autoHighlight
             items={field.enum}
             value={def.field.value}
+            onValueChange={def.field.onChange}
+          />
+        )}
+      />
+    ) : field.fieldHint === "autocomplete" ? (
+      <Controller
+        name={name}
+        control={control}
+        rules={{
+          required: !field.optional && t("This field is required!"),
+          pattern,
+        }}
+        render={(def) => (
+          <Autocomplete
+            id={id}
+            items={(field.enum ?? []).map((value) =>
+              typeof value === "object" && value
+                ? value
+                : { value, label: value }
+            )}
+            value={def.field.value ?? ""}
             onValueChange={def.field.onChange}
           />
         )}

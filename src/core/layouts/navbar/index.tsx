@@ -60,7 +60,7 @@ import { useTranslation } from "react-i18next"
 import { getWallets } from "@/core/endpoints/wallet.ts"
 import { Skeleton } from "@/components/ui/skeleton"
 import { ActionSwapText } from "@/core/pages/wallet/action-swap"
-import { NotificationPopover } from "@/components/notifications/notification-popover"
+import { NotificationPopover } from "@/core/pages/notifications/notification-popover"
 import axios from "axios"
 
 

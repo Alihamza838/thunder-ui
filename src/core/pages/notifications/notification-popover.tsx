@@ -18,7 +18,7 @@ import {
 } from "@tabler/icons-react"
 import axios from "axios"
 import { formatDistanceToNow } from "date-fns"
-import { Card, CardContent } from "../ui/card"
+import { Card, CardContent } from "../../../components/ui/card"
 
 const triggersTenantId = import.meta.env.VITE_TRIGGERS_TENANT_ID
 const triggersBaseUrl = import.meta.env.VITE_TRIGGERS_BASE_URL

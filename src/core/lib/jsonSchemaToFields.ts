@@ -309,6 +309,7 @@ export const FieldTypes = [
   "email",
   "url",
   "hidden",
+  "phone"
 ] as const;
 
 export type TFieldType = (typeof FieldTypes)[number];
@@ -358,8 +359,8 @@ export class JSONSchemaToFields {
         return "date";
       }
 
-      case "email": {
-        return "email";
+      case "e164": {
+        return "phone";
       }
 
       default: {

@@ -11,16 +11,18 @@ import {
   FieldError,
   FieldLabel,
 } from "@/components/ui/field"
-import type { TField } from "@/core/lib/jsonSchemaToFields"
-
 import { Switch } from "@/components/ui/switch"
 import { Input } from "@/components/ui/input"
 import { Input as NumberInput } from "@/components/ui/number-input"
 import { Textarea } from "@/components/ui/textarea"
+import { PhoneInput } from "@/components/reui/phone-input"
+
+import type { TField } from "@/core/lib/jsonSchemaToFields"
+import { MarkdownEditorField } from "@/core/custom/MarkdownEditor"
+
 import { Dropdown } from "../../custom/Dropdown"
 import { Multiselect } from "../../custom/Multiselect"
 import { Tag, TagInput } from "../../custom/TagInput"
-import { MarkdownEditorField } from "@/core/custom/MarkdownEditor"
 import { AvatarUpload } from "../../custom/AvatarUpload"
 import { ImageUpload } from "../../custom/ImageUpload"
 import { formatDateForInput, handleUpload } from "../../lib/utils"
@@ -105,12 +107,17 @@ export const renderField = ({
   control: Control<any, any, any>
   t: TFunction
 }) => {
+  const pattern = field.pattern ? new RegExp(field.pattern) : undefined
+
   if (field.type === "text" && field.fieldHint === "markdown") {
     return (
       <Controller
         name={name}
         control={control}
-        rules={{ required: !field.optional && t("This field is required!") }}
+        rules={{
+          required: !field.optional && t("This field is required!"),
+          pattern,
+        }}
         render={(def) => (
           <MarkdownEditorField
             value={def.field.value}
@@ -126,7 +133,10 @@ export const renderField = ({
       <Controller
         name={name}
         control={control}
-        rules={{ required: !field.optional && t("This field is required!") }}
+        rules={{
+          required: !field.optional && t("This field is required!"),
+          pattern,
+        }}
         render={(def) => (
           <AvatarUpload
             id={id}
@@ -161,7 +171,10 @@ export const renderField = ({
       <Controller
         name={name}
         control={control}
-        rules={{ required: !field.optional && t("This field is required!") }}
+        rules={{
+          required: !field.optional && t("This field is required!"),
+          pattern,
+        }}
         render={(def) => {
           const currentValue = def.field.value
 
@@ -232,7 +245,10 @@ export const renderField = ({
       <Controller
         name={name}
         control={control}
-        rules={{ required: !field.optional && t("This field is required!") }}
+        rules={{
+          required: !field.optional && t("This field is required!"),
+          pattern,
+        }}
         render={(def) => (
           <Switch
             id={id}
@@ -248,7 +264,10 @@ export const renderField = ({
       <Controller
         name={name}
         control={control}
-        rules={{ required: !field.optional && t("This field is required!") }}
+        rules={{
+          required: !field.optional && t("This field is required!"),
+          pattern,
+        }}
         render={(def) => (
           <Multiselect
             id={id}
@@ -264,7 +283,10 @@ export const renderField = ({
       <Controller
         name={name}
         control={control}
-        rules={{ required: !field.optional && t("This field is required!") }}
+        rules={{
+          required: !field.optional && t("This field is required!"),
+          pattern,
+        }}
         render={(def) => (
           <Dropdown
             id={id}
@@ -281,13 +303,36 @@ export const renderField = ({
     )
   }
 
+  if (field.type === "phone" && !field.multi) {
+    return (
+      <Controller
+        name={name}
+        control={control}
+        rules={{
+          required: !field.optional && t("This field is required!"),
+          pattern,
+        }}
+        render={(def) => (
+          <PhoneInput
+            id={id}
+            value={def.field.value}
+            onChange={def.field.onChange}
+          />
+        )}
+      />
+    )
+  }
+
   if (["text", "number", "url", "email", "phone"].includes(field.type)) {
     if (field.multi) {
       return (
         <Controller
           name={name}
           control={control}
-          rules={{ required: !field.optional && t("This field is required!") }}
+          rules={{
+            required: !field.optional && t("This field is required!"),
+            pattern,
+          }}
           render={(def) => (
             <Tag
               id={id}
@@ -307,7 +352,10 @@ export const renderField = ({
         <Controller
           name={name}
           control={control}
-          rules={{ required: !field.optional && t("This field is required!") }}
+          rules={{
+            required: !field.optional && t("This field is required!"),
+            pattern,
+          }}
           render={(def) => (
             <Textarea
               id={id}
@@ -329,7 +377,10 @@ export const renderField = ({
         <Controller
           name={name}
           control={control}
-          rules={{ required: !field.optional && t("This field is required!") }}
+          rules={{
+            required: !field.optional && t("This field is required!"),
+            pattern,
+          }}
           render={(def) => (
             <Input
               id={id}
@@ -347,7 +398,10 @@ export const renderField = ({
       <Controller
         name={name}
         control={control}
-        rules={{ required: !field.optional && t("This field is required!") }}
+        rules={{
+          required: !field.optional && t("This field is required!"),
+          pattern,
+        }}
         render={(def) => (
           <Input
             id={id}
@@ -366,7 +420,10 @@ export const renderField = ({
       <Controller
         name={name}
         control={control}
-        rules={{ required: !field.optional && t("This field is required!") }}
+        rules={{
+          required: !field.optional && t("This field is required!"),
+          pattern,
+        }}
         render={(def) => (
           <NumberInput
             id={id}
@@ -387,7 +444,10 @@ export const renderField = ({
     <Controller
       name={name}
       control={control}
-      rules={{ required: !field.optional && t("This field is required!") }}
+      rules={{
+        required: !field.optional && t("This field is required!"),
+        pattern,
+      }}
       render={(def) => (
         <Input
           id={id}

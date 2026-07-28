@@ -243,7 +243,7 @@ export const renderField = ({
       />
     )
 
-  if (field.enum) {
+  if (field.enum && field.enum.length) {
     return field.multi ? (
       <Controller
         name={name}

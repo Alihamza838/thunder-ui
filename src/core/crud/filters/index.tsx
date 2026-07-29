@@ -17,7 +17,7 @@ import {
   type TablerIcon,
 } from "@tabler/icons-react"
 
-export type TValue = { value: any operator: string }
+export type TValue = { value: any ; operator: string }
 export type TFilterValue = Record<string, TValue>
 
 export type TFilter = {

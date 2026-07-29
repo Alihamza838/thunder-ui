@@ -173,7 +173,7 @@ export function NotificationPopover({ userId, unreadCount: unreadCount = 0, onRe
 
         {/* List */}
         <ScrollArea className="h-auto">
-          <div className="flex flex-col gap-2 p-2">
+          <div className="flex flex-col gap-3 p-2">
             {loading ? (
               <SkeletonRepeater count={5}>
                 <NotificationSkeletonCard />

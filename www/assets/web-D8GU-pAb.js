@@ -1,4 +1,4 @@
-import { W as WebPlugin } from "./index-BnmeQTP-.js";
+import { W as WebPlugin } from "./index-D_24dss4.js";
 class AppWeb extends WebPlugin {
   constructor() {
     super();

@@ -8,101 +8,71 @@ import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 import { useTranslation } from "react-i18next"
 import {
-  IconAlertCircle,
   IconBell,
-  IconCash,
   IconCheck,
   IconInfoCircle,
-  IconPackage,
-  IconTruckDelivery,
 } from "@tabler/icons-react"
-import axios from "axios"
-import { formatDistanceToNow } from "date-fns"
-import { Card, CardContent } from "../../../components/ui/card"
+import { toast } from "sonner"
+import { fetchNotifications, markNotificationAsRead } from "@/core/endpoints/notification"
+import { Card, CardContent } from "@/components/ui/card"
+import type { TNotification } from "@/core/types"
+import { timeAgo, triggersBaseUrl, triggersTenantId } from "@/core/lib/utils"
+import { SkeletonRepeater } from "@/core/custom/SkeletonRepeater"
 
-const triggersTenantId = import.meta.env.VITE_TRIGGERS_TENANT_ID
-const triggersBaseUrl = import.meta.env.VITE_TRIGGERS_BASE_URL
-
-// Types
-export type NotificationType = "order" | "payment" | "delivery" | "alert" | "info"
-
-export type TNotification = {
-  id: string
-  type: NotificationType
-  title: string
-  body: string
-  time: string
-  read: boolean
+function NotificationSkeletonCard() {
+  return (
+    <Card className="border-l-[3px] border-l-muted-foreground/20 p-2 shadow-none">
+      <CardContent className="flex w-full items-center gap-2 p-0">
+        <span className="mt-0.5 size-8 shrink-0 animate-pulse rounded-full bg-muted" />
+        <div className="w-full flex justify-between items-center">
+          <div className="min-w-0 flex-1 flex flex-col gap-2">
+            <div className="h-3 w-24 animate-pulse rounded bg-muted sm:w-32" />
+            <div className="h-2.5 w-32 animate-pulse rounded bg-muted sm:w-40" />
+          </div>
+          <div className="flex flex-col items-end gap-2">
+            <div className="h-3 w-16 animate-pulse rounded bg-muted" />
+            <div className="h-2.5 w-10 animate-pulse rounded bg-muted" />
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  )
 }
-
-type NotificationDoc = {
-  _id: string
-  receiver: string
-  tenant: string
-  data: {
-    type?: NotificationType
-    title: string
-    body: string
-  }
-  seen?: boolean
-  read?: boolean
-  createdAt: string
-  updatedAt: string
-}
-
-// Config
-
-const TYPE_CONFIG: Record<
-  NotificationType,
-  { icon: typeof IconBell; bg: string; color: string; border: string; label: string }
-> = {
-  order: { icon: IconPackage, bg: "bg-primary/10", color: "text-primary", border: "border-l-primary", label: "Orders" },
-  payment: { icon: IconCash, bg: "bg-success/10", color: "text-success", border: "border-l-success", label: "Payments" },
-  delivery: { icon: IconTruckDelivery, bg: "bg-blue-500/10", color: "text-blue-500", border: "border-l-blue-500", label: "Deliveries" },
-  alert: { icon: IconAlertCircle, bg: "bg-destructive/10", color: "text-destructive", border: "border-l-destructive", label: "Alerts" },
-  info: { icon: IconInfoCircle, bg: "bg-muted", color: "text-muted-foreground", border: "border-l-muted-foreground/40", label: "Info" },
-}
-
-const timeAgo = (dateStr: string) => formatDistanceToNow(new Date(dateStr), { addSuffix: true })
 
 type NotificationPopoverProps = {
   userId?: string
   unreadCount?: number
+  onRefreshUnread?: () => void
 }
 
-export function NotificationPopover({ userId, unreadCount: unreadCountProp = 0 }: NotificationPopoverProps) {
+export function NotificationPopover({ userId, unreadCount: unreadCount = 0, onRefreshUnread }: NotificationPopoverProps) {
   const { t } = useTranslation()
   const navigate = useNavigate()
 
   const [notifications, setNotifications] = React.useState<TNotification[]>([])
   const [loading, setLoading] = React.useState(false)
-  const [error, setError] = React.useState<string | null>(null)
   const [open, setOpen] = React.useState(false)
 
-  const [unreadCount, setUnreadCount] = React.useState(unreadCountProp)
-  const [hasFetchedOnce, setHasFetchedOnce] = React.useState(false)
-
-  React.useEffect(() => {
-    if (!hasFetchedOnce) {
-      setUnreadCount(unreadCountProp)
-    }
-  }, [unreadCountProp, hasFetchedOnce])
-
+  /*
   const markAllRead = () => {
+    // Implement API batch logic here later
     setNotifications((prev) => prev.map((n) => ({ ...n, read: true })))
-    setUnreadCount(0)
   }
+  */
 
-  const markRead = (id: string) => {
+  const markRead = async (id: string) => {
+    if (!triggersTenantId || !userId) return;
+
     setNotifications((prev) =>
-      prev.map((n) => {
-        if (n.id === id && !n.read) {
-          setUnreadCount((count) => Math.max(0, count - 1))
-          return { ...n, read: true }
-        }
-        return n
-      })
+      prev.map((n) => (n._id === id ? { ...n, read: true } : n))
     )
+
+    try {
+      await markNotificationAsRead(triggersBaseUrl, triggersTenantId, userId, id)
+      if (onRefreshUnread) onRefreshUnread()
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   React.useEffect(() => {
@@ -110,30 +80,32 @@ export function NotificationPopover({ userId, unreadCount: unreadCountProp = 0 }
 
     let cancelled = false
     setLoading(true)
-    setError(null)
 
-    axios
-      .get<{ results: NotificationDoc[] }>(`${triggersBaseUrl}/notifications/api/me/${triggersTenantId}/${userId}`, {
-        params: { page: 1, limit: 10 },
-      })
-      .then(({ data }) => {
+    fetchNotifications(triggersBaseUrl, triggersTenantId, userId, 1, 5)
+      .then((results) => {
         if (cancelled) return
 
-        const mapped = data.results.map((doc) => ({
-          id: doc._id,
-          type: doc.data?.type ?? "info",
-          title: doc.data?.title ?? "",
-          body: doc.data?.body ?? "",
-          time: timeAgo(doc.createdAt),
+        const mapped = results.map((doc) => ({
+          _id: doc._id,
+          receiver: doc.receiver,
+          data: {
+            imageUrl: doc.data?.imageUrl ?? "",
+            title: doc.data?.title ?? "",
+            body: doc.data?.body ?? "",
+            html: doc.data?.html ?? "",
+          },
+          tenant: doc.tenant,
           read: doc.read ?? false,
+          createdAt: timeAgo(doc.createdAt),
+          updatedAt: timeAgo(doc.updatedAt),
         }))
 
         setNotifications(mapped)
-        setUnreadCount(mapped.filter((n) => !n.read).length)
-        setHasFetchedOnce(true)
       })
-      .catch(() => {
-        if (!cancelled) setError(t("Failed to load notifications"))
+      .catch((err) => {
+        if (cancelled) return
+        const message = t(`${err} || ${err?.message}  || ${err?.response?.data?.message}`) || t("Failed to load notifications")
+        toast.error(message)
       })
       .finally(() => {
         if (!cancelled) setLoading(false)
@@ -142,7 +114,7 @@ export function NotificationPopover({ userId, unreadCount: unreadCountProp = 0 }
     return () => {
       cancelled = true
     }
-  }, [open, triggersTenantId, userId, t])
+  }, [open, userId, t])
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -203,13 +175,9 @@ export function NotificationPopover({ userId, unreadCount: unreadCountProp = 0 }
         <ScrollArea className="h-auto">
           <div className="flex flex-col gap-2 p-2">
             {loading ? (
-              <div className="flex flex-col items-center justify-center py-10 text-center">
-                <p className="text-sm text-muted-foreground">{t("Loading...")}</p>
-              </div>
-            ) : error ? (
-              <div className="flex flex-col items-center justify-center py-10 text-center">
-                <p className="text-sm text-destructive">{error}</p>
-              </div>
+              <SkeletonRepeater count={5}>
+                <NotificationSkeletonCard />
+              </SkeletonRepeater>
             ) : notifications.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-10 text-center">
                 <IconBell className="mb-2 size-8 text-muted-foreground/30" />
@@ -218,28 +186,23 @@ export function NotificationPopover({ userId, unreadCount: unreadCountProp = 0 }
                 </p>
               </div>
             ) : (
-              notifications.slice(0, 5).map((n) => {
-                const cfg = TYPE_CONFIG[n.type]
-                const Icon = cfg.icon
+              notifications.map((n) => {
                 return (
                   <Card
-                    key={n.id}
+                    key={n._id}
                     className={cn(
                       "border-l-[3px] p-2 shadow-none transition-all duration-150 hover:shadow-sm cursor-pointer",
-                      cfg.border,
                       !n.read && "bg-primary/3"
                     )}
-                    onClick={() => markRead(n.id)}
+                    onClick={() => markRead(n._id)}
                   >
                     <CardContent className="flex w-full items-center gap-2 p-0">
                       <span
                         className={cn(
-                          "mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full",
-                          cfg.bg,
-                          cfg.color
+                          "mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full"
                         )}
                       >
-                        <Icon className="size-4" />
+                        <IconInfoCircle className="size-4" />
                       </span>
                       <div className="w-full flex justify-between items-center">
                         <div className="min-w-0 flex-1 flex flex-col gap-1">
@@ -252,14 +215,14 @@ export function NotificationPopover({ userId, unreadCount: unreadCountProp = 0 }
                                   : "text-foreground/80"
                               )}
                             >
-                              {t(n.title)}
+                              {t(n.data.title)}
                             </h6>
                             {!n.read && (
                               <span className="size-2 shrink-0 rounded-full bg-primary" />
                             )}
                           </div>
                           <small className="line-clamp-1 truncate text-xs text-muted-foreground w-full max-w-36 sm:max-w-48">
-                            {n.body}
+                            {n.data.body}
                           </small>
                         </div>
                         <div className="flex flex-col">
@@ -267,13 +230,16 @@ export function NotificationPopover({ userId, unreadCount: unreadCountProp = 0 }
                             variant="ghost"
                             size="sm"
                             className="h-auto p-1 text-xs text-muted-foreground hover:text-foreground"
-                            onClick={markAllRead}
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              markRead(n._id)
+                            }}
                           >
                             <IconCheck className="me-1 size-3" />
                             {t("Mark as read")}
                           </Button>
                           <p className="text-[11px] text-muted-foreground/60 text-end p-1">
-                            {n.time}
+                            {n.createdAt}
                           </p>
                         </div>
                       </div>

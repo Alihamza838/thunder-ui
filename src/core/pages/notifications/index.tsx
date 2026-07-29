@@ -232,7 +232,7 @@ export default function Notifications() {
 
         {loading && (
           <div className="flex flex-col gap-2">
-            <SkeletonRepeater count={5}>
+            <SkeletonRepeater count={5} className="gap-3">
               <NotificationCardSkeleton />
             </SkeletonRepeater>
           </div>
@@ -282,7 +282,7 @@ export default function Notifications() {
               <Separator className="flex-1" />
             </div>
 
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-3">
               {items.map((n) => {
                 return (
                   <Card
@@ -361,17 +361,6 @@ export default function Notifications() {
                                   {t(action.label ?? (action.type === "button" ? "View details" : "Open link"))}
                                 </Button>
                               ))} */}
-
-                              <Button
-                                size="sm"
-                                variant="outline"
-                                className="text-xs"
-                                onClick={(e) => {
-                                  e.stopPropagation()
-                                }}
-                              >
-                                {t("View details")}
-                              </Button>
                             </div>
                           </div>
                         </AccordionContent>

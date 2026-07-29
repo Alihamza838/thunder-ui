@@ -39598,152 +39598,142 @@ const createReactComponent = (type, iconName, iconNamePascal, iconNode) => {
   Component.displayName = `${iconNamePascal}`;
   return Component;
 };
-const __iconNode$1h = [["path", { "d": "M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0", "key": "svg-0" }], ["path", { "d": "M12 8v4", "key": "svg-1" }], ["path", { "d": "M12 16h.01", "key": "svg-2" }]];
-const IconAlertCircle = createReactComponent("outline", "alert-circle", "AlertCircle", __iconNode$1h);
-const __iconNode$1g = [["path", { "d": "M10 12l10 0", "key": "svg-0" }], ["path", { "d": "M10 12l4 4", "key": "svg-1" }], ["path", { "d": "M10 12l4 -4", "key": "svg-2" }], ["path", { "d": "M4 4l0 16", "key": "svg-3" }]];
-const IconArrowBarToLeft = createReactComponent("outline", "arrow-bar-to-left", "ArrowBarToLeft", __iconNode$1g);
-const __iconNode$1f = [["path", { "d": "M14 12l-10 0", "key": "svg-0" }], ["path", { "d": "M14 12l-4 4", "key": "svg-1" }], ["path", { "d": "M14 12l-4 -4", "key": "svg-2" }], ["path", { "d": "M20 4l0 16", "key": "svg-3" }]];
-const IconArrowBarToRight = createReactComponent("outline", "arrow-bar-to-right", "ArrowBarToRight", __iconNode$1f);
-const __iconNode$1e = [["path", { "d": "M12 5v.5m0 3v1.5m0 3v6", "key": "svg-0" }], ["path", { "d": "M18 13l-6 6", "key": "svg-1" }], ["path", { "d": "M6 13l6 6", "key": "svg-2" }]];
-const IconArrowDownDashed = createReactComponent("outline", "arrow-down-dashed", "ArrowDownDashed", __iconNode$1e);
-const __iconNode$1d = [["path", { "d": "M5 12l14 0", "key": "svg-0" }], ["path", { "d": "M5 12l6 6", "key": "svg-1" }], ["path", { "d": "M5 12l6 -6", "key": "svg-2" }]];
-const IconArrowLeft = createReactComponent("outline", "arrow-left", "ArrowLeft", __iconNode$1d);
-const __iconNode$1c = [["path", { "d": "M12 5l0 14", "key": "svg-0" }], ["path", { "d": "M16 9l-4 -4", "key": "svg-1" }], ["path", { "d": "M8 9l4 -4", "key": "svg-2" }]];
-const IconArrowNarrowUp = createReactComponent("outline", "arrow-narrow-up", "ArrowNarrowUp", __iconNode$1c);
-const __iconNode$1b = [["path", { "d": "M5 12l14 0", "key": "svg-0" }], ["path", { "d": "M13 18l6 -6", "key": "svg-1" }], ["path", { "d": "M13 6l6 6", "key": "svg-2" }]];
-const IconArrowRight = createReactComponent("outline", "arrow-right", "ArrowRight", __iconNode$1b);
-const __iconNode$1a = [["path", { "d": "M7 10h14l-4 -4", "key": "svg-0" }], ["path", { "d": "M17 14h-14l4 4", "key": "svg-1" }]];
-const IconArrowsExchange = createReactComponent("outline", "arrows-exchange", "ArrowsExchange", __iconNode$1a);
-const __iconNode$19 = [["path", { "d": "M9.346 5.353c.21 -.129 .428 -.246 .654 -.353a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3m-1 3h-13a4 4 0 0 0 2 -3v-3a6.996 6.996 0 0 1 1.273 -3.707", "key": "svg-0" }], ["path", { "d": "M9 17v1a3 3 0 0 0 6 0v-1", "key": "svg-1" }], ["path", { "d": "M3 3l18 18", "key": "svg-2" }]];
-const IconBellOff = createReactComponent("outline", "bell-off", "BellOff", __iconNode$19);
-const __iconNode$18 = [["path", { "d": "M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6", "key": "svg-0" }], ["path", { "d": "M9 17v1a3 3 0 0 0 6 0v-1", "key": "svg-1" }]];
-const IconBell = createReactComponent("outline", "bell", "Bell", __iconNode$18);
-const __iconNode$17 = [["path", { "d": "M19.072 21h-14.144a1.928 1.928 0 0 1 -1.928 -1.928v-6.857c0 -.512 .203 -1 .566 -1.365l7.07 -7.063a1.928 1.928 0 0 1 2.727 0l7.071 7.063c.363 .362 .566 .853 .566 1.365v6.857a1.928 1.928 0 0 1 -1.928 1.928", "key": "svg-0" }], ["path", { "d": "M7 13v4h10v-4l-5 -5", "key": "svg-1" }], ["path", { "d": "M14.8 5.2l-11.8 11.8", "key": "svg-2" }], ["path", { "d": "M7 17v4", "key": "svg-3" }], ["path", { "d": "M17 17v4", "key": "svg-4" }]];
-const IconBrandGoogleHome = createReactComponent("outline", "brand-google-home", "BrandGoogleHome", __iconNode$17);
-const __iconNode$16 = [["path", { "d": "M9 9v-1a3 3 0 0 1 6 0v1", "key": "svg-0" }], ["path", { "d": "M8 9h8a6 6 0 0 1 1 3v3a5 5 0 0 1 -10 0v-3a6 6 0 0 1 1 -3", "key": "svg-1" }], ["path", { "d": "M3 13l4 0", "key": "svg-2" }], ["path", { "d": "M17 13l4 0", "key": "svg-3" }], ["path", { "d": "M12 20l0 -6", "key": "svg-4" }], ["path", { "d": "M4 19l3.35 -2", "key": "svg-5" }], ["path", { "d": "M20 19l-3.35 -2", "key": "svg-6" }], ["path", { "d": "M4 7l3.75 2.4", "key": "svg-7" }], ["path", { "d": "M20 7l-3.75 2.4", "key": "svg-8" }]];
-const IconBug = createReactComponent("outline", "bug", "Bug", __iconNode$16);
-const __iconNode$15 = [["path", { "d": "M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12", "key": "svg-0" }], ["path", { "d": "M16 3v4", "key": "svg-1" }], ["path", { "d": "M8 3v4", "key": "svg-2" }], ["path", { "d": "M4 11h16", "key": "svg-3" }], ["path", { "d": "M11 15h1", "key": "svg-4" }], ["path", { "d": "M12 15v3", "key": "svg-5" }]];
-const IconCalendar = createReactComponent("outline", "calendar", "Calendar", __iconNode$15);
-const __iconNode$14 = [["path", { "d": "M7 15h-3a1 1 0 0 1 -1 -1v-8a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v3", "key": "svg-0" }], ["path", { "d": "M7 10a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1l0 -8", "key": "svg-1" }], ["path", { "d": "M12 14a2 2 0 1 0 4 0a2 2 0 0 0 -4 0", "key": "svg-2" }]];
-const IconCash = createReactComponent("outline", "cash", "Cash", __iconNode$14);
-const __iconNode$13 = [["path", { "d": "M5 12l5 5l10 -10", "key": "svg-0" }]];
-const IconCheck = createReactComponent("outline", "check", "Check", __iconNode$13);
-const __iconNode$12 = [["path", { "d": "M7 12l5 5l10 -10", "key": "svg-0" }], ["path", { "d": "M2 12l5 5m5 -5l5 -5", "key": "svg-1" }]];
-const IconChecks = createReactComponent("outline", "checks", "Checks", __iconNode$12);
-const __iconNode$11 = [["path", { "d": "M6 9l6 6l6 -6", "key": "svg-0" }]];
-const IconChevronDown = createReactComponent("outline", "chevron-down", "ChevronDown", __iconNode$11);
-const __iconNode$10 = [["path", { "d": "M15 6l-6 6l6 6", "key": "svg-0" }]];
-const IconChevronLeft = createReactComponent("outline", "chevron-left", "ChevronLeft", __iconNode$10);
-const __iconNode$$ = [["path", { "d": "M9 6l6 6l-6 6", "key": "svg-0" }]];
-const IconChevronRight = createReactComponent("outline", "chevron-right", "ChevronRight", __iconNode$$);
-const __iconNode$_ = [["path", { "d": "M6 15l6 -6l6 6", "key": "svg-0" }]];
-const IconChevronUp = createReactComponent("outline", "chevron-up", "ChevronUp", __iconNode$_);
-const __iconNode$Z = [["path", { "d": "M7 7l5 5l-5 5", "key": "svg-0" }], ["path", { "d": "M13 7l5 5l-5 5", "key": "svg-1" }]];
-const IconChevronsRight = createReactComponent("outline", "chevrons-right", "ChevronsRight", __iconNode$Z);
-const __iconNode$Y = [["path", { "d": "M8.56 3.69a9 9 0 0 0 -2.92 1.95", "key": "svg-0" }], ["path", { "d": "M3.69 8.56a9 9 0 0 0 -.69 3.44", "key": "svg-1" }], ["path", { "d": "M3.69 15.44a9 9 0 0 0 1.95 2.92", "key": "svg-2" }], ["path", { "d": "M8.56 20.31a9 9 0 0 0 3.44 .69", "key": "svg-3" }], ["path", { "d": "M15.44 20.31a9 9 0 0 0 2.92 -1.95", "key": "svg-4" }], ["path", { "d": "M20.31 15.44a9 9 0 0 0 .69 -3.44", "key": "svg-5" }], ["path", { "d": "M20.31 8.56a9 9 0 0 0 -1.95 -2.92", "key": "svg-6" }], ["path", { "d": "M15.44 3.69a9 9 0 0 0 -3.44 -.69", "key": "svg-7" }]];
-const IconCircleDashed = createReactComponent("outline", "circle-dashed", "CircleDashed", __iconNode$Y);
-const __iconNode$X = [["path", { "d": "M7 9.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667l0 -8.666", "key": "svg-0" }], ["path", { "d": "M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1", "key": "svg-1" }]];
-const IconCopy = createReactComponent("outline", "copy", "Copy", __iconNode$X);
-const __iconNode$W = [["path", { "d": "M12 19h-6a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v4.5", "key": "svg-0" }], ["path", { "d": "M3 10h18", "key": "svg-1" }], ["path", { "d": "M16 19h6", "key": "svg-2" }], ["path", { "d": "M19 16l3 3l-3 3", "key": "svg-3" }], ["path", { "d": "M7.005 15h.005", "key": "svg-4" }], ["path", { "d": "M11 15h2", "key": "svg-5" }]];
-const IconCreditCardPay = createReactComponent("outline", "credit-card-pay", "CreditCardPay", __iconNode$W);
-const __iconNode$V = [["path", { "d": "M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0", "key": "svg-0" }], ["path", { "d": "M8 12l0 .01", "key": "svg-1" }], ["path", { "d": "M12 12l0 .01", "key": "svg-2" }], ["path", { "d": "M16 12l0 .01", "key": "svg-3" }]];
-const IconDotsCircleHorizontal = createReactComponent("outline", "dots-circle-horizontal", "DotsCircleHorizontal", __iconNode$V);
-const __iconNode$U = [["path", { "d": "M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0", "key": "svg-0" }], ["path", { "d": "M11 19a1 1 0 1 0 2 0a1 1 0 1 0 -2 0", "key": "svg-1" }], ["path", { "d": "M11 5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0", "key": "svg-2" }]];
-const IconDotsVertical = createReactComponent("outline", "dots-vertical", "DotsVertical", __iconNode$U);
-const __iconNode$T = [["path", { "d": "M4 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0", "key": "svg-0" }], ["path", { "d": "M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0", "key": "svg-1" }], ["path", { "d": "M18 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0", "key": "svg-2" }]];
-const IconDots = createReactComponent("outline", "dots", "Dots", __iconNode$T);
-const __iconNode$S = [["path", { "d": "M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1", "key": "svg-0" }], ["path", { "d": "M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415", "key": "svg-1" }], ["path", { "d": "M16 5l3 3", "key": "svg-2" }]];
-const IconEdit = createReactComponent("outline", "edit", "Edit", __iconNode$S);
-const __iconNode$R = [["path", { "d": "M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6", "key": "svg-0" }], ["path", { "d": "M11 13l9 -9", "key": "svg-1" }], ["path", { "d": "M15 4h5v5", "key": "svg-2" }]];
-const IconExternalLink = createReactComponent("outline", "external-link", "ExternalLink", __iconNode$R);
-const __iconNode$Q = [["path", { "d": "M10.585 10.587a2 2 0 0 0 2.829 2.828", "key": "svg-0" }], ["path", { "d": "M16.681 16.673a8.717 8.717 0 0 1 -4.681 1.327c-3.6 0 -6.6 -2 -9 -6c1.272 -2.12 2.712 -3.678 4.32 -4.674m2.86 -1.146a9.055 9.055 0 0 1 1.82 -.18c3.6 0 6.6 2 9 6c-.666 1.11 -1.379 2.067 -2.138 2.87", "key": "svg-1" }], ["path", { "d": "M3 3l18 18", "key": "svg-2" }]];
-const IconEyeOff = createReactComponent("outline", "eye-off", "EyeOff", __iconNode$Q);
-const __iconNode$P = [["path", { "d": "M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0", "key": "svg-0" }], ["path", { "d": "M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6", "key": "svg-1" }]];
-const IconEye = createReactComponent("outline", "eye", "Eye", __iconNode$P);
-const __iconNode$O = [["path", { "d": "M14 3v4a1 1 0 0 0 1 1h4", "key": "svg-0" }], ["path", { "d": "M5 12v-7a2 2 0 0 1 2 -2h7l5 5v4", "key": "svg-1" }], ["path", { "d": "M5 18h1.5a1.5 1.5 0 0 0 0 -3h-1.5v6", "key": "svg-2" }], ["path", { "d": "M17 18h2", "key": "svg-3" }], ["path", { "d": "M20 15h-3v6", "key": "svg-4" }], ["path", { "d": "M11 15v6h1a2 2 0 0 0 2 -2v-2a2 2 0 0 0 -2 -2h-1", "key": "svg-5" }]];
-const IconFileTypePdf = createReactComponent("outline", "file-type-pdf", "FileTypePdf", __iconNode$O);
-const __iconNode$N = [["path", { "d": "M13.758 19.414l-4.758 1.586v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v1.5", "key": "svg-0" }], ["path", { "d": "M22 22l-5 -5", "key": "svg-1" }], ["path", { "d": "M17 22l5 -5", "key": "svg-2" }]];
-const IconFilterX = createReactComponent("outline", "filter-x", "FilterX", __iconNode$N);
-const __iconNode$M = [["path", { "d": "M4 4h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v7l-6 2v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227", "key": "svg-0" }]];
-const IconFilter = createReactComponent("outline", "filter", "Filter", __iconNode$M);
-const __iconNode$L = [["path", { "d": "M19 18v-8l-2 2", "key": "svg-0" }], ["path", { "d": "M4 6v12", "key": "svg-1" }], ["path", { "d": "M12 6v12", "key": "svg-2" }], ["path", { "d": "M11 18h2", "key": "svg-3" }], ["path", { "d": "M3 18h2", "key": "svg-4" }], ["path", { "d": "M4 12h8", "key": "svg-5" }], ["path", { "d": "M3 6h2", "key": "svg-6" }], ["path", { "d": "M11 6h2", "key": "svg-7" }]];
-const IconH1 = createReactComponent("outline", "h-1", "H1", __iconNode$L);
-const __iconNode$K = [["path", { "d": "M3 19h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4", "key": "svg-0" }], ["path", { "d": "M12.5 5.5l4 4", "key": "svg-1" }], ["path", { "d": "M4.5 13.5l4 4", "key": "svg-2" }], ["path", { "d": "M21 15v4h-8l4 -4l4 0", "key": "svg-3" }]];
-const IconHighlight = createReactComponent("outline", "highlight", "Highlight", __iconNode$K);
-const __iconNode$J = [["path", { "d": "M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0", "key": "svg-0" }], ["path", { "d": "M12 9h.01", "key": "svg-1" }], ["path", { "d": "M11 12h1v4h1", "key": "svg-2" }]];
-const IconInfoCircle = createReactComponent("outline", "info-circle", "InfoCircle", __iconNode$J);
-const __iconNode$I = [["path", { "d": "M9 6.371c0 4.418 -2.239 6.629 -5 6.629", "key": "svg-0" }], ["path", { "d": "M4 6.371h7", "key": "svg-1" }], ["path", { "d": "M5 9c0 2.144 2.252 3.908 6 4", "key": "svg-2" }], ["path", { "d": "M12 20l4 -9l4 9", "key": "svg-3" }], ["path", { "d": "M19.1 18h-6.2", "key": "svg-4" }], ["path", { "d": "M6.694 3l.793 .582", "key": "svg-5" }]];
-const IconLanguage = createReactComponent("outline", "language", "Language", __iconNode$I);
-const __iconNode$H = [["path", { "d": "M4 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4", "key": "svg-0" }], ["path", { "d": "M14 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4", "key": "svg-1" }], ["path", { "d": "M4 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4", "key": "svg-2" }], ["path", { "d": "M14 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4", "key": "svg-3" }]];
-const IconLayoutGrid = createReactComponent("outline", "layout-grid", "LayoutGrid", __iconNode$H);
-const __iconNode$G = [["path", { "d": "M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12", "key": "svg-0" }], ["path", { "d": "M9 4l0 16", "key": "svg-1" }]];
-const IconLayoutSidebar = createReactComponent("outline", "layout-sidebar", "LayoutSidebar", __iconNode$G);
-const __iconNode$F = [["path", { "d": "M9 15l6 -6", "key": "svg-0" }], ["path", { "d": "M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464", "key": "svg-1" }], ["path", { "d": "M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463", "key": "svg-2" }]];
-const IconLink = createReactComponent("outline", "link", "Link", __iconNode$F);
-const __iconNode$E = [["path", { "d": "M12 6l0 -3", "key": "svg-0" }], ["path", { "d": "M16.25 7.75l2.15 -2.15", "key": "svg-1" }], ["path", { "d": "M18 12l3 0", "key": "svg-2" }], ["path", { "d": "M16.25 16.25l2.15 2.15", "key": "svg-3" }], ["path", { "d": "M12 18l0 3", "key": "svg-4" }], ["path", { "d": "M7.75 16.25l-2.15 2.15", "key": "svg-5" }], ["path", { "d": "M6 12l-3 0", "key": "svg-6" }], ["path", { "d": "M7.75 7.75l-2.15 -2.15", "key": "svg-7" }]];
-const IconLoader = createReactComponent("outline", "loader", "Loader", __iconNode$E);
-const __iconNode$D = [["path", { "d": "M15 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2", "key": "svg-0" }], ["path", { "d": "M21 12h-13l3 -3", "key": "svg-1" }], ["path", { "d": "M11 15l-3 -3", "key": "svg-2" }]];
-const IconLogin = createReactComponent("outline", "login", "Login", __iconNode$D);
-const __iconNode$C = [["path", { "d": "M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2", "key": "svg-0" }], ["path", { "d": "M9 12h12l-3 -3", "key": "svg-1" }], ["path", { "d": "M18 15l3 -3", "key": "svg-2" }]];
-const IconLogout = createReactComponent("outline", "logout", "Logout", __iconNode$C);
-const __iconNode$B = [["path", { "d": "M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10", "key": "svg-0" }], ["path", { "d": "M3 7l9 6l9 -6", "key": "svg-1" }]];
-const IconMail = createReactComponent("outline", "mail", "Mail", __iconNode$B);
-const __iconNode$A = [["path", { "d": "M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10", "key": "svg-0" }], ["path", { "d": "M7 15v-6l2 2l2 -2v6", "key": "svg-1" }], ["path", { "d": "M14 13l2 2l2 -2m-2 2v-6", "key": "svg-2" }]];
-const IconMarkdown = createReactComponent("outline", "markdown", "Markdown", __iconNode$A);
-const __iconNode$z = [["path", { "d": "M4 6l16 0", "key": "svg-0" }], ["path", { "d": "M4 12l16 0", "key": "svg-1" }], ["path", { "d": "M4 18l16 0", "key": "svg-2" }]];
-const IconMenu2 = createReactComponent("outline", "menu-2", "Menu2", __iconNode$z);
-const __iconNode$y = [["path", { "d": "M14.986 3.51a9 9 0 1 0 1.514 16.284c2.489 -1.437 4.181 -3.978 4.5 -6.794", "key": "svg-0" }], ["path", { "d": "M10 10h.01", "key": "svg-1" }], ["path", { "d": "M14 8h.01", "key": "svg-2" }], ["path", { "d": "M12 15c1 -1.333 2 -2 3 -2", "key": "svg-3" }], ["path", { "d": "M20 9v.01", "key": "svg-4" }], ["path", { "d": "M20 6a2.003 2.003 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483", "key": "svg-5" }]];
-const IconMoodPuzzled = createReactComponent("outline", "mood-puzzled", "MoodPuzzled", __iconNode$y);
-const __iconNode$x = [["path", { "d": "M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454l0 .008", "key": "svg-0" }]];
-const IconMoon = createReactComponent("outline", "moon", "Moon", __iconNode$x);
-const __iconNode$w = [["path", { "d": "M10 6h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3", "key": "svg-0" }], ["path", { "d": "M14 7a3 3 0 1 0 6 0a3 3 0 1 0 -6 0", "key": "svg-1" }]];
-const IconNotification = createReactComponent("outline", "notification", "Notification", __iconNode$w);
-const __iconNode$v = [["path", { "d": "M4 17v-10l7 10v-10", "key": "svg-0" }], ["path", { "d": "M15 17h5", "key": "svg-1" }], ["path", { "d": "M15 10a2.5 3 0 1 0 5 0a2.5 3 0 1 0 -5 0", "key": "svg-2" }]];
-const IconNumber = createReactComponent("outline", "number", "Number", __iconNode$v);
-const __iconNode$u = [["path", { "d": "M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5", "key": "svg-0" }], ["path", { "d": "M12 12l8 -4.5", "key": "svg-1" }], ["path", { "d": "M12 12l0 9", "key": "svg-2" }], ["path", { "d": "M12 12l-8 -4.5", "key": "svg-3" }], ["path", { "d": "M16 5.25l-8 4.5", "key": "svg-4" }]];
-const IconPackage = createReactComponent("outline", "package", "Package", __iconNode$u);
-const __iconNode$t = [["path", { "d": "M15 8h.01", "key": "svg-0" }], ["path", { "d": "M12.5 21h-6.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v6.5", "key": "svg-1" }], ["path", { "d": "M3 16l5 -5c.928 -.893 2.072 -.893 3 0l4 4", "key": "svg-2" }], ["path", { "d": "M14 14l1 -1c.67 -.644 1.45 -.824 2.182 -.54", "key": "svg-3" }], ["path", { "d": "M16 19h6", "key": "svg-4" }], ["path", { "d": "M19 16v6", "key": "svg-5" }]];
-const IconPhotoPlus = createReactComponent("outline", "photo-plus", "PhotoPlus", __iconNode$t);
-const __iconNode$s = [["path", { "d": "M15 8h.01", "key": "svg-0" }], ["path", { "d": "M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12", "key": "svg-1" }], ["path", { "d": "M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5", "key": "svg-2" }], ["path", { "d": "M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3", "key": "svg-3" }]];
-const IconPhoto = createReactComponent("outline", "photo", "Photo", __iconNode$s);
-const __iconNode$r = [["path", { "d": "M3 3l18 18", "key": "svg-0" }], ["path", { "d": "M15 4.5l-3.249 3.249m-2.57 1.433l-2.181 .818l-1.5 1.5l7 7l1.5 -1.5l.82 -2.186m1.43 -2.563l3.25 -3.251", "key": "svg-1" }], ["path", { "d": "M9 15l-4.5 4.5", "key": "svg-2" }], ["path", { "d": "M14.5 4l5.5 5.5", "key": "svg-3" }]];
-const IconPinnedOff = createReactComponent("outline", "pinned-off", "PinnedOff", __iconNode$r);
-const __iconNode$q = [["path", { "d": "M12 5l0 14", "key": "svg-0" }], ["path", { "d": "M5 12l14 0", "key": "svg-1" }]];
-const IconPlus = createReactComponent("outline", "plus", "Plus", __iconNode$q);
-const __iconNode$p = [["path", { "d": "M4 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4", "key": "svg-0" }], ["path", { "d": "M7 17l0 .01", "key": "svg-1" }], ["path", { "d": "M14 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4", "key": "svg-2" }], ["path", { "d": "M7 7l0 .01", "key": "svg-3" }], ["path", { "d": "M4 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4", "key": "svg-4" }], ["path", { "d": "M17 7l0 .01", "key": "svg-5" }], ["path", { "d": "M14 14l3 0", "key": "svg-6" }], ["path", { "d": "M20 14l0 .01", "key": "svg-7" }], ["path", { "d": "M14 14l0 3", "key": "svg-8" }], ["path", { "d": "M14 20l3 0", "key": "svg-9" }], ["path", { "d": "M17 17l3 0", "key": "svg-10" }], ["path", { "d": "M20 17l0 3", "key": "svg-11" }]];
-const IconQrcode = createReactComponent("outline", "qrcode", "Qrcode", __iconNode$p);
-const __iconNode$o = [["path", { "d": "M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0", "key": "svg-0" }], ["path", { "d": "M21 21l-6 -6", "key": "svg-1" }]];
-const IconSearch = createReactComponent("outline", "search", "Search", __iconNode$o);
-const __iconNode$n = [["path", { "d": "M8 9l4 -4l4 4", "key": "svg-0" }], ["path", { "d": "M16 15l-4 4l-4 -4", "key": "svg-1" }]];
-const IconSelector = createReactComponent("outline", "selector", "Selector", __iconNode$n);
-const __iconNode$m = [["path", { "d": "M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065", "key": "svg-0" }], ["path", { "d": "M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0", "key": "svg-1" }]];
-const IconSettings = createReactComponent("outline", "settings", "Settings", __iconNode$m);
-const __iconNode$l = [["path", { "d": "M8 9h-1a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-8a2 2 0 0 0 -2 -2h-1", "key": "svg-0" }], ["path", { "d": "M12 14v-11", "key": "svg-1" }], ["path", { "d": "M9 6l3 -3l3 3", "key": "svg-2" }]];
-const IconShare2 = createReactComponent("outline", "share-2", "Share2", __iconNode$l);
-const __iconNode$k = [["path", { "d": "M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14", "key": "svg-0" }], ["path", { "d": "M9 12l2 2l4 -4", "key": "svg-1" }]];
-const IconSquareCheck = createReactComponent("outline", "square-check", "SquareCheck", __iconNode$k);
-const __iconNode$j = [["path", { "d": "M5 12l14 0", "key": "svg-0" }], ["path", { "d": "M16 6.5a4 2 0 0 0 -4 -1.5h-1a3.5 3.5 0 0 0 0 7h2a3.5 3.5 0 0 1 0 7h-1.5a4 2 0 0 1 -4 -1.5", "key": "svg-1" }]];
-const IconStrikethrough = createReactComponent("outline", "strikethrough", "Strikethrough", __iconNode$j);
-const __iconNode$i = [["path", { "d": "M5 7l8 10m-8 0l8 -10", "key": "svg-0" }], ["path", { "d": "M21 20h-4l3.5 -4a1.73 1.73 0 0 0 -3.5 -2", "key": "svg-1" }]];
-const IconSubscript = createReactComponent("outline", "subscript", "Subscript", __iconNode$i);
-const __iconNode$h = [["path", { "d": "M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0", "key": "svg-0" }], ["path", { "d": "M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7", "key": "svg-1" }]];
-const IconSun = createReactComponent("outline", "sun", "Sun", __iconNode$h);
-const __iconNode$g = [["path", { "d": "M5 7l8 10m-8 0l8 -10", "key": "svg-0" }], ["path", { "d": "M21 11h-4l3.5 -4a1.73 1.73 0 0 0 -3.5 -2", "key": "svg-1" }]];
-const IconSuperscript = createReactComponent("outline", "superscript", "Superscript", __iconNode$g);
-const __iconNode$f = [["path", { "d": "M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14", "key": "svg-0" }], ["path", { "d": "M10 10h11", "key": "svg-1" }], ["path", { "d": "M10 3v18", "key": "svg-2" }], ["path", { "d": "M9 3l-6 6", "key": "svg-3" }], ["path", { "d": "M10 7l-7 7", "key": "svg-4" }], ["path", { "d": "M10 12l-7 7", "key": "svg-5" }], ["path", { "d": "M10 17l-4 4", "key": "svg-6" }]];
-const IconTableColumn = createReactComponent("outline", "table-column", "TableColumn", __iconNode$f);
-const __iconNode$e = [["path", { "d": "M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14", "key": "svg-0" }], ["path", { "d": "M3 10h18", "key": "svg-1" }], ["path", { "d": "M10 3v18", "key": "svg-2" }]];
-const IconTable = createReactComponent("outline", "table", "Table", __iconNode$e);
-const __iconNode$d = [["path", { "d": "M4 7h16", "key": "svg-0" }], ["path", { "d": "M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12", "key": "svg-1" }], ["path", { "d": "M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3", "key": "svg-2" }], ["path", { "d": "M10 12l4 4m0 -4l-4 4", "key": "svg-3" }]];
-const IconTrashX = createReactComponent("outline", "trash-x", "TrashX", __iconNode$d);
-const __iconNode$c = [["path", { "d": "M4 7l16 0", "key": "svg-0" }], ["path", { "d": "M10 11l0 6", "key": "svg-1" }], ["path", { "d": "M14 11l0 6", "key": "svg-2" }], ["path", { "d": "M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12", "key": "svg-3" }], ["path", { "d": "M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3", "key": "svg-4" }]];
-const IconTrash = createReactComponent("outline", "trash", "Trash", __iconNode$c);
-const __iconNode$b = [["path", { "d": "M3 6h2.397a5 5 0 0 1 4.096 2.133l4.014 5.734a5 5 0 0 0 4.096 2.133h3.397", "key": "svg-0" }], ["path", { "d": "M18 19l3 -3l-3 -3", "key": "svg-1" }]];
-const IconTrendingDown3 = createReactComponent("outline", "trending-down-3", "TrendingDown3", __iconNode$b);
-const __iconNode$a = [["path", { "d": "M18 5l3 3l-3 3", "key": "svg-0" }], ["path", { "d": "M3 18h2.397a5 5 0 0 0 4.096 -2.133l4.014 -5.734a5 5 0 0 1 4.096 -2.133h3.397", "key": "svg-1" }]];
-const IconTrendingUp3 = createReactComponent("outline", "trending-up-3", "TrendingUp3", __iconNode$a);
-const __iconNode$9 = [["path", { "d": "M5 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0", "key": "svg-0" }], ["path", { "d": "M15 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0", "key": "svg-1" }], ["path", { "d": "M5 17h-2v-4m-1 -8h11v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5", "key": "svg-2" }], ["path", { "d": "M3 9l4 0", "key": "svg-3" }]];
-const IconTruckDelivery = createReactComponent("outline", "truck-delivery", "TruckDelivery", __iconNode$9);
+const __iconNode$1c = [["path", { "d": "M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0", "key": "svg-0" }], ["path", { "d": "M12 8v4", "key": "svg-1" }], ["path", { "d": "M12 16h.01", "key": "svg-2" }]];
+const IconAlertCircle = createReactComponent("outline", "alert-circle", "AlertCircle", __iconNode$1c);
+const __iconNode$1b = [["path", { "d": "M10 12l10 0", "key": "svg-0" }], ["path", { "d": "M10 12l4 4", "key": "svg-1" }], ["path", { "d": "M10 12l4 -4", "key": "svg-2" }], ["path", { "d": "M4 4l0 16", "key": "svg-3" }]];
+const IconArrowBarToLeft = createReactComponent("outline", "arrow-bar-to-left", "ArrowBarToLeft", __iconNode$1b);
+const __iconNode$1a = [["path", { "d": "M14 12l-10 0", "key": "svg-0" }], ["path", { "d": "M14 12l-4 4", "key": "svg-1" }], ["path", { "d": "M14 12l-4 -4", "key": "svg-2" }], ["path", { "d": "M20 4l0 16", "key": "svg-3" }]];
+const IconArrowBarToRight = createReactComponent("outline", "arrow-bar-to-right", "ArrowBarToRight", __iconNode$1a);
+const __iconNode$19 = [["path", { "d": "M12 5v.5m0 3v1.5m0 3v6", "key": "svg-0" }], ["path", { "d": "M18 13l-6 6", "key": "svg-1" }], ["path", { "d": "M6 13l6 6", "key": "svg-2" }]];
+const IconArrowDownDashed = createReactComponent("outline", "arrow-down-dashed", "ArrowDownDashed", __iconNode$19);
+const __iconNode$18 = [["path", { "d": "M5 12l14 0", "key": "svg-0" }], ["path", { "d": "M5 12l6 6", "key": "svg-1" }], ["path", { "d": "M5 12l6 -6", "key": "svg-2" }]];
+const IconArrowLeft = createReactComponent("outline", "arrow-left", "ArrowLeft", __iconNode$18);
+const __iconNode$17 = [["path", { "d": "M12 5l0 14", "key": "svg-0" }], ["path", { "d": "M16 9l-4 -4", "key": "svg-1" }], ["path", { "d": "M8 9l4 -4", "key": "svg-2" }]];
+const IconArrowNarrowUp = createReactComponent("outline", "arrow-narrow-up", "ArrowNarrowUp", __iconNode$17);
+const __iconNode$16 = [["path", { "d": "M5 12l14 0", "key": "svg-0" }], ["path", { "d": "M13 18l6 -6", "key": "svg-1" }], ["path", { "d": "M13 6l6 6", "key": "svg-2" }]];
+const IconArrowRight = createReactComponent("outline", "arrow-right", "ArrowRight", __iconNode$16);
+const __iconNode$15 = [["path", { "d": "M7 10h14l-4 -4", "key": "svg-0" }], ["path", { "d": "M17 14h-14l4 4", "key": "svg-1" }]];
+const IconArrowsExchange = createReactComponent("outline", "arrows-exchange", "ArrowsExchange", __iconNode$15);
+const __iconNode$14 = [["path", { "d": "M9.346 5.353c.21 -.129 .428 -.246 .654 -.353a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3m-1 3h-13a4 4 0 0 0 2 -3v-3a6.996 6.996 0 0 1 1.273 -3.707", "key": "svg-0" }], ["path", { "d": "M9 17v1a3 3 0 0 0 6 0v-1", "key": "svg-1" }], ["path", { "d": "M3 3l18 18", "key": "svg-2" }]];
+const IconBellOff = createReactComponent("outline", "bell-off", "BellOff", __iconNode$14);
+const __iconNode$13 = [["path", { "d": "M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6", "key": "svg-0" }], ["path", { "d": "M9 17v1a3 3 0 0 0 6 0v-1", "key": "svg-1" }]];
+const IconBell = createReactComponent("outline", "bell", "Bell", __iconNode$13);
+const __iconNode$12 = [["path", { "d": "M19.072 21h-14.144a1.928 1.928 0 0 1 -1.928 -1.928v-6.857c0 -.512 .203 -1 .566 -1.365l7.07 -7.063a1.928 1.928 0 0 1 2.727 0l7.071 7.063c.363 .362 .566 .853 .566 1.365v6.857a1.928 1.928 0 0 1 -1.928 1.928", "key": "svg-0" }], ["path", { "d": "M7 13v4h10v-4l-5 -5", "key": "svg-1" }], ["path", { "d": "M14.8 5.2l-11.8 11.8", "key": "svg-2" }], ["path", { "d": "M7 17v4", "key": "svg-3" }], ["path", { "d": "M17 17v4", "key": "svg-4" }]];
+const IconBrandGoogleHome = createReactComponent("outline", "brand-google-home", "BrandGoogleHome", __iconNode$12);
+const __iconNode$11 = [["path", { "d": "M9 9v-1a3 3 0 0 1 6 0v1", "key": "svg-0" }], ["path", { "d": "M8 9h8a6 6 0 0 1 1 3v3a5 5 0 0 1 -10 0v-3a6 6 0 0 1 1 -3", "key": "svg-1" }], ["path", { "d": "M3 13l4 0", "key": "svg-2" }], ["path", { "d": "M17 13l4 0", "key": "svg-3" }], ["path", { "d": "M12 20l0 -6", "key": "svg-4" }], ["path", { "d": "M4 19l3.35 -2", "key": "svg-5" }], ["path", { "d": "M20 19l-3.35 -2", "key": "svg-6" }], ["path", { "d": "M4 7l3.75 2.4", "key": "svg-7" }], ["path", { "d": "M20 7l-3.75 2.4", "key": "svg-8" }]];
+const IconBug = createReactComponent("outline", "bug", "Bug", __iconNode$11);
+const __iconNode$10 = [["path", { "d": "M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12", "key": "svg-0" }], ["path", { "d": "M16 3v4", "key": "svg-1" }], ["path", { "d": "M8 3v4", "key": "svg-2" }], ["path", { "d": "M4 11h16", "key": "svg-3" }], ["path", { "d": "M11 15h1", "key": "svg-4" }], ["path", { "d": "M12 15v3", "key": "svg-5" }]];
+const IconCalendar = createReactComponent("outline", "calendar", "Calendar", __iconNode$10);
+const __iconNode$$ = [["path", { "d": "M5 12l5 5l10 -10", "key": "svg-0" }]];
+const IconCheck = createReactComponent("outline", "check", "Check", __iconNode$$);
+const __iconNode$_ = [["path", { "d": "M6 9l6 6l6 -6", "key": "svg-0" }]];
+const IconChevronDown = createReactComponent("outline", "chevron-down", "ChevronDown", __iconNode$_);
+const __iconNode$Z = [["path", { "d": "M15 6l-6 6l6 6", "key": "svg-0" }]];
+const IconChevronLeft = createReactComponent("outline", "chevron-left", "ChevronLeft", __iconNode$Z);
+const __iconNode$Y = [["path", { "d": "M9 6l6 6l-6 6", "key": "svg-0" }]];
+const IconChevronRight = createReactComponent("outline", "chevron-right", "ChevronRight", __iconNode$Y);
+const __iconNode$X = [["path", { "d": "M6 15l6 -6l6 6", "key": "svg-0" }]];
+const IconChevronUp = createReactComponent("outline", "chevron-up", "ChevronUp", __iconNode$X);
+const __iconNode$W = [["path", { "d": "M7 7l5 5l-5 5", "key": "svg-0" }], ["path", { "d": "M13 7l5 5l-5 5", "key": "svg-1" }]];
+const IconChevronsRight = createReactComponent("outline", "chevrons-right", "ChevronsRight", __iconNode$W);
+const __iconNode$V = [["path", { "d": "M8.56 3.69a9 9 0 0 0 -2.92 1.95", "key": "svg-0" }], ["path", { "d": "M3.69 8.56a9 9 0 0 0 -.69 3.44", "key": "svg-1" }], ["path", { "d": "M3.69 15.44a9 9 0 0 0 1.95 2.92", "key": "svg-2" }], ["path", { "d": "M8.56 20.31a9 9 0 0 0 3.44 .69", "key": "svg-3" }], ["path", { "d": "M15.44 20.31a9 9 0 0 0 2.92 -1.95", "key": "svg-4" }], ["path", { "d": "M20.31 15.44a9 9 0 0 0 .69 -3.44", "key": "svg-5" }], ["path", { "d": "M20.31 8.56a9 9 0 0 0 -1.95 -2.92", "key": "svg-6" }], ["path", { "d": "M15.44 3.69a9 9 0 0 0 -3.44 -.69", "key": "svg-7" }]];
+const IconCircleDashed = createReactComponent("outline", "circle-dashed", "CircleDashed", __iconNode$V);
+const __iconNode$U = [["path", { "d": "M7 9.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667l0 -8.666", "key": "svg-0" }], ["path", { "d": "M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1", "key": "svg-1" }]];
+const IconCopy = createReactComponent("outline", "copy", "Copy", __iconNode$U);
+const __iconNode$T = [["path", { "d": "M12 19h-6a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v4.5", "key": "svg-0" }], ["path", { "d": "M3 10h18", "key": "svg-1" }], ["path", { "d": "M16 19h6", "key": "svg-2" }], ["path", { "d": "M19 16l3 3l-3 3", "key": "svg-3" }], ["path", { "d": "M7.005 15h.005", "key": "svg-4" }], ["path", { "d": "M11 15h2", "key": "svg-5" }]];
+const IconCreditCardPay = createReactComponent("outline", "credit-card-pay", "CreditCardPay", __iconNode$T);
+const __iconNode$S = [["path", { "d": "M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0", "key": "svg-0" }], ["path", { "d": "M8 12l0 .01", "key": "svg-1" }], ["path", { "d": "M12 12l0 .01", "key": "svg-2" }], ["path", { "d": "M16 12l0 .01", "key": "svg-3" }]];
+const IconDotsCircleHorizontal = createReactComponent("outline", "dots-circle-horizontal", "DotsCircleHorizontal", __iconNode$S);
+const __iconNode$R = [["path", { "d": "M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0", "key": "svg-0" }], ["path", { "d": "M11 19a1 1 0 1 0 2 0a1 1 0 1 0 -2 0", "key": "svg-1" }], ["path", { "d": "M11 5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0", "key": "svg-2" }]];
+const IconDotsVertical = createReactComponent("outline", "dots-vertical", "DotsVertical", __iconNode$R);
+const __iconNode$Q = [["path", { "d": "M4 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0", "key": "svg-0" }], ["path", { "d": "M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0", "key": "svg-1" }], ["path", { "d": "M18 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0", "key": "svg-2" }]];
+const IconDots = createReactComponent("outline", "dots", "Dots", __iconNode$Q);
+const __iconNode$P = [["path", { "d": "M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1", "key": "svg-0" }], ["path", { "d": "M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415", "key": "svg-1" }], ["path", { "d": "M16 5l3 3", "key": "svg-2" }]];
+const IconEdit = createReactComponent("outline", "edit", "Edit", __iconNode$P);
+const __iconNode$O = [["path", { "d": "M10.585 10.587a2 2 0 0 0 2.829 2.828", "key": "svg-0" }], ["path", { "d": "M16.681 16.673a8.717 8.717 0 0 1 -4.681 1.327c-3.6 0 -6.6 -2 -9 -6c1.272 -2.12 2.712 -3.678 4.32 -4.674m2.86 -1.146a9.055 9.055 0 0 1 1.82 -.18c3.6 0 6.6 2 9 6c-.666 1.11 -1.379 2.067 -2.138 2.87", "key": "svg-1" }], ["path", { "d": "M3 3l18 18", "key": "svg-2" }]];
+const IconEyeOff = createReactComponent("outline", "eye-off", "EyeOff", __iconNode$O);
+const __iconNode$N = [["path", { "d": "M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0", "key": "svg-0" }], ["path", { "d": "M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6", "key": "svg-1" }]];
+const IconEye = createReactComponent("outline", "eye", "Eye", __iconNode$N);
+const __iconNode$M = [["path", { "d": "M14 3v4a1 1 0 0 0 1 1h4", "key": "svg-0" }], ["path", { "d": "M5 12v-7a2 2 0 0 1 2 -2h7l5 5v4", "key": "svg-1" }], ["path", { "d": "M5 18h1.5a1.5 1.5 0 0 0 0 -3h-1.5v6", "key": "svg-2" }], ["path", { "d": "M17 18h2", "key": "svg-3" }], ["path", { "d": "M20 15h-3v6", "key": "svg-4" }], ["path", { "d": "M11 15v6h1a2 2 0 0 0 2 -2v-2a2 2 0 0 0 -2 -2h-1", "key": "svg-5" }]];
+const IconFileTypePdf = createReactComponent("outline", "file-type-pdf", "FileTypePdf", __iconNode$M);
+const __iconNode$L = [["path", { "d": "M13.758 19.414l-4.758 1.586v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v1.5", "key": "svg-0" }], ["path", { "d": "M22 22l-5 -5", "key": "svg-1" }], ["path", { "d": "M17 22l5 -5", "key": "svg-2" }]];
+const IconFilterX = createReactComponent("outline", "filter-x", "FilterX", __iconNode$L);
+const __iconNode$K = [["path", { "d": "M4 4h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v7l-6 2v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227", "key": "svg-0" }]];
+const IconFilter = createReactComponent("outline", "filter", "Filter", __iconNode$K);
+const __iconNode$J = [["path", { "d": "M19 18v-8l-2 2", "key": "svg-0" }], ["path", { "d": "M4 6v12", "key": "svg-1" }], ["path", { "d": "M12 6v12", "key": "svg-2" }], ["path", { "d": "M11 18h2", "key": "svg-3" }], ["path", { "d": "M3 18h2", "key": "svg-4" }], ["path", { "d": "M4 12h8", "key": "svg-5" }], ["path", { "d": "M3 6h2", "key": "svg-6" }], ["path", { "d": "M11 6h2", "key": "svg-7" }]];
+const IconH1 = createReactComponent("outline", "h-1", "H1", __iconNode$J);
+const __iconNode$I = [["path", { "d": "M3 19h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4", "key": "svg-0" }], ["path", { "d": "M12.5 5.5l4 4", "key": "svg-1" }], ["path", { "d": "M4.5 13.5l4 4", "key": "svg-2" }], ["path", { "d": "M21 15v4h-8l4 -4l4 0", "key": "svg-3" }]];
+const IconHighlight = createReactComponent("outline", "highlight", "Highlight", __iconNode$I);
+const __iconNode$H = [["path", { "d": "M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0", "key": "svg-0" }], ["path", { "d": "M12 9h.01", "key": "svg-1" }], ["path", { "d": "M11 12h1v4h1", "key": "svg-2" }]];
+const IconInfoCircle = createReactComponent("outline", "info-circle", "InfoCircle", __iconNode$H);
+const __iconNode$G = [["path", { "d": "M9 6.371c0 4.418 -2.239 6.629 -5 6.629", "key": "svg-0" }], ["path", { "d": "M4 6.371h7", "key": "svg-1" }], ["path", { "d": "M5 9c0 2.144 2.252 3.908 6 4", "key": "svg-2" }], ["path", { "d": "M12 20l4 -9l4 9", "key": "svg-3" }], ["path", { "d": "M19.1 18h-6.2", "key": "svg-4" }], ["path", { "d": "M6.694 3l.793 .582", "key": "svg-5" }]];
+const IconLanguage = createReactComponent("outline", "language", "Language", __iconNode$G);
+const __iconNode$F = [["path", { "d": "M4 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4", "key": "svg-0" }], ["path", { "d": "M14 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4", "key": "svg-1" }], ["path", { "d": "M4 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4", "key": "svg-2" }], ["path", { "d": "M14 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4", "key": "svg-3" }]];
+const IconLayoutGrid = createReactComponent("outline", "layout-grid", "LayoutGrid", __iconNode$F);
+const __iconNode$E = [["path", { "d": "M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12", "key": "svg-0" }], ["path", { "d": "M9 4l0 16", "key": "svg-1" }]];
+const IconLayoutSidebar = createReactComponent("outline", "layout-sidebar", "LayoutSidebar", __iconNode$E);
+const __iconNode$D = [["path", { "d": "M9 15l6 -6", "key": "svg-0" }], ["path", { "d": "M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464", "key": "svg-1" }], ["path", { "d": "M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463", "key": "svg-2" }]];
+const IconLink = createReactComponent("outline", "link", "Link", __iconNode$D);
+const __iconNode$C = [["path", { "d": "M12 6l0 -3", "key": "svg-0" }], ["path", { "d": "M16.25 7.75l2.15 -2.15", "key": "svg-1" }], ["path", { "d": "M18 12l3 0", "key": "svg-2" }], ["path", { "d": "M16.25 16.25l2.15 2.15", "key": "svg-3" }], ["path", { "d": "M12 18l0 3", "key": "svg-4" }], ["path", { "d": "M7.75 16.25l-2.15 2.15", "key": "svg-5" }], ["path", { "d": "M6 12l-3 0", "key": "svg-6" }], ["path", { "d": "M7.75 7.75l-2.15 -2.15", "key": "svg-7" }]];
+const IconLoader = createReactComponent("outline", "loader", "Loader", __iconNode$C);
+const __iconNode$B = [["path", { "d": "M15 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2", "key": "svg-0" }], ["path", { "d": "M21 12h-13l3 -3", "key": "svg-1" }], ["path", { "d": "M11 15l-3 -3", "key": "svg-2" }]];
+const IconLogin = createReactComponent("outline", "login", "Login", __iconNode$B);
+const __iconNode$A = [["path", { "d": "M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2", "key": "svg-0" }], ["path", { "d": "M9 12h12l-3 -3", "key": "svg-1" }], ["path", { "d": "M18 15l3 -3", "key": "svg-2" }]];
+const IconLogout = createReactComponent("outline", "logout", "Logout", __iconNode$A);
+const __iconNode$z = [["path", { "d": "M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10", "key": "svg-0" }], ["path", { "d": "M3 7l9 6l9 -6", "key": "svg-1" }]];
+const IconMail = createReactComponent("outline", "mail", "Mail", __iconNode$z);
+const __iconNode$y = [["path", { "d": "M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10", "key": "svg-0" }], ["path", { "d": "M7 15v-6l2 2l2 -2v6", "key": "svg-1" }], ["path", { "d": "M14 13l2 2l2 -2m-2 2v-6", "key": "svg-2" }]];
+const IconMarkdown = createReactComponent("outline", "markdown", "Markdown", __iconNode$y);
+const __iconNode$x = [["path", { "d": "M4 6l16 0", "key": "svg-0" }], ["path", { "d": "M4 12l16 0", "key": "svg-1" }], ["path", { "d": "M4 18l16 0", "key": "svg-2" }]];
+const IconMenu2 = createReactComponent("outline", "menu-2", "Menu2", __iconNode$x);
+const __iconNode$w = [["path", { "d": "M14.986 3.51a9 9 0 1 0 1.514 16.284c2.489 -1.437 4.181 -3.978 4.5 -6.794", "key": "svg-0" }], ["path", { "d": "M10 10h.01", "key": "svg-1" }], ["path", { "d": "M14 8h.01", "key": "svg-2" }], ["path", { "d": "M12 15c1 -1.333 2 -2 3 -2", "key": "svg-3" }], ["path", { "d": "M20 9v.01", "key": "svg-4" }], ["path", { "d": "M20 6a2.003 2.003 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483", "key": "svg-5" }]];
+const IconMoodPuzzled = createReactComponent("outline", "mood-puzzled", "MoodPuzzled", __iconNode$w);
+const __iconNode$v = [["path", { "d": "M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454l0 .008", "key": "svg-0" }]];
+const IconMoon = createReactComponent("outline", "moon", "Moon", __iconNode$v);
+const __iconNode$u = [["path", { "d": "M10 6h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3", "key": "svg-0" }], ["path", { "d": "M14 7a3 3 0 1 0 6 0a3 3 0 1 0 -6 0", "key": "svg-1" }]];
+const IconNotification = createReactComponent("outline", "notification", "Notification", __iconNode$u);
+const __iconNode$t = [["path", { "d": "M4 17v-10l7 10v-10", "key": "svg-0" }], ["path", { "d": "M15 17h5", "key": "svg-1" }], ["path", { "d": "M15 10a2.5 3 0 1 0 5 0a2.5 3 0 1 0 -5 0", "key": "svg-2" }]];
+const IconNumber = createReactComponent("outline", "number", "Number", __iconNode$t);
+const __iconNode$s = [["path", { "d": "M15 8h.01", "key": "svg-0" }], ["path", { "d": "M12.5 21h-6.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v6.5", "key": "svg-1" }], ["path", { "d": "M3 16l5 -5c.928 -.893 2.072 -.893 3 0l4 4", "key": "svg-2" }], ["path", { "d": "M14 14l1 -1c.67 -.644 1.45 -.824 2.182 -.54", "key": "svg-3" }], ["path", { "d": "M16 19h6", "key": "svg-4" }], ["path", { "d": "M19 16v6", "key": "svg-5" }]];
+const IconPhotoPlus = createReactComponent("outline", "photo-plus", "PhotoPlus", __iconNode$s);
+const __iconNode$r = [["path", { "d": "M15 8h.01", "key": "svg-0" }], ["path", { "d": "M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12", "key": "svg-1" }], ["path", { "d": "M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5", "key": "svg-2" }], ["path", { "d": "M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3", "key": "svg-3" }]];
+const IconPhoto = createReactComponent("outline", "photo", "Photo", __iconNode$r);
+const __iconNode$q = [["path", { "d": "M3 3l18 18", "key": "svg-0" }], ["path", { "d": "M15 4.5l-3.249 3.249m-2.57 1.433l-2.181 .818l-1.5 1.5l7 7l1.5 -1.5l.82 -2.186m1.43 -2.563l3.25 -3.251", "key": "svg-1" }], ["path", { "d": "M9 15l-4.5 4.5", "key": "svg-2" }], ["path", { "d": "M14.5 4l5.5 5.5", "key": "svg-3" }]];
+const IconPinnedOff = createReactComponent("outline", "pinned-off", "PinnedOff", __iconNode$q);
+const __iconNode$p = [["path", { "d": "M12 5l0 14", "key": "svg-0" }], ["path", { "d": "M5 12l14 0", "key": "svg-1" }]];
+const IconPlus = createReactComponent("outline", "plus", "Plus", __iconNode$p);
+const __iconNode$o = [["path", { "d": "M4 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4", "key": "svg-0" }], ["path", { "d": "M7 17l0 .01", "key": "svg-1" }], ["path", { "d": "M14 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4", "key": "svg-2" }], ["path", { "d": "M7 7l0 .01", "key": "svg-3" }], ["path", { "d": "M4 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4", "key": "svg-4" }], ["path", { "d": "M17 7l0 .01", "key": "svg-5" }], ["path", { "d": "M14 14l3 0", "key": "svg-6" }], ["path", { "d": "M20 14l0 .01", "key": "svg-7" }], ["path", { "d": "M14 14l0 3", "key": "svg-8" }], ["path", { "d": "M14 20l3 0", "key": "svg-9" }], ["path", { "d": "M17 17l3 0", "key": "svg-10" }], ["path", { "d": "M20 17l0 3", "key": "svg-11" }]];
+const IconQrcode = createReactComponent("outline", "qrcode", "Qrcode", __iconNode$o);
+const __iconNode$n = [["path", { "d": "M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0", "key": "svg-0" }], ["path", { "d": "M21 21l-6 -6", "key": "svg-1" }]];
+const IconSearch = createReactComponent("outline", "search", "Search", __iconNode$n);
+const __iconNode$m = [["path", { "d": "M8 9l4 -4l4 4", "key": "svg-0" }], ["path", { "d": "M16 15l-4 4l-4 -4", "key": "svg-1" }]];
+const IconSelector = createReactComponent("outline", "selector", "Selector", __iconNode$m);
+const __iconNode$l = [["path", { "d": "M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065", "key": "svg-0" }], ["path", { "d": "M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0", "key": "svg-1" }]];
+const IconSettings = createReactComponent("outline", "settings", "Settings", __iconNode$l);
+const __iconNode$k = [["path", { "d": "M8 9h-1a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-8a2 2 0 0 0 -2 -2h-1", "key": "svg-0" }], ["path", { "d": "M12 14v-11", "key": "svg-1" }], ["path", { "d": "M9 6l3 -3l3 3", "key": "svg-2" }]];
+const IconShare2 = createReactComponent("outline", "share-2", "Share2", __iconNode$k);
+const __iconNode$j = [["path", { "d": "M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14", "key": "svg-0" }], ["path", { "d": "M9 12l2 2l4 -4", "key": "svg-1" }]];
+const IconSquareCheck = createReactComponent("outline", "square-check", "SquareCheck", __iconNode$j);
+const __iconNode$i = [["path", { "d": "M5 12l14 0", "key": "svg-0" }], ["path", { "d": "M16 6.5a4 2 0 0 0 -4 -1.5h-1a3.5 3.5 0 0 0 0 7h2a3.5 3.5 0 0 1 0 7h-1.5a4 2 0 0 1 -4 -1.5", "key": "svg-1" }]];
+const IconStrikethrough = createReactComponent("outline", "strikethrough", "Strikethrough", __iconNode$i);
+const __iconNode$h = [["path", { "d": "M5 7l8 10m-8 0l8 -10", "key": "svg-0" }], ["path", { "d": "M21 20h-4l3.5 -4a1.73 1.73 0 0 0 -3.5 -2", "key": "svg-1" }]];
+const IconSubscript = createReactComponent("outline", "subscript", "Subscript", __iconNode$h);
+const __iconNode$g = [["path", { "d": "M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0", "key": "svg-0" }], ["path", { "d": "M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7", "key": "svg-1" }]];
+const IconSun = createReactComponent("outline", "sun", "Sun", __iconNode$g);
+const __iconNode$f = [["path", { "d": "M5 7l8 10m-8 0l8 -10", "key": "svg-0" }], ["path", { "d": "M21 11h-4l3.5 -4a1.73 1.73 0 0 0 -3.5 -2", "key": "svg-1" }]];
+const IconSuperscript = createReactComponent("outline", "superscript", "Superscript", __iconNode$f);
+const __iconNode$e = [["path", { "d": "M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14", "key": "svg-0" }], ["path", { "d": "M10 10h11", "key": "svg-1" }], ["path", { "d": "M10 3v18", "key": "svg-2" }], ["path", { "d": "M9 3l-6 6", "key": "svg-3" }], ["path", { "d": "M10 7l-7 7", "key": "svg-4" }], ["path", { "d": "M10 12l-7 7", "key": "svg-5" }], ["path", { "d": "M10 17l-4 4", "key": "svg-6" }]];
+const IconTableColumn = createReactComponent("outline", "table-column", "TableColumn", __iconNode$e);
+const __iconNode$d = [["path", { "d": "M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14", "key": "svg-0" }], ["path", { "d": "M3 10h18", "key": "svg-1" }], ["path", { "d": "M10 3v18", "key": "svg-2" }]];
+const IconTable = createReactComponent("outline", "table", "Table", __iconNode$d);
+const __iconNode$c = [["path", { "d": "M4 7h16", "key": "svg-0" }], ["path", { "d": "M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12", "key": "svg-1" }], ["path", { "d": "M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3", "key": "svg-2" }], ["path", { "d": "M10 12l4 4m0 -4l-4 4", "key": "svg-3" }]];
+const IconTrashX = createReactComponent("outline", "trash-x", "TrashX", __iconNode$c);
+const __iconNode$b = [["path", { "d": "M4 7l16 0", "key": "svg-0" }], ["path", { "d": "M10 11l0 6", "key": "svg-1" }], ["path", { "d": "M14 11l0 6", "key": "svg-2" }], ["path", { "d": "M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12", "key": "svg-3" }], ["path", { "d": "M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3", "key": "svg-4" }]];
+const IconTrash = createReactComponent("outline", "trash", "Trash", __iconNode$b);
+const __iconNode$a = [["path", { "d": "M3 6h2.397a5 5 0 0 1 4.096 2.133l4.014 5.734a5 5 0 0 0 4.096 2.133h3.397", "key": "svg-0" }], ["path", { "d": "M18 19l3 -3l-3 -3", "key": "svg-1" }]];
+const IconTrendingDown3 = createReactComponent("outline", "trending-down-3", "TrendingDown3", __iconNode$a);
+const __iconNode$9 = [["path", { "d": "M18 5l3 3l-3 3", "key": "svg-0" }], ["path", { "d": "M3 18h2.397a5 5 0 0 0 4.096 -2.133l4.014 -5.734a5 5 0 0 1 4.096 -2.133h3.397", "key": "svg-1" }]];
+const IconTrendingUp3 = createReactComponent("outline", "trending-up-3", "TrendingUp3", __iconNode$9);
 const __iconNode$8 = [["path", { "d": "M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2", "key": "svg-0" }], ["path", { "d": "M7 9l5 -5l5 5", "key": "svg-1" }], ["path", { "d": "M12 4l0 12", "key": "svg-2" }]];
 const IconUpload = createReactComponent("outline", "upload", "Upload", __iconNode$8);
 const __iconNode$7 = [["path", { "d": "M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0", "key": "svg-0" }], ["path", { "d": "M9 10a3 3 0 1 0 6 0a3 3 0 1 0 -6 0", "key": "svg-1" }], ["path", { "d": "M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855", "key": "svg-2" }]];
@@ -49227,6 +49217,1824 @@ class SystemBarsPluginWeb extends WebPlugin {
 const SystemBars = registerPlugin("SystemBars", {
   web: () => new SystemBarsPluginWeb()
 });
+const millisecondsInWeek = 6048e5;
+const millisecondsInDay = 864e5;
+const minutesInMonth = 43200;
+const minutesInDay = 1440;
+const constructFromSymbol = /* @__PURE__ */ Symbol.for("constructDateFrom");
+function constructFrom(date2, value) {
+  if (typeof date2 === "function") return date2(value);
+  if (date2 && typeof date2 === "object" && constructFromSymbol in date2)
+    return date2[constructFromSymbol](value);
+  if (date2 instanceof Date) return new date2.constructor(value);
+  return new Date(value);
+}
+function toDate(argument, context) {
+  return constructFrom(context || argument, argument);
+}
+function addDays(date2, amount, options2) {
+  const _date2 = toDate(date2, options2?.in);
+  if (isNaN(amount)) return constructFrom(date2, NaN);
+  if (!amount) return _date2;
+  _date2.setDate(_date2.getDate() + amount);
+  return _date2;
+}
+function addMonths(date2, amount, options2) {
+  const _date2 = toDate(date2, options2?.in);
+  if (isNaN(amount)) return constructFrom(date2, NaN);
+  if (!amount) {
+    return _date2;
+  }
+  const dayOfMonth = _date2.getDate();
+  const endOfDesiredMonth = constructFrom(date2, _date2.getTime());
+  endOfDesiredMonth.setMonth(_date2.getMonth() + amount + 1, 0);
+  const daysInMonth = endOfDesiredMonth.getDate();
+  if (dayOfMonth >= daysInMonth) {
+    return endOfDesiredMonth;
+  } else {
+    _date2.setFullYear(
+      endOfDesiredMonth.getFullYear(),
+      endOfDesiredMonth.getMonth(),
+      dayOfMonth
+    );
+    return _date2;
+  }
+}
+let defaultOptions$1 = {};
+function getDefaultOptions() {
+  return defaultOptions$1;
+}
+function startOfWeek(date2, options2) {
+  const defaultOptions2 = getDefaultOptions();
+  const weekStartsOn = options2?.weekStartsOn ?? options2?.locale?.options?.weekStartsOn ?? defaultOptions2.weekStartsOn ?? defaultOptions2.locale?.options?.weekStartsOn ?? 0;
+  const _date2 = toDate(date2, options2?.in);
+  const day = _date2.getDay();
+  const diff3 = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn;
+  _date2.setDate(_date2.getDate() - diff3);
+  _date2.setHours(0, 0, 0, 0);
+  return _date2;
+}
+function startOfISOWeek(date2, options2) {
+  return startOfWeek(date2, { ...options2, weekStartsOn: 1 });
+}
+function getISOWeekYear(date2, options2) {
+  const _date2 = toDate(date2, options2?.in);
+  const year = _date2.getFullYear();
+  const fourthOfJanuaryOfNextYear = constructFrom(_date2, 0);
+  fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4);
+  fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0);
+  const startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear);
+  const fourthOfJanuaryOfThisYear = constructFrom(_date2, 0);
+  fourthOfJanuaryOfThisYear.setFullYear(year, 0, 4);
+  fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0);
+  const startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear);
+  if (_date2.getTime() >= startOfNextYear.getTime()) {
+    return year + 1;
+  } else if (_date2.getTime() >= startOfThisYear.getTime()) {
+    return year;
+  } else {
+    return year - 1;
+  }
+}
+function getTimezoneOffsetInMilliseconds(date2) {
+  const _date2 = toDate(date2);
+  const utcDate = new Date(
+    Date.UTC(
+      _date2.getFullYear(),
+      _date2.getMonth(),
+      _date2.getDate(),
+      _date2.getHours(),
+      _date2.getMinutes(),
+      _date2.getSeconds(),
+      _date2.getMilliseconds()
+    )
+  );
+  utcDate.setUTCFullYear(_date2.getFullYear());
+  return +date2 - +utcDate;
+}
+function normalizeDates(context, ...dates) {
+  const normalize2 = constructFrom.bind(
+    null,
+    context || dates.find((date2) => typeof date2 === "object")
+  );
+  return dates.map(normalize2);
+}
+function startOfDay(date2, options2) {
+  const _date2 = toDate(date2, options2?.in);
+  _date2.setHours(0, 0, 0, 0);
+  return _date2;
+}
+function differenceInCalendarDays(laterDate, earlierDate, options2) {
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options2?.in,
+    laterDate,
+    earlierDate
+  );
+  const laterStartOfDay = startOfDay(laterDate_);
+  const earlierStartOfDay = startOfDay(earlierDate_);
+  const laterTimestamp = +laterStartOfDay - getTimezoneOffsetInMilliseconds(laterStartOfDay);
+  const earlierTimestamp = +earlierStartOfDay - getTimezoneOffsetInMilliseconds(earlierStartOfDay);
+  return Math.round((laterTimestamp - earlierTimestamp) / millisecondsInDay);
+}
+function startOfISOWeekYear(date2, options2) {
+  const year = getISOWeekYear(date2, options2);
+  const fourthOfJanuary = constructFrom(date2, 0);
+  fourthOfJanuary.setFullYear(year, 0, 4);
+  fourthOfJanuary.setHours(0, 0, 0, 0);
+  return startOfISOWeek(fourthOfJanuary);
+}
+function addWeeks(date2, amount, options2) {
+  return addDays(date2, amount * 7, options2);
+}
+function addYears(date2, amount, options2) {
+  return addMonths(date2, amount * 12, options2);
+}
+function max$1(dates, options2) {
+  let result;
+  let context = options2?.in;
+  dates.forEach((date2) => {
+    if (!context && typeof date2 === "object")
+      context = constructFrom.bind(null, date2);
+    const date_ = toDate(date2, context);
+    if (!result || result < date_ || isNaN(+date_)) result = date_;
+  });
+  return constructFrom(context, result || NaN);
+}
+function min$1(dates, options2) {
+  let result;
+  let context = options2?.in;
+  dates.forEach((date2) => {
+    if (!context && typeof date2 === "object")
+      context = constructFrom.bind(null, date2);
+    const date_ = toDate(date2, context);
+    if (!result || result > date_ || isNaN(+date_)) result = date_;
+  });
+  return constructFrom(context, result || NaN);
+}
+function compareAsc(dateLeft, dateRight) {
+  const diff3 = +toDate(dateLeft) - +toDate(dateRight);
+  if (diff3 < 0) return -1;
+  else if (diff3 > 0) return 1;
+  return diff3;
+}
+function constructNow(date2) {
+  return constructFrom(date2, Date.now());
+}
+function isSameDay(laterDate, earlierDate, options2) {
+  const [dateLeft_, dateRight_] = normalizeDates(
+    options2?.in,
+    laterDate,
+    earlierDate
+  );
+  return +startOfDay(dateLeft_) === +startOfDay(dateRight_);
+}
+function isDate(value) {
+  return value instanceof Date || typeof value === "object" && Object.prototype.toString.call(value) === "[object Date]";
+}
+function isValid(date2) {
+  return !(!isDate(date2) && typeof date2 !== "number" || isNaN(+toDate(date2)));
+}
+function differenceInCalendarMonths(laterDate, earlierDate, options2) {
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options2?.in,
+    laterDate,
+    earlierDate
+  );
+  const yearsDiff = laterDate_.getFullYear() - earlierDate_.getFullYear();
+  const monthsDiff = laterDate_.getMonth() - earlierDate_.getMonth();
+  return yearsDiff * 12 + monthsDiff;
+}
+function getRoundingMethod(method) {
+  return (number2) => {
+    const round2 = method ? Math[method] : Math.trunc;
+    const result = round2(number2);
+    return result === 0 ? 0 : result;
+  };
+}
+function differenceInMilliseconds(laterDate, earlierDate) {
+  return +toDate(laterDate) - +toDate(earlierDate);
+}
+function endOfDay(date2, options2) {
+  const _date2 = toDate(date2, options2?.in);
+  _date2.setHours(23, 59, 59, 999);
+  return _date2;
+}
+function endOfMonth(date2, options2) {
+  const _date2 = toDate(date2, options2?.in);
+  const month = _date2.getMonth();
+  _date2.setFullYear(_date2.getFullYear(), month + 1, 0);
+  _date2.setHours(23, 59, 59, 999);
+  return _date2;
+}
+function isLastDayOfMonth(date2, options2) {
+  const _date2 = toDate(date2, options2?.in);
+  return +endOfDay(_date2, options2) === +endOfMonth(_date2, options2);
+}
+function differenceInMonths(laterDate, earlierDate, options2) {
+  const [laterDate_, workingLaterDate, earlierDate_] = normalizeDates(
+    options2?.in,
+    laterDate,
+    laterDate,
+    earlierDate
+  );
+  const sign = compareAsc(workingLaterDate, earlierDate_);
+  const difference = Math.abs(
+    differenceInCalendarMonths(workingLaterDate, earlierDate_)
+  );
+  if (difference < 1) return 0;
+  if (workingLaterDate.getMonth() === 1 && workingLaterDate.getDate() > 27)
+    workingLaterDate.setDate(30);
+  workingLaterDate.setMonth(workingLaterDate.getMonth() - sign * difference);
+  let isLastMonthNotFull = compareAsc(workingLaterDate, earlierDate_) === -sign;
+  if (isLastDayOfMonth(laterDate_) && difference === 1 && compareAsc(laterDate_, earlierDate_) === 1) {
+    isLastMonthNotFull = false;
+  }
+  const result = sign * (difference - +isLastMonthNotFull);
+  return result === 0 ? 0 : result;
+}
+function differenceInSeconds(laterDate, earlierDate, options2) {
+  const diff3 = differenceInMilliseconds(laterDate, earlierDate) / 1e3;
+  return getRoundingMethod(options2?.roundingMethod)(diff3);
+}
+function normalizeInterval(context, interval) {
+  const [start2, end] = normalizeDates(context, interval.start, interval.end);
+  return { start: start2, end };
+}
+function eachMonthOfInterval(interval, options2) {
+  const { start: start2, end } = normalizeInterval(options2?.in, interval);
+  let reversed = +start2 > +end;
+  const endTime = reversed ? +start2 : +end;
+  const date2 = reversed ? end : start2;
+  date2.setHours(0, 0, 0, 0);
+  date2.setDate(1);
+  let step = 1;
+  const dates = [];
+  while (+date2 <= endTime) {
+    dates.push(constructFrom(start2, date2));
+    date2.setMonth(date2.getMonth() + step);
+  }
+  return reversed ? dates.reverse() : dates;
+}
+function startOfMonth(date2, options2) {
+  const _date2 = toDate(date2, options2?.in);
+  _date2.setDate(1);
+  _date2.setHours(0, 0, 0, 0);
+  return _date2;
+}
+function endOfYear(date2, options2) {
+  const _date2 = toDate(date2, options2?.in);
+  const year = _date2.getFullYear();
+  _date2.setFullYear(year + 1, 0, 0);
+  _date2.setHours(23, 59, 59, 999);
+  return _date2;
+}
+function startOfYear(date2, options2) {
+  const date_ = toDate(date2, options2?.in);
+  date_.setFullYear(date_.getFullYear(), 0, 1);
+  date_.setHours(0, 0, 0, 0);
+  return date_;
+}
+function eachYearOfInterval(interval, options2) {
+  const { start: start2, end } = normalizeInterval(options2?.in, interval);
+  let reversed = +start2 > +end;
+  const endTime = reversed ? +start2 : +end;
+  const date2 = reversed ? end : start2;
+  date2.setHours(0, 0, 0, 0);
+  date2.setMonth(0, 1);
+  let step = 1;
+  const dates = [];
+  while (+date2 <= endTime) {
+    dates.push(constructFrom(start2, date2));
+    date2.setFullYear(date2.getFullYear() + step);
+  }
+  return reversed ? dates.reverse() : dates;
+}
+function endOfWeek(date2, options2) {
+  const defaultOptions2 = getDefaultOptions();
+  const weekStartsOn = options2?.weekStartsOn ?? options2?.locale?.options?.weekStartsOn ?? defaultOptions2.weekStartsOn ?? defaultOptions2.locale?.options?.weekStartsOn ?? 0;
+  const _date2 = toDate(date2, options2?.in);
+  const day = _date2.getDay();
+  const diff3 = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn);
+  _date2.setDate(_date2.getDate() + diff3);
+  _date2.setHours(23, 59, 59, 999);
+  return _date2;
+}
+function endOfISOWeek(date2, options2) {
+  return endOfWeek(date2, { ...options2, weekStartsOn: 1 });
+}
+const formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: "less than a second",
+    other: "less than {{count}} seconds"
+  },
+  xSeconds: {
+    one: "1 second",
+    other: "{{count}} seconds"
+  },
+  halfAMinute: "half a minute",
+  lessThanXMinutes: {
+    one: "less than a minute",
+    other: "less than {{count}} minutes"
+  },
+  xMinutes: {
+    one: "1 minute",
+    other: "{{count}} minutes"
+  },
+  aboutXHours: {
+    one: "about 1 hour",
+    other: "about {{count}} hours"
+  },
+  xHours: {
+    one: "1 hour",
+    other: "{{count}} hours"
+  },
+  xDays: {
+    one: "1 day",
+    other: "{{count}} days"
+  },
+  aboutXWeeks: {
+    one: "about 1 week",
+    other: "about {{count}} weeks"
+  },
+  xWeeks: {
+    one: "1 week",
+    other: "{{count}} weeks"
+  },
+  aboutXMonths: {
+    one: "about 1 month",
+    other: "about {{count}} months"
+  },
+  xMonths: {
+    one: "1 month",
+    other: "{{count}} months"
+  },
+  aboutXYears: {
+    one: "about 1 year",
+    other: "about {{count}} years"
+  },
+  xYears: {
+    one: "1 year",
+    other: "{{count}} years"
+  },
+  overXYears: {
+    one: "over 1 year",
+    other: "over {{count}} years"
+  },
+  almostXYears: {
+    one: "almost 1 year",
+    other: "almost {{count}} years"
+  }
+};
+const formatDistance$1 = (token, count2, options2) => {
+  let result;
+  const tokenValue = formatDistanceLocale[token];
+  if (typeof tokenValue === "string") {
+    result = tokenValue;
+  } else if (count2 === 1) {
+    result = tokenValue.one;
+  } else {
+    result = tokenValue.other.replace("{{count}}", count2.toString());
+  }
+  if (options2?.addSuffix) {
+    if (options2.comparison && options2.comparison > 0) {
+      return "in " + result;
+    } else {
+      return result + " ago";
+    }
+  }
+  return result;
+};
+function buildFormatLongFn(args) {
+  return (options2 = {}) => {
+    const width = options2.width ? String(options2.width) : args.defaultWidth;
+    const format2 = args.formats[width] || args.formats[args.defaultWidth];
+    return format2;
+  };
+}
+const dateFormats = {
+  full: "EEEE, MMMM do, y",
+  long: "MMMM do, y",
+  medium: "MMM d, y",
+  short: "MM/dd/yyyy"
+};
+const timeFormats = {
+  full: "h:mm:ss a zzzz",
+  long: "h:mm:ss a z",
+  medium: "h:mm:ss a",
+  short: "h:mm a"
+};
+const dateTimeFormats = {
+  full: "{{date}} 'at' {{time}}",
+  long: "{{date}} 'at' {{time}}",
+  medium: "{{date}}, {{time}}",
+  short: "{{date}}, {{time}}"
+};
+const formatLong = {
+  date: buildFormatLongFn({
+    formats: dateFormats,
+    defaultWidth: "full"
+  }),
+  time: buildFormatLongFn({
+    formats: timeFormats,
+    defaultWidth: "full"
+  }),
+  dateTime: buildFormatLongFn({
+    formats: dateTimeFormats,
+    defaultWidth: "full"
+  })
+};
+const formatRelativeLocale = {
+  lastWeek: "'last' eeee 'at' p",
+  yesterday: "'yesterday at' p",
+  today: "'today at' p",
+  tomorrow: "'tomorrow at' p",
+  nextWeek: "eeee 'at' p",
+  other: "P"
+};
+const formatRelative = (token, _date2, _baseDate, _options) => formatRelativeLocale[token];
+function buildLocalizeFn(args) {
+  return (value, options2) => {
+    const context = options2?.context ? String(options2.context) : "standalone";
+    let valuesArray;
+    if (context === "formatting" && args.formattingValues) {
+      const defaultWidth = args.defaultFormattingWidth || args.defaultWidth;
+      const width = options2?.width ? String(options2.width) : defaultWidth;
+      valuesArray = args.formattingValues[width] || args.formattingValues[defaultWidth];
+    } else {
+      const defaultWidth = args.defaultWidth;
+      const width = options2?.width ? String(options2.width) : args.defaultWidth;
+      valuesArray = args.values[width] || args.values[defaultWidth];
+    }
+    const index2 = args.argumentCallback ? args.argumentCallback(value) : value;
+    return valuesArray[index2];
+  };
+}
+const eraValues = {
+  narrow: ["B", "A"],
+  abbreviated: ["BC", "AD"],
+  wide: ["Before Christ", "Anno Domini"]
+};
+const quarterValues = {
+  narrow: ["1", "2", "3", "4"],
+  abbreviated: ["Q1", "Q2", "Q3", "Q4"],
+  wide: ["1st quarter", "2nd quarter", "3rd quarter", "4th quarter"]
+};
+const monthValues = {
+  narrow: ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+  abbreviated: [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec"
+  ],
+  wide: [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ]
+};
+const dayValues = {
+  narrow: ["S", "M", "T", "W", "T", "F", "S"],
+  short: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
+  abbreviated: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+  wide: [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ]
+};
+const dayPeriodValues = {
+  narrow: {
+    am: "a",
+    pm: "p",
+    midnight: "mi",
+    noon: "n",
+    morning: "morning",
+    afternoon: "afternoon",
+    evening: "evening",
+    night: "night"
+  },
+  abbreviated: {
+    am: "AM",
+    pm: "PM",
+    midnight: "midnight",
+    noon: "noon",
+    morning: "morning",
+    afternoon: "afternoon",
+    evening: "evening",
+    night: "night"
+  },
+  wide: {
+    am: "a.m.",
+    pm: "p.m.",
+    midnight: "midnight",
+    noon: "noon",
+    morning: "morning",
+    afternoon: "afternoon",
+    evening: "evening",
+    night: "night"
+  }
+};
+const formattingDayPeriodValues = {
+  narrow: {
+    am: "a",
+    pm: "p",
+    midnight: "mi",
+    noon: "n",
+    morning: "in the morning",
+    afternoon: "in the afternoon",
+    evening: "in the evening",
+    night: "at night"
+  },
+  abbreviated: {
+    am: "AM",
+    pm: "PM",
+    midnight: "midnight",
+    noon: "noon",
+    morning: "in the morning",
+    afternoon: "in the afternoon",
+    evening: "in the evening",
+    night: "at night"
+  },
+  wide: {
+    am: "a.m.",
+    pm: "p.m.",
+    midnight: "midnight",
+    noon: "noon",
+    morning: "in the morning",
+    afternoon: "in the afternoon",
+    evening: "in the evening",
+    night: "at night"
+  }
+};
+const ordinalNumber = (dirtyNumber, _options) => {
+  const number2 = Number(dirtyNumber);
+  const rem100 = number2 % 100;
+  if (rem100 > 20 || rem100 < 10) {
+    switch (rem100 % 10) {
+      case 1:
+        return number2 + "st";
+      case 2:
+        return number2 + "nd";
+      case 3:
+        return number2 + "rd";
+    }
+  }
+  return number2 + "th";
+};
+const localize = {
+  ordinalNumber,
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: "wide"
+  }),
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: "wide",
+    argumentCallback: (quarter) => quarter - 1
+  }),
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: "wide"
+  }),
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: "wide"
+  }),
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: "wide",
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: "wide"
+  })
+};
+function buildMatchFn(args) {
+  return (string2, options2 = {}) => {
+    const width = options2.width;
+    const matchPattern = width && args.matchPatterns[width] || args.matchPatterns[args.defaultMatchWidth];
+    const matchResult = string2.match(matchPattern);
+    if (!matchResult) {
+      return null;
+    }
+    const matchedString = matchResult[0];
+    const parsePatterns = width && args.parsePatterns[width] || args.parsePatterns[args.defaultParseWidth];
+    const key = Array.isArray(parsePatterns) ? findIndex(parsePatterns, (pattern) => pattern.test(matchedString)) : (
+      // [TODO] -- I challenge you to fix the type
+      findKey(parsePatterns, (pattern) => pattern.test(matchedString))
+    );
+    let value;
+    value = args.valueCallback ? args.valueCallback(key) : key;
+    value = options2.valueCallback ? (
+      // [TODO] -- I challenge you to fix the type
+      options2.valueCallback(value)
+    ) : value;
+    const rest = string2.slice(matchedString.length);
+    return { value, rest };
+  };
+}
+function findKey(object2, predicate) {
+  for (const key in object2) {
+    if (Object.prototype.hasOwnProperty.call(object2, key) && predicate(object2[key])) {
+      return key;
+    }
+  }
+  return void 0;
+}
+function findIndex(array2, predicate) {
+  for (let key = 0; key < array2.length; key++) {
+    if (predicate(array2[key])) {
+      return key;
+    }
+  }
+  return void 0;
+}
+function buildMatchPatternFn(args) {
+  return (string2, options2 = {}) => {
+    const matchResult = string2.match(args.matchPattern);
+    if (!matchResult) return null;
+    const matchedString = matchResult[0];
+    const parseResult = string2.match(args.parsePattern);
+    if (!parseResult) return null;
+    let value = args.valueCallback ? args.valueCallback(parseResult[0]) : parseResult[0];
+    value = options2.valueCallback ? options2.valueCallback(value) : value;
+    const rest = string2.slice(matchedString.length);
+    return { value, rest };
+  };
+}
+const matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i;
+const parseOrdinalNumberPattern = /\d+/i;
+const matchEraPatterns = {
+  narrow: /^(b|a)/i,
+  abbreviated: /^(b\.?\s?c\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?)/i,
+  wide: /^(before christ|before common era|anno domini|common era)/i
+};
+const parseEraPatterns = {
+  any: [/^b/i, /^(a|c)/i]
+};
+const matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^q[1234]/i,
+  wide: /^[1234](th|st|nd|rd)? quarter/i
+};
+const parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+const matchMonthPatterns = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i,
+  wide: /^(january|february|march|april|may|june|july|august|september|october|november|december)/i
+};
+const parseMonthPatterns = {
+  narrow: [
+    /^j/i,
+    /^f/i,
+    /^m/i,
+    /^a/i,
+    /^m/i,
+    /^j/i,
+    /^j/i,
+    /^a/i,
+    /^s/i,
+    /^o/i,
+    /^n/i,
+    /^d/i
+  ],
+  any: [
+    /^ja/i,
+    /^f/i,
+    /^mar/i,
+    /^ap/i,
+    /^may/i,
+    /^jun/i,
+    /^jul/i,
+    /^au/i,
+    /^s/i,
+    /^o/i,
+    /^n/i,
+    /^d/i
+  ]
+};
+const matchDayPatterns = {
+  narrow: /^[smtwf]/i,
+  short: /^(su|mo|tu|we|th|fr|sa)/i,
+  abbreviated: /^(sun|mon|tue|wed|thu|fri|sat)/i,
+  wide: /^(sunday|monday|tuesday|wednesday|thursday|friday|saturday)/i
+};
+const parseDayPatterns = {
+  narrow: [/^s/i, /^m/i, /^t/i, /^w/i, /^t/i, /^f/i, /^s/i],
+  any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i]
+};
+const matchDayPeriodPatterns = {
+  narrow: /^(a|p|mi|n|(in the|at) (morning|afternoon|evening|night))/i,
+  any: /^([ap]\.?\s?m\.?|midnight|noon|(in the|at) (morning|afternoon|evening|night))/i
+};
+const parseDayPeriodPatterns = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^mi/i,
+    noon: /^no/i,
+    morning: /morning/i,
+    afternoon: /afternoon/i,
+    evening: /evening/i,
+    night: /night/i
+  }
+};
+const match = {
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: (value) => parseInt(value, 10)
+  }),
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: "wide",
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: "any"
+  }),
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: "wide",
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: "any",
+    valueCallback: (index2) => index2 + 1
+  }),
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: "wide",
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: "any"
+  }),
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: "wide",
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: "any"
+  }),
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: "any",
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: "any"
+  })
+};
+const enUS$1 = {
+  code: "en-US",
+  formatDistance: formatDistance$1,
+  formatLong,
+  formatRelative,
+  localize,
+  match,
+  options: {
+    weekStartsOn: 0,
+    firstWeekContainsDate: 1
+  }
+};
+function getDayOfYear(date2, options2) {
+  const _date2 = toDate(date2, options2?.in);
+  const diff3 = differenceInCalendarDays(_date2, startOfYear(_date2));
+  const dayOfYear = diff3 + 1;
+  return dayOfYear;
+}
+function getISOWeek(date2, options2) {
+  const _date2 = toDate(date2, options2?.in);
+  const diff3 = +startOfISOWeek(_date2) - +startOfISOWeekYear(_date2);
+  return Math.round(diff3 / millisecondsInWeek) + 1;
+}
+function getWeekYear(date2, options2) {
+  const _date2 = toDate(date2, options2?.in);
+  const year = _date2.getFullYear();
+  const defaultOptions2 = getDefaultOptions();
+  const firstWeekContainsDate = options2?.firstWeekContainsDate ?? options2?.locale?.options?.firstWeekContainsDate ?? defaultOptions2.firstWeekContainsDate ?? defaultOptions2.locale?.options?.firstWeekContainsDate ?? 1;
+  const firstWeekOfNextYear = constructFrom(options2?.in || date2, 0);
+  firstWeekOfNextYear.setFullYear(year + 1, 0, firstWeekContainsDate);
+  firstWeekOfNextYear.setHours(0, 0, 0, 0);
+  const startOfNextYear = startOfWeek(firstWeekOfNextYear, options2);
+  const firstWeekOfThisYear = constructFrom(options2?.in || date2, 0);
+  firstWeekOfThisYear.setFullYear(year, 0, firstWeekContainsDate);
+  firstWeekOfThisYear.setHours(0, 0, 0, 0);
+  const startOfThisYear = startOfWeek(firstWeekOfThisYear, options2);
+  if (+_date2 >= +startOfNextYear) {
+    return year + 1;
+  } else if (+_date2 >= +startOfThisYear) {
+    return year;
+  } else {
+    return year - 1;
+  }
+}
+function startOfWeekYear(date2, options2) {
+  const defaultOptions2 = getDefaultOptions();
+  const firstWeekContainsDate = options2?.firstWeekContainsDate ?? options2?.locale?.options?.firstWeekContainsDate ?? defaultOptions2.firstWeekContainsDate ?? defaultOptions2.locale?.options?.firstWeekContainsDate ?? 1;
+  const year = getWeekYear(date2, options2);
+  const firstWeek = constructFrom(options2?.in || date2, 0);
+  firstWeek.setFullYear(year, 0, firstWeekContainsDate);
+  firstWeek.setHours(0, 0, 0, 0);
+  const _date2 = startOfWeek(firstWeek, options2);
+  return _date2;
+}
+function getWeek(date2, options2) {
+  const _date2 = toDate(date2, options2?.in);
+  const diff3 = +startOfWeek(_date2, options2) - +startOfWeekYear(_date2, options2);
+  return Math.round(diff3 / millisecondsInWeek) + 1;
+}
+function addLeadingZeros(number2, targetLength) {
+  const sign = number2 < 0 ? "-" : "";
+  const output = Math.abs(number2).toString().padStart(targetLength, "0");
+  return sign + output;
+}
+const lightFormatters = {
+  // Year
+  y(date2, token) {
+    const signedYear = date2.getFullYear();
+    const year = signedYear > 0 ? signedYear : 1 - signedYear;
+    return addLeadingZeros(token === "yy" ? year % 100 : year, token.length);
+  },
+  // Month
+  M(date2, token) {
+    const month = date2.getMonth();
+    return token === "M" ? String(month + 1) : addLeadingZeros(month + 1, 2);
+  },
+  // Day of the month
+  d(date2, token) {
+    return addLeadingZeros(date2.getDate(), token.length);
+  },
+  // AM or PM
+  a(date2, token) {
+    const dayPeriodEnumValue = date2.getHours() / 12 >= 1 ? "pm" : "am";
+    switch (token) {
+      case "a":
+      case "aa":
+        return dayPeriodEnumValue.toUpperCase();
+      case "aaa":
+        return dayPeriodEnumValue;
+      case "aaaaa":
+        return dayPeriodEnumValue[0];
+      case "aaaa":
+      default:
+        return dayPeriodEnumValue === "am" ? "a.m." : "p.m.";
+    }
+  },
+  // Hour [1-12]
+  h(date2, token) {
+    return addLeadingZeros(date2.getHours() % 12 || 12, token.length);
+  },
+  // Hour [0-23]
+  H(date2, token) {
+    return addLeadingZeros(date2.getHours(), token.length);
+  },
+  // Minute
+  m(date2, token) {
+    return addLeadingZeros(date2.getMinutes(), token.length);
+  },
+  // Second
+  s(date2, token) {
+    return addLeadingZeros(date2.getSeconds(), token.length);
+  },
+  // Fraction of second
+  S(date2, token) {
+    const numberOfDigits = token.length;
+    const milliseconds = date2.getMilliseconds();
+    const fractionalSeconds = Math.trunc(
+      milliseconds * Math.pow(10, numberOfDigits - 3)
+    );
+    return addLeadingZeros(fractionalSeconds, token.length);
+  }
+};
+const dayPeriodEnum = {
+  midnight: "midnight",
+  noon: "noon",
+  morning: "morning",
+  afternoon: "afternoon",
+  evening: "evening",
+  night: "night"
+};
+const formatters = {
+  // Era
+  G: function(date2, token, localize2) {
+    const era = date2.getFullYear() > 0 ? 1 : 0;
+    switch (token) {
+      // AD, BC
+      case "G":
+      case "GG":
+      case "GGG":
+        return localize2.era(era, { width: "abbreviated" });
+      // A, B
+      case "GGGGG":
+        return localize2.era(era, { width: "narrow" });
+      // Anno Domini, Before Christ
+      case "GGGG":
+      default:
+        return localize2.era(era, { width: "wide" });
+    }
+  },
+  // Year
+  y: function(date2, token, localize2) {
+    if (token === "yo") {
+      const signedYear = date2.getFullYear();
+      const year = signedYear > 0 ? signedYear : 1 - signedYear;
+      return localize2.ordinalNumber(year, { unit: "year" });
+    }
+    return lightFormatters.y(date2, token);
+  },
+  // Local week-numbering year
+  Y: function(date2, token, localize2, options2) {
+    const signedWeekYear = getWeekYear(date2, options2);
+    const weekYear = signedWeekYear > 0 ? signedWeekYear : 1 - signedWeekYear;
+    if (token === "YY") {
+      const twoDigitYear = weekYear % 100;
+      return addLeadingZeros(twoDigitYear, 2);
+    }
+    if (token === "Yo") {
+      return localize2.ordinalNumber(weekYear, { unit: "year" });
+    }
+    return addLeadingZeros(weekYear, token.length);
+  },
+  // ISO week-numbering year
+  R: function(date2, token) {
+    const isoWeekYear = getISOWeekYear(date2);
+    return addLeadingZeros(isoWeekYear, token.length);
+  },
+  // Extended year. This is a single number designating the year of this calendar system.
+  // The main difference between `y` and `u` localizers are B.C. years:
+  // | Year | `y` | `u` |
+  // |------|-----|-----|
+  // | AC 1 |   1 |   1 |
+  // | BC 1 |   1 |   0 |
+  // | BC 2 |   2 |  -1 |
+  // Also `yy` always returns the last two digits of a year,
+  // while `uu` pads single digit years to 2 characters and returns other years unchanged.
+  u: function(date2, token) {
+    const year = date2.getFullYear();
+    return addLeadingZeros(year, token.length);
+  },
+  // Quarter
+  Q: function(date2, token, localize2) {
+    const quarter = Math.ceil((date2.getMonth() + 1) / 3);
+    switch (token) {
+      // 1, 2, 3, 4
+      case "Q":
+        return String(quarter);
+      // 01, 02, 03, 04
+      case "QQ":
+        return addLeadingZeros(quarter, 2);
+      // 1st, 2nd, 3rd, 4th
+      case "Qo":
+        return localize2.ordinalNumber(quarter, { unit: "quarter" });
+      // Q1, Q2, Q3, Q4
+      case "QQQ":
+        return localize2.quarter(quarter, {
+          width: "abbreviated",
+          context: "formatting"
+        });
+      // 1, 2, 3, 4 (narrow quarter; could be not numerical)
+      case "QQQQQ":
+        return localize2.quarter(quarter, {
+          width: "narrow",
+          context: "formatting"
+        });
+      // 1st quarter, 2nd quarter, ...
+      case "QQQQ":
+      default:
+        return localize2.quarter(quarter, {
+          width: "wide",
+          context: "formatting"
+        });
+    }
+  },
+  // Stand-alone quarter
+  q: function(date2, token, localize2) {
+    const quarter = Math.ceil((date2.getMonth() + 1) / 3);
+    switch (token) {
+      // 1, 2, 3, 4
+      case "q":
+        return String(quarter);
+      // 01, 02, 03, 04
+      case "qq":
+        return addLeadingZeros(quarter, 2);
+      // 1st, 2nd, 3rd, 4th
+      case "qo":
+        return localize2.ordinalNumber(quarter, { unit: "quarter" });
+      // Q1, Q2, Q3, Q4
+      case "qqq":
+        return localize2.quarter(quarter, {
+          width: "abbreviated",
+          context: "standalone"
+        });
+      // 1, 2, 3, 4 (narrow quarter; could be not numerical)
+      case "qqqqq":
+        return localize2.quarter(quarter, {
+          width: "narrow",
+          context: "standalone"
+        });
+      // 1st quarter, 2nd quarter, ...
+      case "qqqq":
+      default:
+        return localize2.quarter(quarter, {
+          width: "wide",
+          context: "standalone"
+        });
+    }
+  },
+  // Month
+  M: function(date2, token, localize2) {
+    const month = date2.getMonth();
+    switch (token) {
+      case "M":
+      case "MM":
+        return lightFormatters.M(date2, token);
+      // 1st, 2nd, ..., 12th
+      case "Mo":
+        return localize2.ordinalNumber(month + 1, { unit: "month" });
+      // Jan, Feb, ..., Dec
+      case "MMM":
+        return localize2.month(month, {
+          width: "abbreviated",
+          context: "formatting"
+        });
+      // J, F, ..., D
+      case "MMMMM":
+        return localize2.month(month, {
+          width: "narrow",
+          context: "formatting"
+        });
+      // January, February, ..., December
+      case "MMMM":
+      default:
+        return localize2.month(month, { width: "wide", context: "formatting" });
+    }
+  },
+  // Stand-alone month
+  L: function(date2, token, localize2) {
+    const month = date2.getMonth();
+    switch (token) {
+      // 1, 2, ..., 12
+      case "L":
+        return String(month + 1);
+      // 01, 02, ..., 12
+      case "LL":
+        return addLeadingZeros(month + 1, 2);
+      // 1st, 2nd, ..., 12th
+      case "Lo":
+        return localize2.ordinalNumber(month + 1, { unit: "month" });
+      // Jan, Feb, ..., Dec
+      case "LLL":
+        return localize2.month(month, {
+          width: "abbreviated",
+          context: "standalone"
+        });
+      // J, F, ..., D
+      case "LLLLL":
+        return localize2.month(month, {
+          width: "narrow",
+          context: "standalone"
+        });
+      // January, February, ..., December
+      case "LLLL":
+      default:
+        return localize2.month(month, { width: "wide", context: "standalone" });
+    }
+  },
+  // Local week of year
+  w: function(date2, token, localize2, options2) {
+    const week = getWeek(date2, options2);
+    if (token === "wo") {
+      return localize2.ordinalNumber(week, { unit: "week" });
+    }
+    return addLeadingZeros(week, token.length);
+  },
+  // ISO week of year
+  I: function(date2, token, localize2) {
+    const isoWeek = getISOWeek(date2);
+    if (token === "Io") {
+      return localize2.ordinalNumber(isoWeek, { unit: "week" });
+    }
+    return addLeadingZeros(isoWeek, token.length);
+  },
+  // Day of the month
+  d: function(date2, token, localize2) {
+    if (token === "do") {
+      return localize2.ordinalNumber(date2.getDate(), { unit: "date" });
+    }
+    return lightFormatters.d(date2, token);
+  },
+  // Day of year
+  D: function(date2, token, localize2) {
+    const dayOfYear = getDayOfYear(date2);
+    if (token === "Do") {
+      return localize2.ordinalNumber(dayOfYear, { unit: "dayOfYear" });
+    }
+    return addLeadingZeros(dayOfYear, token.length);
+  },
+  // Day of week
+  E: function(date2, token, localize2) {
+    const dayOfWeek = date2.getDay();
+    switch (token) {
+      // Tue
+      case "E":
+      case "EE":
+      case "EEE":
+        return localize2.day(dayOfWeek, {
+          width: "abbreviated",
+          context: "formatting"
+        });
+      // T
+      case "EEEEE":
+        return localize2.day(dayOfWeek, {
+          width: "narrow",
+          context: "formatting"
+        });
+      // Tu
+      case "EEEEEE":
+        return localize2.day(dayOfWeek, {
+          width: "short",
+          context: "formatting"
+        });
+      // Tuesday
+      case "EEEE":
+      default:
+        return localize2.day(dayOfWeek, {
+          width: "wide",
+          context: "formatting"
+        });
+    }
+  },
+  // Local day of week
+  e: function(date2, token, localize2, options2) {
+    const dayOfWeek = date2.getDay();
+    const localDayOfWeek = (dayOfWeek - options2.weekStartsOn + 8) % 7 || 7;
+    switch (token) {
+      // Numerical value (Nth day of week with current locale or weekStartsOn)
+      case "e":
+        return String(localDayOfWeek);
+      // Padded numerical value
+      case "ee":
+        return addLeadingZeros(localDayOfWeek, 2);
+      // 1st, 2nd, ..., 7th
+      case "eo":
+        return localize2.ordinalNumber(localDayOfWeek, { unit: "day" });
+      case "eee":
+        return localize2.day(dayOfWeek, {
+          width: "abbreviated",
+          context: "formatting"
+        });
+      // T
+      case "eeeee":
+        return localize2.day(dayOfWeek, {
+          width: "narrow",
+          context: "formatting"
+        });
+      // Tu
+      case "eeeeee":
+        return localize2.day(dayOfWeek, {
+          width: "short",
+          context: "formatting"
+        });
+      // Tuesday
+      case "eeee":
+      default:
+        return localize2.day(dayOfWeek, {
+          width: "wide",
+          context: "formatting"
+        });
+    }
+  },
+  // Stand-alone local day of week
+  c: function(date2, token, localize2, options2) {
+    const dayOfWeek = date2.getDay();
+    const localDayOfWeek = (dayOfWeek - options2.weekStartsOn + 8) % 7 || 7;
+    switch (token) {
+      // Numerical value (same as in `e`)
+      case "c":
+        return String(localDayOfWeek);
+      // Padded numerical value
+      case "cc":
+        return addLeadingZeros(localDayOfWeek, token.length);
+      // 1st, 2nd, ..., 7th
+      case "co":
+        return localize2.ordinalNumber(localDayOfWeek, { unit: "day" });
+      case "ccc":
+        return localize2.day(dayOfWeek, {
+          width: "abbreviated",
+          context: "standalone"
+        });
+      // T
+      case "ccccc":
+        return localize2.day(dayOfWeek, {
+          width: "narrow",
+          context: "standalone"
+        });
+      // Tu
+      case "cccccc":
+        return localize2.day(dayOfWeek, {
+          width: "short",
+          context: "standalone"
+        });
+      // Tuesday
+      case "cccc":
+      default:
+        return localize2.day(dayOfWeek, {
+          width: "wide",
+          context: "standalone"
+        });
+    }
+  },
+  // ISO day of week
+  i: function(date2, token, localize2) {
+    const dayOfWeek = date2.getDay();
+    const isoDayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek;
+    switch (token) {
+      // 2
+      case "i":
+        return String(isoDayOfWeek);
+      // 02
+      case "ii":
+        return addLeadingZeros(isoDayOfWeek, token.length);
+      // 2nd
+      case "io":
+        return localize2.ordinalNumber(isoDayOfWeek, { unit: "day" });
+      // Tue
+      case "iii":
+        return localize2.day(dayOfWeek, {
+          width: "abbreviated",
+          context: "formatting"
+        });
+      // T
+      case "iiiii":
+        return localize2.day(dayOfWeek, {
+          width: "narrow",
+          context: "formatting"
+        });
+      // Tu
+      case "iiiiii":
+        return localize2.day(dayOfWeek, {
+          width: "short",
+          context: "formatting"
+        });
+      // Tuesday
+      case "iiii":
+      default:
+        return localize2.day(dayOfWeek, {
+          width: "wide",
+          context: "formatting"
+        });
+    }
+  },
+  // AM or PM
+  a: function(date2, token, localize2) {
+    const hours = date2.getHours();
+    const dayPeriodEnumValue = hours / 12 >= 1 ? "pm" : "am";
+    switch (token) {
+      case "a":
+      case "aa":
+        return localize2.dayPeriod(dayPeriodEnumValue, {
+          width: "abbreviated",
+          context: "formatting"
+        });
+      case "aaa":
+        return localize2.dayPeriod(dayPeriodEnumValue, {
+          width: "abbreviated",
+          context: "formatting"
+        }).toLowerCase();
+      case "aaaaa":
+        return localize2.dayPeriod(dayPeriodEnumValue, {
+          width: "narrow",
+          context: "formatting"
+        });
+      case "aaaa":
+      default:
+        return localize2.dayPeriod(dayPeriodEnumValue, {
+          width: "wide",
+          context: "formatting"
+        });
+    }
+  },
+  // AM, PM, midnight, noon
+  b: function(date2, token, localize2) {
+    const hours = date2.getHours();
+    let dayPeriodEnumValue;
+    if (hours === 12) {
+      dayPeriodEnumValue = dayPeriodEnum.noon;
+    } else if (hours === 0) {
+      dayPeriodEnumValue = dayPeriodEnum.midnight;
+    } else {
+      dayPeriodEnumValue = hours / 12 >= 1 ? "pm" : "am";
+    }
+    switch (token) {
+      case "b":
+      case "bb":
+        return localize2.dayPeriod(dayPeriodEnumValue, {
+          width: "abbreviated",
+          context: "formatting"
+        });
+      case "bbb":
+        return localize2.dayPeriod(dayPeriodEnumValue, {
+          width: "abbreviated",
+          context: "formatting"
+        }).toLowerCase();
+      case "bbbbb":
+        return localize2.dayPeriod(dayPeriodEnumValue, {
+          width: "narrow",
+          context: "formatting"
+        });
+      case "bbbb":
+      default:
+        return localize2.dayPeriod(dayPeriodEnumValue, {
+          width: "wide",
+          context: "formatting"
+        });
+    }
+  },
+  // in the morning, in the afternoon, in the evening, at night
+  B: function(date2, token, localize2) {
+    const hours = date2.getHours();
+    let dayPeriodEnumValue;
+    if (hours >= 17) {
+      dayPeriodEnumValue = dayPeriodEnum.evening;
+    } else if (hours >= 12) {
+      dayPeriodEnumValue = dayPeriodEnum.afternoon;
+    } else if (hours >= 4) {
+      dayPeriodEnumValue = dayPeriodEnum.morning;
+    } else {
+      dayPeriodEnumValue = dayPeriodEnum.night;
+    }
+    switch (token) {
+      case "B":
+      case "BB":
+      case "BBB":
+        return localize2.dayPeriod(dayPeriodEnumValue, {
+          width: "abbreviated",
+          context: "formatting"
+        });
+      case "BBBBB":
+        return localize2.dayPeriod(dayPeriodEnumValue, {
+          width: "narrow",
+          context: "formatting"
+        });
+      case "BBBB":
+      default:
+        return localize2.dayPeriod(dayPeriodEnumValue, {
+          width: "wide",
+          context: "formatting"
+        });
+    }
+  },
+  // Hour [1-12]
+  h: function(date2, token, localize2) {
+    if (token === "ho") {
+      let hours = date2.getHours() % 12;
+      if (hours === 0) hours = 12;
+      return localize2.ordinalNumber(hours, { unit: "hour" });
+    }
+    return lightFormatters.h(date2, token);
+  },
+  // Hour [0-23]
+  H: function(date2, token, localize2) {
+    if (token === "Ho") {
+      return localize2.ordinalNumber(date2.getHours(), { unit: "hour" });
+    }
+    return lightFormatters.H(date2, token);
+  },
+  // Hour [0-11]
+  K: function(date2, token, localize2) {
+    const hours = date2.getHours() % 12;
+    if (token === "Ko") {
+      return localize2.ordinalNumber(hours, { unit: "hour" });
+    }
+    return addLeadingZeros(hours, token.length);
+  },
+  // Hour [1-24]
+  k: function(date2, token, localize2) {
+    let hours = date2.getHours();
+    if (hours === 0) hours = 24;
+    if (token === "ko") {
+      return localize2.ordinalNumber(hours, { unit: "hour" });
+    }
+    return addLeadingZeros(hours, token.length);
+  },
+  // Minute
+  m: function(date2, token, localize2) {
+    if (token === "mo") {
+      return localize2.ordinalNumber(date2.getMinutes(), { unit: "minute" });
+    }
+    return lightFormatters.m(date2, token);
+  },
+  // Second
+  s: function(date2, token, localize2) {
+    if (token === "so") {
+      return localize2.ordinalNumber(date2.getSeconds(), { unit: "second" });
+    }
+    return lightFormatters.s(date2, token);
+  },
+  // Fraction of second
+  S: function(date2, token) {
+    return lightFormatters.S(date2, token);
+  },
+  // Timezone (ISO-8601. If offset is 0, output is always `'Z'`)
+  X: function(date2, token, _localize) {
+    const timezoneOffset = date2.getTimezoneOffset();
+    if (timezoneOffset === 0) {
+      return "Z";
+    }
+    switch (token) {
+      // Hours and optional minutes
+      case "X":
+        return formatTimezoneWithOptionalMinutes(timezoneOffset);
+      // Hours, minutes and optional seconds without `:` delimiter
+      // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
+      // so this token always has the same output as `XX`
+      case "XXXX":
+      case "XX":
+        return formatTimezone(timezoneOffset);
+      // Hours, minutes and optional seconds with `:` delimiter
+      // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
+      // so this token always has the same output as `XXX`
+      case "XXXXX":
+      case "XXX":
+      // Hours and minutes with `:` delimiter
+      default:
+        return formatTimezone(timezoneOffset, ":");
+    }
+  },
+  // Timezone (ISO-8601. If offset is 0, output is `'+00:00'` or equivalent)
+  x: function(date2, token, _localize) {
+    const timezoneOffset = date2.getTimezoneOffset();
+    switch (token) {
+      // Hours and optional minutes
+      case "x":
+        return formatTimezoneWithOptionalMinutes(timezoneOffset);
+      // Hours, minutes and optional seconds without `:` delimiter
+      // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
+      // so this token always has the same output as `xx`
+      case "xxxx":
+      case "xx":
+        return formatTimezone(timezoneOffset);
+      // Hours, minutes and optional seconds with `:` delimiter
+      // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
+      // so this token always has the same output as `xxx`
+      case "xxxxx":
+      case "xxx":
+      // Hours and minutes with `:` delimiter
+      default:
+        return formatTimezone(timezoneOffset, ":");
+    }
+  },
+  // Timezone (GMT)
+  O: function(date2, token, _localize) {
+    const timezoneOffset = date2.getTimezoneOffset();
+    switch (token) {
+      // Short
+      case "O":
+      case "OO":
+      case "OOO":
+        return "GMT" + formatTimezoneShort(timezoneOffset, ":");
+      // Long
+      case "OOOO":
+      default:
+        return "GMT" + formatTimezone(timezoneOffset, ":");
+    }
+  },
+  // Timezone (specific non-location)
+  z: function(date2, token, _localize) {
+    const timezoneOffset = date2.getTimezoneOffset();
+    switch (token) {
+      // Short
+      case "z":
+      case "zz":
+      case "zzz":
+        return "GMT" + formatTimezoneShort(timezoneOffset, ":");
+      // Long
+      case "zzzz":
+      default:
+        return "GMT" + formatTimezone(timezoneOffset, ":");
+    }
+  },
+  // Seconds timestamp
+  t: function(date2, token, _localize) {
+    const timestamp = Math.trunc(+date2 / 1e3);
+    return addLeadingZeros(timestamp, token.length);
+  },
+  // Milliseconds timestamp
+  T: function(date2, token, _localize) {
+    return addLeadingZeros(+date2, token.length);
+  }
+};
+function formatTimezoneShort(offset2, delimiter = "") {
+  const sign = offset2 > 0 ? "-" : "+";
+  const absOffset = Math.abs(offset2);
+  const hours = Math.trunc(absOffset / 60);
+  const minutes = absOffset % 60;
+  if (minutes === 0) {
+    return sign + String(hours);
+  }
+  return sign + String(hours) + delimiter + addLeadingZeros(minutes, 2);
+}
+function formatTimezoneWithOptionalMinutes(offset2, delimiter) {
+  if (offset2 % 60 === 0) {
+    const sign = offset2 > 0 ? "-" : "+";
+    return sign + addLeadingZeros(Math.abs(offset2) / 60, 2);
+  }
+  return formatTimezone(offset2, delimiter);
+}
+function formatTimezone(offset2, delimiter = "") {
+  const sign = offset2 > 0 ? "-" : "+";
+  const absOffset = Math.abs(offset2);
+  const hours = addLeadingZeros(Math.trunc(absOffset / 60), 2);
+  const minutes = addLeadingZeros(absOffset % 60, 2);
+  return sign + hours + delimiter + minutes;
+}
+const dateLongFormatter = (pattern, formatLong2) => {
+  switch (pattern) {
+    case "P":
+      return formatLong2.date({ width: "short" });
+    case "PP":
+      return formatLong2.date({ width: "medium" });
+    case "PPP":
+      return formatLong2.date({ width: "long" });
+    case "PPPP":
+    default:
+      return formatLong2.date({ width: "full" });
+  }
+};
+const timeLongFormatter = (pattern, formatLong2) => {
+  switch (pattern) {
+    case "p":
+      return formatLong2.time({ width: "short" });
+    case "pp":
+      return formatLong2.time({ width: "medium" });
+    case "ppp":
+      return formatLong2.time({ width: "long" });
+    case "pppp":
+    default:
+      return formatLong2.time({ width: "full" });
+  }
+};
+const dateTimeLongFormatter = (pattern, formatLong2) => {
+  const matchResult = pattern.match(/(P+)(p+)?/) || [];
+  const datePattern = matchResult[1];
+  const timePattern = matchResult[2];
+  if (!timePattern) {
+    return dateLongFormatter(pattern, formatLong2);
+  }
+  let dateTimeFormat;
+  switch (datePattern) {
+    case "P":
+      dateTimeFormat = formatLong2.dateTime({ width: "short" });
+      break;
+    case "PP":
+      dateTimeFormat = formatLong2.dateTime({ width: "medium" });
+      break;
+    case "PPP":
+      dateTimeFormat = formatLong2.dateTime({ width: "long" });
+      break;
+    case "PPPP":
+    default:
+      dateTimeFormat = formatLong2.dateTime({ width: "full" });
+      break;
+  }
+  return dateTimeFormat.replace("{{date}}", dateLongFormatter(datePattern, formatLong2)).replace("{{time}}", timeLongFormatter(timePattern, formatLong2));
+};
+const longFormatters = {
+  p: timeLongFormatter,
+  P: dateTimeLongFormatter
+};
+const dayOfYearTokenRE = /^D+$/;
+const weekYearTokenRE = /^Y+$/;
+const throwTokens = ["D", "DD", "YY", "YYYY"];
+function isProtectedDayOfYearToken(token) {
+  return dayOfYearTokenRE.test(token);
+}
+function isProtectedWeekYearToken(token) {
+  return weekYearTokenRE.test(token);
+}
+function warnOrThrowProtectedError(token, format2, input) {
+  const _message = message(token, format2, input);
+  console.warn(_message);
+  if (throwTokens.includes(token)) throw new RangeError(_message);
+}
+function message(token, format2, input) {
+  const subject = token[0] === "Y" ? "years" : "days of the month";
+  return `Use \`${token.toLowerCase()}\` instead of \`${token}\` (in \`${format2}\`) for formatting ${subject} to the input \`${input}\`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md`;
+}
+const formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g;
+const longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g;
+const escapedStringRegExp = /^'([^]*?)'?$/;
+const doubleQuoteRegExp = /''/g;
+const unescapedLatinCharacterRegExp = /[a-zA-Z]/;
+function format(date2, formatStr, options2) {
+  const defaultOptions2 = getDefaultOptions();
+  const locale = options2?.locale ?? defaultOptions2.locale ?? enUS$1;
+  const firstWeekContainsDate = options2?.firstWeekContainsDate ?? options2?.locale?.options?.firstWeekContainsDate ?? defaultOptions2.firstWeekContainsDate ?? defaultOptions2.locale?.options?.firstWeekContainsDate ?? 1;
+  const weekStartsOn = options2?.weekStartsOn ?? options2?.locale?.options?.weekStartsOn ?? defaultOptions2.weekStartsOn ?? defaultOptions2.locale?.options?.weekStartsOn ?? 0;
+  const originalDate = toDate(date2, options2?.in);
+  if (!isValid(originalDate)) {
+    throw new RangeError("Invalid time value");
+  }
+  let parts = formatStr.match(longFormattingTokensRegExp).map((substring) => {
+    const firstCharacter = substring[0];
+    if (firstCharacter === "p" || firstCharacter === "P") {
+      const longFormatter = longFormatters[firstCharacter];
+      return longFormatter(substring, locale.formatLong);
+    }
+    return substring;
+  }).join("").match(formattingTokensRegExp).map((substring) => {
+    if (substring === "''") {
+      return { isToken: false, value: "'" };
+    }
+    const firstCharacter = substring[0];
+    if (firstCharacter === "'") {
+      return { isToken: false, value: cleanEscapedString(substring) };
+    }
+    if (formatters[firstCharacter]) {
+      return { isToken: true, value: substring };
+    }
+    if (firstCharacter.match(unescapedLatinCharacterRegExp)) {
+      throw new RangeError(
+        "Format string contains an unescaped latin alphabet character `" + firstCharacter + "`"
+      );
+    }
+    return { isToken: false, value: substring };
+  });
+  if (locale.localize.preprocessor) {
+    parts = locale.localize.preprocessor(originalDate, parts);
+  }
+  const formatterOptions = {
+    firstWeekContainsDate,
+    weekStartsOn,
+    locale
+  };
+  return parts.map((part) => {
+    if (!part.isToken) return part.value;
+    const token = part.value;
+    if (!options2?.useAdditionalWeekYearTokens && isProtectedWeekYearToken(token) || !options2?.useAdditionalDayOfYearTokens && isProtectedDayOfYearToken(token)) {
+      warnOrThrowProtectedError(token, formatStr, String(date2));
+    }
+    const formatter = formatters[token[0]];
+    return formatter(originalDate, token, locale.localize, formatterOptions);
+  }).join("");
+}
+function cleanEscapedString(input) {
+  const matched = input.match(escapedStringRegExp);
+  if (!matched) {
+    return input;
+  }
+  return matched[1].replace(doubleQuoteRegExp, "'");
+}
+function formatDistance(laterDate, earlierDate, options2) {
+  const defaultOptions2 = getDefaultOptions();
+  const locale = options2?.locale ?? defaultOptions2.locale ?? enUS$1;
+  const minutesInAlmostTwoDays = 2520;
+  const comparison = compareAsc(laterDate, earlierDate);
+  if (isNaN(comparison)) throw new RangeError("Invalid time value");
+  const localizeOptions = Object.assign({}, options2, {
+    addSuffix: options2?.addSuffix,
+    comparison
+  });
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options2?.in,
+    ...comparison > 0 ? [earlierDate, laterDate] : [laterDate, earlierDate]
+  );
+  const seconds = differenceInSeconds(earlierDate_, laterDate_);
+  const offsetInSeconds = (getTimezoneOffsetInMilliseconds(earlierDate_) - getTimezoneOffsetInMilliseconds(laterDate_)) / 1e3;
+  const minutes = Math.round((seconds - offsetInSeconds) / 60);
+  let months;
+  if (minutes < 2) {
+    if (options2?.includeSeconds) {
+      if (seconds < 5) {
+        return locale.formatDistance("lessThanXSeconds", 5, localizeOptions);
+      } else if (seconds < 10) {
+        return locale.formatDistance("lessThanXSeconds", 10, localizeOptions);
+      } else if (seconds < 20) {
+        return locale.formatDistance("lessThanXSeconds", 20, localizeOptions);
+      } else if (seconds < 40) {
+        return locale.formatDistance("halfAMinute", 0, localizeOptions);
+      } else if (seconds < 60) {
+        return locale.formatDistance("lessThanXMinutes", 1, localizeOptions);
+      } else {
+        return locale.formatDistance("xMinutes", 1, localizeOptions);
+      }
+    } else {
+      if (minutes === 0) {
+        return locale.formatDistance("lessThanXMinutes", 1, localizeOptions);
+      } else {
+        return locale.formatDistance("xMinutes", minutes, localizeOptions);
+      }
+    }
+  } else if (minutes < 45) {
+    return locale.formatDistance("xMinutes", minutes, localizeOptions);
+  } else if (minutes < 90) {
+    return locale.formatDistance("aboutXHours", 1, localizeOptions);
+  } else if (minutes < minutesInDay) {
+    const hours = Math.round(minutes / 60);
+    return locale.formatDistance("aboutXHours", hours, localizeOptions);
+  } else if (minutes < minutesInAlmostTwoDays) {
+    return locale.formatDistance("xDays", 1, localizeOptions);
+  } else if (minutes < minutesInMonth) {
+    const days = Math.round(minutes / minutesInDay);
+    return locale.formatDistance("xDays", days, localizeOptions);
+  } else if (minutes < minutesInMonth * 2) {
+    months = Math.round(minutes / minutesInMonth);
+    return locale.formatDistance("aboutXMonths", months, localizeOptions);
+  }
+  months = differenceInMonths(earlierDate_, laterDate_);
+  if (months < 12) {
+    const nearestMonth = Math.round(minutes / minutesInMonth);
+    return locale.formatDistance("xMonths", nearestMonth, localizeOptions);
+  } else {
+    const monthsSinceStartOfYear = months % 12;
+    const years = Math.trunc(months / 12);
+    if (monthsSinceStartOfYear < 3) {
+      return locale.formatDistance("aboutXYears", years, localizeOptions);
+    } else if (monthsSinceStartOfYear < 9) {
+      return locale.formatDistance("overXYears", years, localizeOptions);
+    } else {
+      return locale.formatDistance("almostXYears", years + 1, localizeOptions);
+    }
+  }
+}
+function formatDistanceToNow(date2, options2) {
+  return formatDistance(date2, constructNow(date2), options2);
+}
+function getDaysInMonth(date2, options2) {
+  const _date2 = toDate(date2, options2?.in);
+  const year = _date2.getFullYear();
+  const monthIndex = _date2.getMonth();
+  const lastDayOfMonth = constructFrom(_date2, 0);
+  lastDayOfMonth.setFullYear(year, monthIndex + 1, 0);
+  lastDayOfMonth.setHours(0, 0, 0, 0);
+  return lastDayOfMonth.getDate();
+}
+function getMonth(date2, options2) {
+  return toDate(date2, options2?.in).getMonth();
+}
+function getYear(date2, options2) {
+  return toDate(date2, options2?.in).getFullYear();
+}
+function isAfter(date2, dateToCompare) {
+  return +toDate(date2) > +toDate(dateToCompare);
+}
+function isBefore(date2, dateToCompare) {
+  return +toDate(date2) < +toDate(dateToCompare);
+}
+function isEqual(leftDate, rightDate) {
+  return +toDate(leftDate) === +toDate(rightDate);
+}
+function isSameMonth(laterDate, earlierDate, options2) {
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options2?.in,
+    laterDate,
+    earlierDate
+  );
+  return laterDate_.getFullYear() === earlierDate_.getFullYear() && laterDate_.getMonth() === earlierDate_.getMonth();
+}
+function isSameYear(laterDate, earlierDate, options2) {
+  const [laterDate_, earlierDate_] = normalizeDates(
+    options2?.in,
+    laterDate,
+    earlierDate
+  );
+  return laterDate_.getFullYear() === earlierDate_.getFullYear();
+}
+function subDays(date2, amount, options2) {
+  return addDays(date2, -1, options2);
+}
+function setMonth(date2, month, options2) {
+  const _date2 = toDate(date2, options2?.in);
+  const year = _date2.getFullYear();
+  const day = _date2.getDate();
+  const midMonth = constructFrom(date2, 0);
+  midMonth.setFullYear(year, month, 15);
+  midMonth.setHours(0, 0, 0, 0);
+  const daysInMonth = getDaysInMonth(midMonth);
+  _date2.setMonth(month, Math.min(day, daysInMonth));
+  return _date2;
+}
+function setYear(date2, year, options2) {
+  const date_ = toDate(date2, options2?.in);
+  if (isNaN(+date_)) return constructFrom(date2, NaN);
+  date_.setFullYear(year);
+  return date_;
+}
 function appName() {
   return Package.name.replace("-", " ").split(" ").map((v2) => [2, 3].includes(v2.length) ? v2.toUpperCase() : v2).join(" ");
 }
@@ -49425,6 +51233,16 @@ const printDocument = async (reference, builder, data2) => {
     toast.error("Failed to open the print dialog.");
   }
 };
+const timeAgo = (dateStr) => formatDistanceToNow(new Date(dateStr), { addSuffix: true });
+const getDateGroup = (dateStr) => {
+  const date2 = new Date(dateStr);
+  const now2 = /* @__PURE__ */ new Date();
+  if (isSameDay(date2, now2)) return "Today";
+  if (isSameDay(date2, subDays(now2))) return "Yesterday";
+  return format(date2, "MMM d, yyyy");
+};
+const triggersTenantId = "6a0f0dc1216c36e813000c98";
+const triggersBaseUrl = "https://triggers.huruftech.com";
 const MenuPositionerContext = /* @__PURE__ */ reactExports.createContext(void 0);
 function useMenuPositionerContext(optional2) {
   const context = reactExports.useContext(MenuPositionerContext);
@@ -52070,13 +53888,13 @@ const __vitePreload = function preload(baseModule, deps, importerUrl) {
   });
 };
 const App$1 = registerPlugin("App", {
-  web: () => __vitePreload(() => import("./web-01pnaLfC.js"), true ? [] : void 0).then((m2) => new m2.AppWeb())
+  web: () => __vitePreload(() => import("./web-oAM5a9t5.js"), true ? [] : void 0).then((m2) => new m2.AppWeb())
 });
 const Browser$1 = registerPlugin("Browser", {
-  web: () => __vitePreload(() => import("./web-DUs5CBFg.js"), true ? [] : void 0).then((m2) => new m2.BrowserWeb())
+  web: () => __vitePreload(() => import("./web-hez5igxN.js"), true ? [] : void 0).then((m2) => new m2.BrowserWeb())
 });
 const Preferences = registerPlugin("Preferences", {
-  web: () => __vitePreload(() => import("./web-DghLuV6Q.js"), true ? [] : void 0).then((m2) => new m2.PreferencesWeb())
+  web: () => __vitePreload(() => import("./web-Btu2KNc5.js"), true ? [] : void 0).then((m2) => new m2.PreferencesWeb())
 });
 class InvalidTokenError extends Error {
 }
@@ -67094,1824 +68912,31 @@ function Badge({
     }
   });
 }
-const millisecondsInWeek = 6048e5;
-const millisecondsInDay = 864e5;
-const minutesInMonth = 43200;
-const minutesInDay = 1440;
-const constructFromSymbol = /* @__PURE__ */ Symbol.for("constructDateFrom");
-function constructFrom(date2, value) {
-  if (typeof date2 === "function") return date2(value);
-  if (date2 && typeof date2 === "object" && constructFromSymbol in date2)
-    return date2[constructFromSymbol](value);
-  if (date2 instanceof Date) return new date2.constructor(value);
-  return new Date(value);
-}
-function toDate(argument, context) {
-  return constructFrom(context || argument, argument);
-}
-function addDays(date2, amount, options2) {
-  const _date2 = toDate(date2, options2?.in);
-  if (isNaN(amount)) return constructFrom(date2, NaN);
-  if (!amount) return _date2;
-  _date2.setDate(_date2.getDate() + amount);
-  return _date2;
-}
-function addMonths(date2, amount, options2) {
-  const _date2 = toDate(date2, options2?.in);
-  if (isNaN(amount)) return constructFrom(date2, NaN);
-  if (!amount) {
-    return _date2;
-  }
-  const dayOfMonth = _date2.getDate();
-  const endOfDesiredMonth = constructFrom(date2, _date2.getTime());
-  endOfDesiredMonth.setMonth(_date2.getMonth() + amount + 1, 0);
-  const daysInMonth = endOfDesiredMonth.getDate();
-  if (dayOfMonth >= daysInMonth) {
-    return endOfDesiredMonth;
-  } else {
-    _date2.setFullYear(
-      endOfDesiredMonth.getFullYear(),
-      endOfDesiredMonth.getMonth(),
-      dayOfMonth
-    );
-    return _date2;
-  }
-}
-let defaultOptions$1 = {};
-function getDefaultOptions() {
-  return defaultOptions$1;
-}
-function startOfWeek(date2, options2) {
-  const defaultOptions2 = getDefaultOptions();
-  const weekStartsOn = options2?.weekStartsOn ?? options2?.locale?.options?.weekStartsOn ?? defaultOptions2.weekStartsOn ?? defaultOptions2.locale?.options?.weekStartsOn ?? 0;
-  const _date2 = toDate(date2, options2?.in);
-  const day = _date2.getDay();
-  const diff3 = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn;
-  _date2.setDate(_date2.getDate() - diff3);
-  _date2.setHours(0, 0, 0, 0);
-  return _date2;
-}
-function startOfISOWeek(date2, options2) {
-  return startOfWeek(date2, { ...options2, weekStartsOn: 1 });
-}
-function getISOWeekYear(date2, options2) {
-  const _date2 = toDate(date2, options2?.in);
-  const year = _date2.getFullYear();
-  const fourthOfJanuaryOfNextYear = constructFrom(_date2, 0);
-  fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4);
-  fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0);
-  const startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear);
-  const fourthOfJanuaryOfThisYear = constructFrom(_date2, 0);
-  fourthOfJanuaryOfThisYear.setFullYear(year, 0, 4);
-  fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0);
-  const startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear);
-  if (_date2.getTime() >= startOfNextYear.getTime()) {
-    return year + 1;
-  } else if (_date2.getTime() >= startOfThisYear.getTime()) {
-    return year;
-  } else {
-    return year - 1;
-  }
-}
-function getTimezoneOffsetInMilliseconds(date2) {
-  const _date2 = toDate(date2);
-  const utcDate = new Date(
-    Date.UTC(
-      _date2.getFullYear(),
-      _date2.getMonth(),
-      _date2.getDate(),
-      _date2.getHours(),
-      _date2.getMinutes(),
-      _date2.getSeconds(),
-      _date2.getMilliseconds()
-    )
+const fetchUnreadCount = async (baseUrl, tenantId, userId) => {
+  const { data: data2 } = await axios.get(
+    `${baseUrl}/notifications/api/unread/count/${tenantId}/${userId}`
   );
-  utcDate.setUTCFullYear(_date2.getFullYear());
-  return +date2 - +utcDate;
-}
-function normalizeDates(context, ...dates) {
-  const normalize2 = constructFrom.bind(
-    null,
-    context || dates.find((date2) => typeof date2 === "object")
-  );
-  return dates.map(normalize2);
-}
-function startOfDay(date2, options2) {
-  const _date2 = toDate(date2, options2?.in);
-  _date2.setHours(0, 0, 0, 0);
-  return _date2;
-}
-function differenceInCalendarDays(laterDate, earlierDate, options2) {
-  const [laterDate_, earlierDate_] = normalizeDates(
-    options2?.in,
-    laterDate,
-    earlierDate
-  );
-  const laterStartOfDay = startOfDay(laterDate_);
-  const earlierStartOfDay = startOfDay(earlierDate_);
-  const laterTimestamp = +laterStartOfDay - getTimezoneOffsetInMilliseconds(laterStartOfDay);
-  const earlierTimestamp = +earlierStartOfDay - getTimezoneOffsetInMilliseconds(earlierStartOfDay);
-  return Math.round((laterTimestamp - earlierTimestamp) / millisecondsInDay);
-}
-function startOfISOWeekYear(date2, options2) {
-  const year = getISOWeekYear(date2, options2);
-  const fourthOfJanuary = constructFrom(date2, 0);
-  fourthOfJanuary.setFullYear(year, 0, 4);
-  fourthOfJanuary.setHours(0, 0, 0, 0);
-  return startOfISOWeek(fourthOfJanuary);
-}
-function addWeeks(date2, amount, options2) {
-  return addDays(date2, amount * 7, options2);
-}
-function addYears(date2, amount, options2) {
-  return addMonths(date2, amount * 12, options2);
-}
-function max$1(dates, options2) {
-  let result;
-  let context = options2?.in;
-  dates.forEach((date2) => {
-    if (!context && typeof date2 === "object")
-      context = constructFrom.bind(null, date2);
-    const date_ = toDate(date2, context);
-    if (!result || result < date_ || isNaN(+date_)) result = date_;
-  });
-  return constructFrom(context, result || NaN);
-}
-function min$1(dates, options2) {
-  let result;
-  let context = options2?.in;
-  dates.forEach((date2) => {
-    if (!context && typeof date2 === "object")
-      context = constructFrom.bind(null, date2);
-    const date_ = toDate(date2, context);
-    if (!result || result > date_ || isNaN(+date_)) result = date_;
-  });
-  return constructFrom(context, result || NaN);
-}
-function compareAsc(dateLeft, dateRight) {
-  const diff3 = +toDate(dateLeft) - +toDate(dateRight);
-  if (diff3 < 0) return -1;
-  else if (diff3 > 0) return 1;
-  return diff3;
-}
-function constructNow(date2) {
-  return constructFrom(date2, Date.now());
-}
-function isSameDay(laterDate, earlierDate, options2) {
-  const [dateLeft_, dateRight_] = normalizeDates(
-    options2?.in,
-    laterDate,
-    earlierDate
-  );
-  return +startOfDay(dateLeft_) === +startOfDay(dateRight_);
-}
-function isDate(value) {
-  return value instanceof Date || typeof value === "object" && Object.prototype.toString.call(value) === "[object Date]";
-}
-function isValid(date2) {
-  return !(!isDate(date2) && typeof date2 !== "number" || isNaN(+toDate(date2)));
-}
-function differenceInCalendarMonths(laterDate, earlierDate, options2) {
-  const [laterDate_, earlierDate_] = normalizeDates(
-    options2?.in,
-    laterDate,
-    earlierDate
-  );
-  const yearsDiff = laterDate_.getFullYear() - earlierDate_.getFullYear();
-  const monthsDiff = laterDate_.getMonth() - earlierDate_.getMonth();
-  return yearsDiff * 12 + monthsDiff;
-}
-function getRoundingMethod(method) {
-  return (number2) => {
-    const round2 = method ? Math[method] : Math.trunc;
-    const result = round2(number2);
-    return result === 0 ? 0 : result;
-  };
-}
-function differenceInMilliseconds(laterDate, earlierDate) {
-  return +toDate(laterDate) - +toDate(earlierDate);
-}
-function endOfDay(date2, options2) {
-  const _date2 = toDate(date2, options2?.in);
-  _date2.setHours(23, 59, 59, 999);
-  return _date2;
-}
-function endOfMonth(date2, options2) {
-  const _date2 = toDate(date2, options2?.in);
-  const month = _date2.getMonth();
-  _date2.setFullYear(_date2.getFullYear(), month + 1, 0);
-  _date2.setHours(23, 59, 59, 999);
-  return _date2;
-}
-function isLastDayOfMonth(date2, options2) {
-  const _date2 = toDate(date2, options2?.in);
-  return +endOfDay(_date2, options2) === +endOfMonth(_date2, options2);
-}
-function differenceInMonths(laterDate, earlierDate, options2) {
-  const [laterDate_, workingLaterDate, earlierDate_] = normalizeDates(
-    options2?.in,
-    laterDate,
-    laterDate,
-    earlierDate
-  );
-  const sign = compareAsc(workingLaterDate, earlierDate_);
-  const difference = Math.abs(
-    differenceInCalendarMonths(workingLaterDate, earlierDate_)
-  );
-  if (difference < 1) return 0;
-  if (workingLaterDate.getMonth() === 1 && workingLaterDate.getDate() > 27)
-    workingLaterDate.setDate(30);
-  workingLaterDate.setMonth(workingLaterDate.getMonth() - sign * difference);
-  let isLastMonthNotFull = compareAsc(workingLaterDate, earlierDate_) === -sign;
-  if (isLastDayOfMonth(laterDate_) && difference === 1 && compareAsc(laterDate_, earlierDate_) === 1) {
-    isLastMonthNotFull = false;
-  }
-  const result = sign * (difference - +isLastMonthNotFull);
-  return result === 0 ? 0 : result;
-}
-function differenceInSeconds(laterDate, earlierDate, options2) {
-  const diff3 = differenceInMilliseconds(laterDate, earlierDate) / 1e3;
-  return getRoundingMethod(options2?.roundingMethod)(diff3);
-}
-function normalizeInterval(context, interval) {
-  const [start2, end] = normalizeDates(context, interval.start, interval.end);
-  return { start: start2, end };
-}
-function eachMonthOfInterval(interval, options2) {
-  const { start: start2, end } = normalizeInterval(options2?.in, interval);
-  let reversed = +start2 > +end;
-  const endTime = reversed ? +start2 : +end;
-  const date2 = reversed ? end : start2;
-  date2.setHours(0, 0, 0, 0);
-  date2.setDate(1);
-  let step = 1;
-  const dates = [];
-  while (+date2 <= endTime) {
-    dates.push(constructFrom(start2, date2));
-    date2.setMonth(date2.getMonth() + step);
-  }
-  return reversed ? dates.reverse() : dates;
-}
-function startOfMonth(date2, options2) {
-  const _date2 = toDate(date2, options2?.in);
-  _date2.setDate(1);
-  _date2.setHours(0, 0, 0, 0);
-  return _date2;
-}
-function endOfYear(date2, options2) {
-  const _date2 = toDate(date2, options2?.in);
-  const year = _date2.getFullYear();
-  _date2.setFullYear(year + 1, 0, 0);
-  _date2.setHours(23, 59, 59, 999);
-  return _date2;
-}
-function startOfYear(date2, options2) {
-  const date_ = toDate(date2, options2?.in);
-  date_.setFullYear(date_.getFullYear(), 0, 1);
-  date_.setHours(0, 0, 0, 0);
-  return date_;
-}
-function eachYearOfInterval(interval, options2) {
-  const { start: start2, end } = normalizeInterval(options2?.in, interval);
-  let reversed = +start2 > +end;
-  const endTime = reversed ? +start2 : +end;
-  const date2 = reversed ? end : start2;
-  date2.setHours(0, 0, 0, 0);
-  date2.setMonth(0, 1);
-  let step = 1;
-  const dates = [];
-  while (+date2 <= endTime) {
-    dates.push(constructFrom(start2, date2));
-    date2.setFullYear(date2.getFullYear() + step);
-  }
-  return reversed ? dates.reverse() : dates;
-}
-function endOfWeek(date2, options2) {
-  const defaultOptions2 = getDefaultOptions();
-  const weekStartsOn = options2?.weekStartsOn ?? options2?.locale?.options?.weekStartsOn ?? defaultOptions2.weekStartsOn ?? defaultOptions2.locale?.options?.weekStartsOn ?? 0;
-  const _date2 = toDate(date2, options2?.in);
-  const day = _date2.getDay();
-  const diff3 = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn);
-  _date2.setDate(_date2.getDate() + diff3);
-  _date2.setHours(23, 59, 59, 999);
-  return _date2;
-}
-function endOfISOWeek(date2, options2) {
-  return endOfWeek(date2, { ...options2, weekStartsOn: 1 });
-}
-const formatDistanceLocale = {
-  lessThanXSeconds: {
-    one: "less than a second",
-    other: "less than {{count}} seconds"
-  },
-  xSeconds: {
-    one: "1 second",
-    other: "{{count}} seconds"
-  },
-  halfAMinute: "half a minute",
-  lessThanXMinutes: {
-    one: "less than a minute",
-    other: "less than {{count}} minutes"
-  },
-  xMinutes: {
-    one: "1 minute",
-    other: "{{count}} minutes"
-  },
-  aboutXHours: {
-    one: "about 1 hour",
-    other: "about {{count}} hours"
-  },
-  xHours: {
-    one: "1 hour",
-    other: "{{count}} hours"
-  },
-  xDays: {
-    one: "1 day",
-    other: "{{count}} days"
-  },
-  aboutXWeeks: {
-    one: "about 1 week",
-    other: "about {{count}} weeks"
-  },
-  xWeeks: {
-    one: "1 week",
-    other: "{{count}} weeks"
-  },
-  aboutXMonths: {
-    one: "about 1 month",
-    other: "about {{count}} months"
-  },
-  xMonths: {
-    one: "1 month",
-    other: "{{count}} months"
-  },
-  aboutXYears: {
-    one: "about 1 year",
-    other: "about {{count}} years"
-  },
-  xYears: {
-    one: "1 year",
-    other: "{{count}} years"
-  },
-  overXYears: {
-    one: "over 1 year",
-    other: "over {{count}} years"
-  },
-  almostXYears: {
-    one: "almost 1 year",
-    other: "almost {{count}} years"
-  }
+  return data2.count ?? 0;
 };
-const formatDistance$1 = (token, count2, options2) => {
-  let result;
-  const tokenValue = formatDistanceLocale[token];
-  if (typeof tokenValue === "string") {
-    result = tokenValue;
-  } else if (count2 === 1) {
-    result = tokenValue.one;
-  } else {
-    result = tokenValue.other.replace("{{count}}", count2.toString());
-  }
-  if (options2?.addSuffix) {
-    if (options2.comparison && options2.comparison > 0) {
-      return "in " + result;
-    } else {
-      return result + " ago";
-    }
-  }
-  return result;
-};
-function buildFormatLongFn(args) {
-  return (options2 = {}) => {
-    const width = options2.width ? String(options2.width) : args.defaultWidth;
-    const format2 = args.formats[width] || args.formats[args.defaultWidth];
-    return format2;
-  };
-}
-const dateFormats = {
-  full: "EEEE, MMMM do, y",
-  long: "MMMM do, y",
-  medium: "MMM d, y",
-  short: "MM/dd/yyyy"
-};
-const timeFormats = {
-  full: "h:mm:ss a zzzz",
-  long: "h:mm:ss a z",
-  medium: "h:mm:ss a",
-  short: "h:mm a"
-};
-const dateTimeFormats = {
-  full: "{{date}} 'at' {{time}}",
-  long: "{{date}} 'at' {{time}}",
-  medium: "{{date}}, {{time}}",
-  short: "{{date}}, {{time}}"
-};
-const formatLong = {
-  date: buildFormatLongFn({
-    formats: dateFormats,
-    defaultWidth: "full"
-  }),
-  time: buildFormatLongFn({
-    formats: timeFormats,
-    defaultWidth: "full"
-  }),
-  dateTime: buildFormatLongFn({
-    formats: dateTimeFormats,
-    defaultWidth: "full"
-  })
-};
-const formatRelativeLocale = {
-  lastWeek: "'last' eeee 'at' p",
-  yesterday: "'yesterday at' p",
-  today: "'today at' p",
-  tomorrow: "'tomorrow at' p",
-  nextWeek: "eeee 'at' p",
-  other: "P"
-};
-const formatRelative = (token, _date2, _baseDate, _options) => formatRelativeLocale[token];
-function buildLocalizeFn(args) {
-  return (value, options2) => {
-    const context = options2?.context ? String(options2.context) : "standalone";
-    let valuesArray;
-    if (context === "formatting" && args.formattingValues) {
-      const defaultWidth = args.defaultFormattingWidth || args.defaultWidth;
-      const width = options2?.width ? String(options2.width) : defaultWidth;
-      valuesArray = args.formattingValues[width] || args.formattingValues[defaultWidth];
-    } else {
-      const defaultWidth = args.defaultWidth;
-      const width = options2?.width ? String(options2.width) : args.defaultWidth;
-      valuesArray = args.values[width] || args.values[defaultWidth];
-    }
-    const index2 = args.argumentCallback ? args.argumentCallback(value) : value;
-    return valuesArray[index2];
-  };
-}
-const eraValues = {
-  narrow: ["B", "A"],
-  abbreviated: ["BC", "AD"],
-  wide: ["Before Christ", "Anno Domini"]
-};
-const quarterValues = {
-  narrow: ["1", "2", "3", "4"],
-  abbreviated: ["Q1", "Q2", "Q3", "Q4"],
-  wide: ["1st quarter", "2nd quarter", "3rd quarter", "4th quarter"]
-};
-const monthValues = {
-  narrow: ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
-  abbreviated: [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec"
-  ],
-  wide: [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ]
-};
-const dayValues = {
-  narrow: ["S", "M", "T", "W", "T", "F", "S"],
-  short: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
-  abbreviated: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-  wide: [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ]
-};
-const dayPeriodValues = {
-  narrow: {
-    am: "a",
-    pm: "p",
-    midnight: "mi",
-    noon: "n",
-    morning: "morning",
-    afternoon: "afternoon",
-    evening: "evening",
-    night: "night"
-  },
-  abbreviated: {
-    am: "AM",
-    pm: "PM",
-    midnight: "midnight",
-    noon: "noon",
-    morning: "morning",
-    afternoon: "afternoon",
-    evening: "evening",
-    night: "night"
-  },
-  wide: {
-    am: "a.m.",
-    pm: "p.m.",
-    midnight: "midnight",
-    noon: "noon",
-    morning: "morning",
-    afternoon: "afternoon",
-    evening: "evening",
-    night: "night"
-  }
-};
-const formattingDayPeriodValues = {
-  narrow: {
-    am: "a",
-    pm: "p",
-    midnight: "mi",
-    noon: "n",
-    morning: "in the morning",
-    afternoon: "in the afternoon",
-    evening: "in the evening",
-    night: "at night"
-  },
-  abbreviated: {
-    am: "AM",
-    pm: "PM",
-    midnight: "midnight",
-    noon: "noon",
-    morning: "in the morning",
-    afternoon: "in the afternoon",
-    evening: "in the evening",
-    night: "at night"
-  },
-  wide: {
-    am: "a.m.",
-    pm: "p.m.",
-    midnight: "midnight",
-    noon: "noon",
-    morning: "in the morning",
-    afternoon: "in the afternoon",
-    evening: "in the evening",
-    night: "at night"
-  }
-};
-const ordinalNumber = (dirtyNumber, _options) => {
-  const number2 = Number(dirtyNumber);
-  const rem100 = number2 % 100;
-  if (rem100 > 20 || rem100 < 10) {
-    switch (rem100 % 10) {
-      case 1:
-        return number2 + "st";
-      case 2:
-        return number2 + "nd";
-      case 3:
-        return number2 + "rd";
-    }
-  }
-  return number2 + "th";
-};
-const localize = {
-  ordinalNumber,
-  era: buildLocalizeFn({
-    values: eraValues,
-    defaultWidth: "wide"
-  }),
-  quarter: buildLocalizeFn({
-    values: quarterValues,
-    defaultWidth: "wide",
-    argumentCallback: (quarter) => quarter - 1
-  }),
-  month: buildLocalizeFn({
-    values: monthValues,
-    defaultWidth: "wide"
-  }),
-  day: buildLocalizeFn({
-    values: dayValues,
-    defaultWidth: "wide"
-  }),
-  dayPeriod: buildLocalizeFn({
-    values: dayPeriodValues,
-    defaultWidth: "wide",
-    formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: "wide"
-  })
-};
-function buildMatchFn(args) {
-  return (string2, options2 = {}) => {
-    const width = options2.width;
-    const matchPattern = width && args.matchPatterns[width] || args.matchPatterns[args.defaultMatchWidth];
-    const matchResult = string2.match(matchPattern);
-    if (!matchResult) {
-      return null;
-    }
-    const matchedString = matchResult[0];
-    const parsePatterns = width && args.parsePatterns[width] || args.parsePatterns[args.defaultParseWidth];
-    const key = Array.isArray(parsePatterns) ? findIndex(parsePatterns, (pattern) => pattern.test(matchedString)) : (
-      // [TODO] -- I challenge you to fix the type
-      findKey(parsePatterns, (pattern) => pattern.test(matchedString))
-    );
-    let value;
-    value = args.valueCallback ? args.valueCallback(key) : key;
-    value = options2.valueCallback ? (
-      // [TODO] -- I challenge you to fix the type
-      options2.valueCallback(value)
-    ) : value;
-    const rest = string2.slice(matchedString.length);
-    return { value, rest };
-  };
-}
-function findKey(object2, predicate) {
-  for (const key in object2) {
-    if (Object.prototype.hasOwnProperty.call(object2, key) && predicate(object2[key])) {
-      return key;
-    }
-  }
-  return void 0;
-}
-function findIndex(array2, predicate) {
-  for (let key = 0; key < array2.length; key++) {
-    if (predicate(array2[key])) {
-      return key;
-    }
-  }
-  return void 0;
-}
-function buildMatchPatternFn(args) {
-  return (string2, options2 = {}) => {
-    const matchResult = string2.match(args.matchPattern);
-    if (!matchResult) return null;
-    const matchedString = matchResult[0];
-    const parseResult = string2.match(args.parsePattern);
-    if (!parseResult) return null;
-    let value = args.valueCallback ? args.valueCallback(parseResult[0]) : parseResult[0];
-    value = options2.valueCallback ? options2.valueCallback(value) : value;
-    const rest = string2.slice(matchedString.length);
-    return { value, rest };
-  };
-}
-const matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i;
-const parseOrdinalNumberPattern = /\d+/i;
-const matchEraPatterns = {
-  narrow: /^(b|a)/i,
-  abbreviated: /^(b\.?\s?c\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?)/i,
-  wide: /^(before christ|before common era|anno domini|common era)/i
-};
-const parseEraPatterns = {
-  any: [/^b/i, /^(a|c)/i]
-};
-const matchQuarterPatterns = {
-  narrow: /^[1234]/i,
-  abbreviated: /^q[1234]/i,
-  wide: /^[1234](th|st|nd|rd)? quarter/i
-};
-const parseQuarterPatterns = {
-  any: [/1/i, /2/i, /3/i, /4/i]
-};
-const matchMonthPatterns = {
-  narrow: /^[jfmasond]/i,
-  abbreviated: /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i,
-  wide: /^(january|february|march|april|may|june|july|august|september|october|november|december)/i
-};
-const parseMonthPatterns = {
-  narrow: [
-    /^j/i,
-    /^f/i,
-    /^m/i,
-    /^a/i,
-    /^m/i,
-    /^j/i,
-    /^j/i,
-    /^a/i,
-    /^s/i,
-    /^o/i,
-    /^n/i,
-    /^d/i
-  ],
-  any: [
-    /^ja/i,
-    /^f/i,
-    /^mar/i,
-    /^ap/i,
-    /^may/i,
-    /^jun/i,
-    /^jul/i,
-    /^au/i,
-    /^s/i,
-    /^o/i,
-    /^n/i,
-    /^d/i
-  ]
-};
-const matchDayPatterns = {
-  narrow: /^[smtwf]/i,
-  short: /^(su|mo|tu|we|th|fr|sa)/i,
-  abbreviated: /^(sun|mon|tue|wed|thu|fri|sat)/i,
-  wide: /^(sunday|monday|tuesday|wednesday|thursday|friday|saturday)/i
-};
-const parseDayPatterns = {
-  narrow: [/^s/i, /^m/i, /^t/i, /^w/i, /^t/i, /^f/i, /^s/i],
-  any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i]
-};
-const matchDayPeriodPatterns = {
-  narrow: /^(a|p|mi|n|(in the|at) (morning|afternoon|evening|night))/i,
-  any: /^([ap]\.?\s?m\.?|midnight|noon|(in the|at) (morning|afternoon|evening|night))/i
-};
-const parseDayPeriodPatterns = {
-  any: {
-    am: /^a/i,
-    pm: /^p/i,
-    midnight: /^mi/i,
-    noon: /^no/i,
-    morning: /morning/i,
-    afternoon: /afternoon/i,
-    evening: /evening/i,
-    night: /night/i
-  }
-};
-const match = {
-  ordinalNumber: buildMatchPatternFn({
-    matchPattern: matchOrdinalNumberPattern,
-    parsePattern: parseOrdinalNumberPattern,
-    valueCallback: (value) => parseInt(value, 10)
-  }),
-  era: buildMatchFn({
-    matchPatterns: matchEraPatterns,
-    defaultMatchWidth: "wide",
-    parsePatterns: parseEraPatterns,
-    defaultParseWidth: "any"
-  }),
-  quarter: buildMatchFn({
-    matchPatterns: matchQuarterPatterns,
-    defaultMatchWidth: "wide",
-    parsePatterns: parseQuarterPatterns,
-    defaultParseWidth: "any",
-    valueCallback: (index2) => index2 + 1
-  }),
-  month: buildMatchFn({
-    matchPatterns: matchMonthPatterns,
-    defaultMatchWidth: "wide",
-    parsePatterns: parseMonthPatterns,
-    defaultParseWidth: "any"
-  }),
-  day: buildMatchFn({
-    matchPatterns: matchDayPatterns,
-    defaultMatchWidth: "wide",
-    parsePatterns: parseDayPatterns,
-    defaultParseWidth: "any"
-  }),
-  dayPeriod: buildMatchFn({
-    matchPatterns: matchDayPeriodPatterns,
-    defaultMatchWidth: "any",
-    parsePatterns: parseDayPeriodPatterns,
-    defaultParseWidth: "any"
-  })
-};
-const enUS$1 = {
-  code: "en-US",
-  formatDistance: formatDistance$1,
-  formatLong,
-  formatRelative,
-  localize,
-  match,
-  options: {
-    weekStartsOn: 0,
-    firstWeekContainsDate: 1
-  }
-};
-function getDayOfYear(date2, options2) {
-  const _date2 = toDate(date2, options2?.in);
-  const diff3 = differenceInCalendarDays(_date2, startOfYear(_date2));
-  const dayOfYear = diff3 + 1;
-  return dayOfYear;
-}
-function getISOWeek(date2, options2) {
-  const _date2 = toDate(date2, options2?.in);
-  const diff3 = +startOfISOWeek(_date2) - +startOfISOWeekYear(_date2);
-  return Math.round(diff3 / millisecondsInWeek) + 1;
-}
-function getWeekYear(date2, options2) {
-  const _date2 = toDate(date2, options2?.in);
-  const year = _date2.getFullYear();
-  const defaultOptions2 = getDefaultOptions();
-  const firstWeekContainsDate = options2?.firstWeekContainsDate ?? options2?.locale?.options?.firstWeekContainsDate ?? defaultOptions2.firstWeekContainsDate ?? defaultOptions2.locale?.options?.firstWeekContainsDate ?? 1;
-  const firstWeekOfNextYear = constructFrom(options2?.in || date2, 0);
-  firstWeekOfNextYear.setFullYear(year + 1, 0, firstWeekContainsDate);
-  firstWeekOfNextYear.setHours(0, 0, 0, 0);
-  const startOfNextYear = startOfWeek(firstWeekOfNextYear, options2);
-  const firstWeekOfThisYear = constructFrom(options2?.in || date2, 0);
-  firstWeekOfThisYear.setFullYear(year, 0, firstWeekContainsDate);
-  firstWeekOfThisYear.setHours(0, 0, 0, 0);
-  const startOfThisYear = startOfWeek(firstWeekOfThisYear, options2);
-  if (+_date2 >= +startOfNextYear) {
-    return year + 1;
-  } else if (+_date2 >= +startOfThisYear) {
-    return year;
-  } else {
-    return year - 1;
-  }
-}
-function startOfWeekYear(date2, options2) {
-  const defaultOptions2 = getDefaultOptions();
-  const firstWeekContainsDate = options2?.firstWeekContainsDate ?? options2?.locale?.options?.firstWeekContainsDate ?? defaultOptions2.firstWeekContainsDate ?? defaultOptions2.locale?.options?.firstWeekContainsDate ?? 1;
-  const year = getWeekYear(date2, options2);
-  const firstWeek = constructFrom(options2?.in || date2, 0);
-  firstWeek.setFullYear(year, 0, firstWeekContainsDate);
-  firstWeek.setHours(0, 0, 0, 0);
-  const _date2 = startOfWeek(firstWeek, options2);
-  return _date2;
-}
-function getWeek(date2, options2) {
-  const _date2 = toDate(date2, options2?.in);
-  const diff3 = +startOfWeek(_date2, options2) - +startOfWeekYear(_date2, options2);
-  return Math.round(diff3 / millisecondsInWeek) + 1;
-}
-function addLeadingZeros(number2, targetLength) {
-  const sign = number2 < 0 ? "-" : "";
-  const output = Math.abs(number2).toString().padStart(targetLength, "0");
-  return sign + output;
-}
-const lightFormatters = {
-  // Year
-  y(date2, token) {
-    const signedYear = date2.getFullYear();
-    const year = signedYear > 0 ? signedYear : 1 - signedYear;
-    return addLeadingZeros(token === "yy" ? year % 100 : year, token.length);
-  },
-  // Month
-  M(date2, token) {
-    const month = date2.getMonth();
-    return token === "M" ? String(month + 1) : addLeadingZeros(month + 1, 2);
-  },
-  // Day of the month
-  d(date2, token) {
-    return addLeadingZeros(date2.getDate(), token.length);
-  },
-  // AM or PM
-  a(date2, token) {
-    const dayPeriodEnumValue = date2.getHours() / 12 >= 1 ? "pm" : "am";
-    switch (token) {
-      case "a":
-      case "aa":
-        return dayPeriodEnumValue.toUpperCase();
-      case "aaa":
-        return dayPeriodEnumValue;
-      case "aaaaa":
-        return dayPeriodEnumValue[0];
-      case "aaaa":
-      default:
-        return dayPeriodEnumValue === "am" ? "a.m." : "p.m.";
-    }
-  },
-  // Hour [1-12]
-  h(date2, token) {
-    return addLeadingZeros(date2.getHours() % 12 || 12, token.length);
-  },
-  // Hour [0-23]
-  H(date2, token) {
-    return addLeadingZeros(date2.getHours(), token.length);
-  },
-  // Minute
-  m(date2, token) {
-    return addLeadingZeros(date2.getMinutes(), token.length);
-  },
-  // Second
-  s(date2, token) {
-    return addLeadingZeros(date2.getSeconds(), token.length);
-  },
-  // Fraction of second
-  S(date2, token) {
-    const numberOfDigits = token.length;
-    const milliseconds = date2.getMilliseconds();
-    const fractionalSeconds = Math.trunc(
-      milliseconds * Math.pow(10, numberOfDigits - 3)
-    );
-    return addLeadingZeros(fractionalSeconds, token.length);
-  }
-};
-const dayPeriodEnum = {
-  midnight: "midnight",
-  noon: "noon",
-  morning: "morning",
-  afternoon: "afternoon",
-  evening: "evening",
-  night: "night"
-};
-const formatters = {
-  // Era
-  G: function(date2, token, localize2) {
-    const era = date2.getFullYear() > 0 ? 1 : 0;
-    switch (token) {
-      // AD, BC
-      case "G":
-      case "GG":
-      case "GGG":
-        return localize2.era(era, { width: "abbreviated" });
-      // A, B
-      case "GGGGG":
-        return localize2.era(era, { width: "narrow" });
-      // Anno Domini, Before Christ
-      case "GGGG":
-      default:
-        return localize2.era(era, { width: "wide" });
-    }
-  },
-  // Year
-  y: function(date2, token, localize2) {
-    if (token === "yo") {
-      const signedYear = date2.getFullYear();
-      const year = signedYear > 0 ? signedYear : 1 - signedYear;
-      return localize2.ordinalNumber(year, { unit: "year" });
-    }
-    return lightFormatters.y(date2, token);
-  },
-  // Local week-numbering year
-  Y: function(date2, token, localize2, options2) {
-    const signedWeekYear = getWeekYear(date2, options2);
-    const weekYear = signedWeekYear > 0 ? signedWeekYear : 1 - signedWeekYear;
-    if (token === "YY") {
-      const twoDigitYear = weekYear % 100;
-      return addLeadingZeros(twoDigitYear, 2);
-    }
-    if (token === "Yo") {
-      return localize2.ordinalNumber(weekYear, { unit: "year" });
-    }
-    return addLeadingZeros(weekYear, token.length);
-  },
-  // ISO week-numbering year
-  R: function(date2, token) {
-    const isoWeekYear = getISOWeekYear(date2);
-    return addLeadingZeros(isoWeekYear, token.length);
-  },
-  // Extended year. This is a single number designating the year of this calendar system.
-  // The main difference between `y` and `u` localizers are B.C. years:
-  // | Year | `y` | `u` |
-  // |------|-----|-----|
-  // | AC 1 |   1 |   1 |
-  // | BC 1 |   1 |   0 |
-  // | BC 2 |   2 |  -1 |
-  // Also `yy` always returns the last two digits of a year,
-  // while `uu` pads single digit years to 2 characters and returns other years unchanged.
-  u: function(date2, token) {
-    const year = date2.getFullYear();
-    return addLeadingZeros(year, token.length);
-  },
-  // Quarter
-  Q: function(date2, token, localize2) {
-    const quarter = Math.ceil((date2.getMonth() + 1) / 3);
-    switch (token) {
-      // 1, 2, 3, 4
-      case "Q":
-        return String(quarter);
-      // 01, 02, 03, 04
-      case "QQ":
-        return addLeadingZeros(quarter, 2);
-      // 1st, 2nd, 3rd, 4th
-      case "Qo":
-        return localize2.ordinalNumber(quarter, { unit: "quarter" });
-      // Q1, Q2, Q3, Q4
-      case "QQQ":
-        return localize2.quarter(quarter, {
-          width: "abbreviated",
-          context: "formatting"
-        });
-      // 1, 2, 3, 4 (narrow quarter; could be not numerical)
-      case "QQQQQ":
-        return localize2.quarter(quarter, {
-          width: "narrow",
-          context: "formatting"
-        });
-      // 1st quarter, 2nd quarter, ...
-      case "QQQQ":
-      default:
-        return localize2.quarter(quarter, {
-          width: "wide",
-          context: "formatting"
-        });
-    }
-  },
-  // Stand-alone quarter
-  q: function(date2, token, localize2) {
-    const quarter = Math.ceil((date2.getMonth() + 1) / 3);
-    switch (token) {
-      // 1, 2, 3, 4
-      case "q":
-        return String(quarter);
-      // 01, 02, 03, 04
-      case "qq":
-        return addLeadingZeros(quarter, 2);
-      // 1st, 2nd, 3rd, 4th
-      case "qo":
-        return localize2.ordinalNumber(quarter, { unit: "quarter" });
-      // Q1, Q2, Q3, Q4
-      case "qqq":
-        return localize2.quarter(quarter, {
-          width: "abbreviated",
-          context: "standalone"
-        });
-      // 1, 2, 3, 4 (narrow quarter; could be not numerical)
-      case "qqqqq":
-        return localize2.quarter(quarter, {
-          width: "narrow",
-          context: "standalone"
-        });
-      // 1st quarter, 2nd quarter, ...
-      case "qqqq":
-      default:
-        return localize2.quarter(quarter, {
-          width: "wide",
-          context: "standalone"
-        });
-    }
-  },
-  // Month
-  M: function(date2, token, localize2) {
-    const month = date2.getMonth();
-    switch (token) {
-      case "M":
-      case "MM":
-        return lightFormatters.M(date2, token);
-      // 1st, 2nd, ..., 12th
-      case "Mo":
-        return localize2.ordinalNumber(month + 1, { unit: "month" });
-      // Jan, Feb, ..., Dec
-      case "MMM":
-        return localize2.month(month, {
-          width: "abbreviated",
-          context: "formatting"
-        });
-      // J, F, ..., D
-      case "MMMMM":
-        return localize2.month(month, {
-          width: "narrow",
-          context: "formatting"
-        });
-      // January, February, ..., December
-      case "MMMM":
-      default:
-        return localize2.month(month, { width: "wide", context: "formatting" });
-    }
-  },
-  // Stand-alone month
-  L: function(date2, token, localize2) {
-    const month = date2.getMonth();
-    switch (token) {
-      // 1, 2, ..., 12
-      case "L":
-        return String(month + 1);
-      // 01, 02, ..., 12
-      case "LL":
-        return addLeadingZeros(month + 1, 2);
-      // 1st, 2nd, ..., 12th
-      case "Lo":
-        return localize2.ordinalNumber(month + 1, { unit: "month" });
-      // Jan, Feb, ..., Dec
-      case "LLL":
-        return localize2.month(month, {
-          width: "abbreviated",
-          context: "standalone"
-        });
-      // J, F, ..., D
-      case "LLLLL":
-        return localize2.month(month, {
-          width: "narrow",
-          context: "standalone"
-        });
-      // January, February, ..., December
-      case "LLLL":
-      default:
-        return localize2.month(month, { width: "wide", context: "standalone" });
-    }
-  },
-  // Local week of year
-  w: function(date2, token, localize2, options2) {
-    const week = getWeek(date2, options2);
-    if (token === "wo") {
-      return localize2.ordinalNumber(week, { unit: "week" });
-    }
-    return addLeadingZeros(week, token.length);
-  },
-  // ISO week of year
-  I: function(date2, token, localize2) {
-    const isoWeek = getISOWeek(date2);
-    if (token === "Io") {
-      return localize2.ordinalNumber(isoWeek, { unit: "week" });
-    }
-    return addLeadingZeros(isoWeek, token.length);
-  },
-  // Day of the month
-  d: function(date2, token, localize2) {
-    if (token === "do") {
-      return localize2.ordinalNumber(date2.getDate(), { unit: "date" });
-    }
-    return lightFormatters.d(date2, token);
-  },
-  // Day of year
-  D: function(date2, token, localize2) {
-    const dayOfYear = getDayOfYear(date2);
-    if (token === "Do") {
-      return localize2.ordinalNumber(dayOfYear, { unit: "dayOfYear" });
-    }
-    return addLeadingZeros(dayOfYear, token.length);
-  },
-  // Day of week
-  E: function(date2, token, localize2) {
-    const dayOfWeek = date2.getDay();
-    switch (token) {
-      // Tue
-      case "E":
-      case "EE":
-      case "EEE":
-        return localize2.day(dayOfWeek, {
-          width: "abbreviated",
-          context: "formatting"
-        });
-      // T
-      case "EEEEE":
-        return localize2.day(dayOfWeek, {
-          width: "narrow",
-          context: "formatting"
-        });
-      // Tu
-      case "EEEEEE":
-        return localize2.day(dayOfWeek, {
-          width: "short",
-          context: "formatting"
-        });
-      // Tuesday
-      case "EEEE":
-      default:
-        return localize2.day(dayOfWeek, {
-          width: "wide",
-          context: "formatting"
-        });
-    }
-  },
-  // Local day of week
-  e: function(date2, token, localize2, options2) {
-    const dayOfWeek = date2.getDay();
-    const localDayOfWeek = (dayOfWeek - options2.weekStartsOn + 8) % 7 || 7;
-    switch (token) {
-      // Numerical value (Nth day of week with current locale or weekStartsOn)
-      case "e":
-        return String(localDayOfWeek);
-      // Padded numerical value
-      case "ee":
-        return addLeadingZeros(localDayOfWeek, 2);
-      // 1st, 2nd, ..., 7th
-      case "eo":
-        return localize2.ordinalNumber(localDayOfWeek, { unit: "day" });
-      case "eee":
-        return localize2.day(dayOfWeek, {
-          width: "abbreviated",
-          context: "formatting"
-        });
-      // T
-      case "eeeee":
-        return localize2.day(dayOfWeek, {
-          width: "narrow",
-          context: "formatting"
-        });
-      // Tu
-      case "eeeeee":
-        return localize2.day(dayOfWeek, {
-          width: "short",
-          context: "formatting"
-        });
-      // Tuesday
-      case "eeee":
-      default:
-        return localize2.day(dayOfWeek, {
-          width: "wide",
-          context: "formatting"
-        });
-    }
-  },
-  // Stand-alone local day of week
-  c: function(date2, token, localize2, options2) {
-    const dayOfWeek = date2.getDay();
-    const localDayOfWeek = (dayOfWeek - options2.weekStartsOn + 8) % 7 || 7;
-    switch (token) {
-      // Numerical value (same as in `e`)
-      case "c":
-        return String(localDayOfWeek);
-      // Padded numerical value
-      case "cc":
-        return addLeadingZeros(localDayOfWeek, token.length);
-      // 1st, 2nd, ..., 7th
-      case "co":
-        return localize2.ordinalNumber(localDayOfWeek, { unit: "day" });
-      case "ccc":
-        return localize2.day(dayOfWeek, {
-          width: "abbreviated",
-          context: "standalone"
-        });
-      // T
-      case "ccccc":
-        return localize2.day(dayOfWeek, {
-          width: "narrow",
-          context: "standalone"
-        });
-      // Tu
-      case "cccccc":
-        return localize2.day(dayOfWeek, {
-          width: "short",
-          context: "standalone"
-        });
-      // Tuesday
-      case "cccc":
-      default:
-        return localize2.day(dayOfWeek, {
-          width: "wide",
-          context: "standalone"
-        });
-    }
-  },
-  // ISO day of week
-  i: function(date2, token, localize2) {
-    const dayOfWeek = date2.getDay();
-    const isoDayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek;
-    switch (token) {
-      // 2
-      case "i":
-        return String(isoDayOfWeek);
-      // 02
-      case "ii":
-        return addLeadingZeros(isoDayOfWeek, token.length);
-      // 2nd
-      case "io":
-        return localize2.ordinalNumber(isoDayOfWeek, { unit: "day" });
-      // Tue
-      case "iii":
-        return localize2.day(dayOfWeek, {
-          width: "abbreviated",
-          context: "formatting"
-        });
-      // T
-      case "iiiii":
-        return localize2.day(dayOfWeek, {
-          width: "narrow",
-          context: "formatting"
-        });
-      // Tu
-      case "iiiiii":
-        return localize2.day(dayOfWeek, {
-          width: "short",
-          context: "formatting"
-        });
-      // Tuesday
-      case "iiii":
-      default:
-        return localize2.day(dayOfWeek, {
-          width: "wide",
-          context: "formatting"
-        });
-    }
-  },
-  // AM or PM
-  a: function(date2, token, localize2) {
-    const hours = date2.getHours();
-    const dayPeriodEnumValue = hours / 12 >= 1 ? "pm" : "am";
-    switch (token) {
-      case "a":
-      case "aa":
-        return localize2.dayPeriod(dayPeriodEnumValue, {
-          width: "abbreviated",
-          context: "formatting"
-        });
-      case "aaa":
-        return localize2.dayPeriod(dayPeriodEnumValue, {
-          width: "abbreviated",
-          context: "formatting"
-        }).toLowerCase();
-      case "aaaaa":
-        return localize2.dayPeriod(dayPeriodEnumValue, {
-          width: "narrow",
-          context: "formatting"
-        });
-      case "aaaa":
-      default:
-        return localize2.dayPeriod(dayPeriodEnumValue, {
-          width: "wide",
-          context: "formatting"
-        });
-    }
-  },
-  // AM, PM, midnight, noon
-  b: function(date2, token, localize2) {
-    const hours = date2.getHours();
-    let dayPeriodEnumValue;
-    if (hours === 12) {
-      dayPeriodEnumValue = dayPeriodEnum.noon;
-    } else if (hours === 0) {
-      dayPeriodEnumValue = dayPeriodEnum.midnight;
-    } else {
-      dayPeriodEnumValue = hours / 12 >= 1 ? "pm" : "am";
-    }
-    switch (token) {
-      case "b":
-      case "bb":
-        return localize2.dayPeriod(dayPeriodEnumValue, {
-          width: "abbreviated",
-          context: "formatting"
-        });
-      case "bbb":
-        return localize2.dayPeriod(dayPeriodEnumValue, {
-          width: "abbreviated",
-          context: "formatting"
-        }).toLowerCase();
-      case "bbbbb":
-        return localize2.dayPeriod(dayPeriodEnumValue, {
-          width: "narrow",
-          context: "formatting"
-        });
-      case "bbbb":
-      default:
-        return localize2.dayPeriod(dayPeriodEnumValue, {
-          width: "wide",
-          context: "formatting"
-        });
-    }
-  },
-  // in the morning, in the afternoon, in the evening, at night
-  B: function(date2, token, localize2) {
-    const hours = date2.getHours();
-    let dayPeriodEnumValue;
-    if (hours >= 17) {
-      dayPeriodEnumValue = dayPeriodEnum.evening;
-    } else if (hours >= 12) {
-      dayPeriodEnumValue = dayPeriodEnum.afternoon;
-    } else if (hours >= 4) {
-      dayPeriodEnumValue = dayPeriodEnum.morning;
-    } else {
-      dayPeriodEnumValue = dayPeriodEnum.night;
-    }
-    switch (token) {
-      case "B":
-      case "BB":
-      case "BBB":
-        return localize2.dayPeriod(dayPeriodEnumValue, {
-          width: "abbreviated",
-          context: "formatting"
-        });
-      case "BBBBB":
-        return localize2.dayPeriod(dayPeriodEnumValue, {
-          width: "narrow",
-          context: "formatting"
-        });
-      case "BBBB":
-      default:
-        return localize2.dayPeriod(dayPeriodEnumValue, {
-          width: "wide",
-          context: "formatting"
-        });
-    }
-  },
-  // Hour [1-12]
-  h: function(date2, token, localize2) {
-    if (token === "ho") {
-      let hours = date2.getHours() % 12;
-      if (hours === 0) hours = 12;
-      return localize2.ordinalNumber(hours, { unit: "hour" });
-    }
-    return lightFormatters.h(date2, token);
-  },
-  // Hour [0-23]
-  H: function(date2, token, localize2) {
-    if (token === "Ho") {
-      return localize2.ordinalNumber(date2.getHours(), { unit: "hour" });
-    }
-    return lightFormatters.H(date2, token);
-  },
-  // Hour [0-11]
-  K: function(date2, token, localize2) {
-    const hours = date2.getHours() % 12;
-    if (token === "Ko") {
-      return localize2.ordinalNumber(hours, { unit: "hour" });
-    }
-    return addLeadingZeros(hours, token.length);
-  },
-  // Hour [1-24]
-  k: function(date2, token, localize2) {
-    let hours = date2.getHours();
-    if (hours === 0) hours = 24;
-    if (token === "ko") {
-      return localize2.ordinalNumber(hours, { unit: "hour" });
-    }
-    return addLeadingZeros(hours, token.length);
-  },
-  // Minute
-  m: function(date2, token, localize2) {
-    if (token === "mo") {
-      return localize2.ordinalNumber(date2.getMinutes(), { unit: "minute" });
-    }
-    return lightFormatters.m(date2, token);
-  },
-  // Second
-  s: function(date2, token, localize2) {
-    if (token === "so") {
-      return localize2.ordinalNumber(date2.getSeconds(), { unit: "second" });
-    }
-    return lightFormatters.s(date2, token);
-  },
-  // Fraction of second
-  S: function(date2, token) {
-    return lightFormatters.S(date2, token);
-  },
-  // Timezone (ISO-8601. If offset is 0, output is always `'Z'`)
-  X: function(date2, token, _localize) {
-    const timezoneOffset = date2.getTimezoneOffset();
-    if (timezoneOffset === 0) {
-      return "Z";
-    }
-    switch (token) {
-      // Hours and optional minutes
-      case "X":
-        return formatTimezoneWithOptionalMinutes(timezoneOffset);
-      // Hours, minutes and optional seconds without `:` delimiter
-      // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
-      // so this token always has the same output as `XX`
-      case "XXXX":
-      case "XX":
-        return formatTimezone(timezoneOffset);
-      // Hours, minutes and optional seconds with `:` delimiter
-      // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
-      // so this token always has the same output as `XXX`
-      case "XXXXX":
-      case "XXX":
-      // Hours and minutes with `:` delimiter
-      default:
-        return formatTimezone(timezoneOffset, ":");
-    }
-  },
-  // Timezone (ISO-8601. If offset is 0, output is `'+00:00'` or equivalent)
-  x: function(date2, token, _localize) {
-    const timezoneOffset = date2.getTimezoneOffset();
-    switch (token) {
-      // Hours and optional minutes
-      case "x":
-        return formatTimezoneWithOptionalMinutes(timezoneOffset);
-      // Hours, minutes and optional seconds without `:` delimiter
-      // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
-      // so this token always has the same output as `xx`
-      case "xxxx":
-      case "xx":
-        return formatTimezone(timezoneOffset);
-      // Hours, minutes and optional seconds with `:` delimiter
-      // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
-      // so this token always has the same output as `xxx`
-      case "xxxxx":
-      case "xxx":
-      // Hours and minutes with `:` delimiter
-      default:
-        return formatTimezone(timezoneOffset, ":");
-    }
-  },
-  // Timezone (GMT)
-  O: function(date2, token, _localize) {
-    const timezoneOffset = date2.getTimezoneOffset();
-    switch (token) {
-      // Short
-      case "O":
-      case "OO":
-      case "OOO":
-        return "GMT" + formatTimezoneShort(timezoneOffset, ":");
-      // Long
-      case "OOOO":
-      default:
-        return "GMT" + formatTimezone(timezoneOffset, ":");
-    }
-  },
-  // Timezone (specific non-location)
-  z: function(date2, token, _localize) {
-    const timezoneOffset = date2.getTimezoneOffset();
-    switch (token) {
-      // Short
-      case "z":
-      case "zz":
-      case "zzz":
-        return "GMT" + formatTimezoneShort(timezoneOffset, ":");
-      // Long
-      case "zzzz":
-      default:
-        return "GMT" + formatTimezone(timezoneOffset, ":");
-    }
-  },
-  // Seconds timestamp
-  t: function(date2, token, _localize) {
-    const timestamp = Math.trunc(+date2 / 1e3);
-    return addLeadingZeros(timestamp, token.length);
-  },
-  // Milliseconds timestamp
-  T: function(date2, token, _localize) {
-    return addLeadingZeros(+date2, token.length);
-  }
-};
-function formatTimezoneShort(offset2, delimiter = "") {
-  const sign = offset2 > 0 ? "-" : "+";
-  const absOffset = Math.abs(offset2);
-  const hours = Math.trunc(absOffset / 60);
-  const minutes = absOffset % 60;
-  if (minutes === 0) {
-    return sign + String(hours);
-  }
-  return sign + String(hours) + delimiter + addLeadingZeros(minutes, 2);
-}
-function formatTimezoneWithOptionalMinutes(offset2, delimiter) {
-  if (offset2 % 60 === 0) {
-    const sign = offset2 > 0 ? "-" : "+";
-    return sign + addLeadingZeros(Math.abs(offset2) / 60, 2);
-  }
-  return formatTimezone(offset2, delimiter);
-}
-function formatTimezone(offset2, delimiter = "") {
-  const sign = offset2 > 0 ? "-" : "+";
-  const absOffset = Math.abs(offset2);
-  const hours = addLeadingZeros(Math.trunc(absOffset / 60), 2);
-  const minutes = addLeadingZeros(absOffset % 60, 2);
-  return sign + hours + delimiter + minutes;
-}
-const dateLongFormatter = (pattern, formatLong2) => {
-  switch (pattern) {
-    case "P":
-      return formatLong2.date({ width: "short" });
-    case "PP":
-      return formatLong2.date({ width: "medium" });
-    case "PPP":
-      return formatLong2.date({ width: "long" });
-    case "PPPP":
-    default:
-      return formatLong2.date({ width: "full" });
-  }
-};
-const timeLongFormatter = (pattern, formatLong2) => {
-  switch (pattern) {
-    case "p":
-      return formatLong2.time({ width: "short" });
-    case "pp":
-      return formatLong2.time({ width: "medium" });
-    case "ppp":
-      return formatLong2.time({ width: "long" });
-    case "pppp":
-    default:
-      return formatLong2.time({ width: "full" });
-  }
-};
-const dateTimeLongFormatter = (pattern, formatLong2) => {
-  const matchResult = pattern.match(/(P+)(p+)?/) || [];
-  const datePattern = matchResult[1];
-  const timePattern = matchResult[2];
-  if (!timePattern) {
-    return dateLongFormatter(pattern, formatLong2);
-  }
-  let dateTimeFormat;
-  switch (datePattern) {
-    case "P":
-      dateTimeFormat = formatLong2.dateTime({ width: "short" });
-      break;
-    case "PP":
-      dateTimeFormat = formatLong2.dateTime({ width: "medium" });
-      break;
-    case "PPP":
-      dateTimeFormat = formatLong2.dateTime({ width: "long" });
-      break;
-    case "PPPP":
-    default:
-      dateTimeFormat = formatLong2.dateTime({ width: "full" });
-      break;
-  }
-  return dateTimeFormat.replace("{{date}}", dateLongFormatter(datePattern, formatLong2)).replace("{{time}}", timeLongFormatter(timePattern, formatLong2));
-};
-const longFormatters = {
-  p: timeLongFormatter,
-  P: dateTimeLongFormatter
-};
-const dayOfYearTokenRE = /^D+$/;
-const weekYearTokenRE = /^Y+$/;
-const throwTokens = ["D", "DD", "YY", "YYYY"];
-function isProtectedDayOfYearToken(token) {
-  return dayOfYearTokenRE.test(token);
-}
-function isProtectedWeekYearToken(token) {
-  return weekYearTokenRE.test(token);
-}
-function warnOrThrowProtectedError(token, format2, input) {
-  const _message = message(token, format2, input);
-  console.warn(_message);
-  if (throwTokens.includes(token)) throw new RangeError(_message);
-}
-function message(token, format2, input) {
-  const subject = token[0] === "Y" ? "years" : "days of the month";
-  return `Use \`${token.toLowerCase()}\` instead of \`${token}\` (in \`${format2}\`) for formatting ${subject} to the input \`${input}\`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md`;
-}
-const formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g;
-const longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g;
-const escapedStringRegExp = /^'([^]*?)'?$/;
-const doubleQuoteRegExp = /''/g;
-const unescapedLatinCharacterRegExp = /[a-zA-Z]/;
-function format(date2, formatStr, options2) {
-  const defaultOptions2 = getDefaultOptions();
-  const locale = options2?.locale ?? defaultOptions2.locale ?? enUS$1;
-  const firstWeekContainsDate = options2?.firstWeekContainsDate ?? options2?.locale?.options?.firstWeekContainsDate ?? defaultOptions2.firstWeekContainsDate ?? defaultOptions2.locale?.options?.firstWeekContainsDate ?? 1;
-  const weekStartsOn = options2?.weekStartsOn ?? options2?.locale?.options?.weekStartsOn ?? defaultOptions2.weekStartsOn ?? defaultOptions2.locale?.options?.weekStartsOn ?? 0;
-  const originalDate = toDate(date2, options2?.in);
-  if (!isValid(originalDate)) {
-    throw new RangeError("Invalid time value");
-  }
-  let parts = formatStr.match(longFormattingTokensRegExp).map((substring) => {
-    const firstCharacter = substring[0];
-    if (firstCharacter === "p" || firstCharacter === "P") {
-      const longFormatter = longFormatters[firstCharacter];
-      return longFormatter(substring, locale.formatLong);
-    }
-    return substring;
-  }).join("").match(formattingTokensRegExp).map((substring) => {
-    if (substring === "''") {
-      return { isToken: false, value: "'" };
-    }
-    const firstCharacter = substring[0];
-    if (firstCharacter === "'") {
-      return { isToken: false, value: cleanEscapedString(substring) };
-    }
-    if (formatters[firstCharacter]) {
-      return { isToken: true, value: substring };
-    }
-    if (firstCharacter.match(unescapedLatinCharacterRegExp)) {
-      throw new RangeError(
-        "Format string contains an unescaped latin alphabet character `" + firstCharacter + "`"
-      );
-    }
-    return { isToken: false, value: substring };
-  });
-  if (locale.localize.preprocessor) {
-    parts = locale.localize.preprocessor(originalDate, parts);
-  }
-  const formatterOptions = {
-    firstWeekContainsDate,
-    weekStartsOn,
-    locale
-  };
-  return parts.map((part) => {
-    if (!part.isToken) return part.value;
-    const token = part.value;
-    if (!options2?.useAdditionalWeekYearTokens && isProtectedWeekYearToken(token) || !options2?.useAdditionalDayOfYearTokens && isProtectedDayOfYearToken(token)) {
-      warnOrThrowProtectedError(token, formatStr, String(date2));
-    }
-    const formatter = formatters[token[0]];
-    return formatter(originalDate, token, locale.localize, formatterOptions);
-  }).join("");
-}
-function cleanEscapedString(input) {
-  const matched = input.match(escapedStringRegExp);
-  if (!matched) {
-    return input;
-  }
-  return matched[1].replace(doubleQuoteRegExp, "'");
-}
-function formatDistance(laterDate, earlierDate, options2) {
-  const defaultOptions2 = getDefaultOptions();
-  const locale = options2?.locale ?? defaultOptions2.locale ?? enUS$1;
-  const minutesInAlmostTwoDays = 2520;
-  const comparison = compareAsc(laterDate, earlierDate);
-  if (isNaN(comparison)) throw new RangeError("Invalid time value");
-  const localizeOptions = Object.assign({}, options2, {
-    addSuffix: options2?.addSuffix,
-    comparison
-  });
-  const [laterDate_, earlierDate_] = normalizeDates(
-    options2?.in,
-    ...comparison > 0 ? [earlierDate, laterDate] : [laterDate, earlierDate]
-  );
-  const seconds = differenceInSeconds(earlierDate_, laterDate_);
-  const offsetInSeconds = (getTimezoneOffsetInMilliseconds(earlierDate_) - getTimezoneOffsetInMilliseconds(laterDate_)) / 1e3;
-  const minutes = Math.round((seconds - offsetInSeconds) / 60);
-  let months;
-  if (minutes < 2) {
-    if (options2?.includeSeconds) {
-      if (seconds < 5) {
-        return locale.formatDistance("lessThanXSeconds", 5, localizeOptions);
-      } else if (seconds < 10) {
-        return locale.formatDistance("lessThanXSeconds", 10, localizeOptions);
-      } else if (seconds < 20) {
-        return locale.formatDistance("lessThanXSeconds", 20, localizeOptions);
-      } else if (seconds < 40) {
-        return locale.formatDistance("halfAMinute", 0, localizeOptions);
-      } else if (seconds < 60) {
-        return locale.formatDistance("lessThanXMinutes", 1, localizeOptions);
-      } else {
-        return locale.formatDistance("xMinutes", 1, localizeOptions);
-      }
-    } else {
-      if (minutes === 0) {
-        return locale.formatDistance("lessThanXMinutes", 1, localizeOptions);
-      } else {
-        return locale.formatDistance("xMinutes", minutes, localizeOptions);
+const fetchNotifications = async (baseUrl, tenantId, userId, page = 1, limit = 5, filters) => {
+  const { data: data2 } = await axios.get(
+    `${baseUrl}/notifications/api/me/${tenantId}/${userId}`,
+    {
+      params: {
+        page,
+        limit,
+        ...filters?.read !== void 0 ? { read: filters.read } : {}
       }
     }
-  } else if (minutes < 45) {
-    return locale.formatDistance("xMinutes", minutes, localizeOptions);
-  } else if (minutes < 90) {
-    return locale.formatDistance("aboutXHours", 1, localizeOptions);
-  } else if (minutes < minutesInDay) {
-    const hours = Math.round(minutes / 60);
-    return locale.formatDistance("aboutXHours", hours, localizeOptions);
-  } else if (minutes < minutesInAlmostTwoDays) {
-    return locale.formatDistance("xDays", 1, localizeOptions);
-  } else if (minutes < minutesInMonth) {
-    const days = Math.round(minutes / minutesInDay);
-    return locale.formatDistance("xDays", days, localizeOptions);
-  } else if (minutes < minutesInMonth * 2) {
-    months = Math.round(minutes / minutesInMonth);
-    return locale.formatDistance("aboutXMonths", months, localizeOptions);
-  }
-  months = differenceInMonths(earlierDate_, laterDate_);
-  if (months < 12) {
-    const nearestMonth = Math.round(minutes / minutesInMonth);
-    return locale.formatDistance("xMonths", nearestMonth, localizeOptions);
-  } else {
-    const monthsSinceStartOfYear = months % 12;
-    const years = Math.trunc(months / 12);
-    if (monthsSinceStartOfYear < 3) {
-      return locale.formatDistance("aboutXYears", years, localizeOptions);
-    } else if (monthsSinceStartOfYear < 9) {
-      return locale.formatDistance("overXYears", years, localizeOptions);
-    } else {
-      return locale.formatDistance("almostXYears", years + 1, localizeOptions);
-    }
-  }
-}
-function formatDistanceToNow(date2, options2) {
-  return formatDistance(date2, constructNow(date2), options2);
-}
-function getDaysInMonth(date2, options2) {
-  const _date2 = toDate(date2, options2?.in);
-  const year = _date2.getFullYear();
-  const monthIndex = _date2.getMonth();
-  const lastDayOfMonth = constructFrom(_date2, 0);
-  lastDayOfMonth.setFullYear(year, monthIndex + 1, 0);
-  lastDayOfMonth.setHours(0, 0, 0, 0);
-  return lastDayOfMonth.getDate();
-}
-function getMonth(date2, options2) {
-  return toDate(date2, options2?.in).getMonth();
-}
-function getYear(date2, options2) {
-  return toDate(date2, options2?.in).getFullYear();
-}
-function isAfter(date2, dateToCompare) {
-  return +toDate(date2) > +toDate(dateToCompare);
-}
-function isBefore(date2, dateToCompare) {
-  return +toDate(date2) < +toDate(dateToCompare);
-}
-function isEqual(leftDate, rightDate) {
-  return +toDate(leftDate) === +toDate(rightDate);
-}
-function isSameMonth(laterDate, earlierDate, options2) {
-  const [laterDate_, earlierDate_] = normalizeDates(
-    options2?.in,
-    laterDate,
-    earlierDate
   );
-  return laterDate_.getFullYear() === earlierDate_.getFullYear() && laterDate_.getMonth() === earlierDate_.getMonth();
-}
-function isSameYear(laterDate, earlierDate, options2) {
-  const [laterDate_, earlierDate_] = normalizeDates(
-    options2?.in,
-    laterDate,
-    earlierDate
+  return data2.results;
+};
+const markNotificationAsRead = async (baseUrl, tenantId, userId, notificationId) => {
+  const { data: data2 } = await axios.patch(
+    `${baseUrl}/notifications/api/read/${tenantId}/${userId}/${notificationId}`
   );
-  return laterDate_.getFullYear() === earlierDate_.getFullYear();
-}
-function subDays(date2, amount, options2) {
-  return addDays(date2, -1, options2);
-}
-function setMonth(date2, month, options2) {
-  const _date2 = toDate(date2, options2?.in);
-  const year = _date2.getFullYear();
-  const day = _date2.getDate();
-  const midMonth = constructFrom(date2, 0);
-  midMonth.setFullYear(year, month, 15);
-  midMonth.setHours(0, 0, 0, 0);
-  const daysInMonth = getDaysInMonth(midMonth);
-  _date2.setMonth(month, Math.min(day, daysInMonth));
-  return _date2;
-}
-function setYear(date2, year, options2) {
-  const date_ = toDate(date2, options2?.in);
-  if (isNaN(+date_)) return constructFrom(date2, NaN);
-  date_.setFullYear(year);
-  return date_;
-}
+  return data2;
+};
 function Card({
   className,
   size: size2 = "default",
@@ -68986,74 +69011,79 @@ function CardFooter({ className, ...props }) {
     }
   );
 }
-const triggersTenantId$1 = "6a0f0dc1216c36e813000c98";
-const triggersBaseUrl$1 = "https://triggers.huruftech.com";
-const TYPE_CONFIG$1 = {
-  order: { icon: IconPackage, bg: "bg-primary/10", color: "text-primary", border: "border-l-primary", label: "Orders" },
-  payment: { icon: IconCash, bg: "bg-success/10", color: "text-success", border: "border-l-success", label: "Payments" },
-  delivery: { icon: IconTruckDelivery, bg: "bg-blue-500/10", color: "text-blue-500", border: "border-l-blue-500", label: "Deliveries" },
-  alert: { icon: IconAlertCircle, bg: "bg-destructive/10", color: "text-destructive", border: "border-l-destructive", label: "Alerts" },
-  info: { icon: IconInfoCircle, bg: "bg-muted", color: "text-muted-foreground", border: "border-l-muted-foreground/40", label: "Info" }
+const SkeletonRepeater = ({
+  count: count2 = 3,
+  children,
+  className,
+  ...props
+}) => {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: cn$1("flex flex-col gap-1 w-full", className), ...props, children: Array.from({ length: count2 }).map((_2, index2) => /* @__PURE__ */ jsxRuntimeExports.jsx(React.Fragment, { children }, index2)) });
 };
-const timeAgo$1 = (dateStr) => formatDistanceToNow(new Date(dateStr), { addSuffix: true });
-function NotificationPopover({ userId, unreadCount: unreadCountProp = 0 }) {
+function NotificationSkeletonCard() {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "border-l-[3px] border-l-muted-foreground/20 p-2 shadow-none", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "flex w-full items-center gap-2 p-0", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "mt-0.5 size-8 shrink-0 animate-pulse rounded-full bg-muted" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "w-full flex justify-between items-center", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0 flex-1 flex flex-col gap-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-3 w-24 animate-pulse rounded bg-muted sm:w-32" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-2.5 w-32 animate-pulse rounded bg-muted sm:w-40" })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-end gap-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-3 w-16 animate-pulse rounded bg-muted" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-2.5 w-10 animate-pulse rounded bg-muted" })
+      ] })
+    ] })
+  ] }) });
+}
+function NotificationPopover({ userId, unreadCount = 0, onRefreshUnread }) {
   const { t: t3 } = useTranslation$1();
   const navigate = useNavigate();
   const [notifications, setNotifications] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
-  const [error2, setError] = React.useState(null);
   const [open, setOpen] = React.useState(false);
-  const [unreadCount, setUnreadCount] = React.useState(unreadCountProp);
-  const [hasFetchedOnce, setHasFetchedOnce] = React.useState(false);
-  React.useEffect(() => {
-    if (!hasFetchedOnce) {
-      setUnreadCount(unreadCountProp);
-    }
-  }, [unreadCountProp, hasFetchedOnce]);
-  const markAllRead = () => {
-    setNotifications((prev) => prev.map((n2) => ({ ...n2, read: true })));
-    setUnreadCount(0);
-  };
-  const markRead = (id2) => {
+  const markRead = async (id2) => {
+    if (!userId) return;
     setNotifications(
-      (prev) => prev.map((n2) => {
-        if (n2.id === id2 && !n2.read) {
-          setUnreadCount((count2) => Math.max(0, count2 - 1));
-          return { ...n2, read: true };
-        }
-        return n2;
-      })
+      (prev) => prev.map((n2) => n2._id === id2 ? { ...n2, read: true } : n2)
     );
+    try {
+      await markNotificationAsRead(triggersBaseUrl, triggersTenantId, userId, id2);
+      if (onRefreshUnread) onRefreshUnread();
+    } catch (err) {
+      console.error(err);
+    }
   };
   React.useEffect(() => {
-    if (!open || !triggersTenantId$1 || !userId) return;
+    if (!open || !triggersTenantId || !userId) return;
     let cancelled = false;
     setLoading(true);
-    setError(null);
-    axios.get(`${triggersBaseUrl$1}/notifications/api/me/${triggersTenantId$1}/${userId}`, {
-      params: { page: 1, limit: 10 }
-    }).then(({ data: data2 }) => {
+    fetchNotifications(triggersBaseUrl, triggersTenantId, userId, 1, 5).then((results) => {
       if (cancelled) return;
-      const mapped = data2.results.map((doc2) => ({
-        id: doc2._id,
-        type: doc2.data?.type ?? "info",
-        title: doc2.data?.title ?? "",
-        body: doc2.data?.body ?? "",
-        time: timeAgo$1(doc2.createdAt),
-        read: doc2.read ?? false
+      const mapped = results.map((doc2) => ({
+        _id: doc2._id,
+        receiver: doc2.receiver,
+        data: {
+          imageUrl: doc2.data?.imageUrl ?? "",
+          title: doc2.data?.title ?? "",
+          body: doc2.data?.body ?? "",
+          html: doc2.data?.html ?? ""
+        },
+        tenant: doc2.tenant,
+        read: doc2.read ?? false,
+        createdAt: timeAgo(doc2.createdAt),
+        updatedAt: timeAgo(doc2.updatedAt)
       }));
       setNotifications(mapped);
-      setUnreadCount(mapped.filter((n2) => !n2.read).length);
-      setHasFetchedOnce(true);
-    }).catch(() => {
-      if (!cancelled) setError(t3("Failed to load notifications"));
+    }).catch((err) => {
+      if (cancelled) return;
+      const message2 = t3(`${err} || ${err?.message}  || ${err?.response?.data?.message}`) || t3("Failed to load notifications");
+      toast.error(message2);
     }).finally(() => {
       if (!cancelled) setLoading(false);
     });
     return () => {
       cancelled = true;
     };
-  }, [open, triggersTenantId$1, userId, t3]);
+  }, [open, userId, t3]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(Popover$1, { open, onOpenChange: setOpen, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(
       PopoverTrigger$1,
@@ -69092,31 +69122,26 @@ function NotificationPopover({ userId, unreadCount: unreadCountProp = 0 }) {
             )
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(Separator$3, {}),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(ScrollArea, { className: "h-auto", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-col gap-2 p-2", children: loading ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-col items-center justify-center py-10 text-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground", children: t3("Loading...") }) }) : error2 ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-col items-center justify-center py-10 text-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-destructive", children: error2 }) }) : notifications.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center justify-center py-10 text-center", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(ScrollArea, { className: "h-auto", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-col gap-2 p-2", children: loading ? /* @__PURE__ */ jsxRuntimeExports.jsx(SkeletonRepeater, { count: 5, children: /* @__PURE__ */ jsxRuntimeExports.jsx(NotificationSkeletonCard, {}) }) : notifications.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center justify-center py-10 text-center", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(IconBell, { className: "mb-2 size-8 text-muted-foreground/30" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground", children: t3("No notifications") })
-          ] }) : notifications.slice(0, 5).map((n2) => {
-            const cfg = TYPE_CONFIG$1[n2.type];
-            const Icon2 = cfg.icon;
+          ] }) : notifications.map((n2) => {
             return /* @__PURE__ */ jsxRuntimeExports.jsx(
               Card,
               {
                 className: cn$1(
                   "border-l-[3px] p-2 shadow-none transition-all duration-150 hover:shadow-sm cursor-pointer",
-                  cfg.border,
                   !n2.read && "bg-primary/3"
                 ),
-                onClick: () => markRead(n2.id),
+                onClick: () => markRead(n2._id),
                 children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "flex w-full items-center gap-2 p-0", children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(
                     "span",
                     {
                       className: cn$1(
-                        "mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full",
-                        cfg.bg,
-                        cfg.color
+                        "mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full"
                       ),
-                      children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon2, { className: "size-4" })
+                      children: /* @__PURE__ */ jsxRuntimeExports.jsx(IconInfoCircle, { className: "size-4" })
                     }
                   ),
                   /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "w-full flex justify-between items-center", children: [
@@ -69129,12 +69154,12 @@ function NotificationPopover({ userId, unreadCount: unreadCountProp = 0 }) {
                               "line-clamp-1 truncate max-w-36 sm:max-w-48",
                               !n2.read ? "font-medium text-foreground" : "text-foreground/80"
                             ),
-                            children: t3(n2.title)
+                            children: t3(n2.data.title)
                           }
                         ),
                         !n2.read && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "size-2 shrink-0 rounded-full bg-primary" })
                       ] }),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("small", { className: "line-clamp-1 truncate text-xs text-muted-foreground w-full max-w-36 sm:max-w-48", children: n2.body })
+                      /* @__PURE__ */ jsxRuntimeExports.jsx("small", { className: "line-clamp-1 truncate text-xs text-muted-foreground w-full max-w-36 sm:max-w-48", children: n2.data.body })
                     ] }),
                     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col", children: [
                       /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -69143,19 +69168,22 @@ function NotificationPopover({ userId, unreadCount: unreadCountProp = 0 }) {
                           variant: "ghost",
                           size: "sm",
                           className: "h-auto p-1 text-xs text-muted-foreground hover:text-foreground",
-                          onClick: markAllRead,
+                          onClick: (e2) => {
+                            e2.stopPropagation();
+                            markRead(n2._id);
+                          },
                           children: [
                             /* @__PURE__ */ jsxRuntimeExports.jsx(IconCheck, { className: "me-1 size-3" }),
                             t3("Mark as read")
                           ]
                         }
                       ),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-muted-foreground/60 text-end p-1", children: n2.time })
+                      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-muted-foreground/60 text-end p-1", children: n2.createdAt })
                     ] })
                   ] })
                 ] })
               },
-              n2.id
+              n2._id
             );
           }) }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(Separator$3, {}),
@@ -69241,19 +69269,13 @@ function Layout$2({ children }) {
   );
   const { data: me3 } = use$1(_me);
   const [unreadCount, setUnreadCount] = React.useState(0);
-  const triggersTenant = "6a0f0dc1216c36e813000c98";
-  const triggersBaseUrl2 = "https://triggers.huruftech.com";
+  const refreshUnreadCount = React.useCallback(() => {
+    if (!me3?._id || !triggersTenantId || !triggersBaseUrl) return;
+    fetchUnreadCount(triggersBaseUrl, triggersTenantId, me3._id).then((count2) => setUnreadCount(count2)).catch((err) => console.log("Failed to fetch unread count", err));
+  }, [me3?._id, triggersTenantId, triggersBaseUrl]);
   React.useEffect(() => {
-    if (!me3?._id) return;
-    const controller = new AbortController();
-    axios.get(
-      `${triggersBaseUrl2}/notifications/api/unread/count/${triggersTenant}/${me3._id}`,
-      { signal: controller.signal }
-    ).then(({ data: data2 }) => setUnreadCount(data2.count ?? 0)).catch((err) => {
-      console.log(err);
-    });
-    return () => controller.abort();
-  }, [me3?._id, triggersTenant, triggersBaseUrl2]);
+    refreshUnreadCount();
+  }, [refreshUnreadCount]);
   const { routes: routes2, subRoutes } = React.useMemo(
     () => getNavRoutes(router2.routes),
     [router2.routes]
@@ -69417,7 +69439,14 @@ function Layout$2({ children }) {
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto flex items-center gap-3 py-2", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex shrink-0 items-center gap-3", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-base font-semibold capitalize", children: appName() }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "ms-auto flex items-center gap-3", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(NotificationPopover, { userId: me3?._id, unreadCount }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              NotificationPopover,
+              {
+                userId: me3?._id,
+                unreadCount,
+                onRefreshUnread: refreshUnreadCount
+              }
+            ),
             ThunderSDK.isPermitted(ThunderSDK.wallets.get) && /* @__PURE__ */ jsxRuntimeExports.jsx(
               NavBalance,
               {
@@ -177369,14 +177398,6 @@ function WalletActions({
     key
   )) });
 }
-const SkeletonRepeater = ({
-  count: count2 = 3,
-  children,
-  className,
-  ...props
-}) => {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: cn$1("flex flex-col gap-1 w-full", className), ...props, children: Array.from({ length: count2 }).map((_2, index2) => /* @__PURE__ */ jsxRuntimeExports.jsx(React.Fragment, { children }, index2)) });
-};
 function CopyButton({
   value,
   className
@@ -183969,7 +183990,7 @@ const Clipboard = registerPlugin("Clipboard", {
   web: () => new ClipboardWeb()
 });
 const Share = registerPlugin("Share", {
-  web: () => __vitePreload(() => import("./web-DFEZBVbG.js"), true ? [] : void 0).then((m2) => new m2.ShareWeb())
+  web: () => __vitePreload(() => import("./web-CL3K4oYe.js"), true ? [] : void 0).then((m2) => new m2.ShareWeb())
 });
 var __defProp = Object.defineProperty;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
@@ -185520,28 +185541,21 @@ function AccordionContent({
     }
   );
 }
-const triggersTenantId = "6a0f0dc1216c36e813000c98";
-const triggersBaseUrl = "https://triggers.huruftech.com";
 const PAGE_SIZE = 5;
-const TYPE_CONFIG = {
-  order: { icon: IconPackage, bg: "bg-primary/10", color: "text-primary", border: "border-l-primary", label: "Orders" },
-  payment: { icon: IconCash, bg: "bg-success/10", color: "text-success", border: "border-l-success", label: "Payments" },
-  delivery: { icon: IconTruckDelivery, bg: "bg-blue-500/10", color: "text-blue-500", border: "border-l-blue-500", label: "Deliveries" },
-  alert: { icon: IconAlertCircle, bg: "bg-destructive/10", color: "text-destructive", border: "border-l-destructive", label: "Alerts" },
-  info: { icon: IconInfoCircle, bg: "bg-muted", color: "text-muted-foreground", border: "border-l-muted-foreground/40", label: "Info" }
-};
-const timeAgo = (dateStr) => formatDistanceToNow(new Date(dateStr), { addSuffix: true });
-const getDateGroup = (dateStr) => {
-  const date2 = new Date(dateStr);
-  const now2 = /* @__PURE__ */ new Date();
-  if (isSameDay(date2, now2)) return "Today";
-  if (isSameDay(date2, subDays(now2))) return "Yesterday";
-  return format(date2, "MMM d, yyyy");
-};
+function NotificationCardSkeleton() {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "overflow-hidden border-l-[3px] border-l-muted-foreground/20 py-0 shadow-none", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "flex w-full items-center gap-3 px-3 py-3", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "size-9 shrink-0 animate-pulse rounded-full bg-muted sm:size-10" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0 flex-1 flex flex-col gap-2", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-3 w-28 animate-pulse rounded bg-muted sm:w-40" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-2.5 w-40 animate-pulse rounded bg-muted sm:w-56" })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-2.5 w-12 shrink-0 animate-pulse rounded bg-muted" })
+  ] }) });
+}
 function Notifications$2() {
   const { t: t3 } = useTranslation$1();
   const [notifications, setNotifications] = React.useState([]);
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
   const [error2, setError] = React.useState(null);
   const [activeTab, setActiveTab] = React.useState("all");
   const [page, setPage] = React.useState(1);
@@ -185553,41 +185567,47 @@ function Notifications$2() {
   );
   const { data: me3 } = use$1(_me);
   const userId = me3?._id;
+  const tenant = "6a0f0dc1216c36e813000c98";
+  const triggersBaseUrl2 = "https://triggers.huruftech.com";
   const unreadCount = notifications.filter((n2) => !n2.read).length;
   React.useEffect(() => {
     if (!userId) return;
     let cancelled = false;
     setLoading(true);
     setError(null);
-    axios.get(`${triggersBaseUrl}/notifications/api/me/${triggersTenantId}/${userId}`, {
-      params: { page: 1, limit: 50 }
-    }).then(({ data: data2 }) => {
+    const filters = activeTab === "unread" ? { read: false } : void 0;
+    fetchNotifications(triggersBaseUrl2, tenant, userId, 1, 50, filters).then((results) => {
       if (cancelled) return;
-      setNotifications(
-        data2.results.map((doc2) => ({
-          id: doc2._id,
-          type: doc2.data?.type ?? "info",
+      const mapped = results.map((doc2) => ({
+        _id: doc2._id,
+        receiver: doc2.receiver,
+        data: {
+          imageUrl: doc2.data?.imageUrl ?? "",
           title: doc2.data?.title ?? "",
-          message: doc2.data?.message ?? "",
-          time: timeAgo(doc2.createdAt),
-          date: getDateGroup(doc2.createdAt),
-          read: doc2.read ?? false
-        }))
-      );
+          body: doc2.data?.body ?? "",
+          html: doc2.data?.html ?? ""
+        },
+        tenant: doc2.tenant,
+        read: doc2.read ?? false,
+        createdAt: timeAgo(doc2.createdAt),
+        updatedAt: timeAgo(doc2.updatedAt),
+        dateGroup: getDateGroup(doc2.createdAt)
+      }));
+      const scoped = activeTab === "unread" ? mapped.filter((n2) => !n2.read) : mapped;
+      setNotifications(scoped);
     }).catch(() => {
-      if (!cancelled) setError(t3("Failed to load notifications"));
+      if (cancelled) return;
+      const message2 = t3("Failed to load notifications");
+      setError(message2);
+      toast.error(message2);
     }).finally(() => {
       if (!cancelled) setLoading(false);
     });
     return () => {
       cancelled = true;
     };
-  }, [triggersTenantId, userId, triggersBaseUrl]);
-  const filtered = React.useMemo(() => {
-    if (activeTab === "all") return notifications;
-    if (activeTab === "unread") return notifications.filter((n2) => !n2.read);
-    return notifications.filter((n2) => n2.type === activeTab);
-  }, [notifications, activeTab]);
+  }, [tenant, userId, triggersBaseUrl2, activeTab, t3]);
+  const filtered = notifications;
   React.useEffect(() => {
     setPage(1);
   }, [activeTab]);
@@ -185600,15 +185620,21 @@ function Notifications$2() {
   const grouped = React.useMemo(() => {
     const groups = {};
     for (const n2 of paginated) {
-      (groups[n2.date] ??= []).push(n2);
+      (groups[n2?.dateGroup] ??= []).push(n2);
     }
     return Object.entries(groups);
   }, [paginated]);
-  const markAllRead = () => setNotifications((prev) => prev.map((n2) => ({ ...n2, read: true })));
-  const markRead = (id2) => setNotifications(
-    (prev) => prev.map((n2) => n2.id === id2 ? { ...n2, read: true } : n2)
-  );
-  const dismissNotification = (id2) => setNotifications((prev) => prev.filter((n2) => n2.id !== id2));
+  const markRead = async (id2) => {
+    if (!userId) return;
+    setNotifications(
+      (prev) => prev.map((n2) => n2._id === id2 ? { ...n2, read: true } : n2)
+    );
+    try {
+      await markNotificationAsRead(triggersBaseUrl2, tenant, userId, id2);
+    } catch (err) {
+      console.error("Failed to mark as read", err);
+    }
+  };
   const clearAll = () => setNotifications([]);
   return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-full min-h-0 flex-1 flex-col overflow-y-auto mask-y-from-98%", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Container, { className: "relative flex flex-col gap-4 max-w-3xl", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between", children: [
@@ -185619,34 +185645,19 @@ function Notifications$2() {
           /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: unreadCount > 0 ? t3("{{count}} unread notifications", { count: unreadCount }) : t3("You're all caught up") })
         ] })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
-        unreadCount > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          Button$2,
-          {
-            variant: "outline",
-            size: "sm",
-            className: "gap-1.5 text-xs",
-            onClick: markAllRead,
-            children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(IconChecks, { className: "size-3.5" }),
-              t3("Mark all read")
-            ]
-          }
-        ),
-        notifications.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          Button$2,
-          {
-            variant: "outline",
-            size: "sm",
-            className: "gap-1.5 text-xs text-destructive hover:text-destructive",
-            onClick: clearAll,
-            children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(IconTrash, { className: "size-3.5" }),
-              t3("Clear all")
-            ]
-          }
-        )
-      ] })
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center gap-2", children: notifications.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        Button$2,
+        {
+          variant: "outline",
+          size: "sm",
+          className: "gap-1.5 text-xs text-destructive hover:text-destructive",
+          onClick: clearAll,
+          children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(IconTrash, { className: "size-3.5" }),
+            t3("Clear all")
+          ]
+        }
+      ) })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(Tabs, { value: activeTab, onValueChange: setActiveTab, children: /* @__PURE__ */ jsxRuntimeExports.jsx(TabsList, { className: "h-auto w-full justify-start gap-1 bg-transparent p-0", children: [
       { value: "all", label: t3("All") },
@@ -185670,9 +185681,13 @@ function Notifications$2() {
       },
       tab.value
     )) }) }),
-    loading && /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { className: "flex flex-col items-center justify-center py-16 text-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground", children: t3("Loading...") }) }) }),
-    !loading && error2 && /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { className: "flex flex-col items-center justify-center py-16 text-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-destructive", children: error2 }) }) }),
-    !loading && !error2 && filtered.length === 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "flex flex-col items-center justify-center py-16 text-center", children: [
+    loading && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-col gap-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(SkeletonRepeater, { count: 5, children: /* @__PURE__ */ jsxRuntimeExports.jsx(NotificationCardSkeleton, {}) }) }),
+    !loading && error2 && /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "flex flex-col items-center justify-center py-16 text-center", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-destructive/10", children: /* @__PURE__ */ jsxRuntimeExports.jsx(IconAlertCircle, { className: "size-7 text-destructive" }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-base font-semibold text-foreground", children: t3("Something went wrong") }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-1 max-w-xs text-xs text-muted-foreground", children: error2 })
+    ] }) }),
+    !loading && filtered.length === 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "flex flex-col items-center justify-center py-16 text-center", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-muted", children: /* @__PURE__ */ jsxRuntimeExports.jsx(IconBellOff, { className: "size-7 text-muted-foreground/50" }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-base font-semibold text-foreground", children: t3("No notifications") }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-1 max-w-xs text-xs text-muted-foreground", children: activeTab === "unread" ? t3("You have no unread notifications.") : t3("There are no notifications to display.") })
@@ -185683,31 +185698,26 @@ function Notifications$2() {
         /* @__PURE__ */ jsxRuntimeExports.jsx(Separator$3, { className: "flex-1" })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-col gap-2", children: items.map((n2) => {
-        const cfg = TYPE_CONFIG[n2.type];
-        const Icon2 = cfg.icon;
         return /* @__PURE__ */ jsxRuntimeExports.jsx(
           Card,
           {
             className: cn$1(
               "overflow-hidden border-l-[3px] py-0 shadow-none transition-all duration-150 hover:shadow-sm",
-              cfg.border,
               !n2.read && "bg-primary/3"
             ),
             children: /* @__PURE__ */ jsxRuntimeExports.jsx(
               Accordion,
               {
-                onValueChange: (value) => value && !n2.read && markRead(n2.id),
-                children: /* @__PURE__ */ jsxRuntimeExports.jsxs(AccordionItem, { value: n2.id, className: "border-none", children: [
+                onValueChange: (value) => value && !n2.read && markRead(n2._id),
+                children: /* @__PURE__ */ jsxRuntimeExports.jsxs(AccordionItem, { value: n2._id, className: "border-none", children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(AccordionTrigger, { className: "group w-full px-3 py-3 hover:no-underline", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "flex w-full items-center gap-3 p-0", children: [
                     /* @__PURE__ */ jsxRuntimeExports.jsx(
                       "span",
                       {
                         className: cn$1(
-                          "flex size-9 shrink-0 items-center justify-center rounded-full sm:size-10",
-                          cfg.bg,
-                          cfg.color
+                          "flex size-9 shrink-0 items-center justify-center rounded-full sm:size-10"
                         ),
-                        children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon2, { className: "size-4 sm:size-5" })
+                        children: /* @__PURE__ */ jsxRuntimeExports.jsx(IconInfoCircle, { className: "size-4 sm:size-5" })
                       }
                     ),
                     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0 flex-1 text-left", children: [
@@ -185719,74 +185729,35 @@ function Notifications$2() {
                               "truncate text-xs sm:text-sm",
                               !n2.read ? "font-semibold text-foreground" : "font-medium text-foreground/80"
                             ),
-                            children: t3(n2.title)
+                            children: t3(n2.data.title)
                           }
                         ),
                         !n2.read && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "size-1.5 shrink-0 rounded-full bg-primary" })
                       ] }),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-0.5 truncate text-xs max-w-48 sm:max-w-72 lg:max-w-full text-muted-foreground", children: n2.userFullName ? t3("from {{name}}", { name: n2.userFullName }) : n2.message })
+                      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-0.5 truncate text-xs max-w-48 sm:max-w-72 lg:max-w-full text-muted-foreground", children: n2.data.body })
                     ] }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsx("small", { className: "flex shrink-0 items-center self-stretch pr-2 text-muted-foreground h-full", children: n2.time })
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("small", { className: "flex shrink-0 items-center self-stretch pr-2 text-muted-foreground h-full", children: n2.createdAt })
                   ] }) }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx(AccordionContent, { className: "px-3 pb-3", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "ml-12 rounded-lg border border-border/60 bg-muted/40 p-3 sm:ml-13", children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs leading-relaxed text-foreground/80", children: n2.message }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-3 flex flex-wrap items-center gap-2", children: [
-                      n2.actions?.map((action, i2) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                        Button$2,
-                        {
-                          size: "sm",
-                          variant: action.type === "button" ? "default" : "outline",
-                          className: "text-xs",
-                          onClick: (e2) => {
-                            e2.stopPropagation();
-                            if (action.type === "redirect" && action.url) {
-                              window.open(action.url, "_blank");
-                            } else {
-                              action.onAction?.();
-                            }
-                          },
-                          children: [
-                            action.type === "redirect" && /* @__PURE__ */ jsxRuntimeExports.jsx(IconExternalLink, { className: "size-3.5" }),
-                            t3(action.label ?? (action.type === "button" ? "View details" : "Open link"))
-                          ]
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs leading-relaxed text-foreground/80", children: n2.data.body }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-3 flex flex-wrap items-center gap-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                      Button$2,
+                      {
+                        size: "sm",
+                        variant: "outline",
+                        className: "text-xs",
+                        onClick: (e2) => {
+                          e2.stopPropagation();
                         },
-                        i2
-                      )),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        Button$2,
-                        {
-                          size: "sm",
-                          variant: "outline",
-                          className: "text-xs",
-                          onClick: (e2) => {
-                            e2.stopPropagation();
-                          },
-                          children: t3("View details")
-                        }
-                      ),
-                      /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                        Button$2,
-                        {
-                          size: "sm",
-                          variant: "ghost",
-                          className: "ml-auto text-xs text-muted-foreground hover:text-destructive",
-                          onClick: (e2) => {
-                            e2.stopPropagation();
-                            dismissNotification(n2.id);
-                          },
-                          children: [
-                            /* @__PURE__ */ jsxRuntimeExports.jsx(IconX, { className: "size-3.5" }),
-                            t3("Dismiss")
-                          ]
-                        }
-                      )
-                    ] })
+                        children: t3("View details")
+                      }
+                    ) })
                   ] }) })
                 ] })
               }
             )
           },
-          n2.id
+          n2._id
         );
       }) })
     ] }, date2)),

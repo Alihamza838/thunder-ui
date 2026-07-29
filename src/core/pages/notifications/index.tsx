@@ -2,15 +2,9 @@ import React from "react"
 import {
   IconBell,
   IconBellOff,
-  IconPackage,
-  IconCash,
-  IconTruckDelivery,
   IconAlertCircle,
   IconInfoCircle,
-  IconChecks,
   IconTrash,
-  IconExternalLink,
-  IconX,
 } from "@tabler/icons-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -21,78 +15,35 @@ import { cn } from "@/lib/utils"
 import { useTranslation } from "react-i18next"
 import { Container } from "@/core/custom/Container"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import axios from "axios"
-import { formatDistanceToNow, isSameDay, subDays, format } from "date-fns"
 import { ThunderSDK } from "thunder-sdk"
 import { use } from "@/core/hooks/use"
-
-const triggersTenantId = import.meta.env.VITE_TRIGGERS_TENANT_ID
-const triggersBaseUrl = import.meta.env.VITE_TRIGGERS_BASE_URL
-
-type NotificationType = "order" | "payment" | "delivery" | "alert" | "info"
-
-type TNotificationAction = {
-  type: "button" | "redirect"
-  label?: string
-  url?: string
-  onAction?: () => void
-}
-
-type TNotification = {
-  id: string
-  type: NotificationType
-  title: string
-  message: string
-  time: string
-  date: string
-  read: boolean
-  userFullName?: string
-  avatarUrl?: string
-  actions?: TNotificationAction[]
-}
-
-type NotificationDoc = {
-  _id: string
-  receiver: string
-  tenant: string
-  data: {
-    type?: NotificationType
-    title: string
-    message: string
-  }
-  seen?: boolean
-  read?: boolean
-  createdAt: string
-  updatedAt: string
-}
+import { toast } from "sonner"
+import { fetchNotifications, markNotificationAsRead } from "@/core/endpoints/notification"
+import type { TNotification } from "@/core/types"
+import { SkeletonRepeater } from "@/core/custom/SkeletonRepeater"
+import { getDateGroup, timeAgo } from "@/core/lib/utils"
 
 const PAGE_SIZE = 5
 
-const TYPE_CONFIG: Record<
-  NotificationType,
-  { icon: typeof IconBell; bg: string; color: string; border: string; label: string }
-> = {
-  order: { icon: IconPackage, bg: "bg-primary/10", color: "text-primary", border: "border-l-primary", label: "Orders" },
-  payment: { icon: IconCash, bg: "bg-success/10", color: "text-success", border: "border-l-success", label: "Payments" },
-  delivery: { icon: IconTruckDelivery, bg: "bg-blue-500/10", color: "text-blue-500", border: "border-l-blue-500", label: "Deliveries" },
-  alert: { icon: IconAlertCircle, bg: "bg-destructive/10", color: "text-destructive", border: "border-l-destructive", label: "Alerts" },
-  info: { icon: IconInfoCircle, bg: "bg-muted", color: "text-muted-foreground", border: "border-l-muted-foreground/40", label: "Info" },
-}
-
-const timeAgo = (dateStr: string) => formatDistanceToNow(new Date(dateStr), { addSuffix: true })
-
-const getDateGroup = (dateStr: string) => {
-  const date = new Date(dateStr)
-  const now = new Date()
-  if (isSameDay(date, now)) return "Today"
-  if (isSameDay(date, subDays(now, 1))) return "Yesterday"
-  return format(date, "MMM d, yyyy")
+function NotificationCardSkeleton() {
+  return (
+    <Card className="overflow-hidden border-l-[3px] border-l-muted-foreground/20 py-0 shadow-none">
+      <CardContent className="flex w-full items-center gap-3 px-3 py-3">
+        <span className="size-9 shrink-0 animate-pulse rounded-full bg-muted sm:size-10" />
+        <div className="min-w-0 flex-1 flex flex-col gap-2">
+          <div className="h-3 w-28 animate-pulse rounded bg-muted sm:w-40" />
+          <div className="h-2.5 w-40 animate-pulse rounded bg-muted sm:w-56" />
+        </div>
+        <div className="h-2.5 w-12 shrink-0 animate-pulse rounded bg-muted" />
+      </CardContent>
+    </Card>
+  )
 }
 
 export default function Notifications() {
   const { t } = useTranslation()
   const [notifications, setNotifications] = React.useState<TNotification[]>([])
-  const [loading, setLoading] = React.useState(false)
+  const [loading, setLoading] = React.useState(true)
   const [error, setError] = React.useState<string | null>(null)
   const [activeTab, setActiveTab] = React.useState("all")
   const [page, setPage] = React.useState(1)
@@ -103,40 +54,55 @@ export default function Notifications() {
     },
     []
   )
+
   const { data: me } = use(_me)
 
   const userId = me?._id
+  const tenant = import.meta.env.VITE_TRIGGERS_TENANT_ID
+  const triggersBaseUrl = import.meta.env.VITE_TRIGGERS_BASE_URL
 
 
   const unreadCount = notifications.filter((n: any) => !n.read).length
 
   React.useEffect(() => {
-    if (!triggersTenantId || !userId) return
+    if (!tenant || !userId) return
 
     let cancelled = false
     setLoading(true)
     setError(null)
 
-    axios
-      .get<{ results: NotificationDoc[] }>(`${triggersBaseUrl}/notifications/api/me/${triggersTenantId}/${userId}`, {
-        params: { page: 1, limit: 50 },
-      })
-      .then(({ data }) => {
+    const filters = activeTab === "unread" ? { read: false } : undefined
+
+    fetchNotifications(triggersBaseUrl, tenant, userId, 1, 50, filters)
+      .then((results) => {
         if (cancelled) return
-        setNotifications(
-          data.results.map((doc) => ({
-            id: doc._id,
-            type: doc.data?.type ?? "info",
+
+        const mapped = results.map((doc) => ({
+          _id: doc._id,
+          receiver: doc.receiver,
+          data: {
+            imageUrl: doc.data?.imageUrl ?? "",
             title: doc.data?.title ?? "",
-            message: doc.data?.message ?? "",
-            time: timeAgo(doc.createdAt),
-            date: getDateGroup(doc.createdAt),
-            read: doc.read ?? false,
-          }))
-        )
+            body: doc.data?.body ?? "",
+            html: doc.data?.html ?? "",
+          },
+          tenant: doc.tenant,
+          read: doc.read ?? false,
+          createdAt: timeAgo(doc.createdAt),
+          updatedAt: timeAgo(doc.updatedAt),
+          dateGroup: getDateGroup(doc.createdAt),
+        }))
+
+        const scoped =
+          activeTab === "unread" ? mapped.filter((n) => !n.read) : mapped
+
+        setNotifications(scoped)
       })
       .catch(() => {
-        if (!cancelled) setError(t("Failed to load notifications"))
+        if (cancelled) return
+        const message = t("Failed to load notifications")
+        setError(message)
+        toast.error(message)
       })
       .finally(() => {
         if (!cancelled) setLoading(false)
@@ -145,13 +111,9 @@ export default function Notifications() {
     return () => {
       cancelled = true
     }
-  }, [triggersTenantId, userId, triggersBaseUrl])
+  }, [tenant, userId, triggersBaseUrl, activeTab, t])
 
-  const filtered = React.useMemo(() => {
-    if (activeTab === "all") return notifications
-    if (activeTab === "unread") return notifications.filter((n) => !n.read)
-    return notifications.filter((n) => n.type === activeTab)
-  }, [notifications, activeTab])
+  const filtered = notifications
 
   React.useEffect(() => {
     setPage(1)
@@ -167,21 +129,29 @@ export default function Notifications() {
   const grouped = React.useMemo(() => {
     const groups: Record<string, TNotification[]> = {}
     for (const n of paginated) {
-      ; (groups[n.date] ??= []).push(n)
+      ; (groups[n?.dateGroup!] ??= []).push(n)
     }
     return Object.entries(groups)
   }, [paginated])
 
-  const markAllRead = () =>
-    setNotifications((prev) => prev.map((n) => ({ ...n, read: true })))
+  {/*
+    const markAllRead = () =>
+      setNotifications((prev) => prev.map((n) => ({ ...n, read: true })))
+  */}
 
-  const markRead = (id: string) =>
+  const markRead = async (id: string) => {
+    if (!tenant || !userId) return;
+
     setNotifications((prev) =>
-      prev.map((n) => (n.id === id ? { ...n, read: true } : n))
+      prev.map((n) => (n._id === id ? { ...n, read: true } : n))
     )
 
-  const dismissNotification = (id: string) =>
-    setNotifications((prev) => prev.filter((n) => n.id !== id))
+    try {
+      await markNotificationAsRead(triggersBaseUrl, tenant, userId, id)
+    } catch (err) {
+      console.error("Failed to mark as read", err)
+    }
+  }
 
   const clearAll = () => setNotifications([])
 
@@ -207,17 +177,19 @@ export default function Notifications() {
           </div>
 
           <div className="flex items-center gap-2">
-            {unreadCount > 0 && (
-              <Button
-                variant="outline"
-                size="sm"
-                className="gap-1.5 text-xs"
-                onClick={markAllRead}
-              >
-                <IconChecks className="size-3.5" />
-                {t("Mark all read")}
-              </Button>
-            )}
+            {/*
+              {unreadCount > 0 && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="gap-1.5 text-xs"
+                  onClick={markAllRead}
+                >
+                  <IconChecks className="size-3.5" />
+                  {t("Mark all read")}
+                </Button>
+              )}
+            */}
             {notifications.length > 0 && (
               <Button
                 variant="outline"
@@ -259,23 +231,30 @@ export default function Notifications() {
         </Tabs>
 
         {loading && (
-          <Card>
-            <CardContent className="flex flex-col items-center justify-center py-16 text-center">
-              <p className="text-sm text-muted-foreground">{t("Loading...")}</p>
-            </CardContent>
-          </Card>
+          <div className="flex flex-col gap-2">
+            <SkeletonRepeater count={5}>
+              <NotificationCardSkeleton />
+            </SkeletonRepeater>
+          </div>
         )}
 
         {!loading && error && (
           <Card>
             <CardContent className="flex flex-col items-center justify-center py-16 text-center">
-              <p className="text-sm text-destructive">{error}</p>
+              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-destructive/10">
+                <IconAlertCircle className="size-7 text-destructive" />
+              </div>
+              <h3 className="text-base font-semibold text-foreground">
+                {t("Something went wrong")}
+              </h3>
+              <p className="mt-1 max-w-xs text-xs text-muted-foreground">
+                {error}
+              </p>
             </CardContent>
           </Card>
         )}
 
-        {/* Empty state */}
-        {!loading && !error && filtered.length === 0 && (
+        {!loading && filtered.length === 0 && (
           <Card>
             <CardContent className="flex flex-col items-center justify-center py-16 text-center">
               <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-muted">
@@ -305,32 +284,26 @@ export default function Notifications() {
 
             <div className="flex flex-col gap-2">
               {items.map((n) => {
-                const cfg = TYPE_CONFIG[n.type]
-                const Icon = cfg.icon
-
                 return (
                   <Card
-                    key={n.id}
+                    key={n._id}
                     className={cn(
                       "overflow-hidden border-l-[3px] py-0 shadow-none transition-all duration-150 hover:shadow-sm",
-                      cfg.border,
                       !n.read && "bg-primary/3"
                     )}
                   >
                     <Accordion
-                      onValueChange={(value) => value && !n.read && markRead(n.id)}
+                      onValueChange={(value) => value && !n.read && markRead(n._id)}
                     >
-                      <AccordionItem value={n.id} className="border-none">
+                      <AccordionItem value={n._id} className="border-none">
                         <AccordionTrigger className="group w-full px-3 py-3 hover:no-underline">
                           <CardContent className="flex w-full items-center gap-3 p-0">
                             <span
                               className={cn(
-                                "flex size-9 shrink-0 items-center justify-center rounded-full sm:size-10",
-                                cfg.bg,
-                                cfg.color
+                                "flex size-9 shrink-0 items-center justify-center rounded-full sm:size-10"
                               )}
                             >
-                              <Icon className="size-4 sm:size-5" />
+                              <IconInfoCircle className="size-4 sm:size-5" />
                             </span>
 
                             <div className="min-w-0 flex-1 text-left">
@@ -343,21 +316,19 @@ export default function Notifications() {
                                       : "font-medium text-foreground/80"
                                   )}
                                 >
-                                  {t(n.title)}
+                                  {t(n.data.title)}
                                 </p>
                                 {!n.read && (
                                   <span className="size-1.5 shrink-0 rounded-full bg-primary" />
                                 )}
                               </div>
                               <p className="mt-0.5 truncate text-xs max-w-48 sm:max-w-72 lg:max-w-full text-muted-foreground">
-                                {n.userFullName
-                                  ? t("from {{name}}", { name: n.userFullName })
-                                  : n.message}
+                                {n.data.body}
                               </p>
                             </div>
 
                             <small className="flex shrink-0 items-center self-stretch pr-2 text-muted-foreground h-full">
-                              {n.time}
+                              {n.createdAt}
                             </small>
                           </CardContent>
                         </AccordionTrigger>
@@ -365,11 +336,11 @@ export default function Notifications() {
                         <AccordionContent className="px-3 pb-3">
                           <div className="ml-12 rounded-lg border border-border/60 bg-muted/40 p-3 sm:ml-13">
                             <p className="text-xs leading-relaxed text-foreground/80">
-                              {n.message}
+                              {n.data.body}
                             </p>
 
                             <div className="mt-3 flex flex-wrap items-center gap-2">
-                              {n.actions?.map((action, i) => (
+                              {/* {n.data.actions?.map((action, i) => (
                                 <Button
                                   key={i}
                                   size="sm"
@@ -389,7 +360,7 @@ export default function Notifications() {
                                   )}
                                   {t(action.label ?? (action.type === "button" ? "View details" : "Open link"))}
                                 </Button>
-                              ))}
+                              ))} */}
 
                               <Button
                                 size="sm"
@@ -400,19 +371,6 @@ export default function Notifications() {
                                 }}
                               >
                                 {t("View details")}
-                              </Button>
-
-                              <Button
-                                size="sm"
-                                variant="ghost"
-                                className="ml-auto text-xs text-muted-foreground hover:text-destructive"
-                                onClick={(e) => {
-                                  e.stopPropagation()
-                                  dismissNotification(n.id)
-                                }}
-                              >
-                                <IconX className="size-3.5" />
-                                {t("Dismiss")}
                               </Button>
                             </div>
                           </div>

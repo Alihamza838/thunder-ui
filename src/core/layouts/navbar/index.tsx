@@ -33,7 +33,10 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 import { NavMenu } from "./nav-menu"
-import { appName, getNavRoutes } from "@/core/lib/utils"
+import {
+  appName, getNavRoutes, triggersBaseUrl,
+  triggersTenantId
+} from "@/core/lib/utils"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -61,7 +64,7 @@ import { getWallets } from "@/core/endpoints/wallet.ts"
 import { Skeleton } from "@/components/ui/skeleton"
 import { ActionSwapText } from "@/core/pages/wallet/action-swap"
 import { NotificationPopover } from "@/core/pages/notifications/notification-popover"
-import axios from "axios"
+import { fetchUnreadCount } from "@/core/endpoints/notification"
 
 
 function NavBalance({ visible, onToggle }: { visible: boolean; onToggle: () => void }) {
@@ -150,26 +153,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
   const [unreadCount, setUnreadCount] = React.useState(0)
 
-  const triggersTenant = import.meta.env.VITE_TRIGGERS_TENANT_ID
-  const triggersBaseUrl = import.meta.env.VITE_TRIGGERS_BASE_URL
+  const refreshUnreadCount = React.useCallback(() => {
+    if (!me?._id || !triggersTenantId || !triggersBaseUrl) return
+
+    fetchUnreadCount(triggersBaseUrl, triggersTenantId, me._id)
+      .then((count) => setUnreadCount(count))
+      .catch((err) => console.log("Failed to fetch unread count", err))
+  }, [me?._id, triggersTenantId, triggersBaseUrl])
 
   React.useEffect(() => {
-    if (!me?._id) return
-
-    const controller = new AbortController()
-
-    axios
-      .get<{ count: number }>(
-        `${triggersBaseUrl}/notifications/api/unread/count/${triggersTenant}/${me._id}`,
-        { signal: controller.signal }
-      )
-      .then(({ data }) => setUnreadCount(data.count ?? 0))
-      .catch((err) => {
-        console.log(err)
-      })
-
-    return () => controller.abort()
-  }, [me?._id, triggersTenant, triggersBaseUrl])
+    refreshUnreadCount()
+  }, [refreshUnreadCount])
 
   const { routes, subRoutes } = React.useMemo(
     () => getNavRoutes(router.routes),
@@ -362,7 +356,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
               {/* Right Actions */}
               <div className="ms-auto flex items-center gap-3">
                 {/* Notifications */}
-                <NotificationPopover userId={me?._id} unreadCount={unreadCount} />
+                <NotificationPopover
+                  userId={me?._id}
+                  unreadCount={unreadCount}
+                  onRefreshUnread={refreshUnreadCount}
+                />
 
                 {/* Balance Toggle */}
                 {ThunderSDK.isPermitted(ThunderSDK.wallets.get) && (

@@ -5,7 +5,7 @@ import i18next from "i18next"
 
 import App from "./App.tsx"
 import { ThemeProvider } from "@/components/theme-provider.tsx"
-import { TooltipProvider } from "@/components/ui/tooltip"
+import { TooltipProvider } from "@/components/ui/tooltip.tsx"
 import { DirectionProvider } from "@/components/ui/direction.tsx"
 
 import "./index.css"

@@ -78986,13 +78986,13 @@ const __vitePreload = function preload(baseModule, deps, importerUrl) {
   });
 };
 const App$1 = registerPlugin("App", {
-  web: () => __vitePreload(() => import("./web-BTmTE0FQ.js"), true ? [] : void 0).then((m2) => new m2.AppWeb())
+  web: () => __vitePreload(() => import("./web-CbzzkGhG.js"), true ? [] : void 0).then((m2) => new m2.AppWeb())
 });
 const Browser$1 = registerPlugin("Browser", {
-  web: () => __vitePreload(() => import("./web-CzVtVllc.js"), true ? [] : void 0).then((m2) => new m2.BrowserWeb())
+  web: () => __vitePreload(() => import("./web-Bf6Hoy8k.js"), true ? [] : void 0).then((m2) => new m2.BrowserWeb())
 });
 const Preferences = registerPlugin("Preferences", {
-  web: () => __vitePreload(() => import("./web-BuL66p_T.js"), true ? [] : void 0).then((m2) => new m2.PreferencesWeb())
+  web: () => __vitePreload(() => import("./web-DhfJLUff.js"), true ? [] : void 0).then((m2) => new m2.PreferencesWeb())
 });
 class InvalidTokenError extends Error {
 }
@@ -223697,7 +223697,7 @@ const Clipboard = registerPlugin("Clipboard", {
   web: () => new ClipboardWeb()
 });
 const Share = registerPlugin("Share", {
-  web: () => __vitePreload(() => import("./web-CRP_iKCM.js"), true ? [] : void 0).then((m2) => new m2.ShareWeb())
+  web: () => __vitePreload(() => import("./web-CDekZl_M.js"), true ? [] : void 0).then((m2) => new m2.ShareWeb())
 });
 var __defProp = Object.defineProperty;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
@@ -225342,7 +225342,6 @@ function Notifications$2() {
       console.error("Failed to mark as read", err);
     }
   };
-  const clearAll = () => setNotifications([]);
   return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-full min-h-0 flex-1 flex-col overflow-y-auto mask-y-from-98%", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Container, { className: "relative flex flex-col gap-4 max-w-3xl", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3", children: [
@@ -225352,19 +225351,7 @@ function Notifications$2() {
           /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: unreadCount > 0 ? t3("{{count}} unread notifications", { count: unreadCount }) : t3("You're all caught up") })
         ] })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center gap-2", children: notifications.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        Button$2,
-        {
-          variant: "outline",
-          size: "sm",
-          className: "gap-1.5 text-xs text-destructive hover:text-destructive",
-          onClick: clearAll,
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(IconTrash, { className: "size-3.5" }),
-            t3("Clear all")
-          ]
-        }
-      ) })
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center gap-2" })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(Tabs, { value: activeTab, onValueChange: setActiveTab, children: /* @__PURE__ */ jsxRuntimeExports.jsx(TabsList, { className: "h-auto w-full justify-start gap-1 bg-transparent p-0", children: [
       { value: "all", label: t3("All") },
@@ -225445,10 +225432,7 @@ function Notifications$2() {
                     ] }),
                     /* @__PURE__ */ jsxRuntimeExports.jsx("small", { className: "flex shrink-0 items-center self-stretch pr-2 text-muted-foreground h-full", children: n2.createdAt })
                   ] }) }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(AccordionContent, { className: "px-3 pb-3", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "ml-12 rounded-lg border border-border/60 bg-muted/40 p-3 sm:ml-13", children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs leading-relaxed text-foreground/80", children: n2.data.body }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-3 flex flex-wrap items-center gap-2" })
-                  ] }) })
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(AccordionContent, { className: "px-3 pb-3", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "ml-12 rounded-lg border border-border/60 bg-muted/40 p-3 sm:ml-13", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs leading-relaxed text-foreground/80", children: n2.data.body }) }) })
                 ] })
               }
             )

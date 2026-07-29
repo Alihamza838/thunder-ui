@@ -4,7 +4,6 @@ import {
   IconBellOff,
   IconAlertCircle,
   IconInfoCircle,
-  IconTrash,
 } from "@tabler/icons-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -154,8 +153,6 @@ export default function Notifications() {
     }
   }
 
-  const clearAll = () => setNotifications([])
-
   return (
     <div className="flex h-full min-h-0 flex-1 flex-col overflow-y-auto mask-y-from-98%">
       <Container className="relative flex flex-col gap-4 max-w-3xl">
@@ -191,17 +188,6 @@ export default function Notifications() {
                 </Button>
               )}
             */}
-            {notifications.length > 0 && (
-              <Button
-                variant="outline"
-                size="sm"
-                className="gap-1.5 text-xs text-destructive hover:text-destructive"
-                onClick={clearAll}
-              >
-                <IconTrash className="size-3.5" />
-                {t("Clear all")}
-              </Button>
-            )}
           </div>
         </div>
 
@@ -340,8 +326,8 @@ export default function Notifications() {
                               {n.data.body}
                             </p>
 
-                            <div className="mt-3 flex flex-wrap items-center gap-2">
-                              {/* {n.data.actions?.map((action, i) => (
+                            {/* <div className="mt-3 flex flex-wrap items-center gap-2">
+                              {n.data.actions?.map((action, i) => (
                                 <Button
                                   key={i}
                                   size="sm"
@@ -361,8 +347,8 @@ export default function Notifications() {
                                   )}
                                   {t(action.label ?? (action.type === "button" ? "View details" : "Open link"))}
                                 </Button>
-                              ))} */}
-                            </div>
+                              ))}
+                            </div> */}
                           </div>
                         </AccordionContent>
                       </AccordionItem>

@@ -22,6 +22,7 @@ import { fetchNotifications, markNotificationAsRead } from "@/core/endpoints/not
 import type { TNotification } from "@/core/types"
 import { SkeletonRepeater } from "@/core/custom/SkeletonRepeater"
 import { getDateGroup, timeAgo } from "@/core/lib/utils"
+import { Skeleton } from "@/components/ui/skeleton"
 
 const PAGE_SIZE = 5
 
@@ -29,12 +30,12 @@ function NotificationCardSkeleton() {
   return (
     <Card className="overflow-hidden border-l-[3px] border-l-muted-foreground/20 py-0 shadow-none">
       <CardContent className="flex w-full items-center gap-3 px-3 py-3">
-        <span className="size-9 shrink-0 animate-pulse rounded-full bg-muted sm:size-10" />
+        <Skeleton className="size-9 shrink-0 rounded-full sm:size-10" />
         <div className="min-w-0 flex-1 flex flex-col gap-2">
-          <div className="h-3 w-28 animate-pulse rounded bg-muted sm:w-40" />
-          <div className="h-2.5 w-40 animate-pulse rounded bg-muted sm:w-56" />
+          <Skeleton className="h-3 w-28 rounded sm:w-40" />
+          <Skeleton className="h-2.5 w-40 rounded sm:w-56" />
         </div>
-        <div className="h-2.5 w-12 shrink-0 animate-pulse rounded bg-muted" />
+        <Skeleton className="h-2.5 w-12 shrink-0 rounded" />
       </CardContent>
     </Card>
   )
@@ -300,7 +301,7 @@ export default function Notifications() {
                           <CardContent className="flex w-full items-center gap-3 p-0">
                             <span
                               className={cn(
-                                "flex size-9 shrink-0 items-center justify-center rounded-full sm:size-10"
+                                "flex size-9 shrink-0 items-center justify-center rounded-full sm:size-10 bg-muted text-muted-foreground"
                               )}
                             >
                               <IconInfoCircle className="size-4 sm:size-5" />

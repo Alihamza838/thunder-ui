@@ -78986,13 +78986,13 @@ const __vitePreload = function preload(baseModule, deps, importerUrl) {
   });
 };
 const App$1 = registerPlugin("App", {
-  web: () => __vitePreload(() => import("./web-DKy4iT6W.js"), true ? [] : void 0).then((m2) => new m2.AppWeb())
+  web: () => __vitePreload(() => import("./web-BTmTE0FQ.js"), true ? [] : void 0).then((m2) => new m2.AppWeb())
 });
 const Browser$1 = registerPlugin("Browser", {
-  web: () => __vitePreload(() => import("./web--ti5kwqb.js"), true ? [] : void 0).then((m2) => new m2.BrowserWeb())
+  web: () => __vitePreload(() => import("./web-CzVtVllc.js"), true ? [] : void 0).then((m2) => new m2.BrowserWeb())
 });
 const Preferences = registerPlugin("Preferences", {
-  web: () => __vitePreload(() => import("./web-C-NcWmvN.js"), true ? [] : void 0).then((m2) => new m2.PreferencesWeb())
+  web: () => __vitePreload(() => import("./web-BuL66p_T.js"), true ? [] : void 0).then((m2) => new m2.PreferencesWeb())
 });
 class InvalidTokenError extends Error {
 }
@@ -94120,16 +94120,16 @@ const SkeletonRepeater = ({
   return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: cn$1("flex flex-col gap-1 w-full", className), ...props, children: Array.from({ length: count2 }).map((_2, index2) => /* @__PURE__ */ jsxRuntimeExports.jsx(React.Fragment, { children }, index2)) });
 };
 function NotificationSkeletonCard() {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "border-l-[3px] border-l-muted-foreground/20 p-2 shadow-none", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "flex w-full items-center gap-2 p-0", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "mt-0.5 size-8 shrink-0 animate-pulse rounded-full bg-muted" }),
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "p-2 shadow-none", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "flex w-full items-center gap-2 p-0", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "mt-0.5 size-8 rounded-full" }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "w-full flex justify-between items-center", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0 flex-1 flex flex-col gap-2", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-3 w-24 animate-pulse rounded bg-muted sm:w-32" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-2.5 w-32 animate-pulse rounded bg-muted sm:w-40" })
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-3 w-24 rounded sm:w-32" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-2.5 w-32 rounded sm:w-40" })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-end gap-2", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-3 w-16 animate-pulse rounded bg-muted" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-2.5 w-10 animate-pulse rounded bg-muted" })
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-3 w-16 rounded" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-2.5 w-10 rounded" })
       ] })
     ] })
   ] }) });
@@ -94239,7 +94239,7 @@ function NotificationPopover({ userId, unreadCount = 0, onRefreshUnread }) {
                     "span",
                     {
                       className: cn$1(
-                        "mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full"
+                        "flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground"
                       ),
                       children: /* @__PURE__ */ jsxRuntimeExports.jsx(IconInfoCircle, { className: "size-4" })
                     }
@@ -94359,6 +94359,7 @@ function Layout$2({ children }) {
   const isMobile = useIsMobile();
   const logout = useLogout();
   const { t: t3, i18n } = useTranslation$1();
+  const unreadCountInterval = "30000";
   const isRtl = i18n.language === "ar";
   const [balanceVisible, setBalanceVisible] = React.useState(false);
   const _me = React.useCallback(
@@ -94375,7 +94376,11 @@ function Layout$2({ children }) {
   }, [me3?._id, triggersTenantId, triggersBaseUrl]);
   React.useEffect(() => {
     refreshUnreadCount();
-  }, [refreshUnreadCount]);
+    const intervalId = setInterval(() => {
+      refreshUnreadCount();
+    }, unreadCountInterval);
+    return () => clearInterval(intervalId);
+  }, [refreshUnreadCount, unreadCountInterval]);
   const { routes: routes2, subRoutes } = React.useMemo(
     () => getNavRoutes(router2.routes),
     [router2.routes]
@@ -210036,7 +210041,7 @@ function ImageUpload({
     initialFiles: initFiles.length ? initFiles : void 0,
     multiple: multi,
     maxSize: MAX_SIZE,
-    accept: "image/*",
+    accept: "image/*,application/pdf",
     onFilesAdded: (addedFiles) => {
       for (const f2 of addedFiles) {
         setBusy(true);
@@ -215902,10 +215907,39 @@ function FilterActions({
     }
   );
 }
+function CardSelectAll({
+  checked = false,
+  selectedCount = 0,
+  totalCount = 0,
+  onChange: onChange2
+}) {
+  const isChecked = checked === true;
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    "button",
+    {
+      type: "button",
+      className: "flex h-9 cursor-pointer select-none items-center gap-2 rounded-full border border-border bg-background px-3 text-xs shadow-xs transition-colors hover:bg-accent focus:outline-none",
+      onClick: () => onChange2?.(!isChecked),
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Checkbox,
+          {
+            checked: isChecked,
+            tabIndex: -1,
+            className: "pointer-events-none size-4 rounded-sm",
+            "aria-label": "Select all cards"
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-medium text-muted-foreground", children: selectedCount > 0 ? `${selectedCount} / ${totalCount}` : totalCount })
+      ]
+    }
+  );
+}
 function filterIcon(field) {
   if (field.enum) return IconCircleDashed;
   switch (field.type) {
     case "text":
+    default:
       return IconH1;
     case "url":
       return IconLink;
@@ -215917,19 +215951,36 @@ function filterIcon(field) {
       return IconSquareCheck;
     case "number":
       return IconNumber;
-    default:
-      return IconH1;
   }
 }
 const FiltersContext = React.createContext(null);
 function useFilters() {
   const context = React.useContext(FiltersContext);
-  if (!context)
+  if (!context) {
     throw new Error("useFilters must be used within FiltersProvider");
+  }
   return context;
 }
-function Filters({ filters, fields, onChange: onChange2 }) {
+function Filters({
+  filters,
+  fields,
+  onChange: onChange2,
+  isCardView,
+  selectAllChecked,
+  selectedCount,
+  totalCount,
+  onSelectAllChange
+}) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(FiltersContext.Provider, { value: { filters, fields, onChange: onChange2 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex min-w-0 grow items-center justify-between gap-2", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex min-w-0 flex-1 items-center gap-2", children: [
+    isCardView && /* @__PURE__ */ jsxRuntimeExports.jsx(
+      CardSelectAll,
+      {
+        checked: selectAllChecked,
+        selectedCount,
+        totalCount,
+        onChange: onSelectAllChange
+      }
+    ),
     /* @__PURE__ */ jsxRuntimeExports.jsx(FilterSelector, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(
       FilterActions,
@@ -216732,9 +216783,9 @@ function ListPage({ group, name: name2 }) {
             header: ({ table: table2 }) => /* @__PURE__ */ jsxRuntimeExports.jsx(
               Checkbox,
               {
-                checked: table2.getIsAllRowsSelected() || table2.getIsSomeRowsSelected(),
+                checked: table2.getIsAllPageRowsSelected() || table2.getIsSomePageRowsSelected(),
                 onCheckedChange: (value) => {
-                  table2.toggleAllRowsSelected(!!value);
+                  table2.toggleAllPageRowsSelected(!!value);
                 },
                 "aria-label": "Select all"
               }
@@ -216800,7 +216851,14 @@ function ListPage({ group, name: name2 }) {
                   {
                     fields,
                     filters: subFilters,
-                    onChange: setSubFilters
+                    onChange: setSubFilters,
+                    isCardView: isCard,
+                    selectAllChecked: table.getIsAllPageRowsSelected() ? true : table.getIsSomePageRowsSelected() ? "indeterminate" : false,
+                    selectedCount: selectedRows.length,
+                    totalCount: getData?.results?.length ?? 0,
+                    onSelectAllChange: (checked) => {
+                      table.toggleAllPageRowsSelected(checked);
+                    }
                   }
                 ),
                 /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-1 shrink-0 grow items-center justify-end gap-3", children: isLoading ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
@@ -216882,7 +216940,7 @@ function ListPage({ group, name: name2 }) {
                     toggleSelect: (id2) => {
                       const row = table.getRowModel().rows.find((v2) => v2.original._id === id2);
                       if (row) row.toggleSelected();
-                      else table.toggleAllRowsSelected();
+                      else table.toggleAllPageRowsSelected();
                     }
                   }
                 ),
@@ -216901,7 +216959,14 @@ function ListPage({ group, name: name2 }) {
               ] }) : null,
               !isCard ? /* @__PURE__ */ jsxRuntimeExports.jsxs(Container, { className: "flex h-full min-h-0 flex-1 flex-col gap-3", children: [
                 isLoading ? /* @__PURE__ */ jsxRuntimeExports.jsx(TableSkeleton, {}) : getData?.results.length === 0 && !isLoading ? /* @__PURE__ */ jsxRuntimeExports.jsx(Empty, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(EmptyHeader, { children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(EmptyMedia, { variant: "icon", className: "bg-destructive/10", children: /* @__PURE__ */ jsxRuntimeExports.jsx(IconXMark, { className: "text-destructive" }) }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    EmptyMedia,
+                    {
+                      variant: "icon",
+                      className: "bg-destructive/10",
+                      children: /* @__PURE__ */ jsxRuntimeExports.jsx(IconXMark, { className: "text-destructive" })
+                    }
+                  ),
                   /* @__PURE__ */ jsxRuntimeExports.jsx(EmptyTitle, { children: t3("No results!") }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx(EmptyDescription, { children: t3("Adjust or clear filters to reveal issues.") })
                 ] }) }) : /* @__PURE__ */ jsxRuntimeExports.jsx(DataTable, { table }),
@@ -223632,7 +223697,7 @@ const Clipboard = registerPlugin("Clipboard", {
   web: () => new ClipboardWeb()
 });
 const Share = registerPlugin("Share", {
-  web: () => __vitePreload(() => import("./web-odF_Npk6.js"), true ? [] : void 0).then((m2) => new m2.ShareWeb())
+  web: () => __vitePreload(() => import("./web-CRP_iKCM.js"), true ? [] : void 0).then((m2) => new m2.ShareWeb())
 });
 var __defProp = Object.defineProperty;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
@@ -225186,12 +225251,12 @@ function AccordionContent({
 const PAGE_SIZE = 5;
 function NotificationCardSkeleton() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "overflow-hidden border-l-[3px] border-l-muted-foreground/20 py-0 shadow-none", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "flex w-full items-center gap-3 px-3 py-3", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "size-9 shrink-0 animate-pulse rounded-full bg-muted sm:size-10" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "size-9 shrink-0 rounded-full sm:size-10" }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0 flex-1 flex flex-col gap-2", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-3 w-28 animate-pulse rounded bg-muted sm:w-40" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-2.5 w-40 animate-pulse rounded bg-muted sm:w-56" })
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-3 w-28 rounded sm:w-40" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-2.5 w-40 rounded sm:w-56" })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-2.5 w-12 shrink-0 animate-pulse rounded bg-muted" })
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-2.5 w-12 shrink-0 rounded" })
   ] }) });
 }
 function Notifications$2() {
@@ -225357,7 +225422,7 @@ function Notifications$2() {
                       "span",
                       {
                         className: cn$1(
-                          "flex size-9 shrink-0 items-center justify-center rounded-full sm:size-10"
+                          "flex size-9 shrink-0 items-center justify-center rounded-full sm:size-10 bg-muted text-muted-foreground"
                         ),
                         children: /* @__PURE__ */ jsxRuntimeExports.jsx(IconInfoCircle, { className: "size-4 sm:size-5" })
                       }

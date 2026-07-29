@@ -18,20 +18,21 @@ import { Card, CardContent } from "@/components/ui/card"
 import type { TNotification } from "@/core/types"
 import { timeAgo, triggersBaseUrl, triggersTenantId } from "@/core/lib/utils"
 import { SkeletonRepeater } from "@/core/custom/SkeletonRepeater"
+import { Skeleton } from "@/components/ui/skeleton"
 
 function NotificationSkeletonCard() {
   return (
-    <Card className="border-l-[3px] border-l-muted-foreground/20 p-2 shadow-none">
+    <Card className="p-2 shadow-none">
       <CardContent className="flex w-full items-center gap-2 p-0">
-        <span className="mt-0.5 size-8 shrink-0 animate-pulse rounded-full bg-muted" />
+        <Skeleton className="mt-0.5 size-8 rounded-full" />
         <div className="w-full flex justify-between items-center">
           <div className="min-w-0 flex-1 flex flex-col gap-2">
-            <div className="h-3 w-24 animate-pulse rounded bg-muted sm:w-32" />
-            <div className="h-2.5 w-32 animate-pulse rounded bg-muted sm:w-40" />
+            <Skeleton className="h-3 w-24 rounded sm:w-32" />
+            <Skeleton className="h-2.5 w-32 rounded sm:w-40" />
           </div>
           <div className="flex flex-col items-end gap-2">
-            <div className="h-3 w-16 animate-pulse rounded bg-muted" />
-            <div className="h-2.5 w-10 animate-pulse rounded bg-muted" />
+            <Skeleton className="h-3 w-16 rounded" />
+            <Skeleton className="h-2.5 w-10 rounded" />
           </div>
         </div>
       </CardContent>
@@ -199,7 +200,7 @@ export function NotificationPopover({ userId, unreadCount: unreadCount = 0, onRe
                     <CardContent className="flex w-full items-center gap-2 p-0">
                       <span
                         className={cn(
-                          "mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full"
+                          "flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground"
                         )}
                       >
                         <IconInfoCircle className="size-4" />

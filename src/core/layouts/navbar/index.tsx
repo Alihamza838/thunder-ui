@@ -138,6 +138,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const isMobile = useIsMobile()
   const logout = useLogout()
   const { t, i18n } = useTranslation()
+  const unreadCountInterval = import.meta.env.VITE_UNREAD_COUNT_INTERVAL
 
   const isRtl = i18n.language === "ar"
   const [balanceVisible, setBalanceVisible] = React.useState(false)
@@ -163,7 +164,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
   React.useEffect(() => {
     refreshUnreadCount()
-  }, [refreshUnreadCount])
+
+    const intervalId = setInterval(() => {
+      refreshUnreadCount()
+    }, unreadCountInterval)
+
+    return () => clearInterval(intervalId)
+  }, [refreshUnreadCount, unreadCountInterval])
 
   const { routes, subRoutes } = React.useMemo(
     () => getNavRoutes(router.routes),

@@ -228,7 +228,7 @@ export function FormPage({ name }: IFormPageProps) {
                     ? t("Update the {{name}} entry below.", { name })
                     : t(
                         "Fill the form below to create a new {{name}} entry. All fields are required",
-                        { name: "Foo" }
+                        { name }
                       )}
                 </FieldDescription>
               </FieldSet>

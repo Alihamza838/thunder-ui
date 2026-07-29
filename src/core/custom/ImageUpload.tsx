@@ -51,7 +51,7 @@ export function ImageUpload({
     initialFiles: initFiles.length ? initFiles : undefined,
     multiple: multi,
     maxSize: MAX_SIZE,
-    accept: "image/*",
+    accept: "image/*,application/pdf",
     onFilesAdded: (addedFiles) => {
       for (const f of addedFiles) {
         // eslint-disable-next-line react-hooks/set-state-in-effect
